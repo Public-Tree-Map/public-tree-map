@@ -12,4 +12,4 @@ RUN  pip3 install -r /opt/streetTreeMap/requirements.txt
 #Just until non-sqlite database is setup
 #RUN python /opt/django_project/manage.py migrate
 
-CMD python /opt/django_project/manage.py runserver
+CMD python /opt/streetTreeMap/manage.py runserver
