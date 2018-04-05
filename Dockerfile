@@ -5,9 +5,9 @@ ENV TIME_ZONE 'America/Los_Angeles'
 ADD streetTreeMap /opt/streetTreeMap
 
 WORKDIR /opt/streetTreeMap
-RUN  pip3 install -r /opt/streetTreeMap/requirements.txt \
-  && python ./manage.py bower install \
-  && python manage.py collectstatic --noinput
+RUN  pip3 install -r /opt/streetTreeMap/requirements.txt
+#  && python manage.py collectstatic --noinput
+#  && python ./manage.py bower install 
 #like rake precomplie assets
 #Just until non-sqlite database is setup
 #RUN python /opt/django_project/manage.py migrate
