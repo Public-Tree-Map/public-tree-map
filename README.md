@@ -16,6 +16,7 @@ Street Tree Map is a map of trees using open source data
 * [IUCN Red List of Threatened Species](http://www.iucnredlist.org/)
 * [The Jepson Herbarium eFlora](http://ucjeps.berkeley.edu/eflora/)
 * [LA City - Urban Forestry Division - Street Tree Selection Guide](http://bss.lacity.org/urbanforestry/streettreeselectionguide.htm)
+* [LA Times' Neighborhood Profile](http://maps.latimes.com/neighborhoods/neighborhood/santa-monica/)
 * [Missouri Botanical Garden - Plant Finder](http://www.missouribotanicalgarden.org/plantfinder/plantfindersearch.aspx)
 * [The Plant List](http://www.theplantlist.org/)
 * [Santa Monica's Heritage Trees](https://www.smgov.net/Portals/UrbanForest/content.aspx?id=53687092939)
@@ -25,3 +26,8 @@ Street Tree Map is a map of trees using open source data
 * [SelecTree - CalPoly](https://selectree.calpoly.edu/)
 * [Theodore Payne Foundation - California Native Plant Database](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
 * [Watering Street Trees in Santa Monica - Water Requirements by Species (pp13-19)](https://www.smgov.net/uploadedFiles/Portals/UrbanForest/Maintenance/WateringStreetTrees.pdf)
+
+## Related projects/inspiration
+* [Jill Hubley's NYC street tree map](https://github.com/jhubley/street-trees)
+* [NYC Parks' New York City Street Tree Map](https://tree-map.nycgovparks.org/)
+* [RegisTree](http://www.vision.caltech.edu/registree/)
