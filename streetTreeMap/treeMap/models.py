@@ -13,10 +13,6 @@ class Genus(models.Model):
 class Species(models.Model):
   species = models.CharField(max_length=100, unique=True, verbose_name="Species")
 
-class Replacement_Species(models.Model):
-  species =  models.ForeignKey(Species, on_delete=models.CASCADE)
-  replacements = models.ManyToManyField(Species, related_name='replacements')
-
 class Tree_images(models.Model):
   image = models.FileField()
 
@@ -28,15 +24,12 @@ class Tree_name(models.Model):
   family = models.ForeignKey(Family,on_delete=models.SET_NULL, null=True)
   genus = models.ForeignKey(Genus,on_delete=models.SET_NULL, null=True)
   species = models.ForeignKey(Species,on_delete=models.SET_NULL, null=True)
-  #iucn status ????
+  #iucn status ???? ie endangered, threatened, etc.
 
 class Water_needs(models.Model):
   irrigation_needs = models.CharField(max_length=30)
   summer_needs = models.CharField(max_length=30)
   winter_needs = models.CharField(max_length=30)
-  
-class Prune_date(models.Model):
-  last_prune = models.DateField()
 
 class Trees(models.Model):
   common_name = models.ForeignKey(Tree_name, on_delete=models.SET_NULL, null=True)
@@ -45,10 +38,10 @@ class Trees(models.Model):
   street_number = models.IntegerField()
   street_name = models.CharField(max_length=100)
   stree_view_image = models.CharField(max_length=100)
-  diameter = models.IntegerField()
-  height = models.IntegerField()
-  next_prune = models.DateField()
-  last_prune = models.ForeignKey(Prune_date, on_delete=models.SET_NULL, null=True)
+  min_diameter = models.IntegerField()
+  max_diameter = models.IntegerField()
+  min_height = models.IntegerField()
+  max_height = models.IntegerField()
 
   def __str__(self):
     return self.common_name+"("+self.common_name+")"
