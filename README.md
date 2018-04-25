@@ -12,7 +12,7 @@ Street Tree Map is a map of trees using open source data
 * [California Invasive Plant Council](http://www.cal-ipc.org/plants/inventory/)
 * [Canopy Tree Library](https://canopy.org/tree-info/canopy-tree-library/)
 * [Encyclopedia of Life (EOL) - API documentation](http://eol.org/api)
-* [Google Street View](https://developers.google.com/maps/documentation/streetview/)
+* [Google Street View - API documentation](https://developers.google.com/maps/documentation/streetview/)
 * [IUCN Red List of Threatened Species - API documentation](http://apiv3.iucnredlist.org/)
 * [The Jepson Herbarium eFlora](http://ucjeps.berkeley.edu/eflora/)
 * [LA City - Urban Forestry Division - Street Tree Selection Guide](http://bss.lacity.org/urbanforestry/streettreeselectionguide.htm)
