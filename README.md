@@ -7,13 +7,13 @@ Street Tree Map is a map of trees using open source data
 `docker run -p 8000:8000 stm`
 
 ## Data Sources
-* [Biodiversity Heritage Library](https://www.biodiversitylibrary.org/part/170498#/summary)
+* [Biodiversity Heritage Library - API documentation](https://www.biodiversitylibrary.org/api2/docs/docs.html)
 * [Calflora](http://www.calflora.org/)
 * [California Invasive Plant Council](http://www.cal-ipc.org/plants/inventory/)
 * [Canopy Tree Library](https://canopy.org/tree-info/canopy-tree-library/)
-* [Encyclopedia of Life](http://eol.org/)
+* [Encyclopedia of Life (EOL) - API documentation](http://eol.org/api)
 * [Google Street View](https://developers.google.com/maps/documentation/streetview/)
-* [IUCN Red List of Threatened Species](http://www.iucnredlist.org/)
+* [IUCN Red List of Threatened Species - API documentation](http://apiv3.iucnredlist.org/)
 * [The Jepson Herbarium eFlora](http://ucjeps.berkeley.edu/eflora/)
 * [LA City - Urban Forestry Division - Street Tree Selection Guide](http://bss.lacity.org/urbanforestry/streettreeselectionguide.htm)
 * [LA Times' Neighborhood Profile](http://maps.latimes.com/neighborhoods/neighborhood/santa-monica/)
