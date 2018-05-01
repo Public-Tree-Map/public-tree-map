@@ -31,6 +31,11 @@ Street Tree Map is a map of trees using open source data
 
 
 ## Related projects/inspiration
+* [The effects of urban trees on air quality - USDA 2002 PDF](https://www.nrs.fs.fed.us/units/urban/local-resources/downloads/Tree_Air_Qual.pdf)
+* [Increased home size and hardscape decreases urban forest cover in Los Angeles County’s single-family residential neighborhoods PDF](http://johnwilson.usc.edu/wp-content/uploads/2018/03/Increased-home-size-and-hardscape-decreases-urban-forest-cover-in-Los-Angeles-Countys-single-family-residential-neighborhoods.pdf)
 * [Jill Hubley's NYC street tree map](https://github.com/jhubley/street-trees)
 * [NYC Parks' New York City Street Tree Map](https://tree-map.nycgovparks.org/)
+* [The Need to Standardize At-planting Data PDF](https://urbanforestry.indiana.edu/doc/publications/2015-need-to-standardize.pdf)
 * [RegisTree](http://www.vision.caltech.edu/registree/)
+* [TreeMapLA](https://www.opentreemap.org/latreemap/map/)
+* [Urban Tree Growth & Longevity (UTGL) Working Group - Urban Tree Monitoring Protocols Field Guide](http://www.urbantreegrowth.org/field-guide.html)
