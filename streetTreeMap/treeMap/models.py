@@ -9,22 +9,23 @@ class Family(models.Model):
 
 class Genus(models.Model):
   genus = models.CharField(max_length=100, unique=True, verbose_name="genus")
+  family = models.ForeignKey(Family,on_delete=models.SET_NULL, null=True)
 
 class Species(models.Model):
+  common_name = models.CharField(max_length=255,unique=True, verbose_name="Common Name")
   species = models.CharField(max_length=100, unique=True, verbose_name="Species")
+  genus = models.ForeignKey(Genus,on_delete=models.SET_NULL, null=True)
+  images = models.ForeignKey(Tree_images, on_delete=models.SET_NULL, null=True)
+  #iucn status ???? ie endangered, threatened, etc.
 
 class Tree_images(models.Model):
   image = models.FileField()
 
-class Tree_name(models.Model):
-  common_name = models.CharField(max_length=255,unique=True, verbose_name="Common Name")
+class Tree_context(models.Model):
   native = models.BooleanField()
   invasive = models.BooleanField()
-  images = models.ForeignKey(Tree_images, on_delete=models.SET_NULL, null=True)
-  family = models.ForeignKey(Family,on_delete=models.SET_NULL, null=True)
-  genus = models.ForeignKey(Genus,on_delete=models.SET_NULL, null=True)
   species = models.ForeignKey(Species,on_delete=models.SET_NULL, null=True)
-  #iucn status ???? ie endangered, threatened, etc.
+  water_needs = models.ForeignKey(Water_needs,on_delete=models.SET_NULL, null=True)
 
 class Water_needs(models.Model):
   irrigation_needs = models.CharField(max_length=30)
@@ -32,17 +33,17 @@ class Water_needs(models.Model):
   winter_needs = models.CharField(max_length=30)
 
 class Trees(models.Model):
-  common_name = models.ForeignKey(Tree_name, on_delete=models.SET_NULL, null=True)
+  context = models.ForeignKey(Tree_context, on_delete=models.SET_NULL, null=True)
   latitude = models.DecimalField(max_digits=12, decimal_places=9)
   longitude = models.DecimalField(max_digits=12, decimal_places=9)
   street_number = models.IntegerField()
   street_name = models.CharField(max_length=100)
   stree_view_image = models.CharField(max_length=100)
-  min_diameter = models.IntegerField(default=0)
-  max_diameter = models.IntegerField(default=0)
-  min_height = models.IntegerField(default=0)
-  max_height = models.IntegerField(default=0)
+  max_diameter = models.DecimalField(max_digits=6, decimal_places=3)
+  min_diameter = models.DecimalField(max_digits=6, decimal_places=3)
+  max_height = models.DecimalField(max_digits=6, decimal_places=3)
+  min_height = models.DecimalField(max_digits=6, decimal_places=3)
 
   def __str__(self):
-    return self.common_name+"("+self.common_name+")"
+    return self.common_name+"("+self.species.common_name+")"
 
