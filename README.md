@@ -25,6 +25,7 @@ Street Tree Map is a map of trees using open source data
 * [Santa Monica - Urban Forest - Watering Frequencies for Mature Trees PDF (pp9-13)](https://www.smgov.net/uploadedFiles/Portals/UrbanForest/FINAL%20Trees%20Watering%20Guidelines.pdf)
 * [Santa Monica Open Data - Neighborhood Organization Boundaries](https://data.smgov.net/Public-Assets/Neighborhood-Organization-Boundaries/juzu-tcbz/data)
 * [Santa Monica Open Data - Trees](https://data.smgov.net/Public-Assets/Trees/ekya-mi9c)
+* [Santa Monica Open Data - Trees Inventory](https://data.smgov.net/Public-Assets/Trees-Inventory/w8ue-6cnd)
 * [SelecTree - CalPoly](https://selectree.calpoly.edu/)
 * [Theodore Payne Foundation - California Native Plant Database](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
 
