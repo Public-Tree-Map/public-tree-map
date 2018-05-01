@@ -38,10 +38,10 @@ class Trees(models.Model):
   street_number = models.IntegerField()
   street_name = models.CharField(max_length=100)
   stree_view_image = models.CharField(max_length=100)
-  min_diameter = models.IntegerField()
-  max_diameter = models.IntegerField()
-  min_height = models.IntegerField()
-  max_height = models.IntegerField()
+  min_diameter = models.IntegerField(default=0)
+  max_diameter = models.IntegerField(default=0)
+  min_height = models.IntegerField(default=0)
+  max_height = models.IntegerField(default=0)
 
   def __str__(self):
     return self.common_name+"("+self.common_name+")"
