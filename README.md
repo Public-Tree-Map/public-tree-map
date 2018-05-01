@@ -1,6 +1,6 @@
 # street-tree-map
 
-Street Tree Map is a map of trees using open source data
+Street Tree Map documents city-owned street trees using open source data
 
 ## Running locally
 `docker build . -t stm`
