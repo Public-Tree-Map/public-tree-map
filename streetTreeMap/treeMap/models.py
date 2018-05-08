@@ -11,6 +11,14 @@ class Genus(models.Model):
   genus = models.CharField(max_length=100, unique=True, verbose_name="genus")
   family = models.ForeignKey(Family,on_delete=models.SET_NULL, null=True)
 
+class Tree_images(models.Model):
+  image = models.FileField()
+
+class Water_needs(models.Model):
+  irrigation_needs = models.CharField(max_length=30)
+  summer_needs = models.CharField(max_length=30)
+  winter_needs = models.CharField(max_length=30)
+
 class Species(models.Model):
   common_name = models.CharField(max_length=255,unique=True, verbose_name="Common Name")
   species = models.CharField(max_length=100, unique=True, verbose_name="Species")
@@ -18,19 +26,11 @@ class Species(models.Model):
   images = models.ForeignKey(Tree_images, on_delete=models.SET_NULL, null=True)
   #iucn status ???? ie endangered, threatened, etc.
 
-class Tree_images(models.Model):
-  image = models.FileField()
-
 class Tree_context(models.Model):
   native = models.BooleanField()
   invasive = models.BooleanField()
   species = models.ForeignKey(Species,on_delete=models.SET_NULL, null=True)
   water_needs = models.ForeignKey(Water_needs,on_delete=models.SET_NULL, null=True)
-
-class Water_needs(models.Model):
-  irrigation_needs = models.CharField(max_length=30)
-  summer_needs = models.CharField(max_length=30)
-  winter_needs = models.CharField(max_length=30)
 
 class Trees(models.Model):
   context = models.ForeignKey(Tree_context, on_delete=models.SET_NULL, null=True)
