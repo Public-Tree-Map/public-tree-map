@@ -29,6 +29,8 @@ Street Tree Map documents city-owned street trees using open source data
 * [SelecTree - CalPoly](https://selectree.calpoly.edu/)
 * [Theodore Payne Foundation - California Native Plant Database](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
 
+## Tree attributes
+* [List of various fields and views for our application - gist](https://gist.github.com/Reltre/6554dfc430986803553d84742f1b88a9)
 
 ## Related projects/inspiration
 * [The effects of urban trees on air quality - USDA 2002 PDF](https://www.nrs.fs.fed.us/units/urban/local-resources/downloads/Tree_Air_Qual.pdf)
