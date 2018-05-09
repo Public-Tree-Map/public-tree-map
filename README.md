@@ -14,6 +14,7 @@ Street Tree Map documents city-owned street trees using open source data
 * [Encyclopedia of Life (EOL) - API documentation](http://eol.org/api)
 * [Google Street View - API documentation](https://developers.google.com/maps/documentation/streetview/)
 * [iNaturalist - API documentation](https://www.inaturalist.org/pages/api+reference)
+* [Implementing and managing urban forests: A much needed conservation strategy to increase ecosystem services and urban wellbeing - open access PDF](https://www.sciencedirect.com/science/article/pii/S0304380017300960?via%3Dihub)
 * [IUCN Red List of Threatened Species - API documentation](http://apiv3.iucnredlist.org/)
 * [The Jepson Herbarium eFlora](http://ucjeps.berkeley.edu/eflora/)
 * [LA City - Urban Forestry Division - Street Tree Selection Guide](http://bss.lacity.org/urbanforestry/streettreeselectionguide.htm)
@@ -34,6 +35,7 @@ Street Tree Map documents city-owned street trees using open source data
 
 ## Related projects/inspiration
 * [The effects of urban trees on air quality - USDA 2002 PDF](https://www.nrs.fs.fed.us/units/urban/local-resources/downloads/Tree_Air_Qual.pdf)
+* [i-Tree](https://www.itreetools.org/)
 * [Increased home size and hardscape decreases urban forest cover in Los Angeles County’s single-family residential neighborhoods PDF](http://johnwilson.usc.edu/wp-content/uploads/2018/03/Increased-home-size-and-hardscape-decreases-urban-forest-cover-in-Los-Angeles-Countys-single-family-residential-neighborhoods.pdf)
 * [Jill Hubley's NYC street tree map](https://github.com/jhubley/street-trees)
 * [Minimum Requirements for an Arborist Report - City of Atlanta PDF](https://www.atlantaga.gov/home/showdocument?id=20151)
@@ -42,3 +44,4 @@ Street Tree Map documents city-owned street trees using open source data
 * [RegisTree](http://www.vision.caltech.edu/registree/)
 * [TreeMapLA](https://www.opentreemap.org/latreemap/map/)
 * [Urban Tree Growth & Longevity (UTGL) Working Group - Urban Tree Monitoring Protocols Field Guide](http://www.urbantreegrowth.org/field-guide.html)
+* [We calculated how much money trees save for your city - The Conversation](http://theconversation.com/we-calculated-how-much-money-trees-save-for-your-city-95198)
