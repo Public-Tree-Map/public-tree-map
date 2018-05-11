@@ -44,5 +44,6 @@ Street Tree Map documents city-owned street trees using open source data
 * [The Need to Standardize At-planting Data PDF](https://urbanforestry.indiana.edu/doc/publications/2015-need-to-standardize.pdf)
 * [RegisTree](http://www.vision.caltech.edu/registree/)
 * [TreeMapLA](https://www.opentreemap.org/latreemap/map/)
+* [Top 15 Species - Santa Monica Street Tree PDF 2010](http://gismap.santa-monica.org/GISMaps/pdf/trees.pdf)
 * [Urban Tree Growth & Longevity (UTGL) Working Group - Urban Tree Monitoring Protocols Field Guide](http://www.urbantreegrowth.org/field-guide.html)
 * [We calculated how much money trees save for your city - The Conversation](http://theconversation.com/we-calculated-how-much-money-trees-save-for-your-city-95198)
