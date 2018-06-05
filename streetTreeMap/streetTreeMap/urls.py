@@ -18,7 +18,10 @@ from django.contrib import admin
 
 from graphene_django.views import GraphQLView
 
+import treeMap.views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^graphql', GraphQLView.as_view(graphiql=True)),
+    url(r'^leaflet', treeMap.views.leaflet),
 ]

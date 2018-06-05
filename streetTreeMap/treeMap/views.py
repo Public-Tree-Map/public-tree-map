@@ -1,9 +1,7 @@
-from django.conf.urls import url, include
-from django.contrib import admin
+from django.http import HttpResponse
 
-from graphene_django.views import GraphQLView
+with open('treeMap/templates/leaflet.html') as leaf:
+    html = leaf.read()
 
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^graphql', GraphQLView.as_view(graphiql=True)),
-]
+def leaflet(request):
+    return HttpResponse(html)
