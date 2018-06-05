@@ -24,6 +24,8 @@ for row in df.iterrows():
         "fields": {
             "latitude": entry["Latitude"],
             "longitude": entry["Longitude"],
+            "common_name": entry["Name Common"],
+            "botanical_name": entry["Name Botanical"],
             }
         })
 

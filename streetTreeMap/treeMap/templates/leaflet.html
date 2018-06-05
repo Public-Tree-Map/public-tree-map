@@ -31,7 +31,7 @@
   headers.append('X-CSRFToken', csrftoken);
   headers.append('content-type', 'application/json');
 
-  const query = { "query": "{ allTrees { latitude longitude } }" };
+  const query = { "query": "{ allTrees { latitude longitude commonName } }" };
 	var mymap = L.map('mapid').setView([34.02, -118.5], 13);
   fetch('graphql', {
     body: JSON.stringify(query),
@@ -45,7 +45,8 @@
       for (let i = 0; i < trees.length; i += Math.floor(trees.length/100)) {
         let tree = trees[i];
         console.log(tree);
-        L.marker([tree.latitude, tree.longitude]).addTo(mymap);
+        L.marker([tree.latitude, tree.longitude]).addTo(mymap)
+          .bindPopup(`<b>${tree.commonName}</b>`).openPopup();
       }
     });
   });
