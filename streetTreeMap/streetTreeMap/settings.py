@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'treeMap',
 ]
 
+CSRF_COOKIE_SECURE = False
+
 GRAPHENE = {
     'SCHEMA': 'schema.schema'
 }
