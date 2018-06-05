@@ -37,8 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
     'treeMap',
 ]
+
+CSRF_COOKIE_SECURE = False
+
+GRAPHENE = {
+    'SCHEMA': 'schema.schema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
