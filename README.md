@@ -36,11 +36,11 @@ Street Tree Map documents city-owned street trees using open source data
 
 ## Related projects/inspiration
 * [Canopy](https://github.com/seeread/canopy) and descriptive [blog post](http://www.datakind.org/projects/out-on-a-limb-for-data) from DataKind
-* [City of Melbounre - Urban Forest Visual](http://melbourneurbanforestvisual.com.au/)
 * [The effects of urban trees on air quality - USDA 2002 PDF](https://www.nrs.fs.fed.us/units/urban/local-resources/downloads/Tree_Air_Qual.pdf)
 * [i-Tree](https://www.itreetools.org/)
 * [Increased home size and hardscape decreases urban forest cover in Los Angeles County’s single-family residential neighborhoods PDF](http://johnwilson.usc.edu/wp-content/uploads/2018/03/Increased-home-size-and-hardscape-decreases-urban-forest-cover-in-Los-Angeles-Countys-single-family-residential-neighborhoods.pdf)
 * [Jill Hubley's NYC street tree map](https://github.com/jhubley/street-trees)
+* [Melbourne - Urban Forest Visual](http://melbourneurbanforestvisual.com.au/)
 * [Minimum Requirements for an Arborist Report - City of Atlanta PDF](https://www.atlantaga.gov/home/showdocument?id=20151)
 * [NYC Parks' New York City Street Tree Map](https://tree-map.nycgovparks.org/)
 * [The Need to Standardize At-planting Data PDF](https://urbanforestry.indiana.edu/doc/publications/2015-need-to-standardize.pdf)
