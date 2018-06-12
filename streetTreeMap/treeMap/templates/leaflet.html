@@ -19,7 +19,7 @@
 
 
 
-<div id="mapid" style="width: 600px; height: 400px;"></div>
+<div id="mapid" style="width: 1200px; height: 800px;"></div>
 <script>
   function getCookie(name) {
     var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
@@ -31,8 +31,8 @@
   headers.append('X-CSRFToken', csrftoken);
   headers.append('content-type', 'application/json');
 
-  const query = { "query": "{ allTrees { latitude longitude commonName } }" };
-	var mymap = L.map('mapid').setView([34.02, -118.5], 13);
+  const query = { "query": "{ allTrees { latitude longitude commonName address street } }" };
+	var mymap = L.map('mapid').setView([34.02, -118.48], 14);
   fetch('graphql', {
     body: JSON.stringify(query),
     method: 'POST',
@@ -44,9 +44,8 @@
       let trees = json.data.allTrees;
       for (let i = 0; i < trees.length; i += Math.floor(trees.length/100)) {
         let tree = trees[i];
-        console.log(tree);
         L.marker([tree.latitude, tree.longitude]).addTo(mymap)
-          .bindPopup(`<b>${tree.commonName}</b>`).openPopup();
+          .bindPopup(`<b>${tree.commonName}</b><br>${tree.address} ${tree.street}`).openPopup();
       }
     });
   });
