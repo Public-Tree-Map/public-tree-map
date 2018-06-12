@@ -10,7 +10,9 @@ RUN  pip3 install -r /opt/streetTreeMap/requirements.txt
 #  && python ./manage.py bower install 
 #like rake precomplie assets
 #Just until non-sqlite database is setup
+RUN python /opt/streetTreeMap/make_fixture.py
 RUN python /opt/streetTreeMap/manage.py makemigrations \
-  && python /opt/streetTreeMap/manage.py migrate
+  && python /opt/streetTreeMap/manage.py migrate \
+  && python /opt/streetTreeMap/manage.py loaddata /opt/streetTreeMap/trees.json
 
-CMD python /opt/streetTreeMap/manage.py runserver
+CMD python /opt/streetTreeMap/manage.py runserver 0.0.0.0:8000
