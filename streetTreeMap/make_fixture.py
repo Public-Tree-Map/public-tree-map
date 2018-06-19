@@ -26,6 +26,12 @@ for row in df.iterrows():
             "longitude": entry["Longitude"],
             "common_name": entry["Name Common"],
             "botanical_name": entry["Name Botanical"],
+            "min_height": entry["Height Min"],
+            "max_height": entry["Height Max"],
+            "min_dbh": entry["DBH Min"],
+            "max_dbh": entry["DBH Max"],
+            "address": entry["Address"],
+            "street": entry["Street"],
             }
         })
 
