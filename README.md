@@ -1,6 +1,6 @@
 # street-tree-map
 
-Street Tree Map documents city-owned street trees using open source data
+Street Tree Map uses open source datasets to document publicly owned street trees in Santa Monica, California
 
 ## Running locally
 `docker build . -t stm`
@@ -35,6 +35,8 @@ Street Tree Map documents city-owned street trees using open source data
 * [List of various fields and views for our application - gist](https://gist.github.com/Reltre/6554dfc430986803553d84742f1b88a9)
 
 ## Related projects/inspiration
+* [A Very Detailed, Interactive Map of Chicago’s Tree Canopy (Atlas Obscura)](https://www.atlasobscura.com/articles/chicago-tree-canopy-map-2017)
+* [Arnold Arboretum map explorer](https://arboretum.harvard.edu/explorer/?utm_source=topnav&utm_medium=nav&utm_campaign=top-menu-map)
 * [Canopy](https://github.com/seeread/canopy) and descriptive [blog post](http://www.datakind.org/projects/out-on-a-limb-for-data) from DataKind
 * [The effects of urban trees on air quality - USDA 2002 PDF](https://www.nrs.fs.fed.us/units/urban/local-resources/downloads/Tree_Air_Qual.pdf)
 * [i-Tree](https://www.itreetools.org/)
