@@ -1,10 +1,10 @@
-from flask import Flask
+import flask
 from flask_graphql import GraphQLView
 
 from models import db_session
 from schema import schema
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 app.debug = True
 
 app.add_url_rule(
@@ -15,6 +15,11 @@ app.add_url_rule(
         graphiql=True # for having the GraphiQL interface
     )
 )
+
+@app.route('/')
+def index():
+    return flask.send_file('static/html/leaflet.html')
+
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
