@@ -46,6 +46,7 @@ Street Tree Map uses open source datasets to document publicly owned street tree
 * [Minimum Requirements for an Arborist Report - City of Atlanta PDF](https://www.atlantaga.gov/home/showdocument?id=20151)
 * [NYC Parks' New York City Street Tree Map](https://tree-map.nycgovparks.org/)
 * [The Need to Standardize At-planting Data PDF](https://urbanforestry.indiana.edu/doc/publications/2015-need-to-standardize.pdf)
+* [Pasadena Beautiful Foundation's Endangered Trees List](http://www.pasadenabeautiful.org/green-links/endangered-trees-list/)
 * [Rancho Santa Ana Botanic Garden - app (Guru LLC)](https://itunes.apple.com/us/app/rancho-santa-ana-botanic-garde/id1389785599?mt=8)
 * [RegisTree](http://www.vision.caltech.edu/registree/)
 * [TreeMapLA](https://www.opentreemap.org/latreemap/map/)
