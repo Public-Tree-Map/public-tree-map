@@ -31,7 +31,7 @@
   headers.append('X-CSRFToken', csrftoken);
   headers.append('content-type', 'application/json');
 
-  const query = { "query": "{ allTrees { latitude longitude nameCommon address street } }" };
+  const query = { "query": "{ allTrees(maxLat:34.03219, minLat: 34.01971, minLon: -118.49517, maxLon: -118.48067) { latitude longitude nameCommon address street } }" };
 	var mymap = L.map('mapid').setView([34.02, -118.48], 14);
   fetch('graphql', {
     body: JSON.stringify(query),
