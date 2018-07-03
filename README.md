@@ -36,11 +36,14 @@ Street Tree Map uses open source datasets to document publicly owned street tree
 * Species Imagery - [Encyclopedia of Life](http://eol.org/api)
 * CA Native status - [Calflora.org](www.calflora.org) and [Theodore Payne Foundation](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
 * Nearest Address, GPS Coordinates, Height Range, Trunk Diameter (DBH) Range, Tree ID - [Trees Inventory - Santa Monica Open Data](https://data.smgov.net/Public-Assets/Trees-Inventory/w8ue-6cnd)
-* IUCN Red List Status - [IUCN Red List API - v3](http://apiv3.iucnredlist.org/)
+* Geographic Range description (countries occurrence), IUCN Red List Status - [IUCN Red List API - v3](http://apiv3.iucnredlist.org/)
 * Recommended Watering Frequency - [City of Santa Monica Public Works Department PDF (pp9-13)](https://www.smgov.net/uploadedFiles/Portals/UrbanForest/FINAL%20Trees%20Watering%20Guidelines.pdf)
-* Shade Production, Shedability - [Canopy Tree Library](https://canopy.org/tree-info/canopy-tree-library/)
+* Species Growth, Shade Production, Shedability, Spread, Trunk clearnance - [Canopy Tree Library](https://canopy.org/tree-info/canopy-tree-library/)
 * Street View Imagery - [Google Street View](https://developers.google.com/maps/documentation/streetview/)
-* For CA Native Species: Species Height by Width, Native Distribution, Native Habitat - [Theodore Payne Foundation](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
+* For CA native species: 
+* Species Height by Width, Native Distribution, Native Habitat - [Theodore Payne Foundation](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
+* For non-native tree species:
+* Invasive Status - [California Invasive Plant Council](https://www.cal-ipc.org/plants/inventory/)
 
 ## Related projects/inspiration
 * [A Very Detailed, Interactive Map of Chicago’s Tree Canopy (Atlas Obscura)](https://www.atlasobscura.com/articles/chicago-tree-canopy-map-2017)
