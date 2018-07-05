@@ -35,13 +35,11 @@ Street Tree Map uses open datasets to document publicly owned street trees + lan
 * [List of attribute fields and views for our application - gist](https://gist.github.com/Reltre/6554dfc430986803553d84742f1b88a9)
 * Initial views (desktop): 
   * 1 - no tree selected (home/map view)
-  * 2 - native CA tree species view
+  * 2 - native CFP tree species view
   * 3 - non-native tree species view 
-  * 4 - native tree species view
-  * 5 - non-native tree species view
-  * 6 - native palm species view
-  * 7 - non-native palm species view
-  * 8 - tree family view
+  * 4 - Washingtonia filifera (only native CFP palm species) view
+  * 5 - non-native palm species view
+  * 6 - tree family view
 * Species Imagery - [Encyclopedia of Life](http://eol.org/api)
 * CA Native status - [Calflora.org](www.calflora.org) and [Theodore Payne Foundation](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
 * Nearest Address, GPS Coordinates, Height Range, Trunk Diameter (DBH) Range, Tree ID - [Trees Inventory - Santa Monica Open Data](https://data.smgov.net/Public-Assets/Trees-Inventory/w8ue-6cnd)
