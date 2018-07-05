@@ -35,13 +35,13 @@ Street Tree Map uses open datasets to document publicly owned street trees + lan
 * [List of attribute fields and views for our application - gist](https://gist.github.com/Reltre/6554dfc430986803553d84742f1b88a9)
 * Initial views (desktop): 
   * 1 - no tree selected (home/map view)
-  * 2 - native CA tree selected
-  * 3 - non-native tree selected 
-  * 4 - native tree species filtered/selected
-  * 5 - non-native tree species filtered/selected
-  * 6 - native palm species filtered/selected 
-  * 7 - non-native palm species filtered/selected
-  * 8 - tree family filtered/selected
+  * 2 - native CA tree species view
+  * 3 - non-native tree species view 
+  * 4 - native tree species view
+  * 5 - non-native tree species view
+  * 6 - native palm species view
+  * 7 - non-native palm species view
+  * 8 - tree family view
 * Species Imagery - [Encyclopedia of Life](http://eol.org/api)
 * CA Native status - [Calflora.org](www.calflora.org) and [Theodore Payne Foundation](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
 * Nearest Address, GPS Coordinates, Height Range, Trunk Diameter (DBH) Range, Tree ID - [Trees Inventory - Santa Monica Open Data](https://data.smgov.net/Public-Assets/Trees-Inventory/w8ue-6cnd)
@@ -69,7 +69,7 @@ Street Tree Map uses open datasets to document publicly owned street trees + lan
 * [Pasadena Beautiful Foundation's Endangered Trees List](http://www.pasadenabeautiful.org/green-links/endangered-trees-list/)
 * [Rancho Santa Ana Botanic Garden - app (Guru LLC)](https://itunes.apple.com/us/app/rancho-santa-ana-botanic-garde/id1389785599?mt=8)
 * [RegisTree](http://www.vision.caltech.edu/registree/)
+* [Santa Monica's Top 15 Tree Speices PDF (2010)](http://csmgisweb.smgov.net/docs/mapcatalog/trees.pdf)
 * [TreeMapLA](https://www.opentreemap.org/latreemap/map/)
-* [Top 15 Species - Santa Monica Street Tree PDF 2010](http://gismap.santa-monica.org/GISMaps/pdf/trees.pdf)
 * [Urban Tree Growth & Longevity (UTGL) Working Group - Urban Tree Monitoring Protocols Field Guide](http://www.urbantreegrowth.org/field-guide.html)
 * [We calculated how much money trees save for your city - The Conversation](http://theconversation.com/we-calculated-how-much-money-trees-save-for-your-city-95198)
