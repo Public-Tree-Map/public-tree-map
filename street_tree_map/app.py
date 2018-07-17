@@ -18,7 +18,7 @@ app.add_url_rule(
 
 @app.route('/')
 def index():
-    return flask.send_file('static/html/leaflet.html')
+    return flask.send_file('./index.html')
 
 
 @app.teardown_appcontext

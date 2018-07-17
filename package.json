@@ -13,6 +13,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flask": "npm run build && cp -r build/static street_tree_map/ && cp build/index.html street_tree_map/"
   }
 }
