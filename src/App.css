@@ -1,22 +1,26 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
   height: 80px;
+  padding: 0 20px 0 0;
 }
 
 .App-header {
   background-color: #222;
   height: 150px;
-  padding: 20px;
+  padding: 0 20px 0 20px;
   color: white;
+  display: flex;
+  align-items: center;
 }
 
 .App-title {
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+#main {
+  display: flex;
+  flex-direction: row;
 }
