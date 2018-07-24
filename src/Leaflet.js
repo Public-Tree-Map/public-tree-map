@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import './Leaflet.css';
-import 'leaflet/dist/leaflet.css';
 
 const GRAPHQL_URL = 'http://localhost:5000/graphql';
 const QUERY = '{ allTrees(maxLat:34.03219, minLat: 34.01971, minLon: -118.49517, maxLon: -118.48067) { latitude longitude nameCommon address street } }';
@@ -34,7 +33,7 @@ export default class LeafletWrapper extends Component {
         const markers = trees.map(t => ({
           lat: t.latitude,
           lon: t.longitude
-        }));
+        })).filter((t, i) => i % 100 === 0);
         const state = {
           ...this.state,
           markers

@@ -12,9 +12,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "flask:clean": "rm -rf street_tree_map/index.html street_tree_map/static",
+    "flask:build": "npm run flask:clean && npm run build && cp -r build/static street_tree_map/ && cp build/index.html street_tree_map/",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "flask": "npm run build && cp -r build/static street_tree_map/ && cp build/index.html street_tree_map/"
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "eslint": "^5.2.0",
