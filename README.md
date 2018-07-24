@@ -51,6 +51,7 @@ Street Tree Map uses open datasets to document publicly owned street trees + lan
 * Species Height by Width, Native Distribution, Native Habitat - [Theodore Payne Foundation](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
 * For non-native tree species:
 * Invasive Status - [California Invasive Plant Council](https://www.cal-ipc.org/plants/inventory/)
+* Our public [google drive folder](https://drive.google.com/drive/u/1/folders/1PfSpH5yuydJEK-sD-PPTXcj9jHA6QLi4)
 
 ## Related projects/inspiration
 * [A Very Detailed, Interactive Map of Chicago’s Tree Canopy (Atlas Obscura)](https://www.atlasobscura.com/articles/chicago-tree-canopy-map-2017)
