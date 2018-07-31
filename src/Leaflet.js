@@ -15,10 +15,17 @@ export default class LeafletWrapper extends Component {
       },
       markers: []
     };
+    this._debouncer = undefined;
   }
 
   componentDidMount() {
     this._fetchData(this.state.view);
+  }
+
+  componentWillUnmount() {
+    if (this._debouncer) {
+      window.clearTimeout(this._debouncer);
+    }
   }
 
   _fetchData(viewport) {
@@ -53,7 +60,12 @@ export default class LeafletWrapper extends Component {
   }
 
   onViewportChanged(viewport) {
-    this._fetchData(viewport);
+    if (this._debouncer) {
+      window.clearTimeout(this._debouncer);
+    }
+    this._debouncer = window.setTimeout(() => {
+      this._fetchData(viewport);
+    }, 300);
   }
 
   render() {
