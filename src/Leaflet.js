@@ -3,15 +3,14 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
 import './Leaflet.css';
 
 const GRAPHQL_URL = 'http://localhost:5000/graphql';
-const QUERY = '{ allTrees(maxLat:34.03219, minLat: 34.01971, minLon: -118.49517, maxLon: -118.48067) { latitude longitude nameCommon address street } }';
+const QUERY = '{ allTrees(maxLat: {{maxLat}}, minLat: {{minLat}}, minLon: {{minLon}}, maxLon: {{maxLon}}) { latitude longitude nameCommon address street } }';
 
 export default class LeafletWrapper extends Component {
   constructor() {
     super();
     this.state = {
       view: {
-        lat: 34.02,
-        lon: -118.48,
+        center: [34.02, -118.48],
         zoom: 14,
       },
       markers: []
@@ -19,10 +18,22 @@ export default class LeafletWrapper extends Component {
   }
 
   componentDidMount() {
+    this._fetchData(this.state.view);
+  }
+
+  _fetchData(viewport) {
+    const bounds = this.refs.map.leafletElement.getBounds();
+    const sw = bounds.getSouthWest();
+    const ne = bounds.getNorthEast();
+    const query = QUERY
+      .split('{{minLon}}').join(sw.lng)
+      .split('{{maxLon}}').join(ne.lng)
+      .split('{{minLat}}').join(sw.lat)
+      .split('{{maxLat}}').join(ne.lat);
     const headers = new Headers();
     headers.append('content-type', 'application/json');
     fetch(GRAPHQL_URL, {
-      body: JSON.stringify({ query: QUERY }),
+      body: JSON.stringify({ query }),
       method: 'POST',
       cache: 'no-cache',
       headers,
@@ -30,30 +41,33 @@ export default class LeafletWrapper extends Component {
     }).then(response => {
       response.json().then(json => {
         const trees = json.data.allTrees;
-        const markers = trees.map(t => ({
-          lat: t.latitude,
-          lon: t.longitude
-        })).filter((t, i) => i % 100 === 0);
+        const markers = trees.map(t => [t.latitude, t.longitude])
+          .filter((t, i) => i % 100 === 0);
         const state = {
           ...this.state,
           markers
         };
         this.setState(state);
-        console.log(json);
       });
     });
   }
 
+  onViewportChanged(viewport) {
+    this._fetchData(viewport);
+  }
+
   render() {
-    const position = [this.state.view.lat, this.state.view.lon];
     const markerList = this.state.markers.map(m => {
       return (
-        <Marker position = { [m.lat, m.lon] }></Marker>
+        <Marker position = { m }></Marker>
       );
     });
 
     return (
-      <Map center={position} zoom={this.state.view.zoom}>
+      <Map
+        ref="map"
+        viewport={this.state.view}
+        onViewportChanged={ v => this.onViewportChanged(v) }>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
