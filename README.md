@@ -2,6 +2,14 @@
 
 Street Tree Map uses open datasets to document publicly owned street trees + landmark trees in Santa Monica, California
 
+## Protocol for pull requests + code review
+* Please review open issues and link your pull reuqest to the relevant issue. 
+* In your pull request, please list and explain all proposed changes to the code base (additions, deletions). If you reuse code from elsewhere, please make sure you've attributed it.
+* Please apply all relevant labels to your pull request.
+* Please request a review (either from a specific person or from the slack channel).
+* Reviewers: please review all proposed changes, write comments and questions in line notes. Please review all updates made at your request.
+* Reviewer and requester: please confirm with each other that the PR is ready to merge. Please add the "ready to merge" label and comment in the slack channel.
+
 ## Running locally
 `docker build . -t stm`
 `docker run -p 8000:8000 stm`
@@ -72,3 +80,6 @@ Street Tree Map uses open datasets to document publicly owned street trees + lan
 * [TreeMapLA](https://www.opentreemap.org/latreemap/map/)
 * [Urban Tree Growth & Longevity (UTGL) Working Group - Urban Tree Monitoring Protocols Field Guide](http://www.urbantreegrowth.org/field-guide.html)
 * [We calculated how much money trees save for your city - The Conversation](http://theconversation.com/we-calculated-how-much-money-trees-save-for-your-city-95198)
+
+
+
