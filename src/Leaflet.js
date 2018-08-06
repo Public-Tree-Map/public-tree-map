@@ -50,18 +50,20 @@ export default class LeafletWrapper extends Component {
       headers,
       credentials: 'include',
     }).then(response => {
-      response.json().then(json => {
-        const trees = json.data.allTrees;
-        const markers = trees
-          .map(t => [t.latitude, t.longitude])
-          .filter((t, i) => i % 100 === 0);
-        const state = {
-          ...this.state,
-          markers,
-        };
-        this.setState(state);
-      });
+      response.json().then(json => this._setData(json.data));
     });
+  }
+
+  _setData(data) {
+    const trees = data.allTrees;
+    const markers = trees
+      .map(t => [t.latitude, t.longitude])
+      .filter((t, i) => i % 100 === 0);
+    const state = {
+      ...this.state,
+      markers,
+    };
+    this.setState(state);
   }
 
   onViewportChanged(viewport) {
