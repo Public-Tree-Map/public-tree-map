@@ -1,5 +1,8 @@
 *__pycache__*
 
+street_tree_map/index.html
+street_tree_map/static/*
+
 # dependencies
 /node_modules
 

@@ -3,7 +3,8 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
 import './Leaflet.css';
 
 const GRAPHQL_URL = 'graphql';
-const QUERY = '{ allTrees(maxLat: {{maxLat}}, minLat: {{minLat}}, minLon: {{minLon}}, maxLon: {{maxLon}}) { latitude longitude nameCommon address street } }';
+const QUERY =
+  '{ allTrees(maxLat: {{maxLat}}, minLat: {{minLat}}, minLon: {{minLon}}, maxLon: {{maxLon}}) { latitude longitude nameCommon address street } }';
 
 export default class LeafletWrapper extends Component {
   constructor() {
@@ -13,7 +14,7 @@ export default class LeafletWrapper extends Component {
         center: [34.02, -118.48],
         zoom: 14,
       },
-      markers: []
+      markers: [],
     };
     this._debouncer = undefined;
   }
@@ -32,11 +33,14 @@ export default class LeafletWrapper extends Component {
     const bounds = this.refs.map.leafletElement.getBounds();
     const sw = bounds.getSouthWest();
     const ne = bounds.getNorthEast();
-    const query = QUERY
-      .split('{{minLon}}').join(sw.lng)
-      .split('{{maxLon}}').join(ne.lng)
-      .split('{{minLat}}').join(sw.lat)
-      .split('{{maxLat}}').join(ne.lat);
+    const query = QUERY.split('{{minLon}}')
+      .join(sw.lng)
+      .split('{{maxLon}}')
+      .join(ne.lng)
+      .split('{{minLat}}')
+      .join(sw.lat)
+      .split('{{maxLat}}')
+      .join(ne.lat);
     const headers = new Headers();
     headers.append('content-type', 'application/json');
     fetch(GRAPHQL_URL, {
@@ -48,11 +52,12 @@ export default class LeafletWrapper extends Component {
     }).then(response => {
       response.json().then(json => {
         const trees = json.data.allTrees;
-        const markers = trees.map(t => [t.latitude, t.longitude])
+        const markers = trees
+          .map(t => [t.latitude, t.longitude])
           .filter((t, i) => i % 100 === 0);
         const state = {
           ...this.state,
-          markers
+          markers,
         };
         this.setState(state);
       });
@@ -70,21 +75,20 @@ export default class LeafletWrapper extends Component {
 
   render() {
     const markerList = this.state.markers.map(m => {
-      return (
-        <Marker position = { m }></Marker>
-      );
+      return <Marker position={m} />;
     });
 
     return (
       <Map
         ref="map"
         viewport={this.state.view}
-        onViewportChanged={ v => this.onViewportChanged(v) }>
+        onViewportChanged={v => this.onViewportChanged(v)}
+      >
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        { markerList }
+        {markerList}
       </Map>
     );
   }
