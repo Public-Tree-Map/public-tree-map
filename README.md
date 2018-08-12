@@ -9,7 +9,7 @@ Street Tree Map uses open datasets to document publicly owned street trees + lan
 - Please apply all relevant labels to your pull request.
 - Please request a review (either from a specific person or from the slack channel).
 - Reviewers: please review all proposed changes, write comments and questions in line notes. Please review all updates made at your request.
-- Reviewer and requester: please confirm with each other that the PR is ready to merge. Please add the "ready to merge" label and comment in the slack channel.
+- Reviewer and requester: please confirm with each other that the PR is ready to merge. Please make sure that the PR branch name documents the new changes. Please squash and merge.
 
 ## Running locally
 
