@@ -3,6 +3,7 @@ import LeafletWrapper from './Leaflet.js';
 import InfoPanel from './Info.js';
 import logo from './logo.png';
 import './App.css';
+import NavContainer from './NavContainer.js';
 
 class App extends Component {
   render() {
@@ -15,6 +16,8 @@ class App extends Component {
 	<div id="main">
 	  <LeafletWrapper />
 	  <InfoPanel />
+    {/* sidebar container */}
+    <NavContainer />
 	</div>
       </div>
     );
