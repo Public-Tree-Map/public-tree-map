@@ -4,7 +4,7 @@ import LeafletWrapper from './Leaflet.js';
 import logo from './logo.png';
 import './App.css';
 import NavContainer from './NavContainer.js';
-import StatsContainer from './statsContainer.js';
+import StatsContainer from './StatsContainer.js';
 
 class App extends Component {
   render() {
