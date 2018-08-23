@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import LeafletWrapper from './Leaflet.js';
-import InfoPanel from './Info.js';
+//import InfoPanel from './Info.js';
 import logo from './logo.png';
 import './App.css';
+import NavContainer from './NavContainer.js';
+import StatsContainer from './statsContainer.js';
 
 class App extends Component {
   render() {
@@ -14,7 +16,9 @@ class App extends Component {
         </header>
 	<div id="main">
 	  <LeafletWrapper />
-	  <InfoPanel />
+	  {/* <InfoPanel /> */}
+    <NavContainer />
+    <StatsContainer />
 	</div>
       </div>
     );
