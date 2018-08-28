@@ -5,6 +5,7 @@ Street Tree Map uses open datasets to document publicly owned street trees + lan
 ## Protocol for pull requests + code review
 
 - Please review open issues and link your pull reuqest to the relevant issue.
+- Please create new branch __within this repo__ !
 - In your pull request, please list and explain all proposed changes to the code base (additions, deletions). If you reuse code from elsewhere, please make sure you've attributed it.
 - Please apply all relevant labels to your pull request.
 - Please request a review (either from a specific person or from the slack channel).
@@ -53,7 +54,7 @@ python run.py
 - [Implementing and managing urban forests: A much needed conservation strategy to increase ecosystem services and urban wellbeing - open access PDF](https://www.sciencedirect.com/science/article/pii/S0304380017300960?via%3Dihub)
 - [IUCN Red List of Threatened Species - API documentation](http://apiv3.iucnredlist.org/)
 - [The Jepson Herbarium eFlora](http://ucjeps.berkeley.edu/eflora/)
-- [LA City - Urban Forestry Division - Street Tree Selection Guide](http://bss.lacity.org/urbanforestry/streettreeselectionguide.htm)
+- [LA City - Urban Forestry Division - Street Tree Selection Guide (Bureau of Street Services)](http://bss.lacity.org/urbanforestry/streettreeselectionguide.htm)
 - [LA Times' Neighborhood Profile](http://maps.latimes.com/neighborhoods/neighborhood/santa-monica/)
 - [Missouri Botanical Garden - Plant Finder](http://www.missouribotanicalgarden.org/plantfinder/plantfindersearch.aspx)
 - [The Plant List](http://www.theplantlist.org/)
