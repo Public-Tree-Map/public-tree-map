@@ -1,0 +1,50 @@
+.container {
+    background-color: #f0f0f0;
+    right: 0px;
+    position: fixed;
+    width: 30%;
+    height: 100%;
+}
+
+.navGroup {
+    padding: 2em 2em;
+}
+
+.buttonGroup {
+    float: left;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: .1em em
+}
+
+.locals {
+    background-color: #f0f0f0;
+    position: fixed;
+    }
+
+.button {
+        font-size: 9;
+        height: 3em;
+        margin: .2em;
+        border-radius: 5px;
+        background-color: #d9d9d9;
+        color: #828184;
+    }
+.localsButton {
+        height: 10em;
+        color: #828184;
+        background-color: #d9d9d9;
+        width: 33.3%;
+    }
+.searchBar {
+        height: 1.5em;
+        width: 90%;
+        display: flex;
+        padding-left: 2em;
+    }
+.bar {
+    margin-top: 1em;
+    padding: 1em;
+    width: 90%
+}
