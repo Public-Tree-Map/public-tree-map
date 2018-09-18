@@ -6,6 +6,7 @@ export const SingleTree = tree => {
       <div className="basicInfo">
         <h1>{tree.commonName}</h1>
         <p>{tree.speciesName}</p>
+        <img src={tree.image} alt={tree.commonName} />
       </div>
     </div>
   );
