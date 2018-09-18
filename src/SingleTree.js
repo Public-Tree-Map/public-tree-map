@@ -27,11 +27,11 @@ export const SingleTree = props => {
       <div className="sizeInfo">
         <h4>Size</h4>
         <p>Height Range:</p>
-        <p>{props.tree.heightRange}</p>
+        <p>{props.tree.size.heightRange}</p>
         <p>Trunk Diameter (DBH) Range:</p>
-        <p>{props.tree.trunkDiameterRange}</p>
+        <p>{props.tree.size.trunkDiameterRange}</p>
         <p>Species Height By Width:</p>
-        <p>{props.tree.speciesHeightByWidth}</p>
+        <p>{props.tree.size.speciesHeightByWidth}</p>
       </div>
     </div>
   );
