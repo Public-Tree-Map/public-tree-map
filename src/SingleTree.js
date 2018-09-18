@@ -58,6 +58,17 @@ export const SingleTree = props => {
         <p>Plane Family In Santa Monica:</p>
         <p>{props.tree.inSantaMonica.planeFamily}</p>
       </div>
+      <div className="originInfo">
+        <h4>Origin</h4>
+        <p>Origin:</p>
+        <p>{props.tree.origin.origin}</p>
+        <p>Native Distribution In California:</p>
+        <p>{props.tree.origin.nativeDistribution}</p>
+        <p>Natural Habitat In California</p>
+        <p>{props.tree.origin.naturalHabitat}</p>
+        <p>Fun Fact:</p>
+        <p>{props.tree.origin.funFact}</p>
+      </div>
     </div>
   );
 };
