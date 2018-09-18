@@ -42,6 +42,15 @@ export const SingleTree = props => {
         <p>Shedability:</p>
         <p>{props.tree.treeValue.shedability}</p>
       </div>
+      <div className="activityInfo">
+        <h4>Care {'\u0026'} Activity</h4>
+        <p>Recommended Watering (For Mature Trees):</p>
+        <p>{props.tree.careAndActivity.recommendedWatering}</p>
+        <p>Next City Maintenance:</p>
+        <p>{props.tree.careAndActivity.nextCityMaintenance}</p>
+        <p>Management Unit:</p>
+        <p>{props.tree.careAndActivity.managementUnit}</p>
+      </div>
     </div>
   );
 };
