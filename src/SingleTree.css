@@ -1,5 +1,6 @@
 .singleTreeView {
   overflow-y: scroll;
   height: calc(100vh - 150px);
-  padding: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
