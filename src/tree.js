@@ -6,7 +6,10 @@ export const tree = {
   speciesName: 'Platanus Racemosa',
   image: 'http://localhost:3000/static/media/logo.dcb71d68.png',
   location: {
-    nearestAddress: '1430 Olympic Blvd\nSanta Monica, CA 90404',
+    nearestAddress: {
+      street: '1430 Olympic Blvd',
+      city: 'Santa Monica, CA 90404',
+    },
     treeId: '10924195',
     streetViewImage: '<image source url>',
   },
