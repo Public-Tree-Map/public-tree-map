@@ -11,13 +11,13 @@ export const SingleTree = props => {
       </div>
       <div className="locationInfo">
         <h4>Location</h4>
-        <p>Nearest Address:</p>
+        <p className="propertyLabel">Nearest Address:</p>
         <p>
           {props.tree.location.nearestAddress.street}
           <br />
           {props.tree.location.nearestAddress.city}
         </p>
-        <p>Tree ID:</p>
+        <p className="propertyLabel">Tree ID:</p>
         <p>{props.tree.location.treeId}</p>
         <img
           src={props.tree.location.streetViewImage}
@@ -26,47 +26,49 @@ export const SingleTree = props => {
       </div>
       <div className="sizeInfo">
         <h4>Size</h4>
-        <p>Height Range:</p>
+        <p className="propertyLabel">Height Range:</p>
         <p>{props.tree.size.heightRange}</p>
-        <p>Trunk Diameter (DBH) Range:</p>
+        <p className="propertyLabel">Trunk Diameter (DBH) Range:</p>
         <p>{props.tree.size.trunkDiameterRange}</p>
-        <p>Species Height By Width:</p>
+        <p className="propertyLabel">Species Height By Width:</p>
         <p>{props.tree.size.speciesHeightByWidth}</p>
       </div>
       <div className="valueInfo">
         <h4>Tree Value</h4>
-        <p>Trees Required To Replace:</p>
+        <p className="propertyLabel">Trees Required To Replace:</p>
         <p>{props.tree.treeValue.treesToReplace}</p>
-        <p>Shade Production:</p>
+        <p className="propertyLabel">Shade Production:</p>
         <p>{props.tree.treeValue.shadeProduction}</p>
-        <p>Shedability:</p>
+        <p className="propertyLabel">Shedability:</p>
         <p>{props.tree.treeValue.shedability}</p>
       </div>
       <div className="activityInfo">
         <h4>Care {'\u0026'} Activity</h4>
-        <p>Recommended Watering (For Mature Trees):</p>
+        <p className="propertyLabel">
+          Recommended Watering (For Mature Trees):
+        </p>
         <p>{props.tree.careAndActivity.recommendedWatering}</p>
-        <p>Next City Maintenance:</p>
+        <p className="propertyLabel">Next City Maintenance:</p>
         <p>{props.tree.careAndActivity.nextCityMaintenance}</p>
-        <p>Management Unit:</p>
+        <p className="propertyLabel">Management Unit:</p>
         <p>{props.tree.careAndActivity.managementUnit}</p>
       </div>
       <div className="santaMonicaInfo">
         <h4>In Santa Monica</h4>
-        <p>This Species In Santa Monica:</p>
+        <p className="propertyLabel">This Species In Santa Monica:</p>
         <p>{props.tree.inSantaMonica.thisSpecies}</p>
-        <p>Plane Family In Santa Monica:</p>
+        <p className="propertyLabel">Plane Family In Santa Monica:</p>
         <p>{props.tree.inSantaMonica.planeFamily}</p>
       </div>
       <div className="originInfo">
         <h4>Origin</h4>
         <p>Origin:</p>
         <p>{props.tree.origin.origin}</p>
-        <p>Native Distribution In California:</p>
+        <p className="propertyLabel">Native Distribution In California:</p>
         <p>{props.tree.origin.nativeDistribution}</p>
-        <p>Natural Habitat In California</p>
+        <p className="propertyLabel">Natural Habitat In California</p>
         <p>{props.tree.origin.naturalHabitat}</p>
-        <p>Fun Fact:</p>
+        <p className="propertyLabel">Fun Fact:</p>
         <p>{props.tree.origin.funFact}</p>
       </div>
     </div>
