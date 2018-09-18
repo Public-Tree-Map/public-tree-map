@@ -4,7 +4,7 @@
 export const tree = {
   commonName: 'California Sycamore',
   speciesName: 'Platanus Racemosa',
-  image: './logo.png',
+  image: 'http://localhost:3000/static/media/logo.dcb71d68.png',
   location: {
     nearestAddress: '1430 Olympic Blvd\nSanta Monica, CA 90404',
     treeId: '10924195',
