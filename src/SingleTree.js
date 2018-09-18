@@ -23,6 +23,15 @@ export const SingleTree = props => {
           alt="Street View Image"
         />
       </div>
+      <div className="sizeInfo">
+        <h4>Size</h4>
+        <p>Height Range:</p>
+        <p>{props.tree.heightRange}</p>
+        <p>Trunk Diameter (DBH) Range:</p>
+        <p>{props.tree.trunkDiameterRange}</p>
+        <p>Species Height By Width:</p>
+        <p>{props.tree.speciesHeightByWidth}</p>
+      </div>
     </div>
   );
 };
