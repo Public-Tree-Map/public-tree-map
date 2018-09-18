@@ -51,6 +51,13 @@ export const SingleTree = props => {
         <p>Management Unit:</p>
         <p>{props.tree.careAndActivity.managementUnit}</p>
       </div>
+      <div className="santaMonicaInfo">
+        <h4>In Santa Monica</h4>
+        <p>This Species In Santa Monica:</p>
+        <p>{props.tree.inSantaMonica.thisSpecies}</p>
+        <p>Plane Family In Santa Monica:</p>
+        <p>{props.tree.inSantaMonica.planeFamily}</p>
+      </div>
     </div>
   );
 };
