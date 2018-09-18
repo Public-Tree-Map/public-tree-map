@@ -1,4 +1,5 @@
 import React from 'react';
+import './SingleTree.css';
 
 export const SingleTree = props => {
   return (
