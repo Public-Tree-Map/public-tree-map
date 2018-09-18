@@ -151,4 +151,5 @@ python run.py
 - [Santa Monica's Top 15 Tree Speices PDF (2010)](http://csmgisweb.smgov.net/docs/mapcatalog/trees.pdf)
 - [TreeMapLA](https://www.opentreemap.org/latreemap/map/)
 - [Urban Tree Growth & Longevity (UTGL) Working Group - Urban Tree Monitoring Protocols Field Guide](http://www.urbantreegrowth.org/field-guide.html)
+- [West Coast Arborists (WCA)](https://westcoastarborists.com/services) - see the description of ArborAccess, WCA's GPS tree inventory service for their clients
 - [We calculated how much money trees save for your city - The Conversation](http://theconversation.com/we-calculated-how-much-money-trees-save-for-your-city-95198)
