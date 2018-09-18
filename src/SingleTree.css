@@ -4,3 +4,10 @@
   padding-left: 2em;
   padding-right: 2em;
 }
+
+.propertyLabel {
+  font-size: 0.75em;
+  color: #828184;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+}
