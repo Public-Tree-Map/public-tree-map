@@ -33,6 +33,15 @@ export const SingleTree = props => {
         <p>Species Height By Width:</p>
         <p>{props.tree.size.speciesHeightByWidth}</p>
       </div>
+      <div className="valueInfo">
+        <h4>Tree Value</h4>
+        <p>Trees Required To Replace:</p>
+        <p>{props.tree.treeValue.treesToReplace}</p>
+        <p>Shade Production:</p>
+        <p>{props.tree.treeValue.shadeProduction}</p>
+        <p>Shedability:</p>
+        <p>{props.tree.treeValue.shedability}</p>
+      </div>
     </div>
   );
 };
