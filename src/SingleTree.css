@@ -1,8 +1,11 @@
 .singleTreeView {
   overflow-y: scroll;
   height: calc(100vh - 150px);
-  padding-left: 2em;
-  padding-right: 2em;
+  padding: 2em;
+}
+
+.treeTitle {
+  margin-bottom: 0.1em;
 }
 
 .propertyLabel {
