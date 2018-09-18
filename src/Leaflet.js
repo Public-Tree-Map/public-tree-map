@@ -6,6 +6,11 @@ const GRAPHQL_URL = 'graphql';
 const QUERY =
   '{ allTrees(maxLat: {{maxLat}}, minLat: {{minLat}}, minLon: {{minLon}}, maxLon: {{maxLon}}) { latitude longitude nameCommon address street } }';
 
+const TILE_URL = 'https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png';
+const MAX_ZOOM = 18;
+const ATTRIBUTION =
+  'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
 export default class LeafletWrapper extends Component {
   constructor() {
     super();
@@ -87,8 +92,9 @@ export default class LeafletWrapper extends Component {
         onViewportChanged={v => this.onViewportChanged(v)}
       >
         <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution={ATTRIBUTION}
+          url={TILE_URL}
+          maxZoom={MAX_ZOOM}
         />
         {markerList}
       </Map>
