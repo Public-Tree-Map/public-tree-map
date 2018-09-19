@@ -14,3 +14,8 @@
   text-transform: uppercase;
   margin-bottom: 0.5em;
 }
+
+.propertyDetails {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
