@@ -1,43 +1,43 @@
-// a temporary tree object to pass in to SingleTree as props in development,
-// until a tree can be fetched from the API
+// a temporary representation of a tree object reflecting the current
+// proposed database schema. Values not currently represented in the schema:
+// * zip_code
+// * management_unit
+// * next_city_maintenance
+// * species.trees_to_replace
+// * species.species_in_sm
+// * species.fun_fact
+// * species.plane_family_in_sm
 
 export const tree = {
-  commonName: 'California Sycamore',
-  speciesName: 'Platanus Racemosa',
-  image: 'http://localhost:3000/static/media/logo.dcb71d68.png',
-  location: {
-    nearestAddress: {
-      street: '1430 Olympic Blvd',
-      city: 'Santa Monica, CA 90404',
-    },
-    treeId: '10924195',
-    streetViewImage: '<image source url>',
-  },
-  size: {
-    heightRange: '45 - 60 feet',
-    trunkDiameterRange: '19 - 24 inches',
-    speciesHeightByWidth: '30 - 80 feet tall by 30 feet wide',
-  },
-  treeValue: {
-    treesToReplace: '25 new trees',
-    shadeProduction: 'filtered',
+  street_number: '1430',
+  street_name: 'Olympic Blvd.',
+  zip_code: '90404',
+  sm_id: '10924195',
+  streetview_imagery: '<image source url>',
+  height_min: '45',
+  height_max: '60',
+  dbh_min: '19',
+  dbh_max: '24',
+  management_unit: '#202',
+  next_city_maintenance: 'Pruning, scheduled for August 2019',
+  species: {
+    common_name: 'California Sycamore',
+    latin_name: 'Platanus Racemosa',
+    eol_image: 'http://localhost:3000/static/media/logo.dcb71d68.png',
+    species_height_x_width: '30 - 80 feet tall by 30 feet wide',
+    trees_to_replace: '25',
+    shade_production: 'Filtered',
     shedability: 'Deciduous',
-  },
-  careAndActivity: {
-    recommendedWatering: '3x per month (April-October)',
-    nextCityMaintenance: 'Pruning, scheduled for August 2019',
-    managementUnit: '#202',
-  },
-  inSantaMonica: {
-    thisSpecies: '365 trees, 1% of urban forest',
-    planeFamily: '983 trees, 3% of urban forest',
-  },
-  origin: {
-    origin: 'Native to California',
-    nativeDistribution:
+    water_frequency: '3x per month (April-October)',
+    species_in_sm: '365 trees, 1% of urban forest',
+    ca_native: 'native',
+    native_distribution:
       'Central and Southern Foothills of Sierra Nevada, Tehachapi, Central Valley, Central West, Southwest, Baja California',
-    naturalHabitat: 'Streamsides, Canyons',
-    funFact:
+    native_habitat: 'Streamsides, Canyons',
+    fun_fact:
       'Important for Western Tiger Swallowtail Butterfly and other butterflies, hummingbirds',
+  },
+  family: {
+    plane_family_in_sm: '983 trees, 3% of urban forest',
   },
 };
