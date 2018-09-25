@@ -1,8 +1,8 @@
 # street-tree-map
 
-Street Tree Map use open datasets to document publicly owned street trees + landmark trees in Santa Monica, California
+Street Tree Map use open datasets to document publicly owned street trees + landmark trees in Santa Monica, California. Please see below for more information about our data sources and our project.
 
-We also use:
+We primarily use:
 - Flask
 - GraphQL
 - React + Foundation
