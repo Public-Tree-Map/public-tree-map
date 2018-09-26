@@ -5,9 +5,9 @@ import { Row, Column, Callout } from 'react-foundation';
 export const SingleTree = props => {
   return (
     <div className="singleTreeView">
-      <Row className="basicInfo">
+      <Row>
         <Column>
-          <Callout>
+          <Callout className="basicInfo">
             <h1 className="treeTitle">{props.tree.species.common_name}</h1>
             <div className="propertyDetails">
               {props.tree.species.latin_name}
@@ -19,9 +19,9 @@ export const SingleTree = props => {
           </Callout>
         </Column>
       </Row>
-      <Row className="locationInfo">
+      <Row>
         <Column>
-          <Callout>
+          <Callout className="locationInfo">
             <h4>Location</h4>
             <div className="propertyLabel">Nearest Address:</div>
             <div className="propertyDetails">
@@ -38,9 +38,9 @@ export const SingleTree = props => {
           </Callout>
         </Column>
       </Row>
-      <Row className="sizeInfo">
+      <Row>
         <Column>
-          <Callout>
+          <Callout className="sizeInfo">
             <h4>Size</h4>
             <div className="propertyLabel">Height Range:</div>
             <div className="propertyDetails">
@@ -57,9 +57,9 @@ export const SingleTree = props => {
           </Callout>
         </Column>
       </Row>
-      <Row className="valueInfo">
+      <Row>
         <Column>
-          <Callout>
+          <Callout className="valueInfo">
             <h4>Tree Value</h4>
             <div className="propertyLabel">Trees Required To Replace:</div>
             <div className="propertyDetails">
@@ -76,9 +76,9 @@ export const SingleTree = props => {
           </Callout>
         </Column>
       </Row>
-      <Row className="activityInfo">
+      <Row>
         <Column>
-          <Callout>
+          <Callout className="activityInfo">
             <h4>Care {'\u0026'} Activity</h4>
             <div className="propertyLabel">
               Recommended Watering (For Mature Trees):
@@ -95,9 +95,9 @@ export const SingleTree = props => {
           </Callout>
         </Column>
       </Row>
-      <Row className="santaMonicaInfo">
+      <Row>
         <Column>
-          <Callout>
+          <Callout className="santaMonicaInfo">
             <h4>In Santa Monica</h4>
             <div className="propertyLabel">This Species In Santa Monica:</div>
             <div className="propertyDetails">
@@ -110,9 +110,9 @@ export const SingleTree = props => {
           </Callout>
         </Column>
       </Row>
-      <Row className="originInfo">
+      <Row>
         <Column>
-          <Callout>
+          <Callout className="originInfo">
             <h4>Origin</h4>
             <div className="propertyLabel">Origin:</div>
             <div className="propertyDetails">
