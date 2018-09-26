@@ -1,5 +1,6 @@
 import React from 'react';
 import './SingleTree.css';
+import { Row, Column, Callout } from 'react-foundation';
 
 export const SingleTree = props => {
   return (
