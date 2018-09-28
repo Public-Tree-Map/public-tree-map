@@ -3,6 +3,7 @@
   height: calc(100vh - 150px);
   width: 20em;
   padding: 2em;
+  float: right;
 }
 
 h4 {
@@ -16,6 +17,7 @@ img {
 
 .treeTitle {
   margin-bottom: 0.1em;
+  font-size: 1.5em;
 }
 
 .propertyLabel {
