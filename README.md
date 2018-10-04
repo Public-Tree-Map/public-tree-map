@@ -49,7 +49,6 @@ python run.py
 5. Navigate to `localhost:5000` in your browser.
 
 ## Data Sources
-
 - [Biodiversity Heritage Library - API documentation](https://www.biodiversitylibrary.org/api2/docs/docs.html)
 - [Calflora](http://www.calflora.org/)
 - [California Invasive Plant Council](http://www.cal-ipc.org/plants/inventory/)
@@ -75,7 +74,6 @@ python run.py
 - [Theodore Payne Foundation - California Native Plant Database](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
 
 ## Tree attributes and current sources
-
 - [List of attribute fields and views for our application - gist](https://gist.github.com/Reltre/6554dfc430986803553d84742f1b88a9)
 - Initial views (desktop):
   - 1 - no tree selected (home/map view)
@@ -98,48 +96,6 @@ python run.py
 - Our public [google drive folder](https://drive.google.com/drive/u/1/folders/1PfSpH5yuydJEK-sD-PPTXcj9jHA6QLi4)
 
 ## Related projects/inspiration
-
-- [A Very Detailed, Interactive Map of Chicago’s Tree Canopy (Atlas Obscura)](https://www.atlasobscura.com/articles/chicago-tree-canopy-map-2017)
-- [Arnold Arboretum map explorer](https://arboretum.harvard.edu/explorer/?utm_source=topnav&utm_medium=nav&utm_campaign=top-menu-map)
-- [Canopy](https://github.com/seeread/canopy) and descriptive [blog post](http://www.datakind.org/projects/out-on-a-limb-for-data) from DataKind
-- [The effects of urban trees on air quality - USDA 2002 PDF](https://www.nrs.fs.fed.us/units/urban/local-resources/downloads/Tree_Air_Qual.pdf)
-- [i-Tree](https://www.itreetools.org/)
-- [Increased home size and hardscape decreases urban forest cover in Los Angeles County’s single-family residential neighborhoods PDF](http://johnwilson.usc.edu/wp-content/uploads/2018/03/Increased-home-size-and-hardscape-decreases-urban-forest-cover-in-Los-Angeles-Countys-single-family-residential-neighborhoods.pdf)
-- [Jill Hubley's NYC street tree map](https://github.com/jhubley/street-trees)
-- [Melbourne - Urban Forest Visual](http://melbourneurbanforestvisual.com.au/)
-- [Minimum Requirements for an Arborist Report - City of Atlanta PDF](https://www.atlantaga.gov/home/showdocument?id=20151)
-- [NYC Parks' New York City Street Tree Map](https://tree-map.nycgovparks.org/)
-- [The Need to Standardize At-planting Data PDF](https://urbanforestry.indiana.edu/doc/publications/2015-need-to-standardize.pdf)
-- [Pasadena Beautiful Foundation's Endangered Trees List](http://www.pasadenabeautiful.org/green-links/endangered-trees-list/)
-- [Rancho Santa Ana Botanic Garden - app (Guru LLC)](https://itunes.apple.com/us/app/rancho-santa-ana-botanic-garde/id1389785599?mt=8)
-- [RegisTree](http://www.vision.caltech.edu/registree/)
-- [Santa Monica's Top 15 Tree Speices PDF (2010)](http://csmgisweb.smgov.net/docs/mapcatalog/trees.pdf)
-- [TreeMapLA](https://www.opentreemap.org/latreemap/map/)
-- [Urban Tree Growth & Longevity (UTGL) Working Group - Urban Tree Monitoring Protocols Field Guide](http://www.urbantreegrowth.org/field-guide.html)
-- [We calculated how much money trees save for your city - The Conversation](http://theconversation.com/we-calculated-how-much-money-trees-save-for-your-city-95198)
-
-* [List of attribute fields and views for our application - gist](https://gist.github.com/Reltre/6554dfc430986803553d84742f1b88a9)
-* Initial views (desktop):
-  - 1 - no tree selected (home/map view)
-  - 2 - native CFP tree species view
-  - 3 - non-native tree species view
-  - 4 - Washingtonia filifera (only native CFP palm species) view
-  - 5 - non-native palm species view
-  - 6 - tree family view
-* Species Imagery - [Encyclopedia of Life](http://eol.org/api)
-* CA Native status - [Calflora.org](www.calflora.org) and [Theodore Payne Foundation](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
-* Nearest Address, GPS Coordinates, Height Range, Trunk Diameter (DBH) Range, Tree ID - [Trees Inventory - Santa Monica Open Data](https://data.smgov.net/Public-Assets/Trees-Inventory/w8ue-6cnd)
-* Geographic Range description (countries occurrence), IUCN Red List Status - [IUCN Red List API - v3](http://apiv3.iucnredlist.org/)
-* Recommended Watering Frequency - [City of Santa Monica Public Works Department PDF (pp9-13)](https://www.smgov.net/uploadedFiles/Portals/UrbanForest/FINAL%20Trees%20Watering%20Guidelines.pdf)
-* Species Growth, Shade Production, Shedability, Spread, Trunk clearnance - [Canopy Tree Library](https://canopy.org/tree-info/canopy-tree-library/)
-* Street View Imagery - [Google Street View](https://developers.google.com/maps/documentation/streetview/)
-* For CA native species:
-* Species Height by Width, Native Distribution, Native Habitat - [Theodore Payne Foundation](http://www.theodorepayne.org/mediawiki/index.php?title=California_Native_Plant_Library)
-* For non-native tree species:
-* Invasive Status - [California Invasive Plant Council](https://www.cal-ipc.org/plants/inventory/)
-
-## Related projects/inspiration
-
 - [A Very Detailed, Interactive Map of Chicago’s Tree Canopy (Atlas Obscura)](https://www.atlasobscura.com/articles/chicago-tree-canopy-map-2017)
 - [Arnold Arboretum map explorer](https://arboretum.harvard.edu/explorer/?utm_source=topnav&utm_medium=nav&utm_campaign=top-menu-map)
 - [Canopy](https://github.com/seeread/canopy) and descriptive [blog post](http://www.datakind.org/projects/out-on-a-limb-for-data) from DataKind
