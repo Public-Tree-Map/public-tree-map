@@ -13,8 +13,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "flask:clean": "rm -rf street_tree_map/index.html street_tree_map/static",
-    "flask:build": "npm run flask:clean && npm run build && cp -r build/static street_tree_map/ && cp build/index.html street_tree_map/",
+    "flask:clean": "rimraf street_tree_map/index.html street_tree_map/static",
+    "flask:build": "npm run flask:clean && npm run build && ncp build/static street_tree_map/static && ncp build/index.html street_tree_map/index.html",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged"
@@ -29,7 +29,9 @@
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0",
     "husky": "^0.14.3",
+    "ncp": "^2.0.0",
     "prettier": "1.14.0",
-    "pretty-quick": "^1.6.0"
+    "pretty-quick": "^1.6.0",
+    "rimraf": "^2.6.2"
   }
 }
