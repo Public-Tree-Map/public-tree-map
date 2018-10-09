@@ -10,13 +10,13 @@ We primarily use:
 
 ## Protocol for pull requests + code review
 
-- Please review open issues and link your pull reuqest to the relevant issue.
-- Please create new branch __within this repo__ !
+- Please review open issues and link your pull request to the relevant issue.
+- Please create new branch!
 - In your pull request, please list and explain all proposed changes to the code base (additions, deletions). If you reuse code from elsewhere, please make sure you've attributed it.
 - Please apply all relevant labels to your pull request.
 - Please request a review (either from a specific person or from the slack channel).
 - Reviewers: please review all proposed changes, write comments and questions in line notes. Please review all updates made at your request.
-- Reviewer and requester: please confirm with each other that the PR is ready to merge. Please make sure that the PR branch name documents the new changes. Please squash and merge.
+- Reviewer and requester: please confirm with each other that the PR is ready to merge. Please make sure that the PR branch name documents the new changes.
 
 ## Running locally
 
