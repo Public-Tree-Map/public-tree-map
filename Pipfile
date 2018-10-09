@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Flask = "==1.0.2"
+SQLAlchemy = "==1.2.10"
+Flask-GraphQL = "==2.0.0"
+graphene = "==2.1.3"
+graphene-sqlalchemy = "==2.1.0"
+
+[dev-packages]
+pandas = "*"
