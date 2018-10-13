@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import './Leaflet.css';
+import treeData from './data.json';
 
 const GRAPHQL_URL = 'graphql';
 const QUERY =
@@ -55,7 +56,11 @@ export default class LeafletWrapper extends Component {
       headers,
       credentials: 'include',
     }).then(response => {
-      response.json().then(json => this._setData(json.data));
+      if (response.ok) {
+        response.json().then(json => this._setData(json.data));
+      } else {
+        this._setData(treeData);
+      }
     });
   }
 
@@ -64,10 +69,12 @@ export default class LeafletWrapper extends Component {
     const markers = trees
       .map(t => [t.latitude, t.longitude])
       .filter((t, i) => i % 100 === 0);
+    console.log(markers);
     const state = {
       ...this.state,
       markers,
     };
+    console.log('test');
     this.setState(state);
   }
 
@@ -82,6 +89,7 @@ export default class LeafletWrapper extends Component {
 
   render() {
     const markerList = this.state.markers.map(m => {
+      console.log(m);
       return <Marker position={m} />;
     });
 
