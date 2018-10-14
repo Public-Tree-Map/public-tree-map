@@ -69,12 +69,12 @@ export default class LeafletWrapper extends Component {
     const markers = trees
       .map(t => [t.latitude, t.longitude])
       .filter((t, i) => i % 100 === 0);
-    console.log(markers);
+
     const state = {
       ...this.state,
       markers,
     };
-    console.log('test');
+
     this.setState(state);
   }
 
@@ -89,7 +89,6 @@ export default class LeafletWrapper extends Component {
 
   render() {
     const markerList = this.state.markers.map(m => {
-      console.log(m);
       return <Marker position={m} />;
     });
 

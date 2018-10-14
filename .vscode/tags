@@ -1,0 +1,66 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Base	../street_tree_map/models.py	/^Base = declarative_base()$/;"	kind:variable	line:11
+Flask	../street_tree_map/app.py	/^from flask import Flask$/;"	kind:namespace	line:1
+GraphQLView	../street_tree_map/app.py	/^from flask_graphql import GraphQLView$/;"	kind:namespace	line:2
+Meta	../street_tree_map/schema.py	/^    class Meta:$/;"	kind:class	line:8
+Query	../street_tree_map/schema.py	/^class Query(graphene.ObjectType):$/;"	kind:class	line:12
+SQLAlchemyObjectType	../street_tree_map/schema.py	/^from graphene_sqlalchemy import SQLAlchemyObjectType$/;"	kind:namespace	line:3
+Tree	../street_tree_map/models.py	/^class Tree(Base):$/;"	kind:class	line:15
+Tree	../street_tree_map/schema.py	/^class Tree(SQLAlchemyObjectType):$/;"	kind:class	line:7
+TreeModel	../street_tree_map/schema.py	/^from .models import db_session, Tree as TreeModel$/;"	kind:namespace	line:4
+__init__.py	../street_tree_map/__init__.py	1;"	kind:file	line:1
+__tablename__	../street_tree_map/models.py	/^    __tablename__ = 'trees'$/;"	kind:variable	line:16
+address	../street_tree_map/models.py	/^    address = Column(String)$/;"	kind:variable	line:22
+all_trees	../street_tree_map/schema.py	/^    all_trees = graphene.List(Tree,$/;"	kind:variable	line:13
+app	../street_tree_map/__init__.py	/^from .app import app$/;"	kind:namespace	line:1
+app	../street_tree_map/app.py	/^app = Flask(__name__)$/;"	kind:variable	line:7
+app.py	../street_tree_map/app.py	1;"	kind:file	line:1
+autoflush	../street_tree_map/models.py	/^                                         autoflush=False,$/;"	kind:variable	line:8
+bind	../street_tree_map/models.py	/^                                         bind=engine))$/;"	kind:variable	line:9
+conn	../load_data.py	/^conn = sqlite3.connect('database.sqlite3')$/;"	kind:variable	line:5
+data	../load_data.py	/^    data = requests.get(sm_tree_data_url)$/;"	kind:variable	line:10
+db_session	../street_tree_map/app.py	/^from .models import db_session$/;"	kind:namespace	line:4
+db_session	../street_tree_map/models.py	/^db_session = scoped_session(sessionmaker(autocommit=False,$/;"	kind:variable	line:7
+db_session	../street_tree_map/schema.py	/^from .models import db_session, Tree as TreeModel$/;"	kind:namespace	line:4
+declarative_base	../street_tree_map/models.py	/^from sqlalchemy.ext.declarative import declarative_base$/;"	kind:namespace	line:4
+df	../load_data.py	/^df = df.rename(lambda x: x.replace(' ', '_').lower(), axis='columns')$/;"	kind:variable	line:15
+df	../load_data.py	/^df = pd.read_csv('.\/trees.csv')$/;"	kind:variable	line:14
+download	../load_data.py	/^download = False $/;"	kind:variable	line:6
+engine	../street_tree_map/models.py	/^engine = create_engine('sqlite:\/\/\/database.sqlite3', convert_unicode=True)$/;"	kind:variable	line:6
+graphene	../street_tree_map/schema.py	/^import graphene$/;"	kind:namespace	line:1
+graphiql	../street_tree_map/app.py	/^        graphiql=True # for having the GraphiQL interface$/;"	kind:variable	line:15
+index	../street_tree_map/app.py	/^def index():$/;"	kind:function	line:20
+latitude	../street_tree_map/models.py	/^    latitude = Column(Float)$/;"	kind:variable	line:20
+load_data.py	../load_data.py	1;"	kind:file	line:1
+longitude	../street_tree_map/models.py	/^    longitude = Column(Float)$/;"	kind:variable	line:21
+maxLat	../street_tree_map/schema.py	/^            maxLat=graphene.Float(),$/;"	kind:variable	line:14
+maxLon	../street_tree_map/schema.py	/^            maxLon=graphene.Float(),$/;"	kind:variable	line:16
+minLat	../street_tree_map/schema.py	/^            minLat=graphene.Float(),$/;"	kind:variable	line:15
+minLon	../street_tree_map/schema.py	/^            minLon=graphene.Float()$/;"	kind:variable	line:17
+model	../street_tree_map/schema.py	/^        model = TreeModel$/;"	kind:variable	line:9
+models.py	../street_tree_map/models.py	1;"	kind:file	line:1
+name_botanical	../street_tree_map/models.py	/^    name_botanical = Column(String)$/;"	kind:variable	line:18
+name_common	../street_tree_map/models.py	/^    name_common = Column(String)$/;"	kind:variable	line:19
+pd	../load_data.py	/^import pandas as pd$/;"	kind:namespace	line:2
+relationship	../street_tree_map/models.py	/^from sqlalchemy.orm import (scoped_session, sessionmaker, relationship,$/;"	kind:namespace	line:2
+relay	../street_tree_map/schema.py	/^from graphene import relay$/;"	kind:namespace	line:2
+requests	../load_data.py	/^    import requests$/;"	kind:namespace	line:9
+resolve_all_trees	../street_tree_map/schema.py	/^    def resolve_all_trees(self, info, **kwargs):$/;"	kind:member	line:20
+run.py	../run.py	1;"	kind:file	line:1
+schema	../street_tree_map/app.py	/^        schema=schema,$/;"	kind:variable	line:14
+schema	../street_tree_map/app.py	/^from .schema import schema$/;"	kind:namespace	line:5
+schema	../street_tree_map/schema.py	/^schema = graphene.Schema(query=Query)$/;"	kind:variable	line:37
+schema.py	../street_tree_map/schema.py	1;"	kind:file	line:1
+scoped_session	../street_tree_map/models.py	/^from sqlalchemy.orm import (scoped_session, sessionmaker, relationship,$/;"	kind:namespace	line:2
+sessionmaker	../street_tree_map/models.py	/^from sqlalchemy.orm import (scoped_session, sessionmaker, relationship,$/;"	kind:namespace	line:2
+shutdown_session	../street_tree_map/app.py	/^def shutdown_session(exception=None):$/;"	kind:function	line:25
+sqlite3	../load_data.py	/^import sqlite3$/;"	kind:namespace	line:1
+street	../street_tree_map/models.py	/^    street = Column(String)$/;"	kind:variable	line:23
+street_tree_map	../run.py	/^import street_tree_map$/;"	kind:namespace	line:3
+tree_id	../street_tree_map/models.py	/^    tree_id = Column(Integer, primary_key=True)$/;"	kind:variable	line:17
+view_func	../street_tree_map/app.py	/^    view_func=GraphQLView.as_view($/;"	kind:variable	line:12
