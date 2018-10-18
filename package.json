@@ -13,8 +13,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "flask:clean": "rimraf street_tree_map/index.html street_tree_map/static",
-    "flask:build": "npm run flask:clean && npm run build && ncp build/static street_tree_map/static && ncp build/index.html street_tree_map/index.html",
+    "flask:clean": "rimraf public_tree_map/index.html public_tree_map/static",
+    "flask:build": "npm run flask:clean && npm run build && ncp build/static public_tree_map/static && ncp build/index.html public_tree_map/index.html",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged"

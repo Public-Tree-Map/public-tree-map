@@ -26,7 +26,7 @@ for index, row in df.iterrows():
             df.ix[index, 'eol_image'] = image
 
 # Read in species-family data
-sm_species_family_data_file = 'species_names.csv'
+sm_species_family_data_file = './data/species_names.csv'
 df2 = pd.read_csv(sm_species_family_data_file)
 merged = pd.merge(df, df2, on='botanical_name')
 
