@@ -6,7 +6,7 @@ import requests
 conn = sqlite3.connect('database.sqlite3')
 
 # Read in species data
-sm_species_data_file = 'species_native_status_EOL_ID.csv'
+sm_species_data_file = './data/species_native_status_EOL_ID.csv'
 df = pd.read_csv(sm_species_data_file)
 df['EOL_ID'].fillna(-1, inplace=True)
 df['EOL_ID'] = df['EOL_ID'].astype(int)
