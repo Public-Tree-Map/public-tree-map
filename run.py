@@ -1,4 +1,4 @@
 #!/usr/bin/env python
 
-import street_tree_map
-street_tree_map.app.run()
+import public_tree_map
+public_tree_map.app.run()

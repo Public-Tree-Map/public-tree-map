@@ -6,7 +6,7 @@ import requests
 conn = sqlite3.connect('database.sqlite3')
 
 # Read in species data
-sm_species_data_file = 'species_native_status_EOL_ID.csv'
+sm_species_data_file = './data/species_native_status_EOL_ID.csv'
 df = pd.read_csv(sm_species_data_file)
 df['EOL_ID'].fillna(-1, inplace=True)
 df['EOL_ID'] = df['EOL_ID'].astype(int)
@@ -26,7 +26,7 @@ for index, row in df.iterrows():
             df.ix[index, 'eol_image'] = image
 
 # Read in species-family data
-sm_species_family_data_file = 'species_names.csv'
+sm_species_family_data_file = './data/species_names.csv'
 df2 = pd.read_csv(sm_species_family_data_file)
 merged = pd.merge(df, df2, on='botanical_name')
 
