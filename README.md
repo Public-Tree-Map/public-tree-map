@@ -20,7 +20,7 @@ We primarily use:
 
 ## Running locally
 
-Running this requires Python 3 and nodejs.
+Running this requires Python 3 and [yarn](https://yarnpkg.com/en/docs/install).
 
 1. Install the Python requirements:
 
@@ -31,22 +31,19 @@ pip install -r requirements.txt
 2. Install the Javascript requirements:
 
 ```bash
-npm install
+yarn install
 ```
 
-3. Build the project and install it into the flask app:
+3. Build the project and start the server:
 
 ```bash
-npm run flask:build
+yarn start
 ```
 
-4. Start the application
+4. Navigate to `localhost:5000` in your browser.
 
-```bash
-python run.py
-```
-
-5. Navigate to `localhost:5000` in your browser.
+**Optional**: Run `yarn watch` to automatically compile the javascript
+whenever a file changes.
 
 ## Data Sources
 - [Biodiversity Heritage Library - API documentation](https://www.biodiversitylibrary.org/api2/docs/docs.html)
