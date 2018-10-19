@@ -1,7 +1,10 @@
 *__pycache__*
 
-street_tree_map/index.html
-street_tree_map/static/*
+# generated js bundle
+public_tree_map/static/js/bundle.js
+
+# generated python files
+*.pyc
 
 # dependencies
 /node_modules

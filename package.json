@@ -7,31 +7,28 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-foundation": "^0.9.6",
-    "react-leaflet": "^2.0.0",
-    "react-scripts": "1.1.4"
+    "react-leaflet": "^2.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "flask:clean": "rimraf public_tree_map/index.html public_tree_map/static",
-    "flask:build": "npm run flask:clean && npm run build && ncp build/static public_tree_map/static && ncp build/index.html public_tree_map/index.html",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "precommit": "pretty-quick --staged"
+    "build": "webpack",
+    "start": "npm run build && python run.py",
+    "watch": "webpack --watch"
   },
   "devDependencies": {
-    "eslint": "^5.2.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.10.0",
-    "eslint-plugin-standard": "^3.1.0",
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
     "husky": "^0.14.3",
     "ncp": "^2.0.0",
-    "prettier": "1.14.0",
+    "prettier": "^1.14.3",
     "pretty-quick": "^1.6.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.8"
   }
 }
