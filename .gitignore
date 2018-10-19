@@ -25,3 +25,4 @@ public_tree_map/static/js/bundle.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
