@@ -6,7 +6,7 @@ We primarily use:
 - Flask
 - GraphQL
 - React + Foundation
-- SQLite but will move to PostgreSQL
+- SQLite but might move to PostgreSQL
 
 ## Protocol for pull requests + code review
 
