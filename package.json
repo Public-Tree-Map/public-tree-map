@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
     "leaflet": "^1.3.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-foundation": "^0.9.6",
-    "react-leaflet": "^2.0.0"
+    "sqlite3": "^4.0.3"
   },
   "scripts": {
     "build": "webpack",
-    "start": "npm run build && python run.py",
+    "start": "yarn build && nodemon server/index.js",
     "watch": "webpack --watch"
   },
   "devDependencies": {
@@ -21,11 +23,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
     "css-loader": "^1.0.0",
-    "husky": "^0.14.3",
-    "ncp": "^2.0.0",
-    "prettier": "^1.14.3",
-    "pretty-quick": "^1.6.0",
-    "rimraf": "^2.6.2",
+    "nodemon": "^1.18.5",
     "style-loader": "^0.23.0",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.1",

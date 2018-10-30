@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./client/index.js",
   mode: "development",
   module: {
     rules: [
@@ -22,7 +22,7 @@ module.exports = {
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
-    path: path.resolve(__dirname, "public_tree_map/static/js/"),
+    path: path.resolve(__dirname, "server/static/js/"),
     publicPath: "/dist/",
     filename: "bundle.js"
   }
