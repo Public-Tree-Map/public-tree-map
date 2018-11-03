@@ -18,7 +18,7 @@ for index, row in df.iterrows():
     eolid = row.get('EOL_ID')
     if eolid != -1:
         r = requests.get(
-            f'http://eol.org/api/pages/1.0.json?id={eolid}&images_per_page=1&videos_per_page=0&sounds_per_page=0&maps_per_page=0&texts_per_page=0&details=true&taxonomy=false')
+            'http://eol.org/api/pages/1.0.json?id={eolid}&images_per_page=1&videos_per_page=0&sounds_per_page=0&maps_per_page=0&texts_per_page=0&details=true&taxonomy=false')
         resp = r.json()
         data = resp.get("dataObjects", "")
         if data:
