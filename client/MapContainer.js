@@ -10,13 +10,7 @@ export default class MapContainer extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch('/api/v1/trees')
-      .then(response => response.json())
-      .then(json => this.setState({ trees: json  }));
-  }
-
   render()  {
-    return <Map trees={this.state.trees} />
+    return <Map trees={trees} />
   }
 }

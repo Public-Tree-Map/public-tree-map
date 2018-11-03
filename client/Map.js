@@ -24,6 +24,8 @@ export default class Map extends Component {
     map.on('zoomend', () => this.onZoomChanged(map.getZoom()));
 
     this.markers = L.layerGroup().addTo(map);
+
+    this.componentDidUpdate();
   }
 
   componentDidUpdate() {
