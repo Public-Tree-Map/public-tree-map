@@ -3,8 +3,7 @@
 Public Tree Map uses open datasets to document publicly owned park + street + landmark trees in Santa Monica, California. Please see below for more information about the data sources and project.
 
 We primarily use:
-- Flask
-- GraphQL
+- Node.js
 - React + Foundation
 - SQLite but might move to PostgreSQL
 
@@ -20,27 +19,21 @@ We primarily use:
 
 ## Running locally
 
-Running this requires Python 3 and [yarn](https://yarnpkg.com/en/docs/install).
+Running this requires Node.js and [yarn](https://yarnpkg.com/en/docs/install).
 
-1. Install the Python requirements:
-
-```bash
-pip install -r requirements.txt
-```
-
-2. Install the Javascript requirements:
+1. Install the Javascript requirements:
 
 ```bash
 yarn install
 ```
 
-3. Build the project and start the server:
+2. Build the project and start the server:
 
 ```bash
 yarn start
 ```
 
-4. Navigate to `localhost:5000` in your browser.
+3. Navigate to `localhost:5000` in your browser.
 
 **Optional**: Run `yarn watch` to automatically compile the javascript
 whenever a file changes.
