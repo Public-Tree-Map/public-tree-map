@@ -1,0 +1,26 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+#color-filter {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  background-color: #fff;
+  margin: 16px;
+  padding: 16px;
+  pointer-events: none;
+  z-index: 50000;
+}
+
+#color-filter input {
+  pointer-events: initial;
+}
