@@ -14,13 +14,11 @@ html, body {
   position: fixed;
   left: 0px;
   bottom: 0px;
-  background-color: #fff;
   margin: 16px;
-  padding: 16px;
   pointer-events: none;
   z-index: 50000;
 }
 
-#color-filter input {
+#color-filter input, #color-filter label {
   pointer-events: initial;
 }

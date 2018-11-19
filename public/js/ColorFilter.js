@@ -7,13 +7,9 @@ var app = this.app || {};
   function ColorFilter(map) {
     _map = map;
 
-    document.getElementsByName('color-filter').forEach(function(e) {
-      e.onclick = onFilterClicked;
+    $("input[name='color-filter']").change(function(e) {
+      _map.setColorProperty(e.target.value);
     });
-  }
-
-  function onFilterClicked(e) {
-    _map.setColorProperty(e.target.value);
   }
 
   // Exports
