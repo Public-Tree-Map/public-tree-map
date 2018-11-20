@@ -11,6 +11,8 @@ var app = this.app || {};
 
   function setData(trees) {
     _map.setTrees(trees, 'name_common');
+    _colorFilter.show();
+    $('#loading').hide();
   }
 
   // EXPORTS

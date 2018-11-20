@@ -12,6 +12,11 @@ var app = this.app || {};
     });
   }
 
+  ColorFilter.prototype.show = function() {
+    $('#color-filter').show();
+  }
+
   // Exports
   module.ColorFilter = ColorFilter;
+
 })(app);
