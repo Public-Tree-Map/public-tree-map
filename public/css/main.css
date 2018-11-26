@@ -15,11 +15,32 @@ html, body {
 
 #toolbar {
   display: flex;
+  flex-direction: column;
+  margin: 8px;
+  pointer-events: initial;
+}
+
+#search {
+  align-items: center;
+  display: flex;
   flex-direction: row;
   height: auto;
-  margin: 8px;
+  margin-bottom: 8px;
   padding: 8px;
-  pointer-events: initial;
+  width: 100%;
+}
+
+#search input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  flex-grow: 1;
+  margin-left: 8px;
+  outline: none;
+  text-decoration: none;
+}
+
+#search .material-icons {
+  color: #999;
 }
 
 #sidebar {
@@ -56,28 +77,12 @@ html, body {
 }
 
 #color-filter {
-  bottom: 0px;
-  left: 0px;
-  margin: 16px;
   pointer-events: none;
-  position: fixed;
   z-index: 50000;
 }
 
 #color-filter input, #color-filter label {
   pointer-events: initial;
-}
-
-#toolbar input {
-  border: none;
-  border-bottom: 1px solid #ccc;
-  flex-grow: 1;
-  outline: none;
-  text-decoration: none;
-}
-
-#toolbar .matjrial-icons {
-  color: #ccc;
 }
 
 .rounded-box {
@@ -86,6 +91,10 @@ html, body {
   border-radius: 5px;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
   padding: 16px;
+}
+
+.leaflet-control-zoom {
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {

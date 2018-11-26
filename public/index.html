@@ -33,9 +33,24 @@
     <div id="hud">
 
       <!-- Toolbar -->
-      <div id="toolbar" class="rounded-box">
-        <i class="material-icons">search</i>
-        <input type="text" placeholder="Search by address..." />
+      <div id="toolbar">
+
+        <!-- Search -->
+        <div id="search" class="rounded-box">
+          <i class="material-icons">search</i>
+          <input type="text" placeholder="Search by address..." />
+        </div>
+        
+        <!-- Color Filter -->
+        <div id="color-filter" class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-light active">
+            <input type="radio" name="color-filter" value="name_common" checked />Common Name
+          </label>
+
+          <label class="btn btn-light">
+            <input type="radio" name="color-filter" value="native" />Nativity
+          </label>
+        </div>
       </div>
 
       <!-- Sidebar -->
@@ -74,18 +89,6 @@
 
     <!-- Map -->
     <div id="map"></div>
-
-
-    <!-- Color Filter -->
-    <div id="color-filter" class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-light active">
-        <input type="radio" name="color-filter" value="name_common" checked />Common Name
-      </label>
-
-      <label class="btn btn-light">
-        <input type="radio" name="color-filter" value="native" />Nativity
-      </label>
-    </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
