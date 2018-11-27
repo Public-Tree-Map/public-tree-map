@@ -48,14 +48,19 @@ html, body {
 
 #sidebar {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   margin: 8px;
+  overflow: hidden;
+  padding: 0px;
   pointer-events: initial;
 }
 
 #sidebar-content {
   box-sizing: border-box;
-  height: 100%;
+  flex-grow: 1;
   overflow-y: auto;
+  padding: 0px 16px;
 }
 
 #map {
@@ -100,6 +105,14 @@ html, body {
 
 .leaflet-control-zoom {
   display: none;
+}
+
+.banner {
+  background-color: #008cf7;
+  color: #fff;
+  line-height: 1;
+  padding: 12px 10px 10px 10px;
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
