@@ -1,4 +1,5 @@
 html, body {
+  font-family: Helvetica, Arial, Sans-Serif;
   height: 100%;
   margin: 0px;
   padding: 0px;
@@ -16,12 +17,14 @@ html, body {
 #toolbar {
   display: flex;
   flex-direction: column;
+  align-items: start;
   margin: 8px;
   pointer-events: initial;
 }
 
 #search {
   align-items: center;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   height: auto;
@@ -77,20 +80,22 @@ html, body {
 }
 
 #color-filter {
-  pointer-events: none;
   z-index: 50000;
-}
-
-#color-filter input, #color-filter label {
-  pointer-events: initial;
 }
 
 .rounded-box {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
   padding: 16px;
+}
+
+.shadow {
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+}
+
+.hidden {
+  display: none;
 }
 
 .leaflet-control-zoom {

@@ -7,13 +7,11 @@ var app = this.app || {};
   function ColorFilter(map) {
     _map = map;
 
-    $("input[name='color-filter']").change(function(e) {
+    var filter = document.getElementById('color-filter');
+
+    filter.addEventListener('change', function(e) {
       _map.setColorProperty(e.target.value);
     });
-  }
-
-  ColorFilter.prototype.show = function() {
-    $('#color-filter').show();
   }
 
   // Exports
