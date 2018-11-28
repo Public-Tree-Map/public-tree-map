@@ -65,9 +65,9 @@ var app = this.app || {};
     // TODO: This is silly. We should move this somewhere else.
     if (s.length === 0) return '#000000';
     if (s.toLowerCase() === 'vacant site') return '#ff0000';
-    if (s.toLowerCase() === 'unknown') return '#000000';
+    if (s.toLowerCase() === 'unknown') return '#666666';
     if (s.toLowerCase() === 'native') return '#0000ff';
-    if (s.toLowerCase() === 'exotic') return '#ddddff';
+    if (s.toLowerCase() === 'exotic') return '#d8b365';
 
     var hash = 0;
     for (var i = 0; i < s.length; i++) {
