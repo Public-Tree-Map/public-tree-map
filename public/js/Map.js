@@ -4,8 +4,11 @@ var app = this.app || {};
   var RENDERER = L.canvas({ padding: 0.5 });
   var _markers = [];
   var _trees = [];
+  var _sidebar;
 
-  function Map() {
+  function Map(sidebar) {
+    _sidebar = sidebar;
+
     var map = L.map('map', {
       center: [34.02, -118.48],
       zoom: 14,
@@ -38,6 +41,9 @@ var app = this.app || {};
       });
       marker.tree = tree;
       marker.addTo(_markers).bindPopup(tree.name_common);
+      marker.on('click', function(e) {
+        _sidebar.setTree(tree);
+      });
     });
   }
 
@@ -56,7 +62,12 @@ var app = this.app || {};
   }
 
   function toColor(s) {
+    // TODO: This is silly. We should move this somewhere else.
     if (s.length === 0) return '#000000';
+    if (s.toLowerCase() === 'vacant site') return '#ff0000';
+    if (s.toLowerCase() === 'unknown') return '#000000';
+    if (s.toLowerCase() === 'native') return '#0000ff';
+    if (s.toLowerCase() === 'exotic') return '#ddddff';
 
     var hash = 0;
     for (var i = 0; i < s.length; i++) {
