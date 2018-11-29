@@ -66,6 +66,7 @@ var app = this.app || {};
     if (s.length === 0) return '#000000';
     if (s.toLowerCase() === 'native') return '#0000ff';
     if (s.toLowerCase() === 'exotic') return '#d8b365';
+    if (s.toLowerCase() === 'unknown') return '#d8b365';
 
     var hash = 0;
     for (var i = 0; i < s.length; i++) {
