@@ -9,7 +9,7 @@ var app = this.app || {};
     this.markers = [];
     this.trees   = [];
 
-    var map = L.map('map', {
+    var map = L.map("map", {
       center: [34.02, -118.48],
       zoom: 14,
       layers: [
@@ -63,7 +63,7 @@ var app = this.app || {};
         fillColor: getFillColor(marker.tree, palette)
       });
     });
-  }
+  };
 
   function onZoomChanged(zoom) {
     this.markers.eachLayer(function(marker) {
@@ -89,7 +89,7 @@ var app = this.app || {};
       hash = s.charCodeAt(i) + ((hash << 5) - hash);
     }
 
-    var color = '#';
+    var color = "#";
     for (var i = 0; i < 3; i++) {
       var value = (hash >> (i * 8)) & 255;
       color += value.toString(16).padStart(2, 0);
@@ -100,5 +100,4 @@ var app = this.app || {};
 
   // EXPORTS
   module.Map = Map;
-
 })(app);
