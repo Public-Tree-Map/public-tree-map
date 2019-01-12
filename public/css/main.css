@@ -220,9 +220,53 @@ html, body {
         }
 
         .height {
-            background-color: #FFA07A;
+            background-color: #90EE90;
             border-radius: 10px;
             margin: 2px;
         }
+
+        .heritage {
+            background-color: #778899;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .invasive {
+            background-color: #FF4500;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .nativeTrees {
+            background-color: green;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .pruning {
+            background-color: #FFC0CB;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .shade {
+            background-color: #EE82EE;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .vacantLot {
+            background-color: #FFA500;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .waterNeeds {
+            background-color: #4682B4;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        
 
 }
