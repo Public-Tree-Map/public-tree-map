@@ -10,6 +10,11 @@ var app = this.app || {};
 
   Sidebar.prototype.setTree = function(tree) {
     console.log(tree);
+    if (tree.images && tree.images.length > 0) {
+      _image.src = tree.images[0];
+    } else {
+      _image.src = '';
+    }
   }
 
   // Exports
