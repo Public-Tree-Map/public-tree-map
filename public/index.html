@@ -43,9 +43,28 @@
         
         <!-- Color Filter -->
         <div class="dropdown">
-          <button onclick="dropdownInfo()" class="dropbtn">Map: <strong>Native Trees</strong> &nbsp; <i class="down"></i></button>
+          <center>
+          <button onclick="dropdownInfo()" class="dropbtn">Map &nbsp; <i class="down"></i></button>
           <div id="myDropdown" class="dropdown-content">
+            
             <a href="#diameter" class="diameter">Diameter</a>
+            <a href="#endangered" class="endangered">Endangered</a>
+            <a href="#height" class="height">Height</a>
+            <a href="#heritage" class="heritage">Heritage</a>
+            <a href="#invasive" class="invasive">Invasive</a>
+            <a href="#nativeTrees" class="nativeTrees">Native Trees</a>
+            <a href="#pruning" class="pruning">Pruning</a>
+            <a href="#shade" class="shade">Shade</a>
+            <a href="#vacantLot" class="vacantLot">Vacant Lot</a>
+            <a href="#waterNeeds" class="waterNeeds">Water Needs</a>
+          </div>
+          </center>
+        </div>
+
+        <div class="dropdownShow">
+          <button onclick="dropdownInfoShow()" class="dropbtn">Map: <strong>Show: All</strong> &nbsp; <i class="down"></i></button>
+          <div id="myDropdownShow" class="dropdown-content">
+            <a href="#diameter" class="diameter">Color 1</a>
             <a href="#endangered" class="endangered">Endangered</a>
             <a href="#height" class="height">Height</a>
             <a href="#heritage" class="heritage">Heritage</a>
@@ -118,6 +137,10 @@
         function dropdownInfo() {
           $("#myDropdown").toggle("show");
         }
+
+        function dropdownInfoShow() {
+            $("#myDropdownShow").toggle("show");
+          }
 
       window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
