@@ -151,4 +151,165 @@ html, body {
     height: calc(100% - 16px);
     position: relative;
   }
+
+  .dropbtn {
+            background-color: green;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            width: 11.7em;
+        }
+
+  .dropbtnShow {
+            background-color: blue;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            position: absolute;
+            top: -3.1em;
+            left: 12.5em;
+            width: 8.9em            
+        }
+
+  .dropbtn:hover {
+            background-color: darkgreen;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdownShow {
+          position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 186px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-contentShow {
+            display: none;
+            left: 200px;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 186px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-contentShow a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        #myDropdown {
+            background-color: white;
+        }
+
+        i {
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+        }
+
+        .down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+
+        .show {
+            display: block;
+        }
+
+        .diameter {
+            background-color: #E0FFFF;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .endangered {
+            background-color: #FFA07A;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .height {
+            background-color: #90EE90;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .heritage {
+            background-color: #778899;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .invasive {
+            background-color: #FF4500;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .nativeTrees {
+            background-color: green;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .pruning {
+            background-color: #FFC0CB;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .shade {
+            background-color: #EE82EE;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .vacantLot {
+            background-color: #FFA500;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .waterNeeds {
+            background-color: #4682B4;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        
+
 }
