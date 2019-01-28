@@ -44,7 +44,7 @@
         <!-- Color Filter -->
         <div class="dropdown">
           <center>
-          <button onclick="dropdownInfo()" class="dropbtn">Map &nbsp; <i class="up"></i></button>
+          <button onclick="dropdownInfo()" class="dropbtn">Map &nbsp; <i id="iconDropdown" class="up"></i></button>
           <div id="myDropdown" class="dropdown-content">
             
             <a href="#diameter" class="diameter">Diameter</a>
@@ -62,7 +62,7 @@
         </div>
 
         <div class="dropdownShow">
-          <button onclick="dropdownInfoShow()" class="dropbtnShow">Show: &nbsp; <i class="up"></i></button>
+          <button onclick="dropdownInfoShow()" class="dropbtnShow">Show: &nbsp; <i id="iconShow" class="up"></i></button>
           <div id="myDropdownShow" class="dropdown-contentShow">
             <a href="#diameter" class="diameter">Color 1</a>
             <a href="#endangered" class="endangered">Endangered</a>
@@ -136,10 +136,12 @@
     <script type="text/javascript">app.init()
         function dropdownInfo() {
           $("#myDropdown").toggle("show");
+          $("#iconDropdown").toggleClass("up down");
         }
 
         function dropdownInfoShow() {
             $("#myDropdownShow").toggle("show");
+            $("#iconShow").toggleClass("up down");
           }
 
       window.onclick = function (event) {
