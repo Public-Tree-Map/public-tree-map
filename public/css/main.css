@@ -241,6 +241,10 @@ html, body {
             -webkit-transform: rotate(45deg);
         }
 
+        .up {
+            transform: rotate(-135deg);
+        }
+
         .show {
             display: block;
         }
