@@ -68,7 +68,6 @@ html, body {
   background-position: center center;
   background-repeat: no-repeat;
   border-radius: 10px 10px 0px 0px;
-  min-height: 250px;
   position: relative;
   top: -10px;
   width: 100%;
@@ -145,6 +144,10 @@ html, body {
     position: fixed;
     width: calc(100% - 16px);
   }
+
+  #sidebar-image {
+    min-height: 50px;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -164,5 +167,9 @@ html, body {
     flex-basis: 400px;
     height: calc(100% - 16px);
     position: relative;
+  }
+
+  #sidebar-image {
+    min-height: 250px;
   }
 }
