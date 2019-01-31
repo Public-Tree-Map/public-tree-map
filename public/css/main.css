@@ -74,6 +74,14 @@ html, body {
   width: 100%;
 }
 
+#sidebar-content h1 {
+
+}
+
+#sidebar-content h2 {
+  font-style: italic;
+}
+
 #map {
   height: 100%;
   position: absolute;
@@ -133,7 +141,7 @@ html, body {
 
   #sidebar {
     bottom: 0px;
-    height: 25%;
+    height: 50%;
     position: fixed;
     width: calc(100% - 16px);
   }

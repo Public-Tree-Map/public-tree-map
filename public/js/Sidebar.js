@@ -2,20 +2,28 @@ var app = this.app || {};
 
 (function(module) {
 
-  var _image;
-
   function Sidebar() {
-    _image = document.getElementById('sidebar-image');
+    this.image         = document.getElementById('sidebar-image');
+    this.commonName    = document.getElementById('sidebar-common-name');
+    this.botanicalName = document.getElementById('sidebar-botanical-name');
+    this.nativity      = document.getElementById('sidebar-nativity');
+    this.heightGroup   = document.getElementById('sidebar-height-group');
   }
 
   Sidebar.prototype.setTree = function(tree) {
     console.log(tree);
+
+    this.commonName.innerText    = tree.name_common;
+    this.botanicalName.innerText = tree.name_botanical;
+    this.nativity.innerText      = tree.nativity;
+    this.heightGroup.innerText   = tree.height_group;
+
     if (tree.images && tree.images.length > 0) {
-      _image.style.backgroundImage = 'url(' + tree.images[0] + ')';
-      _image.classList.remove('hidden');
+      this.image.style.backgroundImage = 'url(' + tree.images[0] + ')';
+      this.image.classList.remove('hidden');
     } else {
-      _image.style.backgroundImage = '';
-      _image.classList.add('hidden');
+      this.image.style.backgroundImage = '';
+      this.image.classList.add('hidden');
     }
   }
 
