@@ -63,8 +63,14 @@ html, body {
   padding: 0px 16px;
 }
 
-#sidebar-content img {
-  height: auto;
+#sidebar-image {
+  background-color: #fff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 10px 10px 0px 0px;
+  min-height: 250px;
+  position: relative;
+  top: -10px;
   width: 100%;
 }
 
@@ -95,8 +101,8 @@ html, body {
 
 .rounded-box {
   background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: none;
+  border-radius: 10px;
   padding: 16px;
 }
 
@@ -113,10 +119,10 @@ html, body {
 }
 
 .banner {
-  background-color: #008cf7;
+  background-color: #41ae76;
   color: #fff;
   line-height: 1;
-  padding: 12px 10px 10px 10px;
+  padding: 20px 20px 25px 20px;
   text-align: center;
 }
 
@@ -147,7 +153,7 @@ html, body {
   }
 
   #sidebar {
-    flex-basis: 300px;
+    flex-basis: 400px;
     height: calc(100% - 16px);
     position: relative;
   }

@@ -11,9 +11,11 @@ var app = this.app || {};
   Sidebar.prototype.setTree = function(tree) {
     console.log(tree);
     if (tree.images && tree.images.length > 0) {
-      _image.src = tree.images[0];
+      _image.style.backgroundImage = 'url(' + tree.images[0] + ')';
+      _image.classList.remove('hidden');
     } else {
-      _image.src = '';
+      _image.style.backgroundImage = '';
+      _image.classList.add('hidden');
     }
   }
 
