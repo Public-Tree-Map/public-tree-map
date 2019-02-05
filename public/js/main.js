@@ -9,6 +9,13 @@ var app = this.app || {};
     _sidebar = new module.Sidebar();
     _map = new module.Map(_sidebar);
     _colorFilter = new module.ColorFilter(_map);
+
+    fetch('https://storage.googleapis.com/public-tree-map/data/trees.json')
+      .then(function(response) {
+        return response.json().then(function(trees) {
+          setData(trees);
+        });
+      });
   }
 
   function setData(trees) {
