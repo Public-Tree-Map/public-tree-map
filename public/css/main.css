@@ -325,11 +325,7 @@ html, body {
   display: inline-block;
 }
 
-.Tree-1 {
-  width: 9px;
-  height: 9px;
-  background-color: #fff033;
-}
+/* icon css below */
 
 .Height-Copy-4 {
   width: 8.8px;
@@ -348,5 +344,17 @@ html, body {
 .Native-Trees {
   width: 15px;
   height: 18px;
+  object-fit: contain;
+}
+
+.WaterNeeds-Copy-4 {
+  width: 12px;
+  height: 16.8px;
+  object-fit: contain;
+}
+
+.Shade-Icon-4 {
+  width: 12px;
+  height: 16.8px;
   object-fit: contain;
 }
