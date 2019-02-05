@@ -338,3 +338,16 @@ html, body {
   transform: rotate(-180deg);
   background-color: #4eb3d3;
 }
+
+.Pruning-Copy-3 {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+}
+
+.Heritage-Copy-6 {
+  width: 15px;
+  height: 18px;
+  object-fit: contain;
+  background-color: #ffffff;
+}
