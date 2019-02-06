@@ -358,3 +358,10 @@ html, body {
   height: 24px;
   object-fit: contain;
 }
+
+/* Search Icons */
+.Search-Filter-Embed-1 {
+  width: 479px;
+  height: 78px;
+  object-fit: contain;
+}
