@@ -354,14 +354,24 @@ html, body {
 }
 
 .Shade-Icon-Copy-3 {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
 }
 
-/* Search Icons */
-.Search-Filter-Embed-1 {
-  width: 479px;
-  height: 78px;
+.invasivePosition {
+  width: 17px;
+  height: 17px;
   object-fit: contain;
+}
+
+.Endangered-HERO-elongated {
+  width: 18px;
+  height: 15px;
+  background-color: #ffa732;
+}
+
+.Oval-6 {
+  width: 24px;
+  height: 24px;
 }
