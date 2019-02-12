@@ -1,13 +1,13 @@
 var app = this.app || {};
 
 (function(module) {
+
   var RENDERER = L.canvas({ padding: 0.5 });
-  var _markers = [];
-  var _trees = [];
-  var _sidebar;
 
   function Map(sidebar) {
-    _sidebar = sidebar;
+    this.sidebar = sidebar;
+    this.markers = [];
+    this.trees   = [];
 
     var map = L.map('map', {
       center: [34.02, -118.48],
@@ -19,19 +19,19 @@ var app = this.app || {};
       ]
     });
 
-    map.on('zoomend', function() { 
-      onZoomChanged(map.getZoom());
-    });
+    map.on('zoomend', (function() {
+      onZoomChanged.call(this, map.getZoom());
+    }).bind(this));
 
-    _markers = L.layerGroup().addTo(map);
+    this.markers = L.layerGroup().addTo(map);
   }
 
   Map.prototype.setTrees = function(trees, colorProperty) {
-    _trees = trees;
+    this.trees = trees;
 
-    _markers.clearLayers();
+    this.markers.clearLayers();
 
-    _trees.forEach(function(tree) {
+    this.trees.forEach((function(tree) {
       var marker = L.circleMarker([tree.latitude, tree.longitude], {
         renderer: RENDERER,
         radius: 1,
@@ -40,15 +40,15 @@ var app = this.app || {};
         fillColor: toColor(tree[colorProperty])
       });
       marker.tree = tree;
-      marker.addTo(_markers).bindPopup(tree.name_common);
-      marker.on('click', function(e) {
-        _sidebar.setTree(tree);
-      });
-    });
+      marker.addTo(this.markers).bindPopup(tree.name_common);
+      marker.on('click', (function(e) {
+        this.sidebar.setTree(tree);
+      }).bind(this));
+    }).bind(this));
   }
 
   Map.prototype.setColorProperty = function(colorProperty) {
-    _markers.eachLayer(function(marker) {
+    this.markers.eachLayer(function(marker) {
       marker.setStyle({
         fillColor: toColor(marker.tree[colorProperty])
       });
@@ -56,7 +56,7 @@ var app = this.app || {};
   }
 
   function onZoomChanged(zoom) {
-    _markers.eachLayer(function(marker) {
+    this.markers.eachLayer(function(marker) {
       marker.setRadius(Math.max(1, zoom - 13));
     });
   }
