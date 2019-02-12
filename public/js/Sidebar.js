@@ -3,15 +3,23 @@ var app = this.app || {};
 (function(module) {
 
   function Sidebar() {
+    this.defaultScreen = document.getElementById('sidebar-default');
+    this.treeContainer = document.getElementById('sidebar-tree');
     this.image         = document.getElementById('sidebar-image');
     this.commonName    = document.getElementById('sidebar-common-name');
     this.botanicalName = document.getElementById('sidebar-botanical-name');
     this.nativity      = document.getElementById('sidebar-nativity');
     this.heightGroup   = document.getElementById('sidebar-height-group');
+    this.closeButton   = document.getElementById('sidebar-close-button');
   }
 
   Sidebar.prototype.setTree = function(tree) {
-    console.log(tree);
+    if (!tree) {
+      return this.showDefault();
+    }
+
+    this.treeContainer.classList.remove('hidden');
+    this.defaultScreen.classList.add('hidden');
 
     this.commonName.innerText    = tree.name_common;
     this.botanicalName.innerText = tree.name_botanical;
@@ -25,6 +33,13 @@ var app = this.app || {};
       this.image.style.backgroundImage = '';
       this.image.classList.add('hidden');
     }
+
+    this.closeButton.onclick = this.showDefault.bind(this);
+  }
+
+  Sidebar.prototype.showDefault = function() {
+    this.treeContainer.classList.add('hidden');
+    this.defaultScreen.classList.remove('hidden');
   }
 
   // Exports

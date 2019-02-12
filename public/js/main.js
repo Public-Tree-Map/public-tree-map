@@ -6,9 +6,11 @@ var app = this.app || {};
   var _colorFilter;
 
   function init() {
-    _sidebar = new module.Sidebar();
-    _map = new module.Map(_sidebar);
+    _sidebar     = new module.Sidebar();
+    _map         = new module.Map(_sidebar);
     _colorFilter = new module.ColorFilter(_map);
+
+    _sidebar.showDefault();
 
     fetch('https://storage.googleapis.com/public-tree-map/data/trees.json')
       .then(function(response) {
