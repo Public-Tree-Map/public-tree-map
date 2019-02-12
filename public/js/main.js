@@ -21,7 +21,7 @@ var app = this.app || {};
   }
 
   function setData(trees) {
-    _map.setTrees(trees, 'name_common');
+    _map.setTrees(trees, module.palettes['name_common']);
     document.getElementById('loading').classList.add('hidden');
   }
 

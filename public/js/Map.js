@@ -26,7 +26,7 @@ var app = this.app || {};
     this.markers = L.layerGroup().addTo(map);
   }
 
-  Map.prototype.setTrees = function(trees, colorProperty) {
+  Map.prototype.setTrees = function(trees, palette) {
     this.trees = trees;
 
     this.markers.clearLayers();
@@ -37,7 +37,7 @@ var app = this.app || {};
         radius: 1,
         stroke: false,
         fillOpacity: 1.0,
-        fillColor: toColor(tree[colorProperty])
+        fillColor: getFillColor(tree, palette)
       });
       marker.tree = tree;
       marker.addTo(this.markers).bindPopup(tree.name_common);
@@ -47,10 +47,10 @@ var app = this.app || {};
     }).bind(this));
   }
 
-  Map.prototype.setColorProperty = function(colorProperty) {
+  Map.prototype.setPalette = function(palette) {
     this.markers.eachLayer(function(marker) {
       marker.setStyle({
-        fillColor: toColor(marker.tree[colorProperty])
+        fillColor: getFillColor(marker.tree, palette)
       });
     });
   }
@@ -61,13 +61,19 @@ var app = this.app || {};
     });
   }
 
-  function toColor(s) {
-    // TODO: This is silly. We should move this somewhere else.
-    if (s.length === 0) return '#000000';
-    if (s.toLowerCase() === 'native') return '#0000ff';
-    if (s.toLowerCase() === 'exotic') return '#d8b365';
-    if (s.toLowerCase() === 'unknown') return '#d8b365';
+  function getFillColor(tree, palette) {
+    if (palette.generated) {
+      return generateColor(tree[palette.field]);
+    }
 
+    if (palette[tree[palette.field]]) {
+      return palette[tree[palette.field]];
+    } else {
+      return palette['default'];
+    }
+  }
+
+  function generateColor(s) {
     var hash = 0;
     for (var i = 0; i < s.length; i++) {
       hash = s.charCodeAt(i) + ((hash << 5) - hash);

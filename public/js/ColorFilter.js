@@ -8,7 +8,7 @@ var app = this.app || {};
     var filter = document.getElementById('color-filter');
 
     filter.addEventListener('change', (function(e) {
-      this.map.setColorProperty(e.target.value);
+      this.map.setPalette(module.palettes[e.target.value]);
     }).bind(this));
   }
 
