@@ -155,11 +155,10 @@ html, body {
             border: none;
             cursor: pointer;
             border-radius: 10px;
-            width: 11.7em;
+            width: 13.3em;
         }
 
   .dropbtnShow {
-            background-color: blue;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -168,8 +167,10 @@ html, body {
             border-radius: 10px;
             position: absolute;
             top: -3.1em;
-            left: 12.5em;
-            width: 8.9em            
+            left: 13.8em;
+            width: 8.1em;
+            height: 3.4em;
+            background-color: #396800;            
         }
 
   .dropbtn:hover {
@@ -190,7 +191,7 @@ html, body {
             display: none;
             position: absolute;
             background-color: #f1f1f1;
-            min-width: 186px;
+            min-width: 210px;
             overflow: auto;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
@@ -374,4 +375,12 @@ html, body {
 .Oval-6 {
   width: 24px;
   height: 24px;
+}
+
+/* Heritage icon below */
+.Rectangle-14 {
+  width: 214px;
+  height: 37px;
+  border-radius: 11.4px;
+  background-color: #ff5bbb;
 }
