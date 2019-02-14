@@ -63,6 +63,11 @@ html, body {
   padding: 0px 16px;
 }
 
+#sidebar-content img {
+  height: auto;
+  width: 100%;
+}
+
 #map {
   height: 100%;
   position: absolute;
