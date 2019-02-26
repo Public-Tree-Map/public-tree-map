@@ -9,17 +9,18 @@ var app = this.app || {};
   function Map(sidebar) {
     _sidebar = sidebar;
 
-    var map = L.map('map', {
+    var map = L.map("map", {
       center: [34.02, -118.48],
-      zoom: 14,
+      zoom: 15,
       layers: [
-        L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        L.tileLayer("http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         })
       ]
     });
 
-    map.on('zoomend', function() { 
+    map.on("zoomend", function() {
       onZoomChanged(map.getZoom());
     });
 
@@ -41,11 +42,11 @@ var app = this.app || {};
       });
       marker.tree = tree;
       marker.addTo(_markers).bindPopup(tree.name_common);
-      marker.on('click', function(e) {
+      marker.on("click", function(e) {
         _sidebar.setTree(tree);
       });
     });
-  }
+  };
 
   Map.prototype.setColorProperty = function(colorProperty) {
     _markers.eachLayer(function(marker) {
@@ -53,7 +54,7 @@ var app = this.app || {};
         fillColor: toColor(marker.tree[colorProperty])
       });
     });
-  }
+  };
 
   function onZoomChanged(zoom) {
     _markers.eachLayer(function(marker) {
@@ -63,17 +64,17 @@ var app = this.app || {};
 
   function toColor(s) {
     // TODO: This is silly. We should move this somewhere else.
-    if (s.length === 0) return '#000000';
-    if (s.toLowerCase() === 'native') return '#0000ff';
-    if (s.toLowerCase() === 'exotic') return '#d8b365';
-    if (s.toLowerCase() === 'unknown') return '#d8b365';
+    if (s.length === 0) return "#000000";
+    if (s.toLowerCase() === "native") return "#0000ff";
+    if (s.toLowerCase() === "exotic") return "#d8b365";
+    if (s.toLowerCase() === "unknown") return "#d8b365";
 
     var hash = 0;
     for (var i = 0; i < s.length; i++) {
       hash = s.charCodeAt(i) + ((hash << 5) - hash);
     }
 
-    var color = '#';
+    var color = "#";
     for (var i = 0; i < 3; i++) {
       var value = (hash >> (i * 8)) & 255;
       color += value.toString(16).padStart(2, 0);
@@ -84,5 +85,4 @@ var app = this.app || {};
 
   // EXPORTS
   module.Map = Map;
-
 })(app);
