@@ -11,7 +11,7 @@ var app = this.app || {};
 
     var map = L.map("map", {
       center: [34.02, -118.48],
-      zoom: 15,
+      zoom: 14,
       layers: [
         L.tileLayer("http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png", {
           attribution:
