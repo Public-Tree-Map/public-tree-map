@@ -8,6 +8,7 @@ var app = this.app || {};
     this.image                  = document.getElementById('sidebar-image');
     this.commonName             = document.getElementById('sidebar-common-name');
     this.botanicalName          = document.getElementById('sidebar-botanical-name');
+    this.treeId                 = document.getElementById('sidebar-tree-id');
     this.nativity               = document.getElementById('sidebar-nativity');
     this.heightGroup            = document.getElementById('sidebar-height-group');
     this.shadeProduction        = document.getElementById('sidebar-shade-production');
@@ -29,6 +30,7 @@ var app = this.app || {};
 
     this.commonName.innerText             = tree.name_common;
     this.botanicalName.innerText          = tree.name_botanical;
+    this.treeId.innerText                 = tree.tree_id;
     this.nativity.innerText               = tree.nativity;
     this.heightGroup.innerText            = tree.height_group;
     this.shadeProduction.innerText        = tree.shade_production;
