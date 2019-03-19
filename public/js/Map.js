@@ -42,10 +42,18 @@ var app = this.app || {};
         fillColor: getFillColor(tree, palette)
       });
       marker.tree = tree;
-      marker.addTo(this.markers).bindPopup(tree.name_common);
+      marker.bindPopup(tree.name_common);
+      marker.on('mouseover', function (e) {
+          this.openPopup();
+      });
+      marker.on('mouseout', function (e) {
+        this.closePopup();
+      });
       marker.on('click', (function(e) {
         this.sidebar.setTree(tree);
       }).bind(this));
+
+      marker.addTo(this.markers)
     }).bind(this));
   }
 
