@@ -43,7 +43,7 @@ var app = this.app || {};
     this.ipcRating.innerText              = tree.ipc_rating;
 
     if (tree.images && tree.images.length > 0) {
-      this.image.style.backgroundImage = 'url(' + tree.images[0] + ')';
+      this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
       this.image.classList.remove('hidden');
     } else {
       this.image.style.backgroundImage = '';
