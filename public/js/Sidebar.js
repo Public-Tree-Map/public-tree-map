@@ -32,7 +32,7 @@ var app = this.app || {};
     this.commonName.innerText             = tree.name_common;
     this.botanicalName.innerText          = tree.name_botanical;
     this.treeId.innerText                 = tree.tree_id;
-    this.nativity.innerText               = tree.nativity;
+    this.nativity.innerText               = buildNativityText(tree.nativity);
     this.height.innerText                 = buildHeightText(tree.height_min_ft, tree.height_max_ft);
     this.diameter.innerText               = buildDiameterText(tree.diameter_min_in, tree.diameter_max_in);
     this.shadeProduction.innerText        = tree.shade_production;
@@ -56,6 +56,16 @@ var app = this.app || {};
   Sidebar.prototype.showDefault = function() {
     this.treeContainer.classList.add('hidden');
     this.defaultScreen.classList.remove('hidden');
+  }
+
+  function buildNativityText(nativity) {
+    if ("native" === nativity.toLowerCase()) {
+      return "Native to California";
+    } else if ("exotic" === nativity.toLowerCase()) {
+      return "Not native to California";
+    } else {
+      return "Unknown";
+    }
   }
 
   function buildHeightText(min, max) {
