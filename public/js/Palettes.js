@@ -23,11 +23,11 @@ var app = this.app || {};
     'irrigation_requirements': {
       'generated': false,
       'field'    : 'irrigation_requirements',
-      'none, once established'   : '#458EBF',
-      'minimal'   : '#1772EC',
-      'moderate'   : '#0B3BCF',
-      'high'   : 'purple',
-      'Unknown'   : '#FFFFFF',
+      'none, once established'   : '#80ACFF',
+      'minimal'   : '#1266FB',
+      'moderate'   : '#0C35B4',
+      'high'   : '#161650',
+      'Unknown'   : '#ACACAC',
       'default'  : '#000000'
     },
     'shade_production': {
