@@ -99,6 +99,9 @@ html, body {
 }
 
 #sidebar-tree {
+  display: flex;
+  flex-direction: column;
+  min-height: 1px; /* CSS is beautiful */
   position: relative;
 }
 
@@ -145,7 +148,7 @@ html, body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .leaflet-control-zoom {

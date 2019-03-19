@@ -10,7 +10,8 @@ var app = this.app || {};
     this.botanicalName          = document.getElementById('sidebar-botanical-name');
     this.treeId                 = document.getElementById('sidebar-tree-id');
     this.nativity               = document.getElementById('sidebar-nativity');
-    this.heightGroup            = document.getElementById('sidebar-height-group');
+    this.height                 = document.getElementById('sidebar-height');
+    this.diameter               = document.getElementById('sidebar-diameter');
     this.shadeProduction        = document.getElementById('sidebar-shade-production');
     this.irrigationRequirements = document.getElementById('sidebar-irrigation-requirements');
     this.form                   = document.getElementById('sidebar-form');
@@ -31,8 +32,9 @@ var app = this.app || {};
     this.commonName.innerText             = tree.name_common;
     this.botanicalName.innerText          = tree.name_botanical;
     this.treeId.innerText                 = tree.tree_id;
-    this.nativity.innerText               = tree.nativity;
-    this.heightGroup.innerText            = tree.height_group;
+    this.nativity.innerText               = buildNativityText(tree.nativity);
+    this.height.innerText                 = buildHeightText(tree.height_min_ft, tree.height_max_ft);
+    this.diameter.innerText               = buildDiameterText(tree.diameter_min_in, tree.diameter_max_in);
     this.shadeProduction.innerText        = tree.shade_production;
     this.irrigationRequirements.innerText = tree.irrigation_requirements;
     this.form.innerText                   = tree.form;
@@ -41,7 +43,7 @@ var app = this.app || {};
     this.ipcRating.innerText              = tree.ipc_rating;
 
     if (tree.images && tree.images.length > 0) {
-      this.image.style.backgroundImage = 'url(' + tree.images[0] + ')';
+      this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
       this.image.classList.remove('hidden');
     } else {
       this.image.style.backgroundImage = '';
@@ -54,6 +56,26 @@ var app = this.app || {};
   Sidebar.prototype.showDefault = function() {
     this.treeContainer.classList.add('hidden');
     this.defaultScreen.classList.remove('hidden');
+  }
+
+  function buildNativityText(nativity) {
+    if ("native" === nativity.toLowerCase()) {
+      return "Native to California";
+    } else if ("exotic" === nativity.toLowerCase()) {
+      return "Not native to California";
+    } else {
+      return "Unknown";
+    }
+  }
+
+  function buildHeightText(min, max) {
+    return (min === -1 || max === -1) ? "Unknown"
+                                      : min + "-" + max + " feet";
+  }
+
+  function buildDiameterText(min, max) {
+    return (min === -1 || max === -1) ? "Unknown"
+                                      : min + "-" + max + " inches";
   }
 
   // Exports
