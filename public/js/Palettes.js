@@ -3,12 +3,12 @@ var app = this.app || {};
 (function(module) {
 
   module.palettes = {
-    'nativity': {
+    'native': {
       'generated': false,
-      'field'    : 'nativity',
-      'native'   : '#ff0000',
-      'exotic'   : '#0000ff',
-      'default'  : '#000000'
+      'field'    : 'native',
+      'native'   : '#2ca25f',
+      'exotic'   : '#fff7bc',
+      'default'  : '#bdbdbd'
     },
     'name_common': {
       'generated': true,
