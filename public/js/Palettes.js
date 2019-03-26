@@ -23,11 +23,11 @@ var app = this.app || {};
     'irrigation_requirements': {
       'generated'             : false,
       'field'                 : 'irrigation_requirements',
-      'none, once established': '#458EBF',
-      'minimal'               : '#1772EC',
-      'moderate'              : '#0B3BCF',
-      'high'                  : '#ACACAC',
-      'Unknown'               : '#FFFFFF',
+      'none, once established': '#80ACFF',
+      'minimal'               : '#1266FB',
+      'moderate'              : '#0C35B4',
+      'high'                  : '#161650',
+      'Unknown'               : '#ACACAC',
       'default'               : '#000000'
     },
     'shade_production': {
@@ -64,9 +64,9 @@ var app = this.app || {};
       '60'       : '#2E5C85',
       'default'  : '#000000'
     },
-    'height_min_ft': {
+    'diameter_min_in': {
       'generated': false,
-      'field'    : 'height_min_ft',
+      'field'    : 'diameter_min_in',
       '0'        : '#2ECB82',
       '7'        : '#FFFFFF',
       '13'       : '#52A106',
