@@ -3,9 +3,9 @@ var app = this.app || {};
 (function(module) {
 
   module.palettes = {
-    'CA native': {
+    'nativity': {
       'generated': false,
-      'field'    : 'CA native',
+      'field'    : 'nativity',
       'native'   : '#2ca25f',
       'exotic'   : '#fff7bc',
       'default'  : '#bdbdbd'
