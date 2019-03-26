@@ -8,3 +8,5 @@ jobs:
       - checkout
       - run: sudo npm install -g surge
       - run: surge --project ./public --domain public-tree-map.surge.sh
+    only:
+      - master
