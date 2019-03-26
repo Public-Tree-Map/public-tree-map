@@ -6,8 +6,8 @@ var app = this.app || {};
     'nativity': {
       'generated': false,
       'field'    : 'nativity',
-      'native'   : '#2ca25f',
-      'exotic'   : '#fff7bc',
+      'native'   : '#40AD75',
+      'exotic'   : '#feb24c',
       'default'  : '#bdbdbd'
     },
     'name_common': {
