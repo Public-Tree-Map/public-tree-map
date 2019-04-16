@@ -36,7 +36,6 @@ var app = this.app || {};
     this.diameter.innerText               = buildDiameterText(tree.diameter_min_in, tree.diameter_max_in);
     this.shadeProduction.innerText        = tree.shade_production;
     this.irrigationRequirements.innerText = tree.irrigation_requirements;
-    this.form.innerText                   = tree.form;
     this.type.innerText                   = tree.type;
     this.iucnStatus.innerText             = tree.iucn_status;
     this.ipcRating.innerText              = tree.ipc_rating;
