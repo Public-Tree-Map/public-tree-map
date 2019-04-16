@@ -40,20 +40,6 @@ var app = this.app || {};
       'dense'          : '#365BB7',
       'default'        : '#000000'
     },
-    'iucn_status': {
-      'generated'                        : false,
-      'field'                            : 'iucn_status',
-      'Critically Endangered'            : '#33111B',
-      'Endangered'                       : '#5B0020',
-      'Vulnerable'                       : '#7D0027',
-      'Near Threatened'                  : '#B90022',
-      'Lower Risk/conservation dependent': '#DF0007',
-      'Lower Risk/near threatened'       : '#C4C4C4',
-      'Least Concern'                    : '##FC7700',
-      'Data Deficient'                   : '#FDA942',
-      'not listed'                       : '#FFFFFF',
-      'default'                          : '#000000'
-    },
     'height_min_ft': {
       'generated': false,
       'field'    : 'height_min_ft',
