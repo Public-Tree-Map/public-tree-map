@@ -14,7 +14,6 @@ var app = this.app || {};
     this.diameter               = document.getElementById('sidebar-diameter');
     this.shadeProduction        = document.getElementById('sidebar-shade-production');
     this.irrigationRequirements = document.getElementById('sidebar-irrigation-requirements');
-    this.form                   = document.getElementById('sidebar-form');
     this.type                   = document.getElementById('sidebar-type');
     this.iucnStatus             = document.getElementById('sidebar-iucn-status');
     this.ipcRating              = document.getElementById('sidebar-ipc-rating');
