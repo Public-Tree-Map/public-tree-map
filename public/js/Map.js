@@ -8,10 +8,11 @@ var app = this.app || {};
     this.sidebar = sidebar;
     this.markers = [];
     this.trees   = [];
+    this.zoom = 14;
 
     var map = L.map('map', {
       center: [34.02, -118.48],
-      zoom: 14,
+      zoom: this.zoom,
       layers: [
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -22,21 +23,36 @@ var app = this.app || {};
     });
 
     map.on('zoomend', (function() {
-      onZoomChanged.call(this, map.getZoom());
+      this.zoom = map.getZoom();
+      onZoomChanged.call(this, this.zoom);
     }).bind(this));
 
     this.markers = L.layerGroup().addTo(map);
   }
 
+  Map.prototype.setFilter = function(filter) {
+    this.filter = filter;
+    this.redraw();
+  }
+
   Map.prototype.setTrees = function(trees, palette) {
     this.trees = trees;
+    this.palette = palette;
+    this.redraw();
+  }
+
+  Map.prototype.redraw = function() {
+    var trees = this.trees;
+    var palette = this.palette;
+    var filter = this.filter || ((x) => x);
+    var radius = Math.max(1, this.zoom - 13);
 
     this.markers.clearLayers();
 
-    this.trees.forEach((function(tree) {
+    this.trees.filter(filter).forEach((function(tree) {
       var marker = L.circleMarker([tree.latitude, tree.longitude], {
         renderer: RENDERER,
-        radius: 1,
+        radius,
         stroke: false,
         fillOpacity: 1.0,
         fillColor: getFillColor(tree, palette)

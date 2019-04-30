@@ -16,8 +16,8 @@ html, body {
 
 #toolbar {
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  flex-direction: row;
+  align-items: center;
   margin: 8px;
   pointer-events: initial;
 }
@@ -28,7 +28,6 @@ html, body {
   display: flex;
   flex-direction: row;
   height: auto;
-  margin-bottom: 8px;
   padding: 8px;
   width: 100%;
 }
@@ -145,6 +144,10 @@ html, body {
 
 .shadow {
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+}
+
+select.shadow {
+  margin: 8px;
 }
 
 .hidden {
