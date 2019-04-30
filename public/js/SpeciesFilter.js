@@ -7,6 +7,18 @@ var app = this.app || {};
   function SpeciesFilter(map) {
     this.map = map;
 
+    // Set the "All Species" and spacer options in the dropdown
+    var all = document.createElement('option')
+    all.value = 'all';
+    all.text = 'All Species';
+    var spacer = document.createElement('option')
+    spacer.text = '------------------------------';
+    spacer.disabled = true;
+
+    filter.appendChild(all);
+    filter.appendChild(spacer);
+
+    // Set up the change listener for the dropdown
     filter.addEventListener('change', (function(e) {
       var value = e.target.value;
       if (value === 'all') {
@@ -18,16 +30,8 @@ var app = this.app || {};
   }
 
   SpeciesFilter.prototype.setSpecies = function(species) {
+    // Setup the species dropdown.
     this.species = Array.from(species).filter(s => s !== 'Vacant Site').sort();
-    var all = document.createElement('option')
-    all.value = 'all';
-    all.text = 'All Species';
-    var spacer = document.createElement('option')
-    spacer.text = '------------------------------';
-    spacer.disabled = true;
-
-    filter.appendChild(all);
-    filter.appendChild(spacer);
 
     this.species.forEach(s => {
       var option = document.createElement('option');
