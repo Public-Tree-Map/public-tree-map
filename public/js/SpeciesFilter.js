@@ -8,12 +8,26 @@ var app = this.app || {};
     this.map = map;
 
     filter.addEventListener('change', (function(e) {
-      map.setFilter(x => x['name_common'] === e.target.value);
+      var value = e.target.value;
+      if (value === 'all') {
+        map.setFilter(undefined);
+      } else {
+        map.setFilter(x => x['name_common'] === e.target.value);
+      }
     }).bind(this));
   }
 
   SpeciesFilter.prototype.setSpecies = function(species) {
     this.species = Array.from(species).filter(s => s !== 'Vacant Site').sort();
+    var all = document.createElement('option')
+    all.value = 'all';
+    all.text = 'All Species';
+    var spacer = document.createElement('option')
+    spacer.text = '------------------------------';
+    spacer.disabled = true;
+
+    filter.appendChild(all);
+    filter.appendChild(spacer);
 
     this.species.forEach(s => {
       var option = document.createElement('option');
