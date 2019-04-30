@@ -15,9 +15,9 @@ html, body {
 }
 
 #toolbar {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin: 8px;
   pointer-events: initial;
 }

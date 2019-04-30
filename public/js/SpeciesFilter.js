@@ -10,9 +10,10 @@ var app = this.app || {};
     // Set the "All Species" and spacer options in the dropdown
     var all = document.createElement('option')
     all.value = 'all';
-    all.text = 'All Species';
+    all.text  = 'All Species';
+
     var spacer = document.createElement('option')
-    spacer.text = '------------------------------';
+    spacer.text     = '------------------------------';
     spacer.disabled = true;
 
     filter.appendChild(all);
@@ -35,7 +36,7 @@ var app = this.app || {};
 
     this.species.forEach(s => {
       var option = document.createElement('option');
-      option.text = s;
+      option.text  = s;
       option.value = s;
       filter.appendChild(option);
     });

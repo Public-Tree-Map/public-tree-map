@@ -8,7 +8,7 @@ var app = this.app || {};
     this.sidebar = sidebar;
     this.markers = [];
     this.trees   = [];
-    this.zoom = 14;
+    this.zoom    = 14;
 
     var map = L.map('map', {
       center: [34.02, -118.48],
@@ -36,16 +36,16 @@ var app = this.app || {};
   }
 
   Map.prototype.setTrees = function(trees, palette) {
-    this.trees = trees;
+    this.trees   = trees;
     this.palette = palette;
     this.redraw();
   }
 
   Map.prototype.redraw = function() {
-    var trees = this.trees;
+    var trees   = this.trees;
     var palette = this.palette;
-    var filter = this.filter || ((x) => x);
-    var radius = Math.max(1, this.zoom - 13);
+    var filter  = this.filter || ((x) => x);
+    var radius  = Math.max(1, this.zoom - 13);
 
     this.markers.clearLayers();
 
