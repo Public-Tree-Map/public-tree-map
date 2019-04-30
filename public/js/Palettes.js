@@ -49,7 +49,7 @@ var app = this.app || {};
       'Near Threatened'                  : '#B90022',
       'Lower Risk/conservation dependent': '#DF0007',
       'Lower Risk/near threatened'       : '#C4C4C4',
-      'Least Concern'                    : '##FC7700',
+      'Least Concern'                    : '#FC7700',
       'Data Deficient'                   : '#FDA942',
       'not listed'                       : '#FFFFFF',
       'default'                          : '#000000'
