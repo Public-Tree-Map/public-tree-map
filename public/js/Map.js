@@ -28,12 +28,25 @@ var app = this.app || {};
     this.markers = L.layerGroup().addTo(map);
   }
 
+  Map.prototype.setFilter = function(filter) {
+    this.filter = filter;
+    this.redraw();
+  }
+
   Map.prototype.setTrees = function(trees, palette) {
     this.trees = trees;
+    this.palette = palette;
+    this.redraw();
+  }
+
+  Map.prototype.redraw = function() {
+    var trees = this.trees;
+    var palette = this.palette;
+    var filter = this.filter || ((x) => x);
 
     this.markers.clearLayers();
 
-    this.trees.forEach((function(tree) {
+    this.trees.filter(filter).forEach((function(tree) {
       var marker = L.circleMarker([tree.latitude, tree.longitude], {
         renderer: RENDERER,
         radius: 1,

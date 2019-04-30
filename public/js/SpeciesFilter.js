@@ -8,7 +8,7 @@ var app = this.app || {};
     this.map = map;
 
     filter.addEventListener('change', (function(e) {
-      console.log(e.target.value);
+      map.setFilter(x => x['name_common'] === e.target.value);
     }).bind(this));
   }
 
@@ -17,9 +17,8 @@ var app = this.app || {};
 
     this.species.forEach(s => {
       var option = document.createElement('option');
-      option.label = s;
       option.text = s;
-      option.value = s.replace(' ', '-').toLowerCase();
+      option.value = s;
       filter.appendChild(option);
     });
   }
