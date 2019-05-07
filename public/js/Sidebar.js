@@ -3,7 +3,6 @@ var app = this.app || {};
 (function(module) {
 
   function Sidebar() {
-    debugger;
     this.defaultScreen          = document.getElementById('sidebar-default');
     this.treeContainer          = document.getElementById('sidebar-tree');
     this.image                  = document.getElementById('sidebar-image');
