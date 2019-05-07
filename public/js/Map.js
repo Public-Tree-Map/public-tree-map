@@ -66,7 +66,13 @@ var app = this.app || {};
         this.closePopup();
       });
       marker.on('click', (function(e) {
-        this.sidebar.setTree(tree);
+        var that = this;
+        fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
+          .then(function(response) {
+            return response.json().then(function(jsonTree) {
+              that.sidebar.setTree(jsonTree);
+            });
+          });
       }).bind(this));
 
       marker.addTo(this.markers)
