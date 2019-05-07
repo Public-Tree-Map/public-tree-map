@@ -3,6 +3,7 @@ var app = this.app || {};
 (function(module) {
 
   function Sidebar() {
+    debugger;
     this.defaultScreen          = document.getElementById('sidebar-default');
     this.treeContainer          = document.getElementById('sidebar-tree');
     this.image                  = document.getElementById('sidebar-image');
@@ -17,6 +18,11 @@ var app = this.app || {};
     this.type                   = document.getElementById('sidebar-type');
     this.iucnStatus             = document.getElementById('sidebar-iucn-status');
     this.ipcRating              = document.getElementById('sidebar-ipc-rating');
+    this.treeFamily             = document.getElementById('sidebar-tree-family');
+    this.pruningYear            = document.getElementById('sidebar-pruning-year');
+    this.pruningZone            = document.getElementById('sidebar-pruning-zone');
+    this.replacementSpecies     = document.getElementById('sidebar-replacement-species');
+    this.streetSegment          = document.getElementById('sidebar-street-segment');
     this.closeButton            = document.getElementById('sidebar-close-button');
   }
 
@@ -39,6 +45,11 @@ var app = this.app || {};
     this.type.innerText                   = tree.type;
     this.iucnStatus.innerText             = tree.iucn_status;
     this.ipcRating.innerText              = tree.ipc_rating;
+    this.treeFamily.innerText             = tree.family_name_botanical;
+    this.pruningYear.innerText            = tree.pruning_year;
+    this.pruningZone.innerText            = tree.pruning_zone;
+    this.replacementSpecies.innerText     = tree.replacement_species;
+    this.streetSegment.innerText          = tree.segment;
 
     if (tree.images && tree.images.length > 0) {
       this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';

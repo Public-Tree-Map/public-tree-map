@@ -23,6 +23,7 @@ var app = this.app || {};
   }
 
   function setData(trees) {
+    debugger;
     _map.setTrees(trees, module.palettes['name_common']);
     species = trees.reduce((acc, val) => acc.add(val['name_common']), new Set());
     _speciesFilter.setSpecies(species);
