@@ -23,7 +23,7 @@ var app = this.app || {};
   }
 
   function setData(trees) {
-    _map.setTrees(trees, module.palettes['name_common']);
+    _map.setTrees(trees, module.palettes['nativity']);
     species = trees.reduce((acc, val) => acc.add(val['name_common']), new Set());
     _speciesFilter.setSpecies(species);
     document.getElementById('loading').classList.add('hidden');
