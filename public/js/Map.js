@@ -100,7 +100,7 @@ var app = this.app || {};
     }
 
     if (palette[tree[palette.field]]) {
-      return palette[tree[palette.field]];
+      return palette[tree[palette.field]].color;
     } else {
       return palette['default'];
     }

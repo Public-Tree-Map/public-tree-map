@@ -5,11 +5,13 @@ var app = this.app || {};
   var _map;
   var _colorFilter;
   var _speciesFilter;
+  var _legend;
 
   function init() {
-    _sidebar     = new module.Sidebar();
-    _map         = new module.Map(_sidebar);
-    _colorFilter = new module.ColorFilter(_map);
+    _sidebar       = new module.Sidebar();
+    _map           = new module.Map(_sidebar);
+    _legend        = new module.Legend();
+    _colorFilter   = new module.ColorFilter(_map, _legend);
     _speciesFilter = new module.SpeciesFilter(_map);
 
     _sidebar.showDefault();
