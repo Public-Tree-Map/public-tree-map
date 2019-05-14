@@ -80,6 +80,7 @@ var app = this.app || {};
   }
 
   Map.prototype.setPalette = function(palette) {
+    this.palette = palette;
     this.markers.eachLayer(function(marker) {
       marker.setStyle({
         fillColor: getFillColor(marker.tree, palette)
