@@ -8,7 +8,7 @@ var app = this.app || {};
     this.sidebar = sidebar;
     this.markers = [];
     this.trees   = [];
-    this.zoom    = 14.6;
+    this.zoom    = 14.2;
 
     var map = L.map('map', {
       center: [34.015544, -118.476918],
