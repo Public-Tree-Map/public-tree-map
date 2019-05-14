@@ -11,7 +11,7 @@ var app = this.app || {};
     this.zoom    = 14.2;
 
     var map = L.map('map', {
-      center: [34.015544, -118.476918],
+      center: [34.0235, -118.4804],
       zoom: this.zoom,
       layers: [
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
