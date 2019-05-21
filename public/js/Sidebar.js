@@ -68,9 +68,9 @@ var app = this.app || {};
 
   function buildNativityText(nativity) {
     if ("native" === nativity.toLowerCase()) {
-      return "Native to California";
+      return "This tree is native to California";
     } else if ("exotic" === nativity.toLowerCase()) {
-      return "Not native to California";
+      return "This tree isn't native to California";
     } else {
       return "Unknown";
     }
