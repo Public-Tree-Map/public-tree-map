@@ -5,19 +5,19 @@ var app = this.app || {};
     var selectFilter = $('#species-filter');
 
     function SpeciesSearch(map) {
-        this.selected = [];
+        this.selected = new Set();
         var realThis = this;
         selectFilter.on(
             "select2:select",
             function (e) {
-                realThis.selected.push(e.params.data.commonName);
+                realThis.selected.add(e.params.data.commonName);
                 map.setFilter(realThis.selected);
             }
         );
         selectFilter.on(
             "select2:unselect",
             function (e) {
-                realThis.selected = realThis.selected.filter(commonName => commonName !== e.params.data.commonName);
+                realThis.selected.delete(e.params.data.commonName);
                 map.setFilter(realThis.selected);
             }
         );

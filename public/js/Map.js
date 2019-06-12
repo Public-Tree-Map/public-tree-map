@@ -9,7 +9,7 @@ var app = this.app || {};
     this.markers = [];
     this.trees   = [];
     this.zoom    = 14.2;
-    this.selected = [];
+    this.selected = new Set();
 
     var map = L.map('map', {
       center: [34.0215, -118.467],
@@ -50,8 +50,8 @@ var app = this.app || {};
     var filter;
 
     this.markers.clearLayers();
-    if (selectedCommonNames.length > 0){
-      filter = tree => selectedCommonNames.includes(tree['name_common']);
+    if (selectedCommonNames.size > 0){
+      filter = tree => selectedCommonNames.has(tree['name_common']);
     }
     else {
       filter = tree => tree;
