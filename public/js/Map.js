@@ -9,6 +9,7 @@ var app = this.app || {};
     this.markers = [];
     this.trees   = [];
     this.zoom    = 14.2;
+    this.selected = [];
 
     var map = L.map('map', {
       center: [34.0215, -118.467],
@@ -30,8 +31,8 @@ var app = this.app || {};
     this.markers = L.layerGroup().addTo(map);
   }
 
-  Map.prototype.setFilter = function(filter) {
-    this.filter = filter;
+  Map.prototype.setFilter = function(selections) {
+    this.selected = selections;
     this.redraw();
   }
 
@@ -44,11 +45,17 @@ var app = this.app || {};
   Map.prototype.redraw = function() {
     var trees   = this.trees;
     var palette = this.palette;
-    var filter  = this.filter || ((x) => x);
+    var selectedCommonNames = this.selected;
     var radius  = Math.max(1, this.zoom - 13);
+    var filter;
 
     this.markers.clearLayers();
-
+    if (selectedCommonNames.length > 0){
+      filter = tree => selectedCommonNames.includes(tree['name_common']);
+    }
+    else {
+      filter = tree => tree;
+    }
     this.trees.filter(filter).forEach((function(tree) {
       var marker = L.circleMarker([tree.latitude, tree.longitude], {
         renderer: RENDERER,

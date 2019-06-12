@@ -4,15 +4,15 @@ var app = this.app || {};
   var _sidebar;
   var _map;
   var _colorFilter;
-  var _speciesFilter;
   var _legend;
+  var _speciesSearch;
 
   function init() {
     _sidebar       = new module.Sidebar();
     _map           = new module.Map(_sidebar);
     _legend        = new module.Legend();
     _colorFilter   = new module.ColorFilter(_map, _legend);
-    _speciesFilter = new module.SpeciesFilter(_map);
+    _speciesSearch = new module.SpeciesSearch(_map);
 
     _sidebar.showDefault();
 
@@ -27,7 +27,7 @@ var app = this.app || {};
   function setData(trees) {
     _map.setTrees(trees, module.palettes['nativity']);
     species = trees.reduce((acc, val) => acc.add(val['name_common']), new Set());
-    _speciesFilter.setSpecies(species);
+    _speciesSearch.setSpecies(_speciesSearch.selectFormatter(trees));
     document.getElementById('loading').classList.add('hidden');
   }
 
