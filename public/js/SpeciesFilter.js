@@ -1,16 +1,15 @@
 var app = this.app || {};
 
 (function(module) {
-
     var selectFilter = $('#species-filter');
 
-    function SpeciesSearch(map) {
+    function SpeciesFilter(map) {
         this.selected = new Set();
         var realThis = this;
         selectFilter.on(
             "select2:select",
-            function (e) {
-                realThis.selected.add(e.params.data.commonName);
+            function (event) {
+                realThis.selected.add(event.params.data.commonName);
                 map.setFilter(realThis.selected);
             }
         );
@@ -47,11 +46,15 @@ var app = this.app || {};
         return hashmap;
     }
 
-    function treeToStr(tree){
-        return tree.commonName.concat([' (', tree.botanicalName, ')'].join(''))
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    SpeciesSearch.prototype.selectFormatter = function(trees){
+    function treeToStr(tree){
+        return tree.commonName.concat([' (', tree.botanicalName, ')', ' - ', numberWithCommas(tree.count)].join(''))
+    }
+
+    SpeciesFilter.prototype.selectFormatter = function(trees){
         countedTrees = trees.reduce(counter, new Map());
         var countedTreesArray = Array.from(countedTrees).map(x => x[1]);
         return countedTreesArray.map(
@@ -59,7 +62,7 @@ var app = this.app || {};
         );
     };
 
-    function treeCompare(treeA, treeB){
+    function treeCompareAlpha(treeA, treeB){
         if (treeA.text > treeB.text){
             return 1
         }
@@ -69,21 +72,15 @@ var app = this.app || {};
         return -1
     }
 
-    SpeciesSearch.prototype.setSpecies = function(species) {
-        this.species = Array.from(species).filter(s => s !== 'Vacant Site').sort(treeCompare);
+    SpeciesFilter.prototype.setSpecies = function(species) {
+        this.species = Array.from(species).sort(treeCompareAlpha);
         selectFilter.select2({
-            placeholder: 'Filter species',
+            placeholder: 'Filter trees',
             data: this.species
         })
-        // this.species.forEach(s => {
-        //     var option = document.createElement('option');
-        //     option.text  = s;
-        //     option.value = s;
-        //     filter.appendChild(option);
-        // });
     };
 
     // Exports
-    module.SpeciesSearch = SpeciesSearch;
+    module.SpeciesFilter = SpeciesFilter;
 
 })(app);
