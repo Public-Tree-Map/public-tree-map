@@ -13,8 +13,6 @@ var app = this.app || {};
 
   /** Invoked with an object that contains data that can be used to render a legend */
   Legend.prototype.setLegend = function(legend) {
-    console.log(legend);
-
     // TODO: Render legend
   }
 

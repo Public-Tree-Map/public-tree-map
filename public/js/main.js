@@ -4,8 +4,8 @@ var app = this.app || {};
   var _sidebar;
   var _map;
   var _colorFilter;
-  var _speciesFilter;
   var _legend;
+  var _speciesFilter;
 
   function init() {
     _sidebar       = new module.Sidebar();
@@ -26,8 +26,7 @@ var app = this.app || {};
 
   function setData(trees) {
     _map.setTrees(trees, module.palettes['nativity']);
-    species = trees.reduce((acc, val) => acc.add(val['name_common']), new Set());
-    _speciesFilter.setSpecies(species);
+    _speciesFilter.setSpecies(_speciesFilter.selectFormatter(trees));
     document.getElementById('loading').classList.add('hidden');
   }
 
