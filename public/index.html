@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+  <style>
+  </style>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,10 +24,13 @@
     <title>Public Tree Map</title>
   </head>
   <body>
+
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    
 
+    </div>
     <!-- Loading Popup -->
     <div id="loading">
       <div class="rounded-box shadow">
@@ -33,6 +38,63 @@
       </div>
     </div>
 
+    <div id="ReportForm">
+        <div class="rounded-box shadow" style="align-content:center">
+          <button type="button" class="exitButton"  onclick="closeForm()">
+            X
+          </button>
+            <center style='font-size: larger'>
+                Report
+            </center>
+          <table style="width:100%">
+                <tr>
+                  <td>Issue:</td>
+                  
+                  <td>
+                    <div>
+                    <select name="Options" style="width:100%" id="IssueOptions">
+                      <option value="Inspection">Inspection</option>
+                      <option value="Planting and Young Tree Care">Planting and Young Tree Care</option>
+                      <option value="Trimming">Trimming</option>
+                    </select>
+                  </div>
+                </tr>
+                <tr>
+                  <td>Description:</td>
+                  <td>
+                  <div>
+                      <input type="text" style="width:100%" id="ReportDescription">
+                  </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Name:(Optional)</td>
+                  <td>
+                  <div>
+                      <input type="text" style="width:100%" id="ReportName">
+                  </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Email:(Optional)</td>
+                  <td>
+                  <div>
+                      <input type="text" style="width:100%" id="Email">
+                  </div>
+                  </td>
+                </tr>
+                
+          </table>
+          <th style="align-items:center">
+              <div style="text-align:center">
+                  <Button type="submit" class="SubmitButton" onclick="report()">
+                      Submit
+                  </Button>
+              </div>
+            </th>
+        </div>
+
+      </div>
     <div id="hud">
 
       <!-- Toolbar -->
@@ -53,7 +115,7 @@
         <select id="species-filter" name="state" multiple="multiple">
         </select>
       </div>
-
+      
       <!-- Sidebar -->
       <div id="sidebar" class="rounded-box shadow">
         <div class="banner">Santa Monica Public Tree Map</div>
@@ -114,6 +176,12 @@
                 <td>Street Segment:</td>
                 <td id="sidebar-street-segment"></td>
               </tr>
+              <tr>
+                <td>Report:</td>
+                <td>
+                <button type="button" class="ReportButton" onclick="reportButton()">Report </button>
+                </td>
+              </tr>
             </table>
           </div>
         </div>
@@ -141,6 +209,7 @@
     <script src="js/SpeciesFilter.js" type="text/javascript"></script>
     <script src="js/Legend.js" type="text/javascript"></script>
     <script src="js/Palettes.js" type="text/javascript"></script>
+    <script src="js/ReportButton.js" type="text/javascript"></script>
 
     <script type="text/javascript">app.init()</script>
   </body>
