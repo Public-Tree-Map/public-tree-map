@@ -14,6 +14,7 @@ var app = this.app || {};
     var map = L.map('map', {
       center: [34.0215, -118.467],
       zoom: this.zoom,
+      zoomControl: false,
       layers: [
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -22,6 +23,8 @@ var app = this.app || {};
         })
       ]
     });
+
+    L.control.zoom({position: 'bottomleft'}).addTo(map)
 
     map.on('zoomend', (function() {
       this.zoom = map.getZoom();

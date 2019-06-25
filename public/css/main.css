@@ -154,10 +154,6 @@ select.shadow {
   display: none !important;
 }
 
-.leaflet-control-zoom {
-  display: none;
-}
-
 .banner {
   background-color: #41ae76;
   color: #fff;
