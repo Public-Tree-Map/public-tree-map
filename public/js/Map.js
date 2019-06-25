@@ -24,7 +24,7 @@ var app = this.app || {};
       ]
     });
 
-    L.control.zoom({position: 'bottomleft'}).addTo(map)
+    L.control.zoom({position: 'bottomleft'}).addTo(map);
 
     map.on('zoomend', (function() {
       this.zoom = map.getZoom();
