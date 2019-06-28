@@ -63,17 +63,6 @@ var app = this.app || {};
       '45'       : { 'color': '#3E83BF', 'title': '45 ft' },
       '60'       : { 'color': '#2E5C85', 'title': '60 ft' },
       'default'  : '#000000'
-    },
-    'diameter_min_in': {
-      'generated': false,
-      'field'    : 'diameter_min_in',
-      '0'        : { 'color': '#8EDD65', 'title': '0 in' },
-      '7'        : { 'color': '#26D07C', 'title': '7 in' },
-      '13'       : { 'color': '#52A106', 'title': '13 in' },
-      '19'       : { 'color': '#19754B', 'title': '19 in' },
-      '25'       : { 'color': '#146067', 'title': '25 in' },
-      '31'       : { 'color': '#0C3E43', 'title': '31 in' },
-      'default'  : '#000000'
     }
   }
 })(app);
