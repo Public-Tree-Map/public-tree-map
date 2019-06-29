@@ -10,8 +10,8 @@ var app = this.app || {};
     this.trees   = [];
     this.zoom    = 14.2;
     this.selected = new Set();
-
-    var map = L.map('map', {
+    
+    this.leafletMap = L.map('map', {
       center: [34.0215, -118.467],
       zoom: this.zoom,
       zoomControl: false,
@@ -24,14 +24,14 @@ var app = this.app || {};
       ]
     });
 
-    L.control.zoom({position: 'bottomleft'}).addTo(map);
+    L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
 
-    map.on('zoomend', (function() {
-      this.zoom = map.getZoom();
+    this.leafletMap.on('zoomend', (function() {
+      this.zoom = this.leafletMap.getZoom();
       onZoomChanged.call(this, this.zoom);
     }).bind(this));
 
-    this.markers = L.layerGroup().addTo(map);
+    this.markers = L.layerGroup().addTo(this.leafletMap);
   }
 
   Map.prototype.setFilter = function(selections) {
@@ -83,6 +83,12 @@ var app = this.app || {};
               that.sidebar.setTree(jsonTree);
             });
           });
+
+
+        var markerLocation = marker.getLatLng();
+        var newViewLocation = {lat: markerLocation['lat'], lng: markerLocation['lng']};
+        newViewLocation['lng'] = newViewLocation['lng'] + 0.0005
+        this.leafletMap.setView(newViewLocation, 18, {animate: true})
       }).bind(this));
 
       marker.addTo(this.markers)
