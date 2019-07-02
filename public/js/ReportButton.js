@@ -10,11 +10,11 @@ function closeForm() {
 function report() {
   document.getElementById('ReportForm').style.visibility="hidden"
  var obj = {
-  "classificationId":"30642",
-  "locationCoord":"-118.474392, 34.012764",
-  "location":"1325 pearl street, Santa Monica",
-  "treeIssue": "testISSUEEE",
-  "description": "This is a test",
+  classificationId:"30642",
+  locationCoord:"-118.474392, 34.012764",
+  location:"1325 pearl street, Santa Monica",
+  treeIssue: "testISSUEEE",
+  description: "This is a test",
 //  "firstName":"Ben",
 //  "lastName": "S",
 //  "email":"Sbenjamin@gmail.com",
@@ -30,6 +30,7 @@ postData(url="https://user.govoutreach.com/santamonica/support.php?cmd=newcase",
 
 function postData(url = '', data = {}) {
   // Default options are marked with *
+    
     return fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, cors, *same-origin
@@ -43,7 +44,10 @@ function postData(url = '', data = {}) {
         referrer: 'no-referrer', // no-referrer, *client
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
-    .then(response => response.json()); // parses JSON response into native Javascript objects 
+    .then(response => response.json()).catch(
+      
+      
+    ); // parses JSON response into native Javascript objects 
 }
 
 // function submitForm(){

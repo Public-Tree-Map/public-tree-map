@@ -261,13 +261,13 @@ select.shadow {
     background-color: green;
     border: none;
     color: white;
-    padding: 5px 140px;
+    padding: 5px 30px;
     text-align: center;
     text-decoration: none;
     display: block;
     float: center;
     font-size: 15px;
-    margin: 4px 4px 4px 4px;
+    margin: auto;
     cursor: pointer;
     text-align: center;
     align-content: center;
