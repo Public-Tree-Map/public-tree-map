@@ -11,9 +11,9 @@ function report() {
   document.getElementById('ReportForm').style.visibility="hidden"
  var obj = {
   classificationId:"30642",
-  locationCoord:"-118.474392, 34.012764",
+  locationCoord:"34.012764, -118.474392",
   location:"1325 pearl street, Santa Monica",
-  treeIssue: "testISSUEEE",
+  treeIssue: "Inspection",
   description: "This is a test",
 //  "firstName":"Ben",
 //  "lastName": "S",
@@ -33,19 +33,21 @@ function postData(url = '', data = {}) {
     
     return fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, cors, *same-origin
+        mode: 'no-cors', // no-cors, cors, *same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
+        //credentials: 'same-origin',
+        Origin: "https://app.govoutreach.com", // include,, *same-origin, omit
         headers: {
+         // Origin:"https://app.govoutreach.com"
+          //"Origin":"
             'Content-Type': 'application/json',
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         redirect: 'follow', // manual, *follow, error
         referrer: 'no-referrer', // no-referrer, *client
         body: JSON.stringify(data), // body data type must match "Content-Type" header
-    })
-    .then(response => response.json()).catch(
-      
+    }).then(response => response.json()).catch(
+       print()
       
     ); // parses JSON response into native Javascript objects 
 }
