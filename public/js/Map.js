@@ -7,10 +7,11 @@ var app = this.app || {};
   function Map(sidebar) {
     this.sidebar = sidebar;
     this.markers = [];
+    this.highlightedMarker = null;
     this.trees   = [];
     this.zoom    = 14.2;
     this.selected = new Set();
-    
+
     this.leafletMap = L.map('map', {
       center: [34.0215, -118.467],
       zoom: this.zoom,
@@ -75,7 +76,7 @@ var app = this.app || {};
       marker.on('mouseout', function (e) {
         this.closePopup();
       });
-      marker.on('click', (function(e) {
+      marker.on('click', (function(leafletEvent) {
         var that = this;
         fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
           .then(function(response) {
@@ -84,11 +85,17 @@ var app = this.app || {};
             });
           });
 
-
         var markerLocation = marker.getLatLng();
         var newViewLocation = {lat: markerLocation['lat'], lng: markerLocation['lng']};
-        newViewLocation['lng'] = newViewLocation['lng'] + 0.0005
-        this.leafletMap.setView(newViewLocation, 18, {animate: true})
+        newViewLocation['lng'] = newViewLocation['lng'] + 0.0005;
+        this.leafletMap.setView(newViewLocation, 18, {animate: true});
+
+        if (this.highlightedMarker) { // if one exists, undo its enlargement before enlarging another
+          changeCircleMarker(this.highlightedMarker, 'shrink');
+        }
+
+        this.highlightedMarker = leafletEvent.target;
+        changeCircleMarker(this.highlightedMarker, 'enlarge');
       }).bind(this));
 
       marker.addTo(this.markers)
@@ -108,6 +115,22 @@ var app = this.app || {};
     this.markers.eachLayer(function(marker) {
       marker.setRadius(Math.max(1, zoom - 13));
     });
+    if (this.highlightedMarker) {
+      changeCircleMarker(this.highlightedMarker, 'enlarge');
+    }
+  }
+
+  function changeCircleMarker (marker, action) {
+    var currentRadius = marker.options.radius;
+    if (action === 'shrink') {
+      marker.setStyle({
+        radius: currentRadius / 2
+      });
+    } else {
+      marker.setStyle({
+        radius: currentRadius * 2
+      });
+    }
   }
 
   function getFillColor(tree, palette) {
