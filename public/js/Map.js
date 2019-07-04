@@ -68,7 +68,7 @@ var app = this.app || {};
         fillColor: getFillColor(tree, palette)
       });
       marker.tree = tree;
-      marker.bindPopup(tree.name_common);
+      marker.bindPopup(tree.name_common, {closeButton: false});
       marker.on('mouseover', function (e) {
           this.openPopup();
       });
