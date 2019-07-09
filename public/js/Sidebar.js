@@ -6,6 +6,7 @@ var app = this.app || {};
     this.defaultScreen          = document.getElementById('sidebar-default');
     this.treeContainer          = document.getElementById('sidebar-tree');
     this.image                  = document.getElementById('sidebar-image');
+    this.imageAuthor            = document.getElementById('sidebar-image-author');
     this.commonName             = document.getElementById('sidebar-common-name');
     this.botanicalName          = document.getElementById('sidebar-botanical-name');
     this.treeId                 = document.getElementById('sidebar-tree-id');
@@ -56,9 +57,13 @@ var app = this.app || {};
     if (tree.images && tree.images.length > 0) {
       this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
       this.image.classList.remove('hidden');
+      this.imageAuthor.innerText = tree.images[0].author.name;
+      this.imageAuthor.classList.remove('hidden');
     } else {
       this.image.style.backgroundImage = '';
       this.image.classList.add('hidden');
+      this.imageAuthor.innerText = '';
+      this.imageAuthor.classList.add('hidden');
     }
 
     this.closeButton.onclick = this.showDefault.bind(this);
