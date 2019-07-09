@@ -73,6 +73,12 @@ html, body {
   width: 100%;
 }
 
+#sidebar-image-author {
+  background-color: black;
+  opacity: 5%;
+  color: #fff
+}
+
 #sidebar-content h1 {
   color: #777;
   font-size: 27px;
