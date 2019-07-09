@@ -46,6 +46,7 @@ html, body {
 }
 
 #sidebar {
+
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -54,6 +55,13 @@ html, body {
   overflow: hidden;
   padding: 0px;
   pointer-events: initial;
+}
+
+#sidebar-default {
+  padding: 0px 20px 0px 20px;
+}
+#Explore-Urban-Forest {
+  text-align: center;
 }
 
 #sidebar-content {
@@ -161,6 +169,7 @@ select.shadow {
   line-height: 1;
   padding: 18px 18px 25px 20px;
   text-align: center;
+  display: flex;
 }
 
 @media only screen and (max-width: 600px) {
@@ -202,4 +211,13 @@ select.shadow {
   #sidebar-image {
     min-height: 250px;
   }
+
+}
+
+#logo {
+  margin: auto 20px;
+}
+
+#banner-title {
+  margin-top: 3px;
 }
