@@ -178,6 +178,12 @@ select.shadow {
   #sidebar-image {
     min-height: 50px;
   }
+  
+  #sidebar-image-author {
+    position: absolute;
+    bottom: 4px;
+    left: 8px;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -201,5 +207,11 @@ select.shadow {
 
   #sidebar-image {
     min-height: 250px;
+  }
+  
+  #sidebar-image-author {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
   }
 }
