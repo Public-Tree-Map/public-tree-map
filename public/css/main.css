@@ -74,8 +74,10 @@ html, body {
 }
 
 #sidebar-image-author {
-  background-color: black;
-  opacity: 5%;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  opacity: 95%;
+  width: 100%;
   color: #fff
 }
 
@@ -188,7 +190,7 @@ select.shadow {
   #sidebar-image-author {
     position: absolute;
     bottom: 4px;
-    left: 8px;
+    text-indent: 1em;
   }
 }
 
@@ -218,6 +220,6 @@ select.shadow {
   #sidebar-image-author {
     position: absolute;
     bottom: 8px;
-    left: 16px;
+    text-indent: 1em;
   }
 }
