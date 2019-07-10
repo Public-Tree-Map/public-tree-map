@@ -33,6 +33,7 @@ var app = this.app || {};
     }
 
     this.treeContainer.classList.remove('hidden');
+    this.closeButton.classList.remove('hidden');
     this.defaultScreen.classList.add('hidden');
 
     this.commonName.innerText             = tree.name_common;
@@ -66,6 +67,7 @@ var app = this.app || {};
 
   Sidebar.prototype.showDefault = function() {
     this.treeContainer.classList.add('hidden');
+    this.closeButton.classList.add('hidden');
     this.defaultScreen.classList.remove('hidden');
   }
 

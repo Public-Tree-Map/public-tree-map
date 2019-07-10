@@ -25,7 +25,6 @@ var app = this.app || {};
           $(item).find(".legend-icon").css("background-color",legend[key].color);
           $(item).find(".legend-description").html(legend[key].title);
           $("#legend-container").append(item);
-          console.log("apeending!")
         };
       };
     });
