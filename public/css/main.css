@@ -46,19 +46,65 @@ html, body {
 }
 
 #sidebar {
-
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   margin: 16px;
-  margin-bottom: 32px;
   overflow: hidden;
   padding: 0px;
   pointer-events: initial;
+  height: calc(100% - 32px);
+  flex-basis: 400px;
+}
+
+#sidebar-info {
+  height: 100%;
+}
+
+#sidebar-legend {
+  height: 150px;
+  margin: 16px 0 0 0;
+  padding: 10px;
+}
+
+#legend-container {
+  height: 102px;
+  display: grid;
+  grid-template-rows: repeat(3, 34px);
+  grid-template-columns: repeat(3, 128px);
+  grid-auto-flow: column;
+}
+.legend-item {
+  display: flex;
+}
+.legend-icon {
+  height: 32px;
+  width: 32px;
+  background-color: #41ae76;
+  margin: 1px 0;
+  border-radius: 3px;
+}
+
+.legend-description {
+  width: 86px;
+  padding: 5px 5px 0 5px;
+  font-size: 12px;
+  line-height: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#legend-footer {
+  display: flex;
+  height: 20px;
+  margin: 10px 0 0 0;
+}
+
+#legend-title {
+  margin: 0 16px 0 0;
 }
 
 #sidebar-default {
-  padding: 0px 20px 0px 20px;
+  padding: 0 10px;
 }
 #Explore-Urban-Forest {
   text-align: center;
@@ -147,7 +193,6 @@ html, body {
   background: #fff;
   border: none;
   border-radius: 10px;
-  padding: 16px;
 }
 
 .shadow {
@@ -165,11 +210,24 @@ select.shadow {
 .banner {
   background-color: #41ae76;
   color: #fff;
-  font-size: 25px;
+  font-size: 24px;
   line-height: 1;
-  padding: 18px 18px 25px 20px;
+  padding: 10px 20px;
   text-align: center;
   display: flex;
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+  font-weight: 300;
+}
+
+#logo {
+  /* margin: auto 20px; */
+}
+
+#banner-title {
+  margin-top: 5px;
+  margin-right: 5px;
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -203,8 +261,6 @@ select.shadow {
   }
 
   #sidebar {
-    flex-basis: 440px;
-    height: calc(100% - 48px);
     position: relative;
   }
 
@@ -212,12 +268,4 @@ select.shadow {
     min-height: 250px;
   }
 
-}
-
-#logo {
-  margin: auto 20px;
-}
-
-#banner-title {
-  margin-top: 3px;
 }
