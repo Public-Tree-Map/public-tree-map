@@ -124,11 +124,17 @@ var app = this.app || {};
     var currentRadius = marker.options.radius;
     if (action === 'shrink') {
       marker.setStyle({
-        radius: currentRadius / 2
+        radius: currentRadius / 1.75,
+        stroke: false
       });
     } else {
+      var HSVColor = $c.hex2hsv(marker.options.fillColor);
+      var RGBColor = $c.hsv2rgb(HSVColor.H, HSVColor.S, HSVColor.V * 0.75);
+      var newColor = $c.rgb2hex(RGBColor.R, RGBColor.G, RGBColor. B);
       marker.setStyle({
-        radius: currentRadius * 2
+        radius: currentRadius * 1.75,
+        stroke: true,
+        color: newColor
       });
     }
   }
