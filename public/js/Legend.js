@@ -21,9 +21,7 @@ var app = this.app || {};
       $("#legend-container").empty();
       for (const key in legend) {
         if (key != 'generated' && key != 'default' && key != 'field') {
-          var item = $("<div class='legend-item'><div class='legend-icon'></div><div class='legend-description'></div></div>");
-          $(item).find(".legend-icon").css("background-color",legend[key].color);
-          $(item).find(".legend-description").html(legend[key].title);
+          var item = $("<div class='legend-item'><div class='legend-icon' style='background-color:"+legend[key].color+"'></div><div class='legend-description'>"+legend[key].title+"</div></div>");
           $("#legend-container").append(item);
         };
       };

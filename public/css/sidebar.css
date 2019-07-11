@@ -1,0 +1,208 @@
+/* SIDEBAR */
+
+#sidebar {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    overflow: hidden;
+    height: calc(100% - 32px);
+    flex-basis: 400px;
+    pointer-events: initial;
+}
+
+
+/* HEADER */
+
+#sidebar-banner {
+    background-color: #41ae76;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+    font-weight: 300;
+}
+
+#banner-logo {
+    position: absolute;
+    top: 13px;
+}
+
+#banner-title {
+    margin: 5px 38px;
+    margin-top: 7px;
+    text-align: center;
+}
+
+#banner-close-button {
+    position: absolute;
+    top: 17px;
+    right: 20px;
+}
+
+.close-button {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+}
+
+.close-button:hover {
+    cursor: pointer;
+}
+
+.close-button:hover::before,
+.close-button:hover::after {
+    background: black;
+}
+
+.close-button::before,
+.close-button::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: white;
+}
+
+.close-button::before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.close-button::after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.close-button.black::before,
+.close-button.black::after {
+    height: 4px;
+    margin-top: -4px;
+}
+
+
+/* BODY */
+
+#sidebar-info {
+    height: calc(100% - 168px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 10px 10px;
+}
+
+#sidebar-default {
+    padding: 0 32px;
+}
+
+#default-header {
+    text-align: center;
+}
+
+#sidebar-tree {
+    display: flex;
+    flex-direction: column;
+    /* min-height: 1px; CSS is beautiful */
+    /* position: relative; */
+}
+
+#sidebar-image {
+    background-color: #fff;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* position: relative;
+    width: 100%; */
+}
+
+#sidebar-content {
+    /* flex-grow: 1; */
+    height: 100%;
+    overflow-y: scroll;
+    padding: 16px 32px;
+}
+
+#sidebar-content::-webkit-scrollbar {
+    width: 0px;
+}
+
+#sidebar-content h1 {
+    color: #777;
+    font-size: 27px;
+    margin: 0px;
+    margin-bottom: 2px;
+}
+
+#sidebar-content h2 {
+    color: #888;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 300;
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+#sidebar-content h3 {
+    color: #aaa;
+    font-size: 15px;
+    font-weight: 300;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+
+/* FOOTER */
+
+#sidebar-legend {
+    height: 150px;
+    margin: 16px 0 0 0;
+    padding: 10px;
+}
+
+#legend-container {
+    height: 102px;
+    display: grid;
+    grid-template-rows: repeat(3, 34px);
+    grid-template-columns: repeat(3, 128px);
+    grid-auto-flow: column;
+}
+
+.legend-item {
+    display: flex;
+}
+
+.legend-icon {
+    height: 32px;
+    width: 32px;
+    margin: 1px 0;
+    border-radius: 3px;
+}
+
+.legend-description {
+    margin: auto 5px;
+    width: 86px;
+    font-size: 12px;
+    line-height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#legend-footer {
+    display: flex;
+    height: 20px;
+    margin: 10px 0 0 0;
+}
+
+#legend-title {
+    margin: 0 16px 0 0;
+}
