@@ -88,7 +88,9 @@ var app = this.app || {};
         var markerLocation = marker.getLatLng();
         var newViewLocation = {lat: markerLocation['lat'], lng: markerLocation['lng']};
         newViewLocation['lng'] = newViewLocation['lng'] + 0.0005;
-        this.leafletMap.setView(newViewLocation, 18, {animate: true});
+        var currentZoom = this.leafletMap.getZoom();
+        var targetZoom = currentZoom > 16 ? currentZoom : 18;
+        this.leafletMap.setView(newViewLocation, targetZoom, {animate: true});
 
         if (this.highlightedMarker) { // if one exists, undo its enlargement before enlarging another
           changeCircleMarker(this.highlightedMarker, 'shrink');
