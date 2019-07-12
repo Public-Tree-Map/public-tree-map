@@ -126,8 +126,8 @@ var app = this.app || {};
   function getDarkerColor (hexColor) {
     var HSVColor = $c.hex2hsv(hexColor);
     var RGBColor = $c.hsv2rgb(HSVColor.H, HSVColor.S, HSVColor.V * 0.75);
-    var newColor = $c.rgb2hex(RGBColor.R, RGBColor.G, RGBColor. B);
-    return newColor;
+    var ringColor = $c.rgb2hex(RGBColor.R, RGBColor.G, RGBColor. B);
+    return ringColor;
   }
 
   function changeCircleMarker (marker, action) {
@@ -141,18 +141,18 @@ var app = this.app || {};
         break;
       case 'enlarge':
         var currentRadius = marker.options.radius;
-        var newColor = getDarkerColor(marker.options.fillColor)
+        var ringColor = getDarkerColor(marker.options.fillColor)
         marker.setStyle({
           radius: currentRadius * 1.75,
           stroke: true,
-          color: newColor
+          color: ringColor
         });
         break;
       case 'recolor':
       default:
-        var newColor = getDarkerColor(marker.options.fillColor)
+        var ringColor = getDarkerColor(marker.options.fillColor)
         marker.setStyle({
-          color: newColor
+          color: ringColor
         });
     }
   }
