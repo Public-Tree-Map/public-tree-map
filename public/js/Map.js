@@ -111,6 +111,9 @@ var app = this.app || {};
         fillColor: getFillColor(marker.tree, palette)
       });
     });
+    if (this.highlightedMarker) {
+      changeCircleMarker(this.highlightedMarker, 'recolor');
+    }
   }
 
   function onZoomChanged(zoom) {
@@ -122,16 +125,37 @@ var app = this.app || {};
     }
   }
 
+  function getDarkerColor (hexColor) {
+    var HSVColor = $c.hex2hsv(hexColor);
+    var RGBColor = $c.hsv2rgb(HSVColor.H, HSVColor.S, HSVColor.V * 0.75);
+    var ringColor = $c.rgb2hex(RGBColor.R, RGBColor.G, RGBColor. B);
+    return ringColor;
+  }
+
   function changeCircleMarker (marker, action) {
-    var currentRadius = marker.options.radius;
-    if (action === 'shrink') {
-      marker.setStyle({
-        radius: currentRadius / 2
-      });
-    } else {
-      marker.setStyle({
-        radius: currentRadius * 2
-      });
+    switch (action) {
+      case 'shrink':
+        var currentRadius = marker.options.radius;
+        marker.setStyle({
+          radius: currentRadius / 1.75,
+          stroke: false
+        });
+        break;
+      case 'enlarge':
+        var currentRadius = marker.options.radius;
+        var ringColor = getDarkerColor(marker.options.fillColor)
+        marker.setStyle({
+          radius: currentRadius * 1.75,
+          stroke: true,
+          color: ringColor
+        });
+        break;
+      case 'recolor':
+      default:
+        var ringColor = getDarkerColor(marker.options.fillColor)
+        marker.setStyle({
+          color: ringColor
+        });
     }
   }
 
