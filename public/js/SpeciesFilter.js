@@ -25,10 +25,7 @@ var app = this.app || {};
 
     function counter(hashmap, tree) {
         var tree_key = tree['name_common'].concat([' (', tree['name_botanical'], ')'].join(''));
-        if (tree['name_common'] === 'Vacant Site'){
-
-        }
-        else if (hashmap.has(tree_key)) {
+        if (hashmap.has(tree_key)) {
             var currentCount = hashmap.get(tree_key);
             currentCount['count'] += 1;
             hashmap.set(tree_key,  currentCount);
