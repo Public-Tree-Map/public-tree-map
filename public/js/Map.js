@@ -20,7 +20,7 @@ var app = this.app || {};
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
           subdomains: 'abcd',
-          maxZoom: 19
+          maxZoom: 21
         })
       ]
     });
@@ -87,7 +87,7 @@ var app = this.app || {};
 
         var markerLocation = marker.getLatLng();
         var newViewLocation = {lat: markerLocation['lat'], lng: markerLocation['lng']};
-        newViewLocation['lng'] = newViewLocation['lng'] + 0.0005;
+        newViewLocation['lng'] = newViewLocation['lng'] + 0.0005; //I want to restrict display of the map to what's visible (not behind the sidebar), which will remove the need for this offset and resolve the offset issues at higher zoom levels
         var currentZoom = this.leafletMap.getZoom();
         var targetZoom = currentZoom > 16 ? currentZoom : 18;
         this.leafletMap.setView(newViewLocation, targetZoom, {animate: true});
