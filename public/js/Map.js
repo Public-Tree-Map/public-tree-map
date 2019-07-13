@@ -98,6 +98,7 @@ var app = this.app || {};
 
         this.highlightedMarker = leafletEvent.target;
         changeCircleMarker(this.highlightedMarker, 'enlarge');
+        this.highlightedMarker.bringToFront();
       }).bind(this));
 
       marker.addTo(this.markers)
