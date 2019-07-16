@@ -72,5 +72,15 @@ var app = this.app || {};
       'limited'  : { 'color': '#FE0000', 'title': 'Limited' },
       'default'  : '#bdbdbd'
     },
+    'vacant': {
+      'generated'             : false,
+      'field'                 : 'name_botanical',
+      'Asphalted well'        : { 'color': '#00A392', 'title': 'Asphalted Well' },
+      'Stump'                 : { 'color': '#ECBF42', 'title': 'Stump' },
+      'Stump - not accessible': { 'color': '#FF9036', 'title': 'Stump, Not Access.' },
+      'Unsuitable site'       : { 'color': '#FF243A', 'title': 'Unsuitable Site' },
+      'Vacant site'           : { 'color': '#1C4853', 'title': 'Vacant' },
+      'default'               : '#bdbdbd'
+    }
   }
 })(app);
