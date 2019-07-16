@@ -74,6 +74,7 @@ body {
 #loading>div {
     left: 50%;
     position: fixed;
+
     top: 50%;
     transform: translate(-50%, -50%);
 }
@@ -81,11 +82,17 @@ body {
 #color-filter {
     z-index: 50000;
 }
-
+.dropdown{
+/* color: red */
+    /*width:200px;*/
+    height: 30px;
+}
+  
 .rounded-box {
     background: #fff;
     border: none;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 30px;
 }
 
 .shadow {

@@ -12,7 +12,12 @@ var app = this.app || {};
       this.onChange(e.target.value);
     }).bind(this));
 
-    this.onChange(filter.value);
+    // this.onChange(filter.value);
+    // $(".color-filter").ready(function() { $("#e1").select2(); });
+
+    // $(".color-filter").select2({
+    //   placeholder: 'Select an option'
+    // });
   }
 
   ColorFilter.prototype.onChange = function(key) {
