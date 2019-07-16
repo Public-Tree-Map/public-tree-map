@@ -74,9 +74,10 @@ body {
 #loading>div {
     left: 50%;
     position: fixed;
-
     top: 50%;
     transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #color-filter {
@@ -91,8 +92,7 @@ body {
 .rounded-box {
     background: #fff;
     border: none;
-    padding: 10px;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 .shadow {
