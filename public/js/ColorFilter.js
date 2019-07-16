@@ -8,11 +8,20 @@ var app = this.app || {};
 
     var filter = document.getElementById('color-filter');
 
-    filter.addEventListener('change', (function(e) {
-      this.onChange(e.target.value);
-    }).bind(this));
+    // filter.addEventListener('change', (function(e) {
+    //   console.log(e.target.value)
+    //   this.onChange(e.target.value);
+    // }).bind(this));
 
     this.onChange(filter.value);
+
+    $("#color-filter").select2({
+      minimumResultsForSearch: -1
+    });
+    $('#color-filter').on('select2:select',  e => {
+      var id = e.params.data.id;
+      this.onChange(id);
+  });
   }
 
   ColorFilter.prototype.onChange = function(key) {
