@@ -25,16 +25,49 @@ var app = this.app || {};
     this.address                = document.getElementById('sidebar-address');
     this.streetSegment          = document.getElementById('sidebar-street-segment');
     this.closeButton            = document.getElementById('sidebar-close-button');
+
+    // Vacant panel elements
+    this.vacantContainer          = document.getElementById('sidebar-vacant');
+    this.vacantCommonName         = document.getElementById('sidebar-vacant-common-name');
+    this.vacantTreeId             = document.getElementById('sidebar-vacant-tree-id');
+    this.vacantAddress            = document.getElementById('sidebar-vacant-address');
+    this.vacantPruningYea  r      = document.getElementById('sidebar-vacant-pruning-year');
+    this.vacantReplacementSpecies = document.getElementById('sidebar-vacant-replacement-species');
+    this.vacantStreetSegment      = document.getElementById('sidebar-vacant-street-segment');
   }
 
   Sidebar.prototype.setTree = function(tree) {
     if (!tree) {
       return this.showDefault();
     }
+    const VACANCIES = [
+      'vacant site',
+      'stump',
+      'asphalted well',
+      'unsuitable site',
+      'stump - not accessible',
+    ];
+    if (VACANCIES.indexOf(tree.name_botanical.toLowerCase()) !== -1) {
+      this.vacantContainer.classList.remove('hidden');
+      this.defaultScreen.classList.add('hidden');
+      this.populateVacanciesPanel(tree);
+    } else {
+      this.treeContainer.classList.remove('hidden');
+      this.defaultScreen.classList.add('hidden');
+      this.populateTreePanel(tree);
+    }
+  }
 
-    this.treeContainer.classList.remove('hidden');
-    this.defaultScreen.classList.add('hidden');
+  Sidebar.prototype.populateVacanciesPanel = function(tree) {
+    this.vacantCommonName.innerText         = tree.name_common;
+    this.vacantTreeId.innerText             = tree.tree_id;
+    this.vacantAddress.innerText            = tree.address;
+    this.vacantPruningYear.innerText        = tree.pruning_year;
+    this.vacantReplacementSpecies.innerText = tree.replacement_species;
+    this.vacantStreetSegment.innerText      = tree.segment;
+  }
 
+  Sidebar.prototype.populateTreePanel = function(tree) {
     this.commonName.innerText             = tree.name_common;
     this.botanicalName.innerText          = tree.name_botanical;
     this.treeId.innerText                 = tree.tree_id;
@@ -66,6 +99,7 @@ var app = this.app || {};
 
   Sidebar.prototype.showDefault = function() {
     this.treeContainer.classList.add('hidden');
+    this.vacantContainer.classList.add('hidden');
     this.defaultScreen.classList.remove('hidden');
   }
 
