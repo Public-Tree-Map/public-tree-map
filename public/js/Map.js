@@ -11,6 +11,20 @@ var app = this.app || {};
     this.trees   = [];
     this.zoom    = 14.2;
     this.selected = new Set();
+	this.urlParams = new URLSearchParams(window.location.search);
+	
+	if(this.urlParams) {
+		 var that = this;
+		 var id = this.urlParams.get("id");
+        fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + id + '.json')
+          .then(function(response) {
+            return response.json().then(function(jsonTree) {
+              that.sidebar.setTree(jsonTree);
+			  setTrees(jsonTree);
+            });
+		  });
+		  
+	}
 
     this.leafletMap = L.map('map', {
       center: [34.0215, -118.467],
