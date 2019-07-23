@@ -13,17 +13,15 @@ var app = this.app || {};
     this.selected = new Set();
 	this.urlParams = new URLSearchParams(window.location.search);
 	
-	if(this.urlParams) {
+	if(this.urlParams.has("id")) {
 		 var that = this;
 		 var id = this.urlParams.get("id");
         fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + id + '.json')
           .then(function(response) {
             return response.json().then(function(jsonTree) {
               that.sidebar.setTree(jsonTree);
-			  setTrees(jsonTree);
             });
 		  });
-		  
 	}
 
     this.leafletMap = L.map('map', {
@@ -96,6 +94,7 @@ var app = this.app || {};
           .then(function(response) {
             return response.json().then(function(jsonTree) {
               that.sidebar.setTree(jsonTree);
+			  updateUrl(that.urlParams, tree.tree_id);
             });
           });
 
@@ -130,7 +129,14 @@ var app = this.app || {};
       changeCircleMarker(this.highlightedMarker, 'recolor');
     }
   }
-
+  
+  function updateUrl(params, id) {
+	params.set('id', id);
+	var url = location.origin + location.pathname + "?";
+	//updates the url in the address bar
+	history.pushState("id param", "Public Tree Map", url + params); 
+  }
+  
   function onZoomChanged(zoom) {
     this.markers.eachLayer(function(marker) {
       marker.setRadius(Math.max(1, zoom - 13));
