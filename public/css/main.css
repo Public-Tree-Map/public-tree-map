@@ -59,6 +59,7 @@ html, body {
 #sidebar-content {
   box-sizing: border-box;
   flex-grow: 1;
+ /* padding: 10px;*/
   overflow-y: auto;
   padding: 32px 48px 0px 48px;
 }
@@ -78,6 +79,9 @@ html, body {
   font-size: 27px;
   margin: 0px;
   margin-bottom: 2px;
+}
+#sidebar-default{
+  padding: 0px 20px 0px 20px
 }
 
 #sidebar-content h2 {
