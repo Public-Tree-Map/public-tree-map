@@ -31,7 +31,7 @@ var app = this.app || {};
     this.vacantCommonName         = document.getElementById('sidebar-vacant-common-name');
     this.vacantTreeId             = document.getElementById('sidebar-vacant-tree-id');
     this.vacantAddress            = document.getElementById('sidebar-vacant-address');
-    this.vacantPruningYea  r      = document.getElementById('sidebar-vacant-pruning-year');
+    this.vacantPruningYear      = document.getElementById('sidebar-vacant-pruning-year');
     this.vacantReplacementSpecies = document.getElementById('sidebar-vacant-replacement-species');
     this.vacantStreetSegment      = document.getElementById('sidebar-vacant-street-segment');
   }
