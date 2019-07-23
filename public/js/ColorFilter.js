@@ -16,7 +16,8 @@ var app = this.app || {};
     this.onChange(filter.value);
 
     $("#color-filter").select2({
-      minimumResultsForSearch: -1
+      minimumResultsForSearch: -1,
+      
     });
     $('#color-filter').on('select2:select',  e => {
       var id = e.params.data.id;
