@@ -161,7 +161,17 @@ select.shadow {
   line-height: 1;
   padding: 18px 18px 25px 20px;
   text-align: center;
+  /*display: none !important;*/
+
 }
+#banner-title{
+  padding: 4px 0px 0px 30px;
+}
+#banner-logo {
+  position: absolute;
+  vertical-align: middle;
+}
+
 
 @media only screen and (max-width: 600px) {
   #toolbar {
