@@ -50,8 +50,10 @@ var app = this.app || {};
     if (VACANCIES.indexOf(tree.name_botanical.toLowerCase()) !== -1) {
       this.vacantContainer.classList.remove('hidden');
       this.defaultScreen.classList.add('hidden');
+      this.treeContainer.classList.add('hidden');
       this.populateVacanciesPanel(tree);
     } else {
+      this.vacantContainer.classList.add('hidden');
       this.treeContainer.classList.remove('hidden');
       this.defaultScreen.classList.add('hidden');
       this.populateTreePanel(tree);
