@@ -48,10 +48,12 @@ var app = this.app || {};
     this.redraw();
     if(this.urlParams.has("id")) {
         var id = this.urlParams.get("id");
-        if(id in this.markerMap)
+        if(id in this.markerMap) {
             this.markerMap[id].fire('click');
-        else
-	        this.sidebar.showError();
+		}
+        else {
+            this.sidebar.showError();
+		}
     }
   }
 

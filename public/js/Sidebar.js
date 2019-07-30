@@ -5,7 +5,7 @@ var app = this.app || {};
   function Sidebar() {
     this.defaultScreen          = document.getElementById('sidebar-default');
     this.treeContainer          = document.getElementById('sidebar-tree');
-    this.errorScreen			= document.getElementById('sidebar-error');
+    this.errorScreen            = document.getElementById('sidebar-error');
     this.image                  = document.getElementById('sidebar-image');
     this.commonName             = document.getElementById('sidebar-common-name');
     this.botanicalName          = document.getElementById('sidebar-botanical-name');
