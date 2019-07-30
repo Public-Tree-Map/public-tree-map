@@ -34,6 +34,7 @@ var app = this.app || {};
     this.vacantPruningYear      = document.getElementById('sidebar-vacant-pruning-year');
     this.vacantReplacementSpecies = document.getElementById('sidebar-vacant-replacement-species');
     this.vacantStreetSegment      = document.getElementById('sidebar-vacant-street-segment');
+    this.vacantCloseButton            = document.getElementById('sidebar-vacant-close-button');
   }
 
   Sidebar.prototype.setTree = function(tree) {
@@ -97,6 +98,7 @@ var app = this.app || {};
     }
 
     this.closeButton.onclick = this.showDefault.bind(this);
+    this.vacantCloseButton.onclick = this.showDefault.bind(this);
   }
 
   Sidebar.prototype.showDefault = function() {

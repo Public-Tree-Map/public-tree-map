@@ -56,7 +56,11 @@ html, body {
   pointer-events: initial;
 }
 
-#sidebar-content {
+#sidebar-default {
+  padding: 32px 48px 0px 48px;
+}
+
+#sidebar-content, #sidebar-vacant-content {
   box-sizing: border-box;
   flex-grow: 1;
   overflow-y: auto;
@@ -67,9 +71,9 @@ html, body {
   background-color: #fff;
   background-position: center center;
   background-repeat: no-repeat;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 0px;
   position: relative;
-  top: -10px;
+  top: 0px;
   width: 100%;
 }
 
@@ -104,10 +108,16 @@ html, body {
   position: relative;
 }
 
-#sidebar-close-button {
+#sidebar button {
   position: absolute;
   right: 0px;
-  top: 0px;
+  opacity: 0.6;
+  border: none;
+  background: gray;
+}
+
+#sidebar button:hover {
+  opacity: 0.8;
 }
 
 #map {
