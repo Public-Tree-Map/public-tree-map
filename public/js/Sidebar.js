@@ -118,8 +118,11 @@ var app = this.app || {};
   }
 
   function buildHeightText(min, max) {
-    if (min === -1) {
+    if (min === -1 && max === -1) {
       return "Unknown";
+    }
+    if (min === -1) {
+      return "Up to " + max + ' feet'
     }
     if (max === -1) {
       return min + '+ feet';
@@ -130,6 +133,9 @@ var app = this.app || {};
   function buildDiameterText(min, max) {
     if (min === -1) {
       return "Unknown";
+    }
+    if (min === -1) {
+      return "Up to " + max + ' inches'
     }
     if (max === -1) {
       return min + '+ inches';
