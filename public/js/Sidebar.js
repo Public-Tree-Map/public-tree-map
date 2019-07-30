@@ -77,10 +77,6 @@ var app = this.app || {};
   }
 
   Sidebar.prototype.populateTreePanel = function(tree) {
-    this.treeContainer.classList.remove('hidden');
-    this.defaultScreen.classList.add('hidden');
-    this.errorScreen.classList.add('hidden');
-	
     this.commonName.innerText             = tree.name_common;
     this.botanicalName.innerText          = tree.name_botanical;
     this.treeId.innerText                 = tree.tree_id;
