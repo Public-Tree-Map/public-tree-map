@@ -7,22 +7,12 @@ var app = this.app || {};
   function Map(sidebar) {
     this.sidebar = sidebar;
     this.markers = [];
+	this.markerMap = Object.create(null);
     this.highlightedMarker = null;
     this.trees   = [];
     this.zoom    = 14.2;
     this.selected = new Set();
 	this.urlParams = new URLSearchParams(window.location.search);
-	
-	if(this.urlParams.has("id")) {
-		 var that = this;
-		 var id = this.urlParams.get("id");
-        fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + id + '.json')
-          .then(function(response) {
-            return response.json().then(function(jsonTree) {
-              that.sidebar.setTree(jsonTree);
-            });
-		  });
-	}
 
     this.leafletMap = L.map('map', {
       center: [34.0215, -118.467],
@@ -56,6 +46,13 @@ var app = this.app || {};
     this.trees   = trees;
     this.palette = palette;
     this.redraw();
+	if(this.urlParams.has("id")) {
+		 var id = this.urlParams.get("id");
+		 if(id in this.markerMap)
+			this.markerMap[id].fire('click');
+		 else
+			 this.sidebar.showError();
+	}
   }
 
   Map.prototype.redraw = function() {
@@ -115,6 +112,7 @@ var app = this.app || {};
       }).bind(this));
 
       marker.addTo(this.markers)
+	  this.markerMap[tree.tree_id] = marker;
     }).bind(this));
   }
 
