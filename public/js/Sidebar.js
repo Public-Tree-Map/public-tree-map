@@ -56,13 +56,13 @@ var app = this.app || {};
       this.vacantContainer.classList.remove('hidden');
       this.defaultScreen.classList.add('hidden');
       this.treeContainer.classList.add('hidden');
-	  this.errorScreen.classList.add('hidden');
+      this.errorScreen.classList.add('hidden');
       this.populateVacanciesPanel(tree);
     } else {
       this.vacantContainer.classList.add('hidden');
       this.treeContainer.classList.remove('hidden');
       this.defaultScreen.classList.add('hidden');
-	  this.errorScreen.classList.add('hidden');
+      this.errorScreen.classList.add('hidden');
       this.populateTreePanel(tree);
     }
   }
