@@ -118,13 +118,23 @@ var app = this.app || {};
   }
 
   function buildHeightText(min, max) {
-    return (min === -1 || max === -1) ? "Unknown"
-                                      : min + "-" + max + " feet";
+    if (min === -1) {
+      return "Unknown";
+    }
+    if (max === -1) {
+      return min + '+ feet';
+    }
+    return min + "-" + max + " feet";
   }
 
   function buildDiameterText(min, max) {
-    return (min === -1 || max === -1) ? "Unknown"
-                                      : min + "-" + max + " inches";
+    if (min === -1) {
+      return "Unknown";
+    }
+    if (max === -1) {
+      return min + '+ inches';
+    }
+    return min + "-" + max + " inches";
   }
 
   // Exports
