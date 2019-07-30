@@ -35,6 +35,9 @@ var app = this.app || {};
     this.vacantReplacementSpecies = document.getElementById('sidebar-vacant-replacement-species');
     this.vacantStreetSegment      = document.getElementById('sidebar-vacant-street-segment');
     this.vacantCloseButton            = document.getElementById('sidebar-vacant-close-button');
+
+    this.closeButton.onclick = this.showDefault.bind(this);
+    this.vacantCloseButton.onclick = this.showDefault.bind(this);
   }
 
   Sidebar.prototype.setTree = function(tree) {
@@ -96,9 +99,6 @@ var app = this.app || {};
       this.image.style.backgroundImage = '';
       this.image.classList.add('hidden');
     }
-
-    this.closeButton.onclick = this.showDefault.bind(this);
-    this.vacantCloseButton.onclick = this.showDefault.bind(this);
   }
 
   Sidebar.prototype.showDefault = function() {
