@@ -26,7 +26,12 @@ var app = this.app || {};
         var clonedPlacesPinWithoutEventListenters = placesPinElement.cloneNode(true);
         placesPinElement.parentNode.replaceChild(clonedPlacesPinWithoutEventListenters, placesPinElement);
         $('.ap-icon-pin').on('click', function() {
-            navigator.geolocation.getCurrentPosition(zoomFromPosition);
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(zoomFromPosition);
+            }
+            else {
+                alert('To use this feature, please enable location services.')
+            }
         });
         this.placesAutocomplete.on('change', function(event){
             zoomToLatLng(event.suggestion.latlng);
