@@ -13,6 +13,7 @@ var app = this.app || {};
     _legend        = new module.Legend();
     _colorFilter   = new module.ColorFilter(_map, _legend);
     _speciesFilter = new module.SpeciesFilter(_map);
+    _geolocation = new module.Geolocation(_map);
 
     _sidebar.showDefault();
 
