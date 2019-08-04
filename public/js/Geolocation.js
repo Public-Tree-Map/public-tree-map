@@ -30,7 +30,7 @@ var app = this.app || {};
                 navigator.geolocation.getCurrentPosition(zoomFromPosition);
             }
             else {
-                alert('Please enable location access to your browser to use this feature')
+                alert('To use this feature, please enable location services.')
             }
         });
         this.placesAutocomplete.on('change', function(event){
