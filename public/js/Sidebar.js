@@ -154,14 +154,14 @@ var app = this.app || {};
   }
 
   function buildIpcText(ipcRating){
-    if ("watch") {
+    if (ipcRating === "moderate") {
+      return "Moderate";
+    }
+    if (ipcRating === "watch") {
       return "Watch";
     }
-    if ("limited") {
+    if (ipcRating === "limited") {
       return "Limited";
-    }
-    if ("moderate") {
-      return "Moderate";
     } else {
       return "Not listed by Cal-IPC";
     }
