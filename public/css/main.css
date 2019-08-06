@@ -14,11 +14,12 @@ html, body {
   z-index: 5000;
 }
 #twitter-btn {
-  height: 35px;
-  width: 43px;
+  height: 18px;
+  width: 22px;
+  margin-left: 133px;
   display: block;
   background-image: url("Twitter.png");
-  background-size:cover
+  background-size: cover
 }
 
 #toolbar {
