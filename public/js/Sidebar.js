@@ -163,7 +163,7 @@ var app = this.app || {};
     if (ipcRating === "limited") {
       return "Limited";
     } else {
-      return "Not listed by Cal-IPC";
+      return "Not listed";
     }
 
   }
