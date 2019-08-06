@@ -26,6 +26,7 @@ var app = this.app || {};
     this.address                = document.getElementById('sidebar-address');
     this.streetSegment          = document.getElementById('sidebar-street-segment');
     this.closeButton            = document.getElementById('sidebar-close-button');
+    this.twitterButton          = document.getElementById('twitter-button');
 
     // Vacant panel elements
     this.vacantContainer          = document.getElementById('sidebar-vacant');
@@ -95,6 +96,8 @@ var app = this.app || {};
     this.address.innerText                = tree.address;
     this.streetSegment.innerText          = tree.segment;
 
+    this.twitterButton.href = buildTweetLink(tree);
+
     if (tree.images && tree.images.length > 0) {
       this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
       this.image.classList.remove('hidden');
@@ -114,9 +117,16 @@ var app = this.app || {};
   Sidebar.prototype.showError = function() {
     this.defaultScreen.classList.add('hidden');
     this.treeContainer.classList.add('hidden');
-	this.vacantContainer.classList.add('hidden');
+  this.vacantContainer.classList.add('hidden');
     this.errorScreen.classList.remove('hidden');
   }
+
+  function buildTweetLink(tree) {
+    var url = window.location;
+    var tweet = `${tree.name_common} on Santa Monica's Public Tree Map: ${url}`;;
+    return "https://twitter.com/intent/tweet?text=" + tweet;
+  }
+
   function buildNativityText(nativity) {
     if ("native" === nativity.toLowerCase()) {
       return "This tree is native to California";
