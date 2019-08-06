@@ -5,6 +5,7 @@ var app = this.app || {};
   function Sidebar() {
     this.defaultScreen          = document.getElementById('sidebar-default');
     this.treeContainer          = document.getElementById('sidebar-tree');
+    this.errorScreen            = document.getElementById('sidebar-error');
     this.image                  = document.getElementById('sidebar-image');
     this.commonName             = document.getElementById('sidebar-common-name');
     this.botanicalName          = document.getElementById('sidebar-botanical-name');
@@ -55,11 +56,13 @@ var app = this.app || {};
       this.vacantContainer.classList.remove('hidden');
       this.defaultScreen.classList.add('hidden');
       this.treeContainer.classList.add('hidden');
+      this.errorScreen.classList.add('hidden');
       this.populateVacanciesPanel(tree);
     } else {
       this.vacantContainer.classList.add('hidden');
       this.treeContainer.classList.remove('hidden');
       this.defaultScreen.classList.add('hidden');
+      this.errorScreen.classList.add('hidden');
       this.populateTreePanel(tree);
     }
   }
@@ -102,11 +105,18 @@ var app = this.app || {};
   }
 
   Sidebar.prototype.showDefault = function() {
+    this.errorScreen.classList.add('hidden');
     this.treeContainer.classList.add('hidden');
     this.vacantContainer.classList.add('hidden');
     this.defaultScreen.classList.remove('hidden');
   }
 
+  Sidebar.prototype.showError = function() {
+    this.defaultScreen.classList.add('hidden');
+    this.treeContainer.classList.add('hidden');
+	this.vacantContainer.classList.add('hidden');
+    this.errorScreen.classList.remove('hidden');
+  }
   function buildNativityText(nativity) {
     if ("native" === nativity.toLowerCase()) {
       return "This tree is native to California";

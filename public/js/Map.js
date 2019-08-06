@@ -7,10 +7,12 @@ var app = this.app || {};
   function Map(sidebar) {
     this.sidebar = sidebar;
     this.markers = [];
+    this.markerMap = Object.create(null);
     this.highlightedMarker = null;
     this.trees   = [];
     this.zoom    = 14.2;
     this.selected = new Set();
+    this.urlParams = new URLSearchParams(window.location.search);
 
     this.leafletMap = L.map('map', {
       center: [34.0215, -118.467],
@@ -44,6 +46,15 @@ var app = this.app || {};
     this.trees   = trees;
     this.palette = palette;
     this.redraw();
+    if(this.urlParams.has("id")) {
+        var id = this.urlParams.get("id");
+        if(id in this.markerMap) {
+            this.markerMap[id].fire('click');
+		}
+        else {
+            this.sidebar.showError();
+		}
+    }
   }
 
   Map.prototype.redraw = function() {
@@ -82,6 +93,7 @@ var app = this.app || {};
           .then(function(response) {
             return response.json().then(function(jsonTree) {
               that.sidebar.setTree(jsonTree);
+              updateUrl(that.urlParams, tree.tree_id);
             });
           });
 
@@ -102,6 +114,7 @@ var app = this.app || {};
       }).bind(this));
 
       marker.addTo(this.markers)
+      this.markerMap[tree.tree_id] = marker;
     }).bind(this));
   }
 
@@ -116,7 +129,14 @@ var app = this.app || {};
       changeCircleMarker(this.highlightedMarker, 'recolor');
     }
   }
-
+  
+  function updateUrl(params, id) {
+    params.set('id', id);
+    var url = location.origin + location.pathname + "?";
+    //updates the url in the address bar
+    history.pushState("id param", "Public Tree Map", url + params); 
+  }
+  
   function onZoomChanged(zoom) {
     this.markers.eachLayer(function(marker) {
       marker.setRadius(Math.max(1, zoom - 13));
