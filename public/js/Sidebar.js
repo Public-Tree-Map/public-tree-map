@@ -114,7 +114,7 @@ var app = this.app || {};
   Sidebar.prototype.showError = function() {
     this.defaultScreen.classList.add('hidden');
     this.treeContainer.classList.add('hidden');
-	this.vacantContainer.classList.add('hidden');
+    this.vacantContainer.classList.add('hidden');
     this.errorScreen.classList.remove('hidden');
   }
   function buildNativityText(nativity) {
