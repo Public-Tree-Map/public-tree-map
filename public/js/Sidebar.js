@@ -87,7 +87,7 @@ var app = this.app || {};
     this.irrigationRequirements.innerText = tree.irrigation_requirements;
     this.type.innerText                   = tree.type;
     this.iucnStatus.innerText             = tree.iucn_status;
-    this.ipcRating.innerText              = buildIpcText(tree.ipcRating);
+    this.ipcRating.innerText              = buildIpcText(tree.ipc_rating);
     this.treeFamily.innerHTML             = `${tree.family_name_common} (<em>${tree.family_name_botanical}</em>)`;
     this.pruningYear.innerText            = tree.pruning_year;
     this.pruningZone.innerText            = tree.pruning_zone;
@@ -155,15 +155,15 @@ var app = this.app || {};
 
   function buildIpcText(ipcRating){
     if (ipcRating === "moderate") {
-      return "Moderate";
+      return "moderate";
     }
     if (ipcRating === "watch") {
-      return "Watch";
+      return "watch";
     }
     if (ipcRating === "limited") {
-      return "Limited";
+      return "limited";
     } else {
-      return "Not listed";
+      return "not listed";
     }
 
   }
