@@ -28,7 +28,6 @@ var app = this.app || {};
     this.closeButton            = document.getElementById('sidebar-close-button');
     this.twitterButton          = document.getElementById('twitter-button');
     this.mailButton             = document.getElementById('mail-button');
-    this.facebookButton         = document.getElementById('facebook-button');
 
     // Vacant panel elements
     this.vacantContainer          = document.getElementById('sidebar-vacant');
@@ -100,7 +99,6 @@ var app = this.app || {};
 
     this.twitterButton.href = buildTweetLink(tree);
     this.mailButton.href = buildEmail(tree);
-    this.facebookButton.setAttribute("data-href", buildFacebookText(tree));
 
     if (tree.images && tree.images.length > 0) {
       this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
@@ -137,8 +135,14 @@ var app = this.app || {};
     return `mailto:?subject=${subject}&body=${email}`;
   }
   function buildFacebookText(tree) {
-    var url = window.location;
-    return url;
+    var CurrentUrl = window.location;
+    var fullUrl = `https://www.facebook.com/dialog/share?app_id=2427702837285993&display=popup&href=${CurrentUrl}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer`
+//    https://www.facebook.com/dialog/share?
+//  app_id=2427702837285993
+//  &display=popup
+//  &href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F
+//  &redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer
+    return fullUrl;
   }
 
   function buildNativityText(nativity) {

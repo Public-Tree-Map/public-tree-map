@@ -27,7 +27,14 @@ html, body {
   margin-bottom: 5px;
   display: block;
   background-image: url("Mail.svg");
-  background-size: cover
+  background-size: cover;
+}
+#facebook-button {
+  height: 19px;
+  width: 58px;
+  display: block;
+  background-image: url("FB.png");
+  background-size: cover;
 }
 
 #toolbar {
