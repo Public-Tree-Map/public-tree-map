@@ -87,7 +87,7 @@ var app = this.app || {};
     this.irrigationRequirements.innerText = tree.irrigation_requirements;
     this.type.innerText                   = tree.type;
     this.iucnStatus.innerText             = tree.iucn_status;
-    this.ipcRating.innerText              = tree.ipc_rating;
+    this.ipcRating.innerText              = buildIpcText(tree.ipc_rating);
     this.treeFamily.innerHTML             = `${tree.family_name_common} (<em>${tree.family_name_botanical}</em>)`;
     this.pruningYear.innerText            = tree.pruning_year;
     this.pruningZone.innerText            = tree.pruning_zone;
@@ -151,6 +151,21 @@ var app = this.app || {};
       return min + '+ inches';
     }
     return min + "-" + max + " inches";
+  }
+
+  function buildIpcText(ipcRating){
+    if (ipcRating === "moderate") {
+      return "moderate";
+    }
+    if (ipcRating === "watch") {
+      return "watch";
+    }
+    if (ipcRating === "limited") {
+      return "limited";
+    } else {
+      return "not listed";
+    }
+
   }
 
   // Exports
