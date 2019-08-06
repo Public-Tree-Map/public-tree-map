@@ -21,7 +21,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400" rel="stylesheet">
-
+    <!-- FACEBOOK API -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2427702837285993&autoLogAppEvents=1"></script>
+    
     <!-- Filter/Select2 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -34,7 +36,6 @@
 
     <!-- Colors -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Colors.js/1.2.3/colors.min.js"></script>
-    <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2427702837285993&autoLogAppEvents=1"></script>
     <title>Public Tree Map</title>
   </head>
@@ -112,6 +113,7 @@
               <tr>
                 <th><h1 id="sidebar-common-name"></h1></th>
                 <th><a id="twitter-button" target="_blank"></a></th>
+                <th><div class="fb-share-button" data-layout="button" data-size="small"><a target="_blankFB" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div></th>
               </tr>
             </table>
             <h2 id="sidebar-botanical-name"></h2>
