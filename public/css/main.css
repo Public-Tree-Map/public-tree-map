@@ -21,6 +21,14 @@ html, body {
   background-image: url("Twitter.png");
   background-size: cover
 }
+#mail-button {
+  height: 25px;
+  width: 25px;
+  margin-bottom: 5px;
+  display: block;
+  background-image: url("Mail.svg");
+  background-size: cover
+}
 
 #toolbar {
   align-items: center;
