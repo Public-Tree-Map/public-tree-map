@@ -124,14 +124,14 @@ var app = this.app || {};
 
   function buildTweetLink(tree) {
     var url = window.location;
-    var tweet = `${tree.name_common} on Santa Monica's Public Tree Map: ${url}`;;
+    var tweet = `${tree.name_common} on Santa Monica's Public Tree Map: ${url} @santamonicacity`;
     return "https://twitter.com/intent/tweet?text=" + tweet;
   }
   function buildEmail(tree) {
     var url = window.location;
-    var email = `${tree.name_common} on Santa Monica's Public Tree Map: ${url}`;;
-    return `mailto:?subject=Check%20out%20Santa%20Monica\'s%20Public%20Tree%20Map&body=${email}`;;
-    //return "https://google.com";
+    var subject = `${tree.name_common} in Santa Monica`;
+    var email = `${tree.name_common} on Santa Monica's Public Tree Map: ${url}`;
+    return `mailto:?subject=${subject}&body=${email}`;
   }
 
 
