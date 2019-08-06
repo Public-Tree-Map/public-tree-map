@@ -72,7 +72,7 @@ var app = this.app || {};
     this.vacantTreeId.innerText             = tree.tree_id;
     this.vacantAddress.innerText            = tree.address;
     this.vacantPruningYear.innerText        = tree.pruning_year;
-    this.vacantReplacementSpecies.innerText = tree.replacement_species;
+    this.vacantReplacementSpecies.innerHTML = `<em>${tree.replacement_species}</em>`;
     this.vacantStreetSegment.innerText      = tree.segment;
   }
 
