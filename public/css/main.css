@@ -13,6 +13,13 @@ html, body {
   width: 100%;
   z-index: 5000;
 }
+#twitter-btn {
+  height: 35px;
+  width: 43px;
+  display: block;
+  background-image: url("Twitter.png");
+  background-size:cover
+}
 
 #toolbar {
   align-items: center;

@@ -75,9 +75,12 @@
 
       <!-- Sidebar -->
       <div id="sidebar" class="rounded-box shadow">
-        <div class="banner">Santa Monica Public Tree Map</div>
+      <div class="banner">Santa Monica Public Tree Map</div>
+
+        
         <div id="sidebar-vacant">
           <button id="sidebar-vacant-close-button">x</button>
+
           <div id="sidebar-vacant-content">
             <h1 id="sidebar-vacant-common-name"></h1>
             <h5>Tree ID: <span id="sidebar-vacant-tree-id"></h5>
@@ -102,9 +105,17 @@
         <div id="sidebar-tree">
           <div id="sidebar-image" class="shadow hidden"></div>
           <button id="sidebar-close-button">x</button>
+
           <div id="sidebar-content">
-            <h1 id="sidebar-common-name"></h1>
+            <table>
+              <tr>
+                <th><h1 id="sidebar-common-name"></h1></th>
+                <th><a id="twitter-btn" target="_blank"></a></th>
+                
+              </tr>
+            </table>
             <h2 id="sidebar-botanical-name"></h2>
+
             <h5>Nearest address: <span id="sidebar-address"></h5>
             <h5>Tree ID: <span id="sidebar-tree-id"></h5>
             <h3 id="sidebar-nativity"></h3>
