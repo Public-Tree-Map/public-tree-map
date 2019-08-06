@@ -47,13 +47,12 @@ var app = this.app || {};
     this.palette = palette;
     this.redraw();
     if(this.urlParams.has("id")) {
-        var id = this.urlParams.get("id");
-        if(id in this.markerMap) {
-            this.markerMap[id].fire('click');
-		}
-        else {
-            this.sidebar.showError();
-		}
+      var id = this.urlParams.get("id");
+      if(id in this.markerMap) {
+        this.markerMap[id].fire('click');
+      } else {
+        this.sidebar.showError();
+      }
     }
   }
 
