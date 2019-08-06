@@ -23,15 +23,23 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400" rel="stylesheet">
     <!-- FACEBOOK API -->
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2427702837285993&autoLogAppEvents=1"></script>
-    
+    <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2427702837285993&autoLogAppEvents=1"></script> -->
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     <!-- Filter/Select2 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
-    
+
     <!-- Self -->
     <link rel="stylesheet" href="css/main.css" />
 
@@ -80,7 +88,7 @@
       <div id="sidebar" class="rounded-box shadow">
       <div class="banner">Santa Monica Public Tree Map</div>
 
-        
+
         <div id="sidebar-vacant">
           <button id="sidebar-vacant-close-button">x</button>
 
@@ -115,7 +123,12 @@
                 <th><h1 id="sidebar-common-name"></h1></th>
                 <th><a id="twitter-button" target="_blank"></a></th>
                 <th><a id="mail-button" target="_blank"></a></th>
-                <th><div class="fb-share-button" data-layout="button" data-size="small"><a target="_blankFB" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div></th>
+                <th><div id="facebook-button"
+                  class="fb-share-button"
+                  data-href="https://public-tree-map.surge.sh/"
+                  data-layout="button_count">
+                </div></th>
+                <!-- <th><div class="fb-share-button" data-layout="button" data-size="small"><a target="_blankFB" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div></th> -->
               </tr>
             </table>
             <h2 id="sidebar-botanical-name"></h2>

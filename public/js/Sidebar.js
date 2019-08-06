@@ -27,7 +27,8 @@ var app = this.app || {};
     this.streetSegment          = document.getElementById('sidebar-street-segment');
     this.closeButton            = document.getElementById('sidebar-close-button');
     this.twitterButton          = document.getElementById('twitter-button');
-    this.mailButton          = document.getElementById('mail-button');
+    this.mailButton             = document.getElementById('mail-button');
+    this.facebookButton         = document.getElementById('facebook-button');
 
     // Vacant panel elements
     this.vacantContainer          = document.getElementById('sidebar-vacant');
@@ -98,7 +99,9 @@ var app = this.app || {};
     this.streetSegment.innerText          = tree.segment;
 
     this.twitterButton.href = buildTweetLink(tree);
-    this.mailButton.href = buildEmail(tree)
+    this.mailButton.href = buildEmail(tree);
+    this.facebookButton.setAttribute("data-href", buildFacebookText(tree));
+
     if (tree.images && tree.images.length > 0) {
       this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
       this.image.classList.remove('hidden');
@@ -118,7 +121,7 @@ var app = this.app || {};
   Sidebar.prototype.showError = function() {
     this.defaultScreen.classList.add('hidden');
     this.treeContainer.classList.add('hidden');
-  this.vacantContainer.classList.add('hidden');
+    this.vacantContainer.classList.add('hidden');
     this.errorScreen.classList.remove('hidden');
   }
 
@@ -133,7 +136,10 @@ var app = this.app || {};
     var email = `${tree.name_common} on Santa Monica's Public Tree Map: ${url}`;
     return `mailto:?subject=${subject}&body=${email}`;
   }
-
+  function buildFacebookText(tree) {
+    var url = window.location;
+    return url;
+  }
 
   function buildNativityText(nativity) {
     if ("native" === nativity.toLowerCase()) {
