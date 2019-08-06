@@ -27,6 +27,7 @@ var app = this.app || {};
     this.streetSegment          = document.getElementById('sidebar-street-segment');
     this.closeButton            = document.getElementById('sidebar-close-button');
     this.twitterButton          = document.getElementById('twitter-button');
+    this.mailButton          = document.getElementById('mail-button');
 
     // Vacant panel elements
     this.vacantContainer          = document.getElementById('sidebar-vacant');
@@ -97,7 +98,7 @@ var app = this.app || {};
     this.streetSegment.innerText          = tree.segment;
 
     this.twitterButton.href = buildTweetLink(tree);
-
+    this.mailButton.href = buildEmail(tree)
     if (tree.images && tree.images.length > 0) {
       this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
       this.image.classList.remove('hidden');
@@ -126,6 +127,13 @@ var app = this.app || {};
     var tweet = `${tree.name_common} on Santa Monica's Public Tree Map: ${url}`;;
     return "https://twitter.com/intent/tweet?text=" + tweet;
   }
+  function buildEmail(tree) {
+    var url = window.location;
+    var email = `${tree.name_common} on Santa Monica's Public Tree Map: ${url}`;;
+    return `mailto:?subject=Check%20out%20Santa%20Monica\'s%20Public%20Tree%20Map&body=${email}`;;
+    //return "https://google.com";
+  }
+
 
   function buildNativityText(nativity) {
     if ("native" === nativity.toLowerCase()) {
