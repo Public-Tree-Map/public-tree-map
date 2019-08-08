@@ -124,25 +124,28 @@ var app = this.app || {};
   }
 
   function buildTweetLink(tree) {
-    var url = window.location;
-    var tweet = `${tree.name_common} on Santa Monica's Public Tree Map: ${url} @santamonicacity`;
+    var tweet = `${tree.name_common} on Santa Monica's Public Tree Map: ${getTreeURL(tree)} @santamonicacity`;
     return "https://twitter.com/intent/tweet?text=" + tweet;
   }
   function buildEmail(tree) {
-    var url = window.location;
     var subject = `${tree.name_common} in Santa Monica`;
-    var email = `${tree.name_common} on Santa Monica's Public Tree Map: ${url}`;
+    var email = `${tree.name_common} on Santa Monica's Public Tree Map: ${getTreeURL(tree)}`;
     return `mailto:?subject=${subject}&body=${email}`;
   }
   function buildFacebookText(tree) {
-    var CurrentUrl = window.location;
-    var fullUrl = `https://www.facebook.com/dialog/share?app_id=2427702837285993&display=popup&href=${CurrentUrl}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer`
+    var currentUrl = getTreeURL(tree);
+    var fullUrl = `https://www.facebook.com/dialog/share?app_id=2427702837285993&display=popup&href=${currentUrl}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer`
 //    https://www.facebook.com/dialog/share?
 //  app_id=2427702837285993
 //  &display=popup
 //  &href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F
 //  &redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer
     return fullUrl;
+  }
+
+  function getTreeURL(tree) {
+    var websiteURL = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
+    return `${websiteURL}?id=${tree.tree_id}`;
   }
 
   function buildNativityText(nativity) {
