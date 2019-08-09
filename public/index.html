@@ -93,7 +93,17 @@
           <button id="sidebar-vacant-close-button">x</button>
 
           <div id="sidebar-vacant-content">
-            <h1 id="sidebar-vacant-common-name"></h1>
+            <table id="vacant-share-table-overall">
+              <tr>
+                <th><h1 id="sidebar-vacant-common-name"></h1></th>
+                <th><a id="vacant-twitter-button" target="_blank"></a></th>
+                <th><a id="vacant-mail-button" target="_blank"></a></th>
+                <th><div class="fb-share-button"
+                    data-href=url
+                    data-layout="button_count">
+                </div></th>
+              </tr>
+            </table>
             <h5>Tree ID: <span id="sidebar-vacant-tree-id"></h5>
             <h5>Nearest address: <span id="sidebar-vacant-address"></h5>
             <p>This tree is not a tree! Placeholder text for a vacant site.</p>
@@ -118,12 +128,12 @@
           <button id="sidebar-close-button">x</button>
 
           <div id="sidebar-content">
-            <table id="shareTableOverall">
+            <table id="share-table-overall">
               <tr>
                 <th><h1 id="sidebar-common-name"></h1></th>
                 <th><a id="twitter-button" target="_blank"></a></th>
                 <th><a id="mail-button" target="_blank"></a></th>
-                <th><div class="fb-share-button" 
+                <th><div class="fb-share-button"
                     data-href=url
                     data-layout="button_count">
                 </div></th>

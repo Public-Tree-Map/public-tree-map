@@ -38,6 +38,8 @@ var app = this.app || {};
     this.vacantReplacementSpecies = document.getElementById('sidebar-vacant-replacement-species');
     this.vacantStreetSegment      = document.getElementById('sidebar-vacant-street-segment');
     this.vacantCloseButton            = document.getElementById('sidebar-vacant-close-button');
+    this.vacantTwitterButton      = document.getElementById('vacant-twitter-button');
+    this.vacantMailButton         = document.getElementById('vacant-mail-button');
 
     this.closeButton.onclick = this.showDefault.bind(this);
     this.vacantCloseButton.onclick = this.showDefault.bind(this);
@@ -76,6 +78,9 @@ var app = this.app || {};
     this.vacantPruningYear.innerText        = tree.pruning_year;
     this.vacantReplacementSpecies.innerText = tree.replacement_species;
     this.vacantStreetSegment.innerText      = tree.segment;
+
+    this.vacantTwitterButton.href                 = buildTweetLink(tree);
+    this.vacantMailButton.href                    = buildEmail(tree);
   }
 
   Sidebar.prototype.populateTreePanel = function(tree) {
