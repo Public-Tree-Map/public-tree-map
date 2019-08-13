@@ -1,4 +1,6 @@
 var app = this.app || {};
+var a2a_config = a2a_config || {};
+a2a_config.templates = a2a_config.templates || {};
 
 (function(module) {
 
@@ -65,6 +67,7 @@ var app = this.app || {};
       this.defaultScreen.classList.add('hidden');
       this.errorScreen.classList.add('hidden');
       this.populateTreePanel(tree);
+      this.populateTreeSharePanel(tree);
     }
   }
 
@@ -118,6 +121,18 @@ var app = this.app || {};
     this.treeContainer.classList.add('hidden');
     this.vacantContainer.classList.add('hidden');
     this.errorScreen.classList.remove('hidden');
+  }
+  
+  Sidebar.prototype.populateTreeSharePanel = function(tree) {
+    let treeName = tree.name_common;
+    a2a_config.templates.email = {
+      subject: treeName+" on Santa Monica's Public Tree Map",
+      body: treeName+" on Santa Monica's Public Tree Map :\n${link}"
+    };
+    
+    a2a_config.templates.twitter = {
+        text: treeName+" on Santa Monica's ${title} ${link} @santamonicacity",
+    };
   }
   function buildNativityText(nativity) {
     if ("native" === nativity.toLowerCase()) {
