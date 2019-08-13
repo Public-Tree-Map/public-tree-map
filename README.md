@@ -1,8 +1,8 @@
 # public-tree-map
 
-Public Tree Map uses open datasets to document publicly owned park + street + landmark trees in Santa Monica, California. Please see below for more information about the data sources and project.
+Public Tree Map uses open datasets to document publicly owned park + street + landmark trees in Santa Monica, California. Please see below for more information about the data sources and project. Please see the companion [data pipeline repository](https://github.com/Public-Tree-Map/public-tree-map-data-pipeline) for details about how we process data.
 
-We primarily use javascript
+We primarily use javascript.
 
 ## Protocol for pull requests + code review
 
