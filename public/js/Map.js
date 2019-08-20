@@ -15,7 +15,7 @@ var app = this.app || {};
     this.urlParams = new URLSearchParams(window.location.search);
 
     this.leafletMap = L.map('map', {
-      center: [34.0215, -118.467],
+      center: [34.0215, -118.481],
       zoom: this.zoom,
       zoomControl: false,
       layers: [
@@ -98,7 +98,6 @@ var app = this.app || {};
 
         var markerLocation = marker.getLatLng();
         var newViewLocation = {lat: markerLocation['lat'], lng: markerLocation['lng']};
-        newViewLocation['lng'] = newViewLocation['lng'] + 0.0005;
         var currentZoom = this.leafletMap.getZoom();
         var targetZoom = currentZoom > 16 ? currentZoom : 18;
         this.leafletMap.setView(newViewLocation, targetZoom, {animate: true});
@@ -128,14 +127,14 @@ var app = this.app || {};
       changeCircleMarker(this.highlightedMarker, 'recolor');
     }
   }
-  
+
   function updateUrl(params, id) {
     params.set('id', id);
     var url = location.origin + location.pathname + "?";
     //updates the url in the address bar
-    history.pushState("id param", "Public Tree Map", url + params); 
+    history.pushState("id param", "Public Tree Map", url + params);
   }
-  
+
   function onZoomChanged(zoom) {
     this.markers.eachLayer(function(marker) {
       marker.setRadius(Math.max(1, zoom - 13));
