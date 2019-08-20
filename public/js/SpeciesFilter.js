@@ -1,6 +1,7 @@
 var app = this.app || {};
 
 (function(module) {
+    //map.setFilter(realThis.selected);
     var selectFilter = $('#species-filter');
 
     function SpeciesFilter(map) {

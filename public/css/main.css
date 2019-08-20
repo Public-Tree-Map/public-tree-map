@@ -212,18 +212,19 @@ select.shadow {
   background-color: white; /* Green */
   border: none;
   color: white;
-  padding: 8px 15px;
+  padding: 8px 5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   white-space:nowrap;
-  font-size: 16px;
-  margin: 0px 15px;
+  font-size: 14px;
+  margin: 0px 5px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
   color: black; 
   border: 2px solid #cccccc;
+  border-radius: 20px
 }
 
 /* .topbutton1 {
@@ -232,7 +233,7 @@ select.shadow {
   border: 2px solid #4CAF50;
 } */
 
-.topbutton1:hover {
+.topbutton:hover {
   background-color: #4CAF50;
   border:2px solid #4CAF50;
   color: white;
