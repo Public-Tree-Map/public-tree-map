@@ -29,6 +29,10 @@ var app = this.app || {};
     _map.setTrees(trees, module.palettes['nativity']);
     _speciesFilter.setSpecies(_speciesFilter.selectFormatter(trees));
     document.getElementById('loading').classList.add('hidden');
+    var nativity = document.getElementById('nativity');
+    nativity.style.backgroundColor = '#4CAF50'
+    nativity.style.color = 'white'
+    nativity.style.border = '2px solid #4CAF50'
   }
 
   // EXPORTS

@@ -239,6 +239,7 @@ select.shadow {
   color: white;
 }
 
+
 @media only screen and (max-width: 600px) {
   #toolbar {
     width: calc(100% - 16px);
