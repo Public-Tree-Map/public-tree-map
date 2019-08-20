@@ -249,7 +249,7 @@ select.shadow {
 
 
 .select2-container{
-  flex-basis: 80%;
+  flex-basis: 90%;
   z-index:100000;
 }
 
