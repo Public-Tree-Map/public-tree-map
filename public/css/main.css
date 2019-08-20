@@ -192,7 +192,7 @@ select.shadow {
   text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
   #toolbar {
     width: calc(100% - 16px);
   }
@@ -206,7 +206,7 @@ select.shadow {
 
   #map {
     height: 50%;
-    top: 0;
+    top: 0px;
     width:100%;
   }
   #sidebar-image {
@@ -214,7 +214,7 @@ select.shadow {
   }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 850px) {
   #hud {
     align-items: flex-start;
     display: flex;
