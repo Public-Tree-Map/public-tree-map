@@ -49,8 +49,9 @@ html, body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: 16px;
-  margin-bottom: 32px;
+  background-color: white;
+  /* margin: 16px;
+  margin-bottom: 32px; */
   overflow: hidden;
   padding: 0px;
   pointer-events: initial;
@@ -141,7 +142,7 @@ html, body {
 #map {
   height: 100%;
   position: absolute;
-  width: 100%;
+  width: calc(100% - 440px);
 }
 
 #loading {
@@ -200,9 +201,14 @@ select.shadow {
     bottom: 0px;
     height: 50%;
     position: fixed;
-    width: calc(100% - 16px);
+    width: calc(100%);
   }
 
+  #map {
+    height: 50%;
+    top: 0;
+    width:100%;
+  }
   #sidebar-image {
     min-height: 50px;
   }
@@ -223,8 +229,12 @@ select.shadow {
 
   #sidebar {
     flex-basis: 440px;
-    height: calc(100% - 48px);
+    height: calc(100%);
     position: relative;
+  }
+
+  #map {
+    flex-basis: calc(100% - 440px);
   }
 
   #sidebar-image {
