@@ -100,9 +100,10 @@ a2a_config.templates = a2a_config.templates || {};
     this.streetSegment.innerText          = tree.segment;
 
     if (tree.images && tree.images.length > 0) {
-      this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
+      this.image.style.backgroundImage = 'url(' + tree.images[1].url + ')';
+      this.image.style.backgroundSize = 'cover';
       this.image.classList.remove('hidden');
-      this.imageCreditLink.href = tree.images[0].author.url;
+      this.imageCreditLink.href = tree.images[1].author.url;
     } else {
       this.image.style.backgroundImage = '';
       this.image.classList.add('hidden');
