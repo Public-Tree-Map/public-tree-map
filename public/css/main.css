@@ -50,8 +50,6 @@ html, body {
   display: flex;
   flex-direction: column;
   background-color: white;
-  /* margin: 16px;
-  margin-bottom: 32px; */
   overflow: hidden;
   padding: 0px;
   pointer-events: initial;
@@ -64,7 +62,6 @@ html, body {
 #sidebar-content, #sidebar-vacant-content {
   box-sizing: border-box;
   flex-grow: 1;
- /* padding: 10px;*/
   overflow-y: auto;
   padding: 32px 48px 0px 48px;
 }
