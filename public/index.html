@@ -50,10 +50,10 @@
     </div>
 
     <div id="hud">
-
-      <!-- Toolbar -->
-      <div id="toolbar">
-
+      <div id="filterBar">
+        <div id="toolbar">
+        <input "search" id="address-input" placeholder="Zoom to address" />
+        <button class="topbutton topbutton1">CA Native</button>
         <!-- Color Filter -->
         <select id="color-filter" class="shadow">
           <option value="nativity" selected>CA native</option>
@@ -66,12 +66,14 @@
           <option value="ipc_rating">Invasive</option>
         </select>
 
-        <select id="species-filter" name="state" multiple="multiple">
-        </select>
+        <!--<select id="species-filter" name="state" multiple="multiple" class="species-filter">
+        </select>-->
 
-        <input "search" id="address-input" placeholder="Zoom to address" />
 
       </div>
+      </div>
+      <!-- Toolbar -->
+      
 
       <!-- Sidebar -->
       <div id="sidebar" class="rounded-box shadow">

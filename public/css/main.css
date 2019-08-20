@@ -13,8 +13,25 @@ html, body {
   width: 100%;
   z-index: 5000;
 }
+#species-filter {
+  z-index:10;
+
+}
+
+#filterBar {
+  background: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  width: 60%;
+  margin: 30px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
 
 #toolbar {
+  height: 190;
+  width: 100%;
+  color: white;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -166,7 +183,7 @@ html, body {
 .rounded-box {
   background: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 16px;
 }
 
@@ -189,6 +206,36 @@ select.shadow {
   line-height: 1;
   padding: 18px 18px 25px 20px;
   text-align: center;
+}
+
+.topbutton {
+  background-color: white; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  white-space:nowrap;
+  font-size: 16px;
+  margin: 0px 15px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  color: black; 
+  border: 2px solid #cccccc;
+}
+
+/* .topbutton1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+} */
+
+.topbutton1:hover {
+  background-color: #4CAF50;
+  border:2px solid #4CAF50;
+  color: white;
 }
 
 @media only screen and (max-width: 600px) {
