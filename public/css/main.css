@@ -177,6 +177,7 @@ html, body {
   z-index: 50000;
 }
 
+
 .rounded-box {
   background: #fff;
   border: none;
@@ -244,11 +245,11 @@ select.shadow {
   color: white;
 }
 
-.species-filter-drop {
-  z-index: 99999;
 
-}
+
+
 .select2-container{
+  flex-basis: 80%;
   z-index:100000;
 }
 
