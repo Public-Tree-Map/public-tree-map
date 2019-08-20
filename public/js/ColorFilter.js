@@ -17,7 +17,7 @@ var app = this.app || {};
       map.setPalette(module.palettes["nativity"])
       nativityButton.style.backgroundColor = '#4CAF50'
       nativityButton.style.color = 'white'
-      nativityButton.style.border = '2px solid #4CAF50'
+      nativityButton.style.border = '1px solid #4CAF50'
 
       irrigation.style = "topbutton"
       nameButton.style = "topbutton"
@@ -29,7 +29,7 @@ var app = this.app || {};
       map.setPalette(module.palettes["name_common"])
       nameButton.style.backgroundColor = '#4CAF50'
       nameButton.style.color = 'white'
-      nameButton.style.border = '2px solid #4CAF50'
+      nameButton.style.border = '1px solid #4CAF50'
 
 
       nativityButton.style = "topbutton"
@@ -43,7 +43,7 @@ var app = this.app || {};
       map.setPalette(module.palettes["family_name_botanical"])
       family.style.backgroundColor = '#4CAF50'
       family.style.color = 'white'
-      family.style.border = '2px solid #4CAF50'
+      family.style.border = '1px solid #4CAF50'
 
       nativityButton.style = "topbutton"
       nameButton.style = "topbutton"
@@ -55,7 +55,7 @@ var app = this.app || {};
       map.setPalette(module.palettes["irrigation_requirements"])
       irrigation.style.backgroundColor = '#4CAF50'
       irrigation.style.color = 'white'
-      irrigation.style.border = '2px solid #4CAF50'
+      irrigation.style.border = '1px solid #4CAF50'
 
       nativityButton.style = "topbutton"
       nameButton.style = "topbutton"
@@ -67,7 +67,7 @@ var app = this.app || {};
       map.setPalette(module.palettes["shade_production"])
       shade.style.backgroundColor = '#4CAF50'
       shade.style.color = 'white'
-      shade.style.border = '2px solid #4CAF50'
+      shade.style.border = '1px solid #4CAF50'
     
       irrigation.style = "topbutton"
       nativityButton.style = "topbutton"

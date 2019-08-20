@@ -13,10 +13,7 @@ html, body {
   width: 100%;
   z-index: 5000;
 }
-#species-filter {
-  z-index:10;
 
-}
 
 #filterBar {
   background: #fff;
@@ -24,7 +21,7 @@ html, body {
   border-radius: 10px;
   padding: 20px;
   width: 60%;
-  margin: 30px;
+  margin: 30px 10px 10px 10px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -35,7 +32,7 @@ html, body {
   align-items: center;
   display: flex;
   flex-direction: row;
-  margin: 8px;
+  margin: 5px;
   pointer-events: initial;
 }
 
@@ -218,27 +215,42 @@ select.shadow {
   display: inline-block;
   white-space:nowrap;
   font-size: 14px;
-  margin: 0px 5px;
+  /*margin: 0px 5px;*/
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
   color: black; 
-  border: 2px solid #cccccc;
-  border-radius: 20px
+  border: 1px solid #cccccc;
+  /*border-radius: 20px*/
+}
+.topbuttonleft {
+  margin-left: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+}
+.topbuttonright {
+  margin-right: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
 }
 
-/* .topbutton1 {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
-} */
+
 
 .topbutton:hover {
   background-color: #4CAF50;
-  border:2px solid #4CAF50;
+  border:1px solid #4CAF50;
   color: white;
 }
 
+.species-filter-drop {
+  z-index: 99999;
+
+}
+.select2-container{
+  z-index:100000;
+}
 
 @media only screen and (max-width: 600px) {
   #toolbar {
