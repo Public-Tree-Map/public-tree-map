@@ -1,0 +1,78 @@
+
+#sidebar-banner {
+    background-color: #41ae76;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+    font-weight: 300;
+}
+
+#banner-logo {
+    position: absolute;
+    top: 13px;
+}
+
+#banner-title {
+    margin: 5px 38px;
+    margin-top: 7px;
+    text-align: center;
+}
+
+#banner-close-button {
+    position: absolute;
+    top: 17px;
+    right: 20px;
+}
+
+.close-button {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+}
+
+.close-button:hover {
+    cursor: pointer;
+}
+
+.close-button:hover::before,
+.close-button:hover::after {
+    background: black;
+}
+
+.close-button::before,
+.close-button::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: white;
+}
+
+.close-button::before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.close-button::after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.close-button.black::before,
+.close-button.black::after {
+    height: 4px;
+    margin-top: -4px;
+}
