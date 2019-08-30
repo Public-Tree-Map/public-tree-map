@@ -75,7 +75,7 @@ var app = this.app || {};
         renderer: RENDERER,
         radius,
         stroke: false,
-        fillOpacity: 0.75,
+        fillOpacity: 0.8,
         fillColor: getFillColor(tree, palette)
       });
       marker.tree = tree;
