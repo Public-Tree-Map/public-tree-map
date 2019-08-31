@@ -140,6 +140,12 @@ a2a_config.templates = a2a_config.templates || {};
       return "This tree is native to California";
     } else if ("exotic" === nativity.toLowerCase()) {
       return "This tree isn't native to California";
+    } else if ("moderate" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("watch" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("limited" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";      
     } else {
       return "Unknown";
     }
