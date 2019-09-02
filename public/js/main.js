@@ -26,7 +26,7 @@ var app = this.app || {};
   }
 
   function setData(trees) {
-    _map.setTrees(trees, module.palettes['nativity']);
+    _map.setTrees(trees, module.palettes['name_common']);
     _speciesFilter.setSpecies(_speciesFilter.selectFormatter(trees));
     document.getElementById('loading').classList.add('hidden');
   }

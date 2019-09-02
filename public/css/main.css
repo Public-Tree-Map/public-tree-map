@@ -59,6 +59,10 @@ html, body {
   padding: 32px 48px 0px 48px;
 }
 
+#sidebar-default a {
+  text-decoration: none;
+}
+
 #sidebar-content, #sidebar-vacant-content {
   box-sizing: border-box;
   flex-grow: 1;
