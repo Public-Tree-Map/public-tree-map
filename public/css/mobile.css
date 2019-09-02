@@ -16,6 +16,7 @@
     height: 30%;
     width: 100%;
     transition: .5s ease;
+    overflow-y: scroll;
   }
 
   #sidebar > div {
@@ -43,6 +44,10 @@
 
   .sidebar-details {
     display: none;
+  }
+
+  .btn--mobile {
+    display: block;
   }
 
   #sidebar.sidebar-mobile--fullscreen, .sidebar-mobile--fullscreen #sidebar-tree {

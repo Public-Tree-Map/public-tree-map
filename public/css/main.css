@@ -179,7 +179,10 @@ html, body {
   margin: 4px;
   border: none;
   border-radius: 4px;
+}
 
+.btn--mobile {
+  display: none;
 }
 
 .shadow {
