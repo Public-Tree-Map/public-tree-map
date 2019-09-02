@@ -1,67 +1,89 @@
-@media only screen and (max-width 850px) {
-  #toolbar {
-    width calc(100% - 16px);
-  }
+@media only screen and (max-width: 890px) {
 
-  #sidebar {
-    bottom 0px;
-    height 25%;
-    position fixed;
-    width calc(100%);
+  #toolbar {
+    width: calc(100% - 16px);
   }
 
   #map {
-    height 75%;
-    top 0px;
-    width100%;
+    height: 70%;
+    top: 0px;
+    width: 100%;
+  }
+
+  #sidebar {
+    position: fixed;
+    bottom: 0;
+    height: 30%;
+    width: 100%;
+    transition: .5s ease;
+  }
+
+  #sidebar > div {
+    background-color: white;
+  }
+
+  #sidebar-tree, #sidebar-vacant {
+    flex-direction: row;
+    height: 100%;
   }
 
   #sidebar-image {
-    min-height 50px;
-  }
-
-  #sidebar-tree {
-    display flex;
-    flex-direction row;
-  }
-
-  #sidebar-image {
-    width 40%;
+    width: 40%;
+    min-height: 50px;
+    height: 100%;
   }
 
   #sidebar-content {
-    padding 16px;
+    padding: 16px;
   }
 
   .banner {
-    display none;
+    display: none;
   }
+
+  .sidebar-details {
+    display: none;
+  }
+
+  #sidebar.sidebar-mobile--fullscreen, .sidebar-mobile--fullscreen #sidebar-tree {
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .sidebar-mobile--fullscreen #sidebar-image {
+    width: 100%;
+  }
+
+  .sidebar-mobile--fullscreen .sidebar-details{
+    display: block;
+  }
+
 }
 
-@media only screen and (min-width 850px) {
+@media only screen and (min-width: 890px) {
   #hud {
-    align-items flex-start;
-    display flex;
-    flex-direction row;
-    flex-wrap wrap;
-    justify-content space-between;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   #toolbar {
-    flex-basis 350px;
+    flex-basis: 350px;
   }
 
   #sidebar {
-    flex-basis 440px;
-    height calc(100%);
-    position relative;
+    flex-basis: 440px;
+    height: calc(100%);
+    position: relative;
   }
 
   #map {
-    flex-basis calc(100% - 440px);
+    flex-basis: calc(100% - 440px);
   }
 
   #sidebar-image {
-    min-height 250px;
+    min-height: 250px;
   }
 }

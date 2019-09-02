@@ -91,7 +91,7 @@ html, body {
 #sidebar-image-credit a{
   color: #fff;
 }
-#sidebar-content h1 {
+#sidebar-content h1, #sidebar-vacant-content h1 {
   color: #777;
   font-size: 27px;
   margin: 0px;
@@ -126,12 +126,9 @@ html, body {
   overflow-y: auto;
 }
 
-#sidebar button {
+#sidebar-close-button, #sidebar-vacant-close-button {
   position: absolute;
   right: 0px;
-  opacity: 0.6;
-  border: none;
-  background: gray;
 }
 
 #sidebar button:hover {
@@ -168,6 +165,17 @@ html, body {
   border: none;
   border-radius: 10px;
   padding: 16px;
+}
+
+.btn {
+  background-color: #43ae76;
+  color: #fff;
+
+  padding: 8px 16px;
+  margin: 4px;
+  border: none;
+  border-radius: 4px;
+
 }
 
 .shadow {
