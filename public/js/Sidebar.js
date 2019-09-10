@@ -115,6 +115,7 @@ a2a_config.templates = a2a_config.templates || {};
     this.treeContainer.classList.add('hidden');
     this.vacantContainer.classList.add('hidden');
     this.defaultScreen.classList.remove('hidden');
+    removeQueryStringFromUrlBar();
   }
 
   Sidebar.prototype.showError = function() {
@@ -191,7 +192,11 @@ a2a_config.templates = a2a_config.templates || {};
     }
 
   }
-
+  
+  function removeQueryStringFromUrlBar() {
+    var newURL = location.href.split("?")[0];
+    window.history.pushState('object', document.title, newURL);
+  }
   // Exports
   module.Sidebar = Sidebar;
 
