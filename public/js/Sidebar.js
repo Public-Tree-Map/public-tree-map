@@ -111,6 +111,12 @@ a2a_config.templates = a2a_config.templates || {};
   }
 
   Sidebar.prototype.showDefault = function() {
+    //This was added not for front end -- It resets the url
+   
+    var url = location.origin + location.pathname;
+    //clears the url in the address bar
+    history.pushState("clear params", "Public Tree Map", url);
+
     this.errorScreen.classList.add('hidden');
     this.treeContainer.classList.add('hidden');
     this.vacantContainer.classList.add('hidden');
