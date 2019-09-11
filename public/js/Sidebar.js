@@ -2,6 +2,7 @@ var app = this.app || {};
 var a2a_config = a2a_config || {};
 a2a_config.templates = a2a_config.templates || {};
 var images = [];
+var indexOfImages = 1;
 (function(module) {
 
   function Sidebar() {
@@ -208,4 +209,23 @@ function currentSlide(index){
   this.image.style.backgroundImage = 'url(' + images[index].url + ')';
   this.imageCreditLink.href = images[index].author.url;
   
+}
+
+function lastSlideImage(){
+  if(indexOfImages==0){
+    indexOfImages=2;
+    currentSlide(indexOfImages);
+  }else{
+    indexOfImages-=1;
+    currentSlide(indexOfImages);
+  }
+}
+function nextSlideImage(){
+  if(indexOfImages==2){
+    indexOfImages=0;
+    currentSlide(indexOfImages);
+  }else{
+    indexOfImages+=1;
+    currentSlide(indexOfImages);
+  }
 }
