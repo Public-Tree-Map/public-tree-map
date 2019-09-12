@@ -207,7 +207,6 @@ function currentSlide(index){
   this.imageCreditLink = document.getElementById('sidebar-image-credit-link');
   this.image.style.backgroundImage = 'url(' + images[index].url + ')';
   this.imageCreditLink.href = images[index].author.url;
-  
 }
 
 function lastSlideImage(){
