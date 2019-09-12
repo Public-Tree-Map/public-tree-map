@@ -107,7 +107,6 @@ var indexOfImages = 1;
       this.image.classList.remove('hidden');
         
       this.imageCreditLink.href = tree.images[1].author.url;
-      console.log(tree.images.length);
       images = tree.images;
     } else {
       this.image.style.backgroundImage = '';
