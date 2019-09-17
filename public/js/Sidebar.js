@@ -197,7 +197,6 @@ var indexOfImages = 1;
 
   }
   
- clearUrl
   function removeQueryStringFromUrlBar() {
     var newURL = location.href.split("?")[0];
     window.history.pushState('object', document.title, newURL);
