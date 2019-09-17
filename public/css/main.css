@@ -111,8 +111,15 @@ html, body {
 #sidebar-image-credit {
   position: absolute;
   bottom: 0;
-  left: 0;
-  color: #fff;
+  right: 0;
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
   background: rgba(0, 0, 0, 0.5);
   padding: 5px 12px;
 }
