@@ -70,9 +70,13 @@
         </select>
 
         <input "search" id="address-input" placeholder="Zoom to address" />
-        <button id="leftMobileButton" >Species</button>
-        <button id="rightMobileButton">Family</button>
-
+        <div id="mobileButtonsContainer">
+          
+          <div id="mobileButtons">
+            <button id="leftMobileButton" >Species</button>
+            <button id="rightMobileButton">Family</button>
+          </div>
+        </div>
       </div>
 
       <!-- Sidebar -->
@@ -106,8 +110,8 @@
         </div>
         <div id="sidebar-tree">
           <div id="sidebar-image" class="shadow hidden sidebar-image">
-            <div id="leftButton"><button onclick="lastSlideImage()"><</button></div>
-            <div id="rightButton"><button onclick="nextSlideImage()">></button></div>
+            <button onclick="lastSlideImage()" id="leftButton"><</button>
+            <button onclick="nextSlideImage()" id="rightButton">></button>
             <div id="sidebar-image-credit">image via <a id="sidebar-image-credit-link" target="__blank">eol.org</a></div>
           </div>
           <button id="sidebar-close-button" class = "btn">x</button>

@@ -227,25 +227,31 @@ select.shadow {
   padding: 18px 18px 25px 20px;
   text-align: center;
 }
-#rightButton button{
+#rightButton {
   font-size: 60px;
   font-weight: bolder;
   color: white;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-}
-#rightButton:hover button:focus {outline:0;}
+  /* top: 50%;
+  transform: translateY(-50%); */
+  position: absolute;
 
-#leftButton button{
+  transform: translateY(100%);
+  background: transparent;
+  right: 0;
+  outline: none;
+  border: none;
+}
+
+#leftButton {
   font-size: 60px;
   font-weight: bolder;
   color: white;
   float: left;
-  left: 0%;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 0;
+  border: none;
+  /* top: 50%;*/
+  transform: translateY(100%);
   background: transparent;
+  outline: none;
 }
-#leftButton:hover button:focus {outline:0;}
 
