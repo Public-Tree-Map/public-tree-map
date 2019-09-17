@@ -157,6 +157,7 @@ html, body {
 #sidebar-close-button, #sidebar-vacant-close-button {
   position: absolute;
   right: 0px;
+  
 }
 
 #sidebar button:hover {
