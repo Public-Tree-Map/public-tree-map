@@ -6,8 +6,9 @@ var indexOfImages = 1;
 (function(module) {
 
   function Sidebar() {
-    
+    this.sidebarContainer       = document.getElementById('sidebar');
     this.defaultScreen          = document.getElementById('sidebar-default');
+    this.exploreMapButton       = document.getElementById('sidebar-default-explore')
     this.treeContainer          = document.getElementById('sidebar-tree');
     this.errorScreen            = document.getElementById('sidebar-error');
     this.image                  = document.getElementById('sidebar-image');
@@ -30,20 +31,28 @@ var indexOfImages = 1;
     this.replacementSpecies     = document.getElementById('sidebar-replacement-species');
     this.address                = document.getElementById('sidebar-address');
     this.streetSegment          = document.getElementById('sidebar-street-segment');
+    this.treeDetails            = document.getElementById('sidebar-tree-details');
     this.closeButton            = document.getElementById('sidebar-close-button');
+    this.detailsButton          = document.getElementById('sidebar-details-button');
 
     // Vacant panel elements
     this.vacantContainer          = document.getElementById('sidebar-vacant');
     this.vacantCommonName         = document.getElementById('sidebar-vacant-common-name');
     this.vacantTreeId             = document.getElementById('sidebar-vacant-tree-id');
     this.vacantAddress            = document.getElementById('sidebar-vacant-address');
-    this.vacantPruningYear      = document.getElementById('sidebar-vacant-pruning-year');
+    this.vacantPruningYear        = document.getElementById('sidebar-vacant-pruning-year');
     this.vacantReplacementSpecies = document.getElementById('sidebar-vacant-replacement-species');
     this.vacantStreetSegment      = document.getElementById('sidebar-vacant-street-segment');
-    this.vacantCloseButton            = document.getElementById('sidebar-vacant-close-button');
+    this.vacantCloseButton        = document.getElementById('sidebar-vacant-close-button');
+    this.vacantDetailsButton      = document.getElementById('sidebar-vacant-details-button')
 
     this.closeButton.onclick = this.showDefault.bind(this);
     this.vacantCloseButton.onclick = this.showDefault.bind(this);
+
+    // Buttons for mobile view
+    this.detailsButton.onclick = toggleFullMobileView.bind(this);
+    this.vacantDetailsButton.onclick = toggleFullMobileView.bind(this);
+    this.exploreMapButton.onclick = toggleFullMobileView.bind(this);
   }
 
   Sidebar.prototype.setTree = function(tree) {
@@ -105,7 +114,7 @@ var indexOfImages = 1;
       this.image.style.backgroundImage = 'url(' + tree.images[1].url + ')';
       this.image.style.backgroundSize = 'cover';
       this.image.classList.remove('hidden');
-        
+
       this.imageCreditLink.href = tree.images[1].author.url;
       images = tree.images;
     } else {
@@ -127,18 +136,35 @@ var indexOfImages = 1;
     this.vacantContainer.classList.add('hidden');
     this.errorScreen.classList.remove('hidden');
   }
-  
+
   Sidebar.prototype.populateTreeSharePanel = function(tree) {
     let treeName = tree.name_common;
     a2a_config.templates.email = {
       subject: treeName+" on Santa Monica's Public Tree Map",
       body: treeName+" on Santa Monica's Public Tree Map :\n${link}"
     };
-    
+
     a2a_config.templates.twitter = {
         text: treeName+" on Santa Monica's ${title} ${link} @santamonicacity",
     };
   }
+
+  function toggleFullMobileView() {
+    let className = 'sidebar-mobile--fullscreen';
+    if(this.sidebarContainer.classList.contains(className)) {
+      this.sidebarContainer.classList.remove(className);
+      this.detailsButton.innerText = "View Details";
+      this.vacantDetailsButton.innerText = "View Details";
+      this.exploreMapButton.innerText = "What is Public Tree Map?";
+    }
+    else {
+      this.sidebarContainer.classList.add(className);
+      this.detailsButton.innerText = "Close";
+      this.vacantDetailsButton.innerText = "Close";
+      this.exploreMapButton.innerText = "Explore the Map";
+    }
+  }
+
   function buildNativityText(nativity) {
     if ("native" === nativity.toLowerCase()) {
       return "This tree is native to California";
@@ -149,7 +175,7 @@ var indexOfImages = 1;
     } else if ("watch" === nativity.toLowerCase()) {
       return "This tree isn't native to California";
     } else if ("limited" === nativity.toLowerCase()) {
-      return "This tree isn't native to California";      
+      return "This tree isn't native to California";
     } else {
       return "Unknown";
     }
@@ -195,8 +221,8 @@ var indexOfImages = 1;
     }
 
   }
-  
-  
+
+
   // Exports
   module.Sidebar = Sidebar;
 

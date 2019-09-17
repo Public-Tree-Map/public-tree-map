@@ -119,7 +119,7 @@ html, body {
 #sidebar-image-credit a{
   color: #fff;
 }
-#sidebar-content h1 {
+#sidebar-content h1, #sidebar-vacant-content h1 {
   color: #777;
   font-size: 27px;
   margin: 0px;
@@ -154,12 +154,9 @@ html, body {
   overflow-y: auto;
 }
 
-#sidebar button {
+#sidebar-close-button, #sidebar-vacant-close-button {
   position: absolute;
   right: 0px;
-  opacity: 0.6;
-  border: none;
-  background: gray;
 }
 
 #sidebar button:hover {
@@ -196,6 +193,17 @@ html, body {
   border: none;
   border-radius: 10px;
   padding: 16px;
+}
+
+.btn {
+  background-color: #43ae76;
+  color: #fff;
+
+  padding: 8px 16px;
+  margin: 4px;
+  border: none;
+  border-radius: 4px;
+
 }
 
 .shadow {
@@ -239,55 +247,3 @@ select.shadow {
   background: transparent;
 }
 #leftButton:hover button:focus {outline:0;}
-
-
-
-@media only screen and (max-width: 850px) {
-  #toolbar {
-    width: calc(100% - 16px);
-  }
-
-  #sidebar {
-    bottom: 0px;
-    height: 50%;
-    position: fixed;
-    width: calc(100%);
-  }
-
-  #map {
-    height: 50%;
-    top: 0px;
-    width:100%;
-  }
-  .sidebar-image {
-    min-height: 50px;
-  }
-}
-
-@media only screen and (min-width: 850px) {
-  #hud {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  #toolbar {
-    flex-basis: 350px;
-  }
-
-  #sidebar {
-    flex-basis: 440px;
-    height: calc(100%);
-    position: relative;
-  }
-
-  #map {
-    flex-basis: calc(100% - 440px);
-  }
-
-  .sidebar-image {
-    min-height: 250px;
-  }
-}
