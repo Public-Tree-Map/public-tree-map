@@ -46,8 +46,8 @@ var indexOfImages = 1;
     this.vacantCloseButton        = document.getElementById('sidebar-vacant-close-button');
     this.vacantDetailsButton      = document.getElementById('sidebar-vacant-details-button')
 
-    this.closeButton.onclick = this.showDefault.bind(this);
-    this.vacantCloseButton.onclick = this.showDefault.bind(this);
+    this.closeButton.onclick = closePanel.bind(this);
+    this.vacantCloseButton.onclick = closePanel.bind(this);
 
     // Buttons for mobile view
     this.detailsButton.onclick = toggleFullMobileView.bind(this);
@@ -153,15 +153,27 @@ var indexOfImages = 1;
     let className = 'sidebar-mobile--fullscreen';
     if(this.sidebarContainer.classList.contains(className)) {
       this.sidebarContainer.classList.remove(className);
+      this.detailsButton.classList.remove('hidden');
+      this.vacantDetailsButton.classList.remove('hidden');
       this.detailsButton.innerText = "View Details";
       this.vacantDetailsButton.innerText = "View Details";
       this.exploreMapButton.innerText = "What is Public Tree Map?";
     }
     else {
       this.sidebarContainer.classList.add(className);
-      this.detailsButton.innerText = "Close";
-      this.vacantDetailsButton.innerText = "Close";
+      this.detailsButton.classList.add('hidden');
+      this.vacantDetailsButton.classList.add('hidden');
       this.exploreMapButton.innerText = "Explore the Map";
+    }
+  }
+
+  function closePanel() {
+    let className = 'sidebar-mobile--fullscreen';
+    if(this.sidebarContainer.classList.contains(className)) {
+      (toggleFullMobileView.bind(this))();
+    }
+    else {
+      this.showDefault();
     }
   }
 
