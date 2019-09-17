@@ -2,6 +2,14 @@
 
   #toolbar {
     width: calc(100% - 16px);
+    background: white;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%;
+    position: fixed;
+    height: 10%;
+
+
   }
 
   #map {
@@ -9,6 +17,7 @@
     top: 0px;
     width: 100%;
   }
+  
 
   #sidebar {
     position: fixed;
@@ -57,6 +66,47 @@
   .sidebar-mobile--fullscreen .sidebar-details{
     display: block;
   }
+  #color-filter{
+    visibility: hidden;
+    display: none;
+  }
+
+  .select2{
+    visibility: hidden !important;
+    display: none !important;  
+  }
+  #address-input{
+    margin-left: 10px;
+    width: (100%-292); /*Total rest of padding together*/
+  }
+
+  #leftMobileButton{
+    margin-left: 20px;
+   
+    width: 121px;
+    height: 40px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;      
+    background-color: #43ae76;
+    color: white;
+    border: solid 1px #cccccc;
+    font-size: 15px;
+    outline: none;
+
+  }
+  #rightMobileButton{
+    margin-right: 20px;
+    width: 121px;
+    height: 40px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;      
+
+    border: solid 1px #cccccc;
+    font-size: 15px;
+
+    outline: none; 
+
+  }
 
 }
 
@@ -85,5 +135,11 @@
 
   #sidebar-image {
     min-height: 250px;
+  }
+  #rightMobileButton {
+    display: none;
+  }
+  #leftMobileButton {
+    display: none;
   }
 }
