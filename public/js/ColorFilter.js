@@ -6,9 +6,10 @@ var app = this.app || {};
     this.map    = map;
     this.legend = legend;
 
-    var filter = document.getElementById('color-filter');
-
-    filter.addEventListener('change', (function(e) {
+    var filter = document.getElementsByClassName('species-button');
+    $('.species-button').on('click', (function(e) {
+      $('.species-button').removeClass('active');
+      $(e.target).addClass('active');
       this.onChange(e.target.value);
     }).bind(this));
 

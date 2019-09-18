@@ -18,10 +18,13 @@ html, body {
   align-items: center;
   display: flex;
   flex-direction: row;
-  margin: 8px;
   pointer-events: initial;
 }
-
+.toolbar-label {
+  font-size: 10px;
+  display: block;
+  margin-bottom: 5px;
+}
 #search {
   align-items: center;
   box-sizing: border-box;
@@ -186,11 +189,69 @@ html, body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
+.color-filter-container {
+  width: 60%;
+  padding: 0 1rem;
+}
 #color-filter {
   z-index: 50000;
+  width: 100%;
+  border-radius: 4px;
+}
+.btn-group button {
+  background-color: #fff;
+  width: 25%;
+  height: 40px;
+  border: solid 1px #cccccc;
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+.btn-group button:focus {
+  outline: 0;
+}
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
+.btn-group button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.btn-group button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.species-button.active {
+  background-color: #43ae76;
+  color: #fff;
+}
+
+.ap-input {
+  padding-right: 56px;
+}
+.address-container {
+  width: 60%;
+}
+.ap-input-icon {
+  right: 10px;
+}
+.ap-icon-clear {
+  right: 40px;
+}
+.species-filter-container {
+  width: 25%;
+}
+.select2-container {
+  width: 100% !important;
+}
+.select2-selection {
+  padding: 5px; 
+}
 .rounded-box {
   background: #fff;
   border: none;
@@ -274,7 +335,9 @@ select.shadow {
   }
 
   #toolbar {
-    flex-basis: 350px;
+    flex-basis: calc(96% - 440px);
+    background-color: #fff;
+    padding: 10px; 
   }
 
   #sidebar {
