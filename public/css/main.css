@@ -24,6 +24,7 @@ html, body {
   font-size: 10px;
   display: block;
   margin-bottom: 5px;
+  color: #444444;
 }
 #search {
   align-items: center;
@@ -342,7 +343,7 @@ select.shadow {
     flex-basis: calc(96% - 440px);
     background-color: #fff;
     padding: 10px; 
-    margin-left: 1%;
+    margin-left: 1.3%;
   }
 
   #sidebar {
