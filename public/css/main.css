@@ -194,14 +194,14 @@ html, body {
   padding: 0 1rem;
 }
 #color-filter {
-  z-index: 50000;
+  z-index: 5;
   width: 100%;
   border-radius: 4px;
 }
 .btn-group button {
   background-color: #fff;
-  width: 25%;
-  height: 40px;
+  height: 36px;
+  padding: 10px;
   border: solid 1px #cccccc;
   cursor: pointer; /* Pointer/hand icon */
   float: left; /* Float the buttons side by side */
@@ -233,9 +233,10 @@ html, body {
 
 .ap-input {
   padding-right: 56px;
+  height: 36px;
 }
 .address-container {
-  width: 60%;
+  width: 65%;
 }
 .ap-input-icon {
   right: 10px;
@@ -244,13 +245,16 @@ html, body {
   right: 40px;
 }
 .species-filter-container {
-  width: 25%;
+  width: 30%;
 }
 .select2-container {
   width: 100% !important;
 }
 .select2-selection {
-  padding: 5px; 
+  padding: 3px; 
+}
+.select2-container--open {
+  z-index: 33333;
 }
 .rounded-box {
   background: #fff;
@@ -338,6 +342,7 @@ select.shadow {
     flex-basis: calc(96% - 440px);
     background-color: #fff;
     padding: 10px; 
+    margin-left: 1%;
   }
 
   #sidebar {
