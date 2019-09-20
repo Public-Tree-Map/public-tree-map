@@ -68,7 +68,7 @@ html, body {
   flex-grow: 1;
  /* padding: 10px;*/
   /*overflow-y: auto;*/
-  padding: 32px 48px 0px 48px;
+  padding: 32px 20px 0px 20px;
 }
 
 #sidebar-vacant {
@@ -127,20 +127,28 @@ html, body {
   color: #fff;
 }
 #sidebar-content h1 {
-  color: #777;
-  font-size: 27px;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: black;
   margin: 0px;
-  margin-bottom: 2px;
 }
 #sidebar-default{
   padding: 0px 20px 0px 20px
 }
 
 #sidebar-content h2 {
-  color: #888;
-  font-style: italic;
-  font-size: 22px;
+
+  font-size: 14px;
   font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #777777;
   margin: 0px;
   margin-bottom: 5px;
 }
@@ -168,11 +176,49 @@ html, body {
   border: none;
   background: gray;
 }
+#sidebar h4 {
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  color: #444444;
+  margin: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#sidebar h5 {
+  color: #198b27;
+  font-size: 19px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  margin: 0px;
+}
+#sidebar span {
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
 
 #sidebar button:hover {
   opacity: 0.8;
 }
-
+.sidebar-divider{
+  height: 1px;
+  background-color: #d8d8d8;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.sidebar-seperator{
+  height: 20px;
+}
 #map {
   height: 100%;
   position: absolute;
@@ -203,6 +249,20 @@ html, body {
   border: none;
   border-radius: 10px;
   padding: 16px;
+}
+.shareButtons {
+  display: flex;
+  flex-direction: row;
+  pointer-events: initial;
+  align-content: center;
+}
+
+
+.shareButtons div {
+  align-content: flex-end;
+  bottom: 0px;
+  margin-top: 19px;
+  margin-left: 5px;
 }
 
 .shadow {
