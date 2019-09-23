@@ -75,7 +75,7 @@ html, body {
   overflow: auto;
 }
 
-#sidebar-image {
+.sidebar-image {
   background-color: #fff;
   background-position: center center;
   background-repeat: no-repeat;
@@ -83,7 +83,31 @@ html, body {
   position: relative;
   top: 0px;
   width: 100%;
+  margin: auto;
 }
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.dotsContainer{
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  outline-color: white;
+  outline: white;
+  transform: translateX(-50%);
+}
+.active, .dot:hover {
+  background-color: #717171;
+}
+
 #sidebar-image-credit {
   position: absolute;
   bottom: 0;
@@ -133,6 +157,7 @@ html, body {
 #sidebar-close-button, #sidebar-vacant-close-button {
   position: absolute;
   right: 0px;
+  
 }
 
 #sidebar button:hover {
@@ -205,3 +230,31 @@ select.shadow {
   padding: 18px 18px 25px 20px;
   text-align: center;
 }
+#rightButton {
+  font-size: 60px;
+  font-weight: bolder;
+  color: white;
+  /* top: 50%;
+  transform: translateY(-50%); */
+  position: absolute;
+
+  transform: translateY(100%);
+  background: transparent;
+  right: 0;
+  outline: none;
+  border: none;
+}
+
+#leftButton {
+  font-size: 60px;
+  font-weight: bolder;
+  color: white;
+  float: left;
+  left: 0;
+  border: none;
+  /* top: 50%;*/
+  transform: translateY(100%);
+  background: transparent;
+  outline: none;
+}
+

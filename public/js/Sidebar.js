@@ -1,7 +1,8 @@
 var app = this.app || {};
 var a2a_config = a2a_config || {};
 a2a_config.templates = a2a_config.templates || {};
-
+var images = [];
+var indexOfImages = 1;
 (function(module) {
 
   function Sidebar() {
@@ -45,8 +46,8 @@ a2a_config.templates = a2a_config.templates || {};
     this.vacantCloseButton        = document.getElementById('sidebar-vacant-close-button');
     this.vacantDetailsButton      = document.getElementById('sidebar-vacant-details-button')
 
-    this.closeButton.onclick = this.showDefault.bind(this);
-    this.vacantCloseButton.onclick = this.showDefault.bind(this);
+    this.closeButton.onclick = closePanel.bind(this);
+    this.vacantCloseButton.onclick = closePanel.bind(this);
 
     // Buttons for mobile view
     this.detailsButton.onclick = toggleFullMobileView.bind(this);
@@ -113,7 +114,9 @@ a2a_config.templates = a2a_config.templates || {};
       this.image.style.backgroundImage = 'url(' + tree.images[1].url + ')';
       this.image.style.backgroundSize = 'cover';
       this.image.classList.remove('hidden');
+
       this.imageCreditLink.href = tree.images[1].author.url;
+      images = tree.images;
     } else {
       this.image.style.backgroundImage = '';
       this.image.classList.add('hidden');
@@ -150,15 +153,27 @@ a2a_config.templates = a2a_config.templates || {};
     let className = 'sidebar-mobile--fullscreen';
     if(this.sidebarContainer.classList.contains(className)) {
       this.sidebarContainer.classList.remove(className);
+      this.detailsButton.classList.remove('hidden');
+      this.vacantDetailsButton.classList.remove('hidden');
       this.detailsButton.innerText = "View Details";
       this.vacantDetailsButton.innerText = "View Details";
       this.exploreMapButton.innerText = "What is Public Tree Map?";
     }
     else {
       this.sidebarContainer.classList.add(className);
-      this.detailsButton.innerText = "Close";
-      this.vacantDetailsButton.innerText = "Close";
+      this.detailsButton.classList.add('hidden');
+      this.vacantDetailsButton.classList.add('hidden');
       this.exploreMapButton.innerText = "Explore the Map";
+    }
+  }
+
+  function closePanel() {
+    let className = 'sidebar-mobile--fullscreen';
+    if(this.sidebarContainer.classList.contains(className)) {
+      (toggleFullMobileView.bind(this))();
+    }
+    else {
+      this.showDefault();
     }
   }
 
@@ -166,6 +181,12 @@ a2a_config.templates = a2a_config.templates || {};
     if ("native" === nativity.toLowerCase()) {
       return "This tree is native to California";
     } else if ("exotic" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("moderate" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("watch" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("limited" === nativity.toLowerCase()) {
       return "This tree isn't native to California";
     } else {
       return "Unknown";
@@ -213,7 +234,34 @@ a2a_config.templates = a2a_config.templates || {};
 
   }
 
+
   // Exports
   module.Sidebar = Sidebar;
 
 })(app);
+
+function currentSlide(index){
+  this.image = document.getElementById('sidebar-image');
+  this.imageCreditLink = document.getElementById('sidebar-image-credit-link');
+  this.image.style.backgroundImage = 'url(' + images[index].url + ')';
+  this.imageCreditLink.href = images[index].author.url;
+}
+
+function lastSlideImage(){
+  if(indexOfImages==0){
+    indexOfImages=2;
+    currentSlide(indexOfImages);
+  }else{
+    indexOfImages-=1;
+    currentSlide(indexOfImages);
+  }
+}
+function nextSlideImage(){
+  if(indexOfImages==2){
+    indexOfImages=0;
+    currentSlide(indexOfImages);
+  }else{
+    indexOfImages+=1;
+    currentSlide(indexOfImages);
+  }
+}

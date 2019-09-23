@@ -8,6 +8,9 @@ var app = this.app || {};
       'field'    : 'nativity',
       'native'   : { 'color': '#40AD75', 'title': 'Native to California' },
       'exotic'   : { 'color': '#fc9272', 'title': 'Not Native to California' },
+      'moderate' : { 'color': '#BC0000', 'title': 'Moderate' },
+      'watch'    : { 'color': '#FF8202', 'title': 'Watch' },
+      'limited'  : { 'color': '#FE0000', 'title': 'Limited' },
       'default'  : '#bdbdbd'
     },
     'name_common': {
@@ -63,14 +66,6 @@ var app = this.app || {};
       '45'       : { 'color': '#3E83BF', 'title': '45 ft' },
       '60'       : { 'color': '#2E5C85', 'title': '60 ft' },
       'default'  : '#000000'
-    },
-    'ipc_rating': {
-      'generated': false,
-      'field'    : 'ipc_rating',
-      'moderate' : { 'color': '#BC0000', 'title': 'Moderate' },
-      'watch'    : { 'color': '#FF8202', 'title': 'Watch' },
-      'limited'  : { 'color': '#FE0000', 'title': 'Limited' },
-      'default'  : '#bdbdbd'
     },
   }
 })(app);

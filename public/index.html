@@ -35,6 +35,7 @@
 
     <!-- Colors -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Colors.js/1.2.3/colors.min.js"></script>
+    
 
     <title>Public Tree Map</title>
   </head>
@@ -42,6 +43,7 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    
 
     <!-- Loading Popup -->
     <div id="loading">
@@ -68,7 +70,13 @@
         </select>
 
         <input "search" id="address-input" placeholder="Zoom to address" />
-
+        <div id="mobileButtonsContainer">
+          
+          <div id="mobileButtons">
+            <button id="leftMobileButton" >Species</button>
+            <button id="rightMobileButton">Family</button>
+          </div>
+        </div>
       </div>
 
       <!-- Sidebar -->
@@ -101,7 +109,9 @@
           </div>
         </div>
         <div id="sidebar-tree">
-          <div id="sidebar-image" class="shadow hidden">
+          <div id="sidebar-image" class="shadow hidden sidebar-image">
+            <button onclick="lastSlideImage()" id="leftButton"><</button>
+            <button onclick="nextSlideImage()" id="rightButton">></button>
             <div id="sidebar-image-credit">image via <a id="sidebar-image-credit-link" target="__blank">eol.org</a></div>
           </div>
           <button id="sidebar-close-button" class = "btn">x</button>
