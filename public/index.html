@@ -35,7 +35,7 @@
 
     <!-- Colors -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Colors.js/1.2.3/colors.min.js"></script>
-    
+
 
     <title>Public Tree Map</title>
   </head>
@@ -43,7 +43,7 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    
+
 
     <!-- Loading Popup -->
     <div id="loading">
@@ -52,147 +52,27 @@
       </div>
     </div>
 
-    <div id="hud">
-
       <!-- Toolbar -->
-      <div id="toolbar">
+    <div id="toolbar">
 
-        <!-- Color Filter -->
-        <select id="color-filter" class="shadow">
-          <option value="name_common" selected>Species</option>
-          <option value="family_name_botanical">Family</option>
-          <option value="nativity">CA native</option>
-          <option value="iucn_status">Endangered</option>
-          <option value="height_min_ft">Height</option>
-        </select>
+      <!-- Color Filter -->
+      <select id="color-filter" class="shadow">
+        <option value="name_common" selected>Species</option>
+        <option value="family_name_botanical">Family</option>
+        <option value="nativity">CA native</option>
+        <option value="iucn_status">Endangered</option>
+        <option value="height_min_ft">Height</option>
+      </select>
 
-        <select id="species-filter" name="state" multiple="multiple">
-        </select>
+      <select id="species-filter" name="state" multiple="multiple">
+      </select>
 
-        <input "search" id="address-input" placeholder="Zoom to address" />
-        <div id="mobileButtonsContainer">
-          
-          <div id="mobileButtons">
-            <button id="leftMobileButton" >Species</button>
-            <button id="rightMobileButton">Family</button>
-          </div>
-        </div>
-      </div>
+      <input "search" id="address-input" placeholder="Zoom to address" />
+      <div id="mobileButtonsContainer">
 
-      <!-- Sidebar -->
-      <div id="sidebar">
-        <div class="banner">Santa Monica Public Tree Map</div>
-        <div id="sidebar-vacant">
-          <button id="sidebar-vacant-close-button" class="btn">x</button>
-          <div id="sidebar-vacant-content">
-            <h1 id="sidebar-vacant-common-name"></h1>
-            <h5>Tree ID: <span id="sidebar-vacant-tree-id"></h5>
-            <button id="sidebar-vacant-details-button" class="btn btn--mobile">View Details</button>
-            <div class="sidebar-details">
-              <h5>Nearest address: <span id="sidebar-vacant-address"></h5>
-              <p>This tree is not a tree! Placeholder text for a vacant site.</p>
-              <table class = 'sidebar-details'>
-                <tr>
-                  <td>Planting Year:</td>
-                  <td id="sidebar-vacant-pruning-year"></td>
-                </tr>
-                <tr>
-                  <td>Replacement Species:</td>
-                  <td id="sidebar-vacant-replacement-species"></td>
-                </tr>
-                <tr>
-                  <td>Street Segment:</td>
-                  <td id="sidebar-vacant-street-segment"></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div id="sidebar-tree">
-          <div id="sidebar-image" class="shadow hidden sidebar-image">
-            <button onclick="lastSlideImage()" id="leftButton"><</button>
-            <button onclick="nextSlideImage()" id="rightButton">></button>
-            <div id="sidebar-image-credit">image via <a id="sidebar-image-credit-link" target="__blank">eol.org</a></div>
-          </div>
-          <button id="sidebar-close-button" class = "btn">x</button>
-          <div id="sidebar-content">
-            <h1 id="sidebar-common-name"></h1>
-            <h2 id="sidebar-botanical-name"></h2>
-            <button id="sidebar-details-button" class = "btn btn--mobile">View Details</button>
-            <div class="sidebar-details">
-              <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-                  <a class="a2a_button_email"></a>
-                  <a class="a2a_button_facebook"></a>
-                  <a class="a2a_button_twitter"></a>
-                  <a class="a2a_button_copy_link"></a>
-              </div>
-              <h5>Nearest address: <span id="sidebar-address"></h5>
-              <h5>Tree ID: <span id="sidebar-tree-id"></h5>
-              <h3 id="sidebar-nativity"></h3>
-              <table>
-                <tr>
-                  <td>Family:</td>
-                  <td id="sidebar-tree-family"></td>
-                </tr>
-                <tr>
-                  <td>Height:</td>
-                  <td id="sidebar-height"></td>
-                </tr>
-                <tr>
-                  <td>Diameter:</td>
-                  <td id="sidebar-diameter"></td>
-                </tr>
-                <tr>
-                  <td>Shade production:</td>
-                  <td id="sidebar-shade-production"></td>
-                </tr>
-                <tr>
-                  <td>Irrigation requirements:</td>
-                  <td id="sidebar-irrigation-requirements"></td>
-                </tr>
-                <tr>
-                  <td>Type:</td>
-                  <td id="sidebar-type"></td>
-                </tr>
-                <tr>
-                  <td>Conservation status:</td>
-                  <td id="sidebar-iucn-status"></td>
-                </tr>
-                <tr>
-                  <td>Cal-IPC rating:</td>
-                  <td id="sidebar-ipc-rating"></td>
-                </tr>
-                <tr>
-                  <td>Pruning year:</td>
-                  <td id="sidebar-pruning-year"></td>
-                </tr>
-                <tr>
-                  <td>Pruning zone:</td>
-                  <td id="sidebar-pruning-zone"></td>
-                </tr>
-                <tr>
-                  <td>Replacement species:</td>
-                  <td id="sidebar-replacement-species"></td>
-                </tr>
-                <tr>
-                  <td>Street segment:</td>
-                  <td id="sidebar-street-segment"></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div id="sidebar-default">
-          <h1>Explore Santa Monica's Urban Forest</h1>
-          <div class = 'sidebar-details'>Every public tree in Santa Monica is a civic resource. Public Tree Map documents information about each of the city's nearly 35,000 public park and street trees. Learn about the trees that make up our urban forest.
-          Nearly 1/3 of all trees in Santa Monica are owned by the city.
-          Public Tree Map will soon share information about the environmental benefits each tree provides — how many gallons of stormwater it intercepts, how many kilowatt-hours of energy it conserves, how many pounds of air pollutants it captures, and how many tons of carbon dioxide it removes from the atmosphere.</div>
-          <h5>About | Share Feedback | Report a Missing Tree  | <a href = "https://github.com/Public-Tree-Map/public-tree-map-data-pipeline#data-sources">Data Sources</a></h5>
-          <button id="sidebar-default-explore" class = "btn btn--mobile">Explore the Map</button>
-        </div>
-        <div id="sidebar-error">
-          <h1>Error</h1>
-          <div>The tree you requested was not found.</div>
+        <div id="mobileButtons">
+          <button id="leftMobileButton" >Species</button>
+          <button id="rightMobileButton">Family</button>
         </div>
       </div>
     </div>
@@ -200,6 +80,123 @@
     <!-- Map -->
     <div id="map"></div>
 
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="banner">Santa Monica Public Tree Map</div>
+      <div id="sidebar-vacant">
+        <button id="sidebar-vacant-close-button" class="btn">x</button>
+        <div id="sidebar-vacant-content">
+          <h1 id="sidebar-vacant-common-name"></h1>
+          <h5>Tree ID: <span id="sidebar-vacant-tree-id"></h5>
+          <button id="sidebar-vacant-details-button" class="btn btn--mobile">View Details</button>
+          <div class="sidebar-details">
+            <h5>Nearest address: <span id="sidebar-vacant-address"></h5>
+            <p>This tree is not a tree! Placeholder text for a vacant site.</p>
+            <table class = 'sidebar-details'>
+              <tr>
+                <td>Planting Year:</td>
+                <td id="sidebar-vacant-pruning-year"></td>
+              </tr>
+              <tr>
+                <td>Replacement Species:</td>
+                <td id="sidebar-vacant-replacement-species"></td>
+              </tr>
+              <tr>
+                <td>Street Segment:</td>
+                <td id="sidebar-vacant-street-segment"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar-tree">
+        <div id="sidebar-image" class="shadow hidden sidebar-image">
+          <button onclick="lastSlideImage()" id="leftButton"><</button>
+          <button onclick="nextSlideImage()" id="rightButton">></button>
+          <div id="sidebar-image-credit">image via <a id="sidebar-image-credit-link" target="__blank">eol.org</a></div>
+        </div>
+        <button id="sidebar-close-button" class = "btn">x</button>
+        <div id="sidebar-content">
+          <h1 id="sidebar-common-name"></h1>
+          <h2 id="sidebar-botanical-name"></h2>
+          <button id="sidebar-details-button" class = "btn btn--mobile">View Details</button>
+          <div class="sidebar-details">
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                <a class="a2a_button_email"></a>
+                <a class="a2a_button_facebook"></a>
+                <a class="a2a_button_twitter"></a>
+                <a class="a2a_button_copy_link"></a>
+            </div>
+            <h5>Nearest address: <span id="sidebar-address"></h5>
+            <h5>Tree ID: <span id="sidebar-tree-id"></h5>
+            <h3 id="sidebar-nativity"></h3>
+            <table>
+              <tr>
+                <td>Family:</td>
+                <td id="sidebar-tree-family"></td>
+              </tr>
+              <tr>
+                <td>Height:</td>
+                <td id="sidebar-height"></td>
+              </tr>
+              <tr>
+                <td>Diameter:</td>
+                <td id="sidebar-diameter"></td>
+              </tr>
+              <tr>
+                <td>Shade production:</td>
+                <td id="sidebar-shade-production"></td>
+              </tr>
+              <tr>
+                <td>Irrigation requirements:</td>
+                <td id="sidebar-irrigation-requirements"></td>
+              </tr>
+              <tr>
+                <td>Type:</td>
+                <td id="sidebar-type"></td>
+              </tr>
+              <tr>
+                <td>Conservation status:</td>
+                <td id="sidebar-iucn-status"></td>
+              </tr>
+              <tr>
+                <td>Cal-IPC rating:</td>
+                <td id="sidebar-ipc-rating"></td>
+              </tr>
+              <tr>
+                <td>Pruning year:</td>
+                <td id="sidebar-pruning-year"></td>
+              </tr>
+              <tr>
+                <td>Pruning zone:</td>
+                <td id="sidebar-pruning-zone"></td>
+              </tr>
+              <tr>
+                <td>Replacement species:</td>
+                <td id="sidebar-replacement-species"></td>
+              </tr>
+              <tr>
+                <td>Street segment:</td>
+                <td id="sidebar-street-segment"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar-default">
+        <h1>Explore Santa Monica's Urban Forest</h1>
+        <div class = 'sidebar-details'>Every public tree in Santa Monica is a civic resource. Public Tree Map documents information about each of the city's nearly 35,000 public park and street trees. Learn about the trees that make up our urban forest.
+        Nearly 1/3 of all trees in Santa Monica are owned by the city.
+        Public Tree Map will soon share information about the environmental benefits each tree provides — how many gallons of stormwater it intercepts, how many kilowatt-hours of energy it conserves, how many pounds of air pollutants it captures, and how many tons of carbon dioxide it removes from the atmosphere.</div>
+        <h5>About | Share Feedback | Report a Missing Tree  | <a href = "https://github.com/Public-Tree-Map/public-tree-map-data-pipeline#data-sources">Data Sources</a></h5>
+        <button id="sidebar-default-explore" class = "btn btn--mobile">Explore the Map</button>
+      </div>
+      <div id="sidebar-error">
+        <h1>Error</h1>
+        <div>The tree you requested was not found.</div>
+      </div>
+    </div>
+    
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
       integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="

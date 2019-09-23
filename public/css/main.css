@@ -6,12 +6,12 @@ html, body {
   width: 100%;
 }
 
-#hud {
-  height: 100%;
-  pointer-events: none;
-  position: fixed;
-  width: 100%;
-  z-index: 5000;
+body {
+  display: grid;
+  grid-template-columns: 5fr 3fr;
+  grid-template-rows: 1fr 11fr;
+  grid-template-areas: "toolbar sidebar"
+                       "map sidebar"
 }
 
 #toolbar {
@@ -20,6 +20,7 @@ html, body {
   flex-direction: row;
   margin: 8px;
   pointer-events: initial;
+  grid-area: toolbar;
 }
 
 #search {
@@ -53,6 +54,7 @@ html, body {
   overflow: hidden;
   padding: 0px;
   pointer-events: initial;
+  grid-area: sidebar;
 }
 
 #sidebar-default {
@@ -157,7 +159,7 @@ html, body {
 #sidebar-close-button, #sidebar-vacant-close-button {
   position: absolute;
   right: 0px;
-  
+
 }
 
 #sidebar button:hover {
@@ -166,8 +168,7 @@ html, body {
 
 #map {
   height: 100%;
-  position: absolute;
-  width: calc(100% - 440px);
+  grid-area: map;
 }
 
 #loading {
@@ -257,4 +258,3 @@ select.shadow {
   background: transparent;
   outline: none;
 }
-

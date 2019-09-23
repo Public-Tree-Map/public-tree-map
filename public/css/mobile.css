@@ -17,7 +17,7 @@
     top: 0px;
     width: 100%;
   }
-  
+
 
   #sidebar {
     position: fixed;
@@ -78,7 +78,7 @@
 
   .select2{
     visibility: hidden !important;
-    display: none !important;  
+    display: none !important;
   }
   #address-input{
     margin-left: 10px;
@@ -87,12 +87,12 @@
 
   #leftMobileButton{
     margin-left: 20px;
-   
+
     width: 121px;
     object-fit: contain;
     height: 40px;
     border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;      
+    border-bottom-left-radius: 5px;
     background-color: #43ae76;
     color: white;
     border: solid 1px #cccccc;
@@ -105,12 +105,12 @@
     width: 121px;
     height: 40px;
     border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;      
+    border-bottom-right-radius: 5px;
 
     border: solid 1px #cccccc;
     font-size: 15px;
 
-    outline: none; 
+    outline: none;
 
   }
   #mobileButtons{
@@ -125,11 +125,7 @@
     margin: 0px;
     display: contents;
   }
-  
 
-}
-
-@media only screen and (min-width: 890px) {
   #hud {
     align-items: flex-start;
     display: flex;
@@ -164,4 +160,9 @@
   .headerText{
     display: none;
   }
+
+}
+
+@media only screen and (min-width: 890px) {
+
 }
