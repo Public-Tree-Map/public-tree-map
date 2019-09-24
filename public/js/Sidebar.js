@@ -129,6 +129,7 @@ var indexOfImages = 1;
     this.treeContainer.classList.add('hidden');
     this.vacantContainer.classList.add('hidden');
     this.defaultScreen.classList.remove('hidden');
+    removeQueryStringFromUrlBar();
   }
 
   Sidebar.prototype.showError = function() {
@@ -235,8 +236,17 @@ var indexOfImages = 1;
     }
 
   }
+<<<<<<< HEAD
 
 
+=======
+  
+  function removeQueryStringFromUrlBar() {
+    var newURL = location.href.split("?")[0];
+    window.history.pushState('object', document.title, newURL);
+  }
+  
+>>>>>>> dab52e8ab4660f74276fb4afa21469974a8637bd
   // Exports
   module.Sidebar = Sidebar;
 

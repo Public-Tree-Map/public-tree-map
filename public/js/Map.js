@@ -38,8 +38,24 @@ var app = this.app || {};
   }
 
   Map.prototype.setFilter = function(selections) {
+    var bounds = this.leafletMap.getBounds();
+    var center = bounds.getCenter();
+    var closestDistance;
+    var closestPoint;
+
     this.selected = selections;
     this.redraw();
+    this.markers.eachLayer(function(layer) {
+      if(selections.size > 0) {
+        var position = layer.getLatLng();
+        var distance = center.distanceTo(position);
+        if(distance < closestDistance || !closestDistance) {
+          closestDistance = distance;
+          closestPoint = L.latLng(position);
+        }
+      }
+    });
+    this.leafletMap.fitBounds(bounds.extend(closestPoint));
   }
 
   Map.prototype.setTrees = function(trees, palette) {
