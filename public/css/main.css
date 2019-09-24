@@ -142,10 +142,9 @@ html, body {
 }
 
 #sidebar h2 {
-
   font-size: 14px;
   font-weight: 300;
-  font-style: normal;
+  font-style: italic;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
