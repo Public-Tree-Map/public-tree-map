@@ -134,7 +134,8 @@ html, body {
   line-height: normal;
   letter-spacing: normal;
   color: black;
-  margin: 0px;
+  margin-top: 0px;
+  margin-bottom: 6px;
 }
 #sidebar-default{
   padding: 0px 20px 0px 20px
@@ -150,7 +151,7 @@ html, body {
   letter-spacing: normal;
   color: #777777;
   margin: 0px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 #sidebar h3 {
@@ -174,14 +175,14 @@ html, body {
   margin-top: 5px;
 }
 #sidebar h5 {
-  font-size: 19px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   color: #198b27;
   margin: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
 }
 #sidebar span {
   font-size: 16px;
