@@ -68,7 +68,7 @@ html, body {
   flex-grow: 1;
  /* padding: 10px;*/
   /*overflow-y: auto;*/
-  padding: 32px 48px 0px 48px;
+  padding: 32px 20px 0px 20px;
 }
 
 #sidebar-vacant {
@@ -127,40 +127,71 @@ html, body {
   color: #fff;
 }
 #sidebar-content h1 {
-  color: #777;
-  font-size: 27px;
-  margin: 0px;
-  margin-bottom: 2px;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: black;
+  margin-top: 0px;
+  margin-bottom: 6px;
 }
 #sidebar-default{
   padding: 0px 20px 0px 20px
 }
 
-#sidebar-content h2 {
-  color: #888;
-  font-style: italic;
-  font-size: 22px;
+#sidebar h2 {
+  font-size: 14px;
   font-weight: 300;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #777777;
   margin: 0px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
-#sidebar-content h3 {
-  color: #aaa;
+#sidebar h3 {
   font-size: 15px;
   font-weight: 300;
+  color: #aaa;
   margin: 0px;
   margin-bottom: 10px;
 }
 
-#sidebar-tree {
-  display: flex;
-  flex-direction: column;
-  min-height: 1px; /* CSS is beautiful */
-  position: relative;
-  overflow-y: auto;
-}
 
+#sidebar h4 {
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  color: #444444;
+  margin: 0px;
+  margin-top: 5px;
+}
+#sidebar h5 {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  color: #198b27;
+  margin: 0px;
+  margin-bottom: 24px;
+}
+#sidebar span {
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
 #sidebar button {
   position: absolute;
   right: 0px;
@@ -169,10 +200,26 @@ html, body {
   background: gray;
 }
 
+
 #sidebar button:hover {
   opacity: 0.8;
 }
-
+#sidebar-tree {
+  display: flex;
+  flex-direction: column;
+  min-height: 1px; /* CSS is beautiful */
+  position: relative;
+  overflow-y: auto;
+}
+.sidebar-divider{
+  height: 1px;
+  background-color: #d8d8d8;
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+.sidebar-seperator{
+  height: 20px;
+}
 #map {
   height: 100%;
   position: absolute;
@@ -203,6 +250,20 @@ html, body {
   border: none;
   border-radius: 10px;
   padding: 16px;
+}
+.shareButtons {
+  display: flex;
+  flex-direction: row;
+  pointer-events: initial;
+  align-content: center;
+}
+
+
+.shareButtons div {
+  align-content: flex-end;
+  bottom: 0px;
+  margin-top: 19px;
+  margin-left: 5px;
 }
 
 .shadow {
