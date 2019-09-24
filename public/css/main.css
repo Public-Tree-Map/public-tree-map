@@ -322,15 +322,19 @@ html, body {
   flex-direction: row;
   pointer-events: initial;
   align-content: center;
+  top: 0;
+  
 }
-
-
 .shareButtons div {
-  align-content: flex-end;
-  bottom: 0px;
-  margin-top: 19px;
-  margin-left: 5px;
+  margin-top: 0px ; 
+
 }
+.shareButtons  a{
+  margin-left: 15px;
+}
+
+
+
 
 .shadow {
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
@@ -430,4 +434,6 @@ select.shadow {
   .sidebar-image {
     min-height: 250px;
   }
+
+  
 }
