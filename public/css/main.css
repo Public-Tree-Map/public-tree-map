@@ -7,11 +7,15 @@ html, body {
 }
 
 body {
+  display: flex;
+  flex-direction: row;
+}
+
+#container {
+  width: 70%;
   display: grid;
-  grid-template-columns: 5fr 3fr;
   grid-template-rows: 1fr 11fr;
-  grid-template-areas: "toolbar sidebar"
-                       "map sidebar"
+  grid-template-columns: 1fr;
 }
 
 #toolbar {
@@ -20,7 +24,7 @@ body {
   flex-direction: row;
   margin: 8px;
   pointer-events: initial;
-  grid-area: toolbar;
+  /* grid-area: toolbar; */
 }
 
 #search {
@@ -54,7 +58,8 @@ body {
   overflow: hidden;
   padding: 0px;
   pointer-events: initial;
-  grid-area: sidebar;
+  /* grid-area: sidebar; */
+  width: 30%;
 }
 
 #sidebar-default {
@@ -168,7 +173,7 @@ body {
 
 #map {
   height: 100%;
-  grid-area: map;
+  width: 100%;
 }
 
 #loading {

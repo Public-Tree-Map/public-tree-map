@@ -52,34 +52,35 @@
       </div>
     </div>
 
+    <div id="container">
       <!-- Toolbar -->
-    <div id="toolbar">
+      <div id="toolbar">
 
-      <!-- Color Filter -->
-      <select id="color-filter" class="shadow">
-        <option value="name_common" selected>Species</option>
-        <option value="family_name_botanical">Family</option>
-        <option value="nativity">CA native</option>
-        <option value="iucn_status">Endangered</option>
-        <option value="height_min_ft">Height</option>
-      </select>
+        <!-- Color Filter -->
+        <select id="color-filter" class="shadow">
+          <option value="name_common" selected>Species</option>
+          <option value="family_name_botanical">Family</option>
+          <option value="nativity">CA native</option>
+          <option value="iucn_status">Endangered</option>
+          <option value="height_min_ft">Height</option>
+        </select>
 
-      <select id="species-filter" name="state" multiple="multiple">
-      </select>
+        <select id="species-filter" name="state" multiple="multiple">
+        </select>
 
-      <input "search" id="address-input" placeholder="Zoom to address" />
-      <div id="mobileButtonsContainer">
+        <input "search" id="address-input" placeholder="Zoom to address" />
+        <div id="mobileButtonsContainer">
 
-        <div id="mobileButtons">
-          <button id="leftMobileButton" >Species</button>
-          <button id="rightMobileButton">Family</button>
+          <div id="mobileButtons">
+            <button id="leftMobileButton" >Species</button>
+            <button id="rightMobileButton">Family</button>
+          </div>
         </div>
       </div>
+
+      <!-- Map -->
+      <div id="map"></div>
     </div>
-
-    <!-- Map -->
-    <div id="map"></div>
-
     <!-- Sidebar -->
     <div id="sidebar">
       <div class="banner">Santa Monica Public Tree Map</div>
@@ -196,7 +197,7 @@
         <div>The tree you requested was not found.</div>
       </div>
     </div>
-    
+
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
       integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="

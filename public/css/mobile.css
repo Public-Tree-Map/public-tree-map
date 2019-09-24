@@ -1,27 +1,45 @@
 @media only screen and (max-width: 890px) {
 
-  #toolbar {
-    width: calc(100% - 16px);
-    background: white;
-    margin-top: 0px;
-    margin-left: 0px;
-    width: 100%;
-    position: fixed;
-    height: 10%;
-
-
+  body {
+    flex-direction: column;
   }
 
-  #map {
+  .sidebar-mobile--fullscreen #container {
+    transition: 0.5s ease;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .sidebar-mobile--fullscreen #sidebar {
+    height: 100vh;
+  }
+
+  .sidebar-mobile--fullscreen #sidebar-tree {
+    flex-direction: column;
+  }
+
+  .sidebar-mobile--fullscreen #sidebar-image {
+    width: 100%;
+  }
+
+  .sidebar-mobile--closed #container{
+    height: 100%;
+  }
+
+  .sidebar-mobile--closed #sidebar{
+    height: 0;
+  }
+
+  .sidebar-mobile--fullscreen .sidebar-details{
+    display: block;
+  }
+
+  #container {
     height: 70%;
-    top: 0px;
     width: 100%;
   }
-
 
   #sidebar {
-    position: fixed;
-    bottom: 0;
     height: 30%;
     width: 100%;
     transition: .5s ease;
@@ -33,8 +51,8 @@
   }
 
   #sidebar-tree, #sidebar-vacant {
-    flex-direction: row;
     height: 100%;
+    flex-direction: row;
   }
 
   #sidebar-image {
@@ -59,18 +77,6 @@
     display: block;
   }
 
-  #sidebar.sidebar-mobile--fullscreen, .sidebar-mobile--fullscreen #sidebar-tree {
-    height: 100%;
-    flex-direction: column;
-  }
-
-  .sidebar-mobile--fullscreen #sidebar-image {
-    width: 100%;
-  }
-
-  .sidebar-mobile--fullscreen .sidebar-details{
-    display: block;
-  }
   #color-filter{
     visibility: hidden;
     display: none;
@@ -126,31 +132,10 @@
     display: contents;
   }
 
-  #hud {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
   #toolbar {
     flex-basis: 350px;
   }
 
-  #sidebar {
-    flex-basis: 440px;
-    height: calc(100%);
-    position: relative;
-  }
-
-  #map {
-    flex-basis: calc(100% - 440px);
-  }
-
-  #sidebar-image {
-    min-height: 250px;
-  }
   #rightMobileButton {
     display: none;
   }
@@ -160,9 +145,5 @@
   .headerText{
     display: none;
   }
-
-}
-
-@media only screen and (min-width: 890px) {
 
 }

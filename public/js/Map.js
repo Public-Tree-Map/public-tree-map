@@ -88,6 +88,7 @@ var app = this.app || {};
       });
       marker.on('click', (function(leafletEvent) {
         var that = this;
+        this.sidebar.body.classList.remove('sidebar-mobile--closed');
         fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
           .then(function(response) {
             return response.json().then(function(jsonTree) {
