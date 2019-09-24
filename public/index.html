@@ -56,24 +56,30 @@
       <!-- Toolbar -->
       <div id="toolbar">
 
+        
+        <div class="address-container">
+          <label class="toolbar-label">ZOOM TO LOCATION</label>
+          <input "search" id="address-input" placeholder="Enter address" />
+        </div>
         <!-- Color Filter -->
-        <select id="color-filter" class="shadow">
-          <option value="name_common" selected>Species</option>
-          <option value="family_name_botanical">Family</option>
-          <option value="nativity">CA native</option>
-          <option value="iucn_status">Endangered</option>
-          <option value="height_min_ft">Height</option>
-        </select>
-
-        <select id="species-filter" name="state" multiple="multiple">
-        </select>
-
-        <input "search" id="address-input" placeholder="Zoom to address" />
-
+        <div class="color-filter-container">
+          <label class="toolbar-label">GROUP BY</label>
+          <div id="color-filter" class="btn-group">
+            <button id="species-button-species" class="species-button active" value="name_common">Species</button>
+            <button id="species-button-family" class="species-button" value="family_name_botanical">Family</button>
+            <button class="species-button" value="nativity">CA native</button>
+            <button class="species-button" value="iucn_status">Endangered</button>
+          </div>
+        </div>
+        <div class="species-filter-container">
+          <label class="toolbar-label">FIND A SPECIES</label>
+          <select id="species-filter" name="state" multiple="multiple">
+          </select>
+        </div>
       </div>
 
       <!-- Sidebar -->
-      <div id="sidebar" class="rounded-box shadow">
+      <div id="sidebar" class="box shadow">
         <div class="banner">Santa Monica Public Tree Map</div>
         <div id="sidebar-vacant">
           <button id="sidebar-vacant-close-button">x</button>

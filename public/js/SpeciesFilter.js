@@ -72,7 +72,7 @@ var app = this.app || {};
     SpeciesFilter.prototype.setSpecies = function(species) {
         this.species = Array.from(species).sort(treeCompareAlpha);
         selectFilter.select2({
-            placeholder: 'Filter trees',
+            placeholder: 'Start typing a species name',
             data: this.species
         })
     };
