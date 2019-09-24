@@ -323,11 +323,13 @@ html, body {
   pointer-events: initial;
   align-content: center;
   top: 0;
-  
 }
 .shareButtons div {
   margin-top: 0px ; 
 
+}
+.shareButtons h5{
+  margin-bottom: 12px !important;
 }
 .shareButtons  a{
   margin-left: 24px;
