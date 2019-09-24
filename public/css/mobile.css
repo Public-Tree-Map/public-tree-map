@@ -93,7 +93,7 @@
 
   #leftMobileButton{
     margin-left: 20px;
-
+    display: block;
     width: 121px;
     object-fit: contain;
     height: 40px;
@@ -109,6 +109,8 @@
   #rightMobileButton{
     margin-right: 20px;
     width: 121px;
+    display: block;
+
     height: 40px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -126,6 +128,34 @@
     flex-direction: row;
     pointer-events: initial;
   }
+  #rightButton {
+    font-size: 60px;
+    font-weight: bolder;
+    color: white;
+    /* top: 50%;
+    transform: translateY(-50%); */
+    position: absolute;
+  
+    transform: translateY(100%);
+    background: transparent;
+    right: 0;
+    outline: none;
+    border: none;
+  }
+  
+  #leftButton {
+    font-size: 60px;
+    font-weight: bolder;
+    color: white;
+    float: left;
+    left: 0;
+    border: none;
+    /* top: 50%;*/
+    transform: translateY(100%);
+    background: transparent;
+    outline: none;
+  }
+  
   #mobileButtonsContainer{
     flex-direction: column;
     margin: 0px;
@@ -136,12 +166,7 @@
     flex-basis: 350px;
   }
 
-  #rightMobileButton {
-    display: none;
-  }
-  #leftMobileButton {
-    display: none;
-  }
+  
   .headerText{
     display: none;
   }
