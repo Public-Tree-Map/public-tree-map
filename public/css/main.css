@@ -247,6 +247,35 @@ select.shadow {
 #leftMobileButton{
   display: none;
 }
+
 #rightMobileButton{
   display: none;
+}
+
+#rightButton {
+  font-size: 60px;
+  font-weight: bolder;
+  color: white;
+  /* top: 50%;
+  transform: translateY(-50%); */
+  position: absolute;
+
+  transform: translateY(100%);
+  background: transparent;
+  right: 0;
+  outline: none;
+  border: none;
+}
+
+#leftButton {
+  font-size: 60px;
+  font-weight: bolder;
+  color: white;
+  float: left;
+  left: 0;
+  border: none;
+  /* top: 50%;*/
+  transform: translateY(100%);
+  background: transparent;
+  outline: none;
 }

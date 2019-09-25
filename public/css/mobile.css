@@ -61,6 +61,10 @@
     height: 100%;
   }
 
+  #sidebar-image-credit {
+    display: none;
+  }
+
   #sidebar-content {
     padding: 16px;
   }
@@ -128,45 +132,23 @@
     flex-direction: row;
     pointer-events: initial;
   }
-  #rightButton {
-    font-size: 60px;
-    font-weight: bolder;
-    color: white;
-    /* top: 50%;
-    transform: translateY(-50%); */
-    position: absolute;
-  
-    transform: translateY(100%);
-    background: transparent;
-    right: 0;
-    outline: none;
-    border: none;
-  }
-  
-  #leftButton {
-    font-size: 60px;
-    font-weight: bolder;
-    color: white;
-    float: left;
-    left: 0;
-    border: none;
-    /* top: 50%;*/
-    transform: translateY(100%);
-    background: transparent;
-    outline: none;
-  }
-  
+
+
   #mobileButtonsContainer{
     flex-direction: column;
     margin: 0px;
     display: contents;
   }
 
+  #rightButton, #leftButton {
+    display: none;
+  }
+
   #toolbar {
     flex-basis: 350px;
   }
 
-  
+
   .headerText{
     display: none;
   }
