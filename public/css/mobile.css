@@ -4,6 +4,7 @@
     flex-direction: column;
   }
 
+  #sidebar-image > *,
   #sidebar-content > * {
     display: none;
   }
@@ -18,6 +19,7 @@
     height: 100vh;
   }
 
+  .sidebar-mobile--fullscreen #sidebar-image > *,
   .sidebar-mobile--fullscreen #sidebar-content > * {
     display: block;
   }
@@ -69,10 +71,6 @@
   #sidebar-content #sidebar-common-name,
   #sidebar-content .sidebar-address {
     display: block;
-  }
-
-  #sidebar-image-credit {
-    display: none;
   }
 
   #sidebar-content {
@@ -144,10 +142,6 @@
     flex-direction: column;
     margin: 0px;
     display: contents;
-  }
-
-  #rightButton, #leftButton {
-    display: none;
   }
 
   #toolbar {
