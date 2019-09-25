@@ -169,12 +169,6 @@ body {
   overflow-y: auto;
 }
 
-#sidebar-close-button, #sidebar-vacant-close-button {
-  position: absolute;
-  right: 0px;
-
-}
-
 #sidebar button:hover {
   opacity: 0.8;
 }
@@ -221,14 +215,24 @@ body {
 }
 
 .btn-close {
+  position: absolute;
+  right: 16px;
+
   background-color: transparent;
   border: none;
-
-  color: #999;
-  font-weight: bold;
-  font-size: 32px;
-  padding: 8px;
+  padding: 24px 16px;
 }
+
+.btn-close span {
+  display: block;
+  position: absolute;
+  height: 16px;
+  width: 3px;
+  background-color: #999;
+}
+
+.btn-close span:nth-child(1) { transform: rotate(45deg) }
+.btn-close span:nth-child(2) { transform: rotate(-45deg) }
 
 .btn--mobile {
   display: none;
