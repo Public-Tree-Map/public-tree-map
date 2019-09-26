@@ -112,7 +112,6 @@
     border: solid 1px #cccccc;
     font-size: 15px;
     outline: none;
-
   }
   #rightMobileButton{
     margin-right: 20px;
@@ -122,7 +121,7 @@
     height: 40px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-
+    background-color: white;
     border: solid 1px #cccccc;
     font-size: 15px;
 
