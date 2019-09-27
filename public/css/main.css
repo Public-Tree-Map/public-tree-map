@@ -299,6 +299,9 @@ html, body {
 .ap-input-icon {
   right: 10px;
 }
+.ap-icon-clear {
+  right: 40px;
+}
 .species-filter-container {
   width: 30%;
 }
