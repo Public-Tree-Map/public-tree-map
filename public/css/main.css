@@ -31,9 +31,11 @@ html, body {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  height: auto;
+  height: 36px;
   padding: 8px;
   width: 100%;
+  font-size: 14px;
+  font-color: #777777;
 }
 
 #search input {
@@ -260,6 +262,7 @@ html, body {
   border: solid 1px #cccccc;
   cursor: pointer; /* Pointer/hand icon */
   float: left; /* Float the buttons side by side */
+  font-size: 14px;
 }
 .btn-group button:focus {
   outline: 0;
@@ -291,19 +294,19 @@ html, body {
   height: 36px;
 }
 .address-container {
-  width: 65%;
+  width: 45%;
 }
 .ap-input-icon {
   right: 10px;
-}
-.ap-icon-clear {
-  right: 40px;
 }
 .species-filter-container {
   width: 30%;
 }
 .select2-container {
   width: 100% !important;
+  height: 36px;
+  font-size: 14px;
+  font-color: #777777;
 }
 .select2-selection {
   padding: 3px; 
