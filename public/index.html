@@ -52,35 +52,34 @@
       </div>
     </div>
 
+
     <div id="container">
       <!-- Toolbar -->
       <div id="toolbar">
-
+        <div class="address-container">
+          <label class="toolbar-label">ZOOM TO LOCATION</label>
+          <input "search" id="address-input" placeholder="Enter address" />
+        </div>
         <!-- Color Filter -->
-        <select id="color-filter" class="shadow">
-          <option value="name_common" selected>Species</option>
-          <option value="family_name_botanical">Family</option>
-          <option value="nativity">CA native</option>
-          <option value="iucn_status">Endangered</option>
-          <option value="height_min_ft">Height</option>
-        </select>
-
-        <select id="species-filter" name="state" multiple="multiple">
-        </select>
-
-        <input "search" id="address-input" placeholder="Enter address" />
-        <div id="mobileButtonsContainer">
-
-          <div id="mobileButtons">
-            <button id="leftMobileButton" >Species</button>
-            <button id="rightMobileButton">Family</button>
+        <div class="color-filter-container">
+          <label class="toolbar-label">GROUP BY</label>
+          <div id="color-filter" class="btn-group">
+            <button id="species-button-species" class="species-button active" value="name_common">Species</button>
+            <button id="species-button-family" class="species-button" value="family_name_botanical">Family</button>
+            <button class="species-button" value="nativity">CA Native</button>
+            <button class="species-button" value="iucn_status">Endangered</button>
           </div>
         </div>
+        <div class="species-filter-container">
+          <label class="toolbar-label">FIND A SPECIES</label>
+          <select id="species-filter" name="state" multiple="multiple">
+          </select>
+        </div>
       </div>
-
       <!-- Map -->
       <div id="map"></div>
     </div>
+
     <!-- Sidebar -->
     <div id="sidebar">
       <div class="banner">Santa Monica Public Tree Map</div>
@@ -115,79 +114,147 @@
       </div>
       <div id="sidebar-tree">
         <div id="sidebar-image" class="shadow hidden sidebar-image">
-          <button onclick="lastSlideImage()" id="leftButton"><</button>
-          <button onclick="nextSlideImage()" id="rightButton">></button>
+          <div id="leftButton"><button onclick="lastSlideImage()"><</button></div>
+          <div id="rightButton"><button onclick="nextSlideImage()">></button></div>
           <div id="sidebar-image-credit">image via <a id="sidebar-image-credit-link" target="__blank">eol.org</a></div>
         </div>
-        <button id="sidebar-close-button" class = "btn-close">
-          <span></span>
-          <span></span>
-        </button>
+        <button id="sidebar-close-button">x</button>
         <div id="sidebar-content">
           <h1 id="sidebar-common-name"></h1>
           <h2 id="sidebar-botanical-name"></h2>
-          <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-              <a class="a2a_button_email"></a>
-              <a class="a2a_button_facebook"></a>
-              <a class="a2a_button_twitter"></a>
-              <a class="a2a_button_copy_link"></a>
+          <div class="sidebar-divider"></div>
+          <div class="shareButtons">
+            <h5>Share this tree</h5>
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+
+                <a class="a2a_button_facebook">
+                    <img src="icons/facebook-icon-white-copy@3x.png" border="0" alt="Facebook" width="20" height="20">
+                </a>
+                <a class="a2a_button_twitter">
+                    <img src="icons/twitter-icon-white-copy@3x.png" border="0" alt="Facebook" width="20" height="20">
+                </a>
+                <a class="a2a_button_email">
+                  <img src="icons/email-icon@3x.png" border="0" alt="Email" width="20" height="20"></img>
+                </a>
+                <!--<a class="a2a_button_copy_link"></a> NO SVG PROVIDED-->
+            </div>
           </div>
-          <h5 class="sidebar-address">Nearest address: <span id="sidebar-address"></h5>
           <button id="sidebar-details-button" class = "btn btn--mobile">View Details</button>
-          <h5>Tree ID: <span id="sidebar-tree-id"></h5>
-          <h3 id="sidebar-nativity"></h3>
-          <table>
-            <tr>
-              <td>Family:</td>
-              <td id="sidebar-tree-family"></td>
-            </tr>
-            <tr>
-              <td>Height:</td>
-              <td id="sidebar-height"></td>
-            </tr>
-            <tr>
-              <td>Diameter:</td>
-              <td id="sidebar-diameter"></td>
-            </tr>
-            <tr>
-              <td>Shade production:</td>
-              <td id="sidebar-shade-production"></td>
-            </tr>
-            <tr>
-              <td>Irrigation requirements:</td>
-              <td id="sidebar-irrigation-requirements"></td>
-            </tr>
-            <tr>
-              <td>Type:</td>
-              <td id="sidebar-type"></td>
-            </tr>
-            <tr>
-              <td>Conservation status:</td>
-              <td id="sidebar-iucn-status"></td>
-            </tr>
-            <tr>
-              <td>Cal-IPC rating:</td>
-              <td id="sidebar-ipc-rating"></td>
-            </tr>
-            <tr>
-              <td>Pruning year:</td>
-              <td id="sidebar-pruning-year"></td>
-            </tr>
-            <tr>
-              <td>Pruning zone:</td>
-              <td id="sidebar-pruning-zone"></td>
-            </tr>
-            <tr>
-              <td>Replacement species:</td>
-              <td id="sidebar-replacement-species"></td>
-            </tr>
-            <tr>
-              <td>Street segment:</td>
-              <td id="sidebar-street-segment"></td>
-            </tr>
-          </table>
+          <div class="sidebar-divider"></div>
+          <h5>Location</h5>
+          <h4>NEAREST ADDRESS:</h4>
+          <span id="sidebar-address"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>TREE ID:</h4>
+          <span id="sidebar-tree-id"></span>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-divider"></div>
+          <h5>Details</h5>
+          <h4>FAMILY:</h4>
+          <span id="sidebar-tree-family"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>HEIGHT:</h4>
+          <span id="sidebar-height"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>TRUNK DIAMETER:</h4>
+          <span id="sidebar-diameter"></span>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-divider"></div>
+          <h5>Conservation & Care</h5>
+          <h4>CA NATIVE:</h4>
+          <span id="sidebar-nativity"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>CONSERVATION STATUS:</h4>
+          <span id="sidebar-iucn-status"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>CAL-IPC RATING:</h4>
+          <span id="sidebar-ipc-rating"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>PRUNING YEAR:</h4>
+          <span id="sidebar-pruning-year"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>IRRIGATION REQUIREMENTS:</h4>
+          <span id="sidebar-irrigation-requirements"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>SHADE PRODUCTION:</h4>
+          <span id="sidebar-shade-production"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>REPLACEMENT SPECIES:</h4>
+          <span id="sidebar-replacement-species"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>STREET SEGMENT:</h4>
+          <span id="sidebar-street-segment"></span>
+          <div class="sidebar-seperator"></div>
         </div>
       </div>
+      <!-- <button id="sidebar-close-button" class = "btn-close">
+        <span></span>
+        <span></span>
+      </button> -->
+      <!-- <div id="sidebar-content">
+        <h1 id="sidebar-common-name"></h1>
+        <h2 id="sidebar-botanical-name"></h2>
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_button_email"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_copy_link"></a>
+        </div>
+        <h5 class="sidebar-address">Nearest address: <span id="sidebar-address"></h5>
+        <button id="sidebar-details-button" class = "btn btn--mobile">View Details</button>
+        <h5>Tree ID: <span id="sidebar-tree-id"></h5>
+        <h3 id="sidebar-nativity"></h3>
+        <table>
+          <tr>
+            <td>Family:</td>
+            <td id="sidebar-tree-family"></td>
+          </tr>
+          <tr>
+            <td>Height:</td>
+            <td id="sidebar-height"></td>
+          </tr>
+          <tr>
+            <td>Diameter:</td>
+            <td id="sidebar-diameter"></td>
+          </tr>
+          <tr>
+            <td>Shade production:</td>
+            <td id="sidebar-shade-production"></td>
+          </tr>
+          <tr>
+            <td>Irrigation requirements:</td>
+            <td id="sidebar-irrigation-requirements"></td>
+          </tr>
+          <tr>
+            <td>Type:</td>
+            <td id="sidebar-type"></td>
+          </tr>
+          <tr>
+            <td>Conservation status:</td>
+            <td id="sidebar-iucn-status"></td>
+          </tr>
+          <tr>
+            <td>Cal-IPC rating:</td>
+            <td id="sidebar-ipc-rating"></td>
+          </tr>
+          <tr>
+            <td>Pruning year:</td>
+            <td id="sidebar-pruning-year"></td>
+          </tr>
+          <tr>
+            <td>Pruning zone:</td>
+            <td id="sidebar-pruning-zone"></td>
+          </tr>
+          <tr>
+            <td>Replacement species:</td>
+            <td id="sidebar-replacement-species"></td>
+          </tr>
+          <tr>
+            <td>Street segment:</td>
+            <td id="sidebar-street-segment"></td>
+          </tr>
+        </table>
+      </div> -->
       <div id="sidebar-default">
         <h1>Explore Santa Monica's Urban Forest</h1>
         <div class = 'sidebar-details'>Every public tree in Santa Monica is a civic resource. Public Tree Map documents information about each of the city's nearly 35,000 public park and street trees. Learn about the trees that make up our urban forest.

@@ -5,12 +5,13 @@ var app = this.app || {};
   function ColorFilter(map, legend) {
     this.map    = map;
     this.legend = legend;
-    var mobileSpeciesButton = document.getElementById("leftMobileButton");
-    var mobileFamilyButton = document.getElementById("rightMobileButton");
+    var mobileSpeciesButton = document.getElementById("leftButton");
+    var mobileFamilyButton = document.getElementById("rightButton");
 
-    var filter = document.getElementById('color-filter');
-
-    filter.addEventListener('change', (function(e) {
+    var filter = document.getElementsByClassName('species-button');
+    $('.species-button').on('click', (function(e) {
+      $('.species-button').removeClass('active');
+      $(e.target).addClass('active');
       this.onChange(e.target.value);
       if(e.target.value=="name_common"){
         mobileSpeciesButton.style.backgroundColor = "#43ae76";
@@ -31,7 +32,7 @@ var app = this.app || {};
 
     this.onChange(filter.value);
 
-    
+
 
 
     mobileSpeciesButton.onclick = function() {
@@ -40,7 +41,7 @@ var app = this.app || {};
       //this.map.setPalette(module.palettes["name_common"])
       mobileSpeciesButton.style.backgroundColor = "#43ae76";
       mobileFamilyButton.style.backgroundColor = 'white';
-    
+
       mobileSpeciesButton.style.color = 'white';
       mobileFamilyButton.style.color = 'black';
     };
@@ -50,7 +51,7 @@ var app = this.app || {};
 
       mobileFamilyButton.style.backgroundColor = "#43ae76";
       mobileSpeciesButton.style.backgroundColor = 'white';
-    
+
       mobileFamilyButton.style.color = 'white';
       mobileSpeciesButton.style.color = 'black';
     };
@@ -66,8 +67,7 @@ var app = this.app || {};
   module.ColorFilter = ColorFilter;
 
   //Mobile
-  
+
 
 
 })(app);
-  
