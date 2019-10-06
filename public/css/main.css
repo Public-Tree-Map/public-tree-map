@@ -229,7 +229,7 @@ html, body {
 #map {
   height: 100%;
   position: absolute;
-  width: 72%;
+  width: 70%;
 }
 
 #loading {
@@ -423,7 +423,7 @@ select.shadow {
   }
 
   #toolbar {
-    flex-basis: calc(96% - 28%);
+    flex-basis: calc(96% - 30%);
     border-radius: 4px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     background-color: #fff;
@@ -433,13 +433,13 @@ select.shadow {
   }
 
   #sidebar {
-    flex-basis: 28%;
+    flex-basis: 30%;
     height: calc(100%);
     position: relative;
   }
 
   #map {
-    flex-basis: 72%;
+    flex-basis: 70%;
   }
 
   .sidebar-image {
