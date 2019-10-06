@@ -229,7 +229,7 @@ html, body {
 #map {
   height: 100%;
   position: absolute;
-  width: calc(100% - 440px);
+  width: 70%;
 }
 
 #loading {
@@ -359,9 +359,12 @@ select.shadow {
 .banner {
   background-color: #41ae76;
   color: #fff;
-  font-size: 25px;
   line-height: 1;
-  padding: 18px 18px 25px 20px;
+  font-size: 14px;
+  padding: 17px 17px 17px 17px;
+  font-weight: bold;
+  font-style: normal;
+  letter-spacing: 1px;
   text-align: center;
 }
 #rightButton button{
@@ -420,7 +423,7 @@ select.shadow {
   }
 
   #toolbar {
-    flex-basis: calc(96% - 440px);
+    flex-basis: calc(96% - 30%);
     border-radius: 4px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     background-color: #fff;
@@ -430,17 +433,17 @@ select.shadow {
   }
 
   #sidebar {
-    flex-basis: 440px;
+    flex-basis: 30%;
     height: calc(100%);
     position: relative;
   }
 
   #map {
-    flex-basis: calc(100% - 440px);
+    flex-basis: 70%;
   }
 
   .sidebar-image {
-    min-height: 250px;
+    min-height: 220px;
   }
 
   
