@@ -58,7 +58,7 @@ var app = this.app || {};
     SpeciesFilter.prototype.selectFormatter = function(trees){
         countedTrees = trees.reduce(counter, new Map());
         var countedTreesArray = Array.from(countedTrees).map(x => x[1]);
-        return countedTreesArray.map(
+        var selectArray = countedTreesArray.map(
             (tree, index) => ({
                 id: index, 
                 text: treeToStr(tree), 
@@ -69,6 +69,7 @@ var app = this.app || {};
                 iucn_status: tree.iucnStatus
             })
         );
+        return Array.from(selectArray).sort(treeCompareAlpha);
     };
 
     function treeCompareAlpha(treeA, treeB){
@@ -82,7 +83,7 @@ var app = this.app || {};
     }
 
     SpeciesFilter.prototype.setSpecies = function(species) {
-        this.species = Array.from(species).sort(treeCompareAlpha);
+        this.species = species;
         selectFilter.select2({
             placeholder: 'Start typing a species name',
             data: this.species,
