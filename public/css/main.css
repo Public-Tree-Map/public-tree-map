@@ -302,7 +302,7 @@ html, body {
   height: 36px;
 }
 .address-container {
-  width: 45%;
+  width: 35%;
 }
 .ap-input-icon {
   right: 10px;
@@ -311,7 +311,7 @@ html, body {
   right: 40px;
 }
 .species-filter-container {
-  width: 30%;
+  width: 25%;
 }
 .select2-container {
   width: 100% !important;
