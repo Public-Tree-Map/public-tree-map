@@ -7,13 +7,25 @@ var app = this.app || {};
  */
 (function(module) {
 
-  function Legend() {
+  function Legend(map, speciesFilter) {
     // TODO: Store references to views
+    this.map = map;
+    this.speciesFilter = speciesFilter;
+  }
+
+  Legend.prototype.setSelectLegend = function(formattedSpecies, palette) {
+    return formattedSpecies.map(
+      tree => ({...tree, legend: this.map.getFillColor(tree, palette)})
+    );
   }
 
   /** Invoked with an object that contains data that can be used to render a legend */
-  Legend.prototype.setLegend = function(legend) {
+  Legend.prototype.setLegend = function(palette) {
     // TODO: Render legend
+    if(palette) {
+      var newPaletteFilter = this.setSelectLegend(this.speciesFilter.species, palette);
+      this.speciesFilter.setSpecies(newPaletteFilter);
+    }
   }
 
   // Exports
