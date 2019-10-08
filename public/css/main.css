@@ -398,6 +398,12 @@ select.shadow {
 }
 #leftButton:hover button:focus {outline:0;}
 
+.color-key {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
 
 
 @media only screen and (max-width: 850px) {

@@ -11,6 +11,7 @@ var app = this.app || {};
     this.highlightedMarker = null;
     this.trees   = [];
     this.zoom    = 14.2;
+    this.fillOpacity = 0.75;
     this.selected = new Set();
     this.urlParams = new URLSearchParams(window.location.search);
 
@@ -91,8 +92,8 @@ var app = this.app || {};
         renderer: RENDERER,
         radius,
         stroke: false,
-        fillOpacity: 0.75,
-        fillColor: getFillColor(tree, palette)
+        fillOpacity: this.fillOpacity,
+        fillColor: this.getFillColor(tree, palette)
       });
       marker.tree = tree;
       marker.bindPopup(tree.name_common, {closeButton: false});
@@ -134,9 +135,10 @@ var app = this.app || {};
 
   Map.prototype.setPalette = function(palette) {
     this.palette = palette;
+    var realThis = this;
     this.markers.eachLayer(function(marker) {
       marker.setStyle({
-        fillColor: getFillColor(marker.tree, palette)
+        fillColor: realThis.getFillColor(marker.tree, palette)
       });
     });
     if (this.highlightedMarker) {
@@ -194,7 +196,7 @@ var app = this.app || {};
     }
   }
 
-  function getFillColor(tree, palette) {
+  Map.prototype.getFillColor = function(tree, palette) {
     if (palette.generated) {
       return generateColor(tree[palette.field]);
     }

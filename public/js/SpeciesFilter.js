@@ -4,19 +4,20 @@ var app = this.app || {};
     var selectFilter = $('#species-filter');
 
     function SpeciesFilter(map) {
+        this.formatOptions = formatOptions.bind(map);
         this.selected = new Set();
         var realThis = this;
         selectFilter.on(
             "select2:select",
             function (event) {
-                realThis.selected.add(event.params.data.commonName);
+                realThis.selected.add(event.params.data["name_common"]);
                 map.setFilter(realThis.selected);
             }
         );
         selectFilter.on(
             "select2:unselect",
             function (e) {
-                realThis.selected.delete(e.params.data.commonName);
+                realThis.selected.delete(e.params.data["name_common"]);
                 map.setFilter(realThis.selected);
             }
         );
@@ -37,6 +38,9 @@ var app = this.app || {};
                     count: 1,
                     botanicalName: tree['name_botanical'],
                     commonName: tree['name_common'],
+                    familyBotanicalName: tree["family_name_botanical"],
+                    nativity: tree.nativity,
+                    iucnStatus: tree["iucn_status"],
                 }
             );
         }
@@ -55,7 +59,15 @@ var app = this.app || {};
         countedTrees = trees.reduce(counter, new Map());
         var countedTreesArray = Array.from(countedTrees).map(x => x[1]);
         return countedTreesArray.map(
-            (tree, index) => ({id: index, text: treeToStr(tree), count: tree.count, botanicalName: tree.botanicalName, commonName: tree.commonName})
+            (tree, index) => ({
+                id: index, 
+                text: treeToStr(tree), 
+                count: tree.count, 
+                family_name_botanical: tree.familyBotanicalName, 
+                name_common: tree.commonName, 
+                nativity: tree.nativity, 
+                iucn_status: tree.iucnStatus
+            })
         );
     };
 
@@ -73,9 +85,25 @@ var app = this.app || {};
         this.species = Array.from(species).sort(treeCompareAlpha);
         selectFilter.select2({
             placeholder: 'Start typing a species name',
-            data: this.species
-        })
+            data: this.species,
+            templateSelection: this.formatOptions,
+            templateResult: this.formatOptions,
+        });
     };
+
+    function formatOptions(selection) {
+        var formatted = $(
+            '<span> \
+                <span class="color-key"/> \
+                <span class="select2-selection-text"/> \
+            </span>'
+        );
+        var alpha = Math.round(255 * this.fillOpacity).toString(16);
+        
+        formatted.find(".color-key").css("background-color", selection.legend + alpha);
+        formatted.find(".select2-selection-text").text(selection.text);
+        return formatted;
+    }
 
     // Exports
     module.SpeciesFilter = SpeciesFilter;
