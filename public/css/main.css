@@ -254,6 +254,7 @@ html, body {
   z-index: 5;
   width: 100%;
   border-radius: 4px;
+  display: flex;
 }
 .btn-group button {
   background-color: #fff;
@@ -261,8 +262,15 @@ html, body {
   padding: 10px;
   border: solid 1px #cccccc;
   cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
+  flex-grow: 1;
   font-size: 14px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .btn-group button {
+    padding: 5px;
+    font-size: 10px;
+  }
 }
 .btn-group button:focus {
   outline: 0;
@@ -294,7 +302,7 @@ html, body {
   height: 36px;
 }
 .address-container {
-  width: 45%;
+  width: 35%;
 }
 .ap-input-icon {
   right: 10px;
@@ -303,7 +311,7 @@ html, body {
   right: 40px;
 }
 .species-filter-container {
-  width: 30%;
+  width: 25%;
 }
 .select2-container {
   width: 100% !important;
@@ -313,6 +321,7 @@ html, body {
 }
 .select2-selection {
   padding: 3px; 
+  min-height: 36px !important; /* Overriding min-height set by select2 */
 }
 .select2-container--open {
   z-index: 33333;
