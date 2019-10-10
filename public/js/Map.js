@@ -41,7 +41,6 @@ var app = this.app || {};
   Map.prototype.setFilter = function(selections) {
     var bounds = this.leafletMap.getBounds();
     var center = bounds.getCenter();
-    var palette = this.palette;
     var closestDistance;
     var closestPoint;
 
@@ -52,10 +51,8 @@ var app = this.app || {};
         var position = marker.getLatLng();
         var distance = center.distanceTo(position);
         if (distance < closestDistance || !closestDistance) {
-          if ( !(palette.field === 'heritage' && !marker.tree.heritage)) {
-            closestDistance = distance;
-            closestPoint = L.latLng(position);
-          }
+          closestDistance = distance;
+          closestPoint = L.latLng(position);
         }
       }
     });
