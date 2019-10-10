@@ -41,7 +41,7 @@ var app = this.app || {};
   Map.prototype.setFilter = function(selections) {
     var bounds = this.leafletMap.getBounds();
     var center = bounds.getCenter();
-    var realThis = this;
+    var palette = this.palette;
     var closestDistance;
     var closestPoint;
 
@@ -52,7 +52,7 @@ var app = this.app || {};
         var position = marker.getLatLng();
         var distance = center.distanceTo(position);
         if (distance < closestDistance || !closestDistance) {
-          if ( !(realThis.palette.field === 'heritage' && !marker.tree.heritage)) {
+          if ( !(palette.field === 'heritage' && !marker.tree.heritage)) {
             closestDistance = distance;
             closestPoint = L.latLng(position);
           }
@@ -86,7 +86,14 @@ var app = this.app || {};
 
     this.markers.clearLayers();
     if (selectedCommonNames.size > 0){
-      filter = tree => selectedCommonNames.has(tree['name_common']);
+      filter = function(tree) {
+        if (selectedCommonNames.has(tree['name_common'])) {
+          if ( !(palette.field === 'heritage' && !tree.heritage)) {
+            return true;
+          }
+        }
+        return false;
+      }
     }
     else {
       filter = tree => tree;
@@ -141,6 +148,7 @@ var app = this.app || {};
     this.palette = palette;
     var realThis = this;
 
+    this.redraw();
     setMarkerSize.call(this, this.zoom); 
     this.markers.eachLayer(function(marker) {
       marker.setStyle({
