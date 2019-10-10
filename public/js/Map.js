@@ -136,6 +136,8 @@ var app = this.app || {};
   Map.prototype.setPalette = function(palette) {
     this.palette = palette;
     var realThis = this;
+
+    setMarkerSize.call(this, this.zoom); 
     this.markers.eachLayer(function(marker) {
       marker.setStyle({
         fillColor: realThis.getFillColor(marker.tree, palette)
@@ -143,6 +145,25 @@ var app = this.app || {};
     });
     if (this.highlightedMarker) {
       changeCircleMarker(this.highlightedMarker, 'recolor');
+    }
+  }
+
+  function setMarkerSize(zoom) {
+    var radius = Math.max(1, zoom - 13);
+    
+    if (this.palette && this.palette.field === 'heritage') {
+      this.markers.eachLayer(function(marker) {
+        if (marker.tree.heritage) {
+          marker.bringToFront();
+          marker.setRadius(radius + 4);
+        } else {
+          marker.setRadius(radius);
+        }
+      });
+    } else {
+      this.markers.eachLayer(function(marker) {
+        marker.setRadius(radius);
+      });
     }
   }
 
@@ -154,9 +175,7 @@ var app = this.app || {};
   }
 
   function onZoomChanged(zoom) {
-    this.markers.eachLayer(function(marker) {
-      marker.setRadius(Math.max(1, zoom - 13));
-    });
+    setMarkerSize.call(this, zoom); 
     if (this.highlightedMarker) {
       changeCircleMarker(this.highlightedMarker, 'enlarge');
     }
