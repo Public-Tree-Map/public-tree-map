@@ -41,22 +41,26 @@ var app = this.app || {};
   Map.prototype.setFilter = function(selections) {
     var bounds = this.leafletMap.getBounds();
     var center = bounds.getCenter();
+    var realThis = this;
     var closestDistance;
     var closestPoint;
 
     this.selected = selections;
     this.redraw();
-    this.markers.eachLayer(function(layer) {
+    this.markers.eachLayer(function(marker) {
       if(selections.size > 0) {
-        var position = layer.getLatLng();
+        var position = marker.getLatLng();
         var distance = center.distanceTo(position);
-        if(distance < closestDistance || !closestDistance) {
-          closestDistance = distance;
-          closestPoint = L.latLng(position);
+        if (distance < closestDistance || !closestDistance) {
+          if ( !(realThis.palette.field === 'heritage' && !marker.tree.heritage)) {
+            closestDistance = distance;
+            closestPoint = L.latLng(position);
+          }
         }
       }
     });
     this.leafletMap.fitBounds(bounds.extend(closestPoint));
+    setMarkerSize.call(this, this.zoom);
   }
 
   Map.prototype.setTrees = function(trees, palette) {

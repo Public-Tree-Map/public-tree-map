@@ -29,6 +29,9 @@ var app = this.app || {};
         if (hashmap.has(tree_key)) {
             var currentCount = hashmap.get(tree_key);
             currentCount['count'] += 1;
+            if (tree.heritage) {
+                currentCount.heritage = true;
+            }
             hashmap.set(tree_key,  currentCount);
         }
         else {
@@ -41,6 +44,7 @@ var app = this.app || {};
                     familyBotanicalName: tree["family_name_botanical"],
                     nativity: tree.nativity,
                     iucnStatus: tree["iucn_status"],
+                    heritage: tree.heritage,
                 }
             );
         }
@@ -66,7 +70,8 @@ var app = this.app || {};
                 family_name_botanical: tree.familyBotanicalName, 
                 name_common: tree.commonName, 
                 nativity: tree.nativity, 
-                iucn_status: tree.iucnStatus
+                iucn_status: tree.iucnStatus,
+                heritage: tree.heritage,
             })
         );
         return Array.from(selectArray).sort(treeCompareAlpha);
