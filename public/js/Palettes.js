@@ -71,7 +71,8 @@ var app = this.app || {};
       'generated' : false,
       'field'     : 'heritage',
       'true'      : { 'color': '#1b499d', 'title': 'true' },
-      'false'     : { 'color': '#FFFFFF', 'title': 'false' }
+      'false'     : { 'color': '#FFFFFF', 'title': 'false' },
+      'markerSize': 4,
     },
   }
 })(app);

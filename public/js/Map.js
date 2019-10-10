@@ -162,12 +162,13 @@ var app = this.app || {};
 
   function setMarkerSize(zoom) {
     var radius = Math.max(1, zoom - 13);
+    var palette = this.palette;
     
-    if (this.palette && this.palette.field === 'heritage') {
+    if (palette && palette.field === 'heritage') {
       this.markers.eachLayer(function(marker) {
         if (marker.tree.heritage) {
           marker.bringToFront();
-          marker.setRadius(radius + 4);
+          marker.setRadius(radius + palette.markerSize);
         } else {
           marker.setRadius(radius);
         }
