@@ -41,6 +41,7 @@ var app = this.app || {};
   Map.prototype.setFilter = function(selections) {
     var bounds = this.leafletMap.getBounds();
     var center = bounds.getCenter();
+    var palette = this.palette;
     var closestDistance;
     var closestPoint;
 
@@ -51,8 +52,10 @@ var app = this.app || {};
         var position = marker.getLatLng();
         var distance = center.distanceTo(position);
         if (distance < closestDistance || !closestDistance) {
-          closestDistance = distance;
-          closestPoint = L.latLng(position);
+          if ( !(palette.field === 'heritage' && !marker.tree.heritage)) {
+            closestDistance = distance;
+            closestPoint = L.latLng(position);
+          }
         }
       }
     });
@@ -83,14 +86,7 @@ var app = this.app || {};
 
     this.markers.clearLayers();
     if (selectedCommonNames.size > 0){
-      filter = function(tree) {
-        if (selectedCommonNames.has(tree['name_common'])) {
-          if ( !(palette.field === 'heritage' && !tree.heritage)) {
-            return true;
-          }
-        }
-        return false;
-      }
+      filter = tree => selectedCommonNames.has(tree['name_common']);
     }
     else {
       filter = tree => tree;
@@ -145,7 +141,6 @@ var app = this.app || {};
     this.palette = palette;
     var realThis = this;
 
-    this.redraw();
     setMarkerSize.call(this, this.zoom); 
     this.markers.eachLayer(function(marker) {
       marker.setStyle({
@@ -153,6 +148,7 @@ var app = this.app || {};
       });
     });
     if (this.highlightedMarker) {
+      changeCircleMarker(this.highlightedMarker, 'enlarge');
       changeCircleMarker(this.highlightedMarker, 'recolor');
     }
   }
