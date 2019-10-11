@@ -105,14 +105,8 @@ var app = this.app || {};
             </span>'
         );
         var alpha = Math.round(255 * this.fillOpacity).toString(16);
-        var colorKey = formatted.find(".color-key");
         
-        if (this.palette.field === 'heritage') {
-            colorKey.addClass("hidden");
-        } else {
-            colorKey.removeClass("hidden");
-        }
-        colorKey.css("background-color", selection.legend + alpha);
+        formatted.find(".color-key").css("background-color", selection.legend + alpha);
         formatted.find(".select2-selection-text").text(selection.text);
         return formatted;
     }
