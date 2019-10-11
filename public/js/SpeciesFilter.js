@@ -41,6 +41,7 @@ var app = this.app || {};
                     familyBotanicalName: tree["family_name_botanical"],
                     nativity: tree.nativity,
                     iucnStatus: tree["iucn_status"],
+                    heritage: tree.heritage,
                 }
             );
         }
@@ -66,7 +67,8 @@ var app = this.app || {};
                 family_name_botanical: tree.familyBotanicalName, 
                 name_common: tree.commonName, 
                 nativity: tree.nativity, 
-                iucn_status: tree.iucnStatus
+                iucn_status: tree.iucnStatus,
+                heritage: tree.heritage,
             })
         );
         return Array.from(selectArray).sort(treeCompareAlpha);
@@ -100,8 +102,14 @@ var app = this.app || {};
             </span>'
         );
         var alpha = Math.round(255 * this.fillOpacity).toString(16);
+        var colorKey = formatted.find(".color-key");
         
-        formatted.find(".color-key").css("background-color", selection.legend + alpha);
+        if (this.palette.field === 'heritage') {
+            colorKey.addClass("hidden");
+        } else {
+            colorKey.removeClass("hidden");
+        }
+        colorKey.css("background-color", selection.legend + alpha);
         formatted.find(".select2-selection-text").text(selection.text);
         return formatted;
     }
