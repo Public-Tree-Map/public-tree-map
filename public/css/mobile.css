@@ -24,6 +24,10 @@
     display: block;
   }
 
+  .sidebar-mobile--fullscreen #sidebar-content .share-buttons {
+    display: flex;
+  }
+
   .sidebar-mobile--fullscreen #sidebar-tree {
     flex-direction: column;
   }
@@ -41,13 +45,8 @@
     height: 0;
   }
 
-  #container {
-    height: 70%;
-    width: 100%;
-  }
-
   #sidebar {
-    height: 30%;
+    height: 25%;
     width: 100%;
     transition: .5s ease;
     overflow-y: scroll;
@@ -139,8 +138,25 @@
     display: contents;
   }
 
+  #container {
+    height: 75%;
+    width: 100%;
+  }
+
+  #map {
+    height: 85%;
+  }
+
   #toolbar {
-    flex-basis: 350px;
+    position: relative;
+
+    width: calc(100% - (2 * 16px));
+    height: calc(15% - (2 * 16px));
+
+    padding: 16px;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .color-filter-container button {

@@ -330,7 +330,7 @@ body {
   border-radius: 10px;
   padding: 16px;
 }
-.shareButtons {
+.share-buttons {
   display: flex;
   flex-direction: row;
   pointer-events: initial;
@@ -338,7 +338,7 @@ body {
   top: 0;
 }
 
-.shareButtons button {
+.share-buttons button {
   position: absolute;
   right: 0px;
   opacity: 0.6;
@@ -346,14 +346,14 @@ body {
   background: gray;
 }
 
-.shareButtons div {
+.share-buttons div {
   margin-top: 0px ;
 
 }
-.shareButtons h5{
+.share-buttons h5{
   margin-bottom: 12px !important;
 }
-.shareButtons  a{
+.share-buttons  a{
   margin-left: 24px;
 }
 
