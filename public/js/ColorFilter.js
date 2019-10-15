@@ -5,10 +5,7 @@ var app = this.app || {};
   function ColorFilter(map, legend) {
     this.map    = map;
     this.legend = legend;
-    var mobileSpeciesButton = document.getElementById("leftButton");
-    var mobileFamilyButton = document.getElementById("rightButton");
-
-    var filter = document.getElementsByClassName('species-button');
+    this.filter = document.getElementsByClassName('species-button');
     $('.species-button').on('click', (function(e) {
       $('.species-button').removeClass('active');
       $(e.target).addClass('active');
@@ -30,32 +27,7 @@ var app = this.app || {};
       }
     }).bind(this));
 
-    this.onChange(filter.value);
-
-
-
-
-    mobileSpeciesButton.onclick = function() {
-      map.setPalette(module.palettes["name_common"])
-
-      //this.map.setPalette(module.palettes["name_common"])
-      mobileSpeciesButton.style.backgroundColor = "#43ae76";
-      mobileFamilyButton.style.backgroundColor = 'white';
-
-      mobileSpeciesButton.style.color = 'white';
-      mobileFamilyButton.style.color = 'black';
-    };
-
-    mobileFamilyButton.onclick = function() {
-      map.setPalette(module.palettes["family_name_botanical"])
-
-      mobileFamilyButton.style.backgroundColor = "#43ae76";
-      mobileSpeciesButton.style.backgroundColor = 'white';
-
-      mobileFamilyButton.style.color = 'white';
-      mobileSpeciesButton.style.color = 'black';
-    };
-
+    this.onChange(this.filter.value);
   }
 
   ColorFilter.prototype.onChange = function(key) {

@@ -259,6 +259,7 @@ body {
   z-index: 5;
   width: 100%;
   border-radius: 4px;
+  display: flex;
 }
 .btn-group button {
   background-color: #fff;
@@ -266,8 +267,15 @@ body {
   padding: 10px;
   border: solid 1px #cccccc;
   cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
+  flex-grow: 1;
   font-size: 14px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .btn-group button {
+    padding: 5px;
+    font-size: 10px;
+  }
 }
 .btn-group button:focus {
   outline: 0;
@@ -299,7 +307,7 @@ body {
   height: 36px;
 }
 .address-container {
-  width: 45%;
+  width: 35%;
 }
 .ap-input-icon {
   right: 10px;
@@ -308,7 +316,7 @@ body {
   right: 40px;
 }
 .species-filter-container {
-  width: 30%;
+  width: 25%;
 }
 .select2-container {
   width: 100% !important;
@@ -318,6 +326,7 @@ body {
 }
 .select2-selection {
   padding: 3px;
+  min-height: 36px !important; /* Overriding min-height set by select2 */
 }
 .select2-container--open {
   z-index: 33333;
@@ -409,9 +418,12 @@ select.shadow {
 .banner {
   background-color: #41ae76;
   color: #fff;
-  font-size: 25px;
   line-height: 1;
-  padding: 18px 18px 25px 20px;
+  font-size: 14px;
+  padding: 17px 17px 17px 17px;
+  font-weight: bold;
+  font-style: normal;
+  letter-spacing: 1px;
   text-align: center;
 }
 

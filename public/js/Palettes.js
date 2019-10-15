@@ -67,5 +67,12 @@ var app = this.app || {};
       '60'       : { 'color': '#2E5C85', 'title': '60 ft' },
       'default'  : '#000000'
     },
+    'heritage': {
+      'generated' : false,
+      'field'     : 'heritage',
+      'true'      : { 'color': '#1b499d', 'title': 'true' },
+      'false'     : { 'color': '#FFFFFF', 'title': 'false' },
+      'markerSize': 4,
+    },
   }
 })(app);
