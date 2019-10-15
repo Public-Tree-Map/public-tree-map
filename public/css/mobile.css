@@ -37,6 +37,17 @@
     min-height: 40%;
   }
 
+  .sidebar-mobile--fullscreen .btn-close {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .sidebar-mobile--fullscreen .btn-close span {
+    background-color: white;
+  }
+
   .sidebar-mobile--closed #container{
     height: 100%;
   }

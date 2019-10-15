@@ -376,7 +376,7 @@ body {
 
   background-color: transparent;
   border: none;
-  padding: 24px 16px;
+  padding: 12px;
   margin: 16px;
 }
 
@@ -386,7 +386,7 @@ body {
   top: 4px;
   height: 16px;
   width: 3px;
-  background-color: #000;
+  background-color: #999;
 }
 
 .btn-close span:nth-child(1) { transform: rotate(45deg) }
