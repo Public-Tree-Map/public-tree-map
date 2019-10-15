@@ -18,6 +18,7 @@ body {
 }
 
 #toolbar {
+  z-index: 100000;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -234,7 +235,6 @@ body {
 #map {
   height: 100%;
   width: 100%;
-  z-index: -1;
 }
 
 #loading {

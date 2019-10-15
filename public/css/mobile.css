@@ -85,11 +85,6 @@
     display: block;
   }
 
-  #color-filter{
-    visibility: hidden;
-    display: none;
-  }
-
   .select2{
     visibility: hidden !important;
     display: none !important;
@@ -146,6 +141,10 @@
 
   #toolbar {
     flex-basis: 350px;
+  }
+
+  .species-filter-container {
+    display: none;
   }
 
 
