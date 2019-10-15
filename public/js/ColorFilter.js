@@ -23,5 +23,5 @@ var app = this.app || {};
 
   // Exports
   module.ColorFilter = ColorFilter;
-
+  
 })(app);
