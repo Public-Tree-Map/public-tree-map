@@ -143,6 +143,14 @@
     flex-basis: 350px;
   }
 
+  .color-filter-container button {
+    display: none;
+  }
+
+  #species-button-species, #species-button-family {
+    display: block;
+  }
+
   .species-filter-container {
     display: none;
   }
