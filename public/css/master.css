@@ -1,0 +1,5 @@
+/* Main styling */
+@import "./main/main.css";
+
+/* Mobile styling */
+@import "./mobile/mobile.css"
