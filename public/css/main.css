@@ -428,30 +428,29 @@ select.shadow {
   display: none;
 }
 
-#rightButton {
+#rightButton button{
+  transform: translateY(-50%); 
+  position: absolute;
+  transform: translateY(100%);
+  right: 0;
+}
+
+
+#leftButton button{
+  float: left;
+  left: 0;
+  transform: translateY(100%);
+}
+.sliderButton button{
   font-size: 60px;
   font-weight: bolder;
   color: white;
-  /* top: 50%;
-  transform: translateY(-50%); */
-  position: absolute;
-
-  transform: translateY(100%);
   background: transparent;
-  right: 0;
   outline: none;
   border: none;
 }
-
-#leftButton {
-  font-size: 60px;
-  font-weight: bolder;
-  color: white;
-  float: left;
-  left: 0;
-  border: none;
-  /* top: 50%;*/
-  transform: translateY(100%);
-  background: transparent;
+.sliderButton button:focus{
+  outline: none;
 }
-#leftButton:hover button:focus {outline:0;}
+
+
