@@ -458,4 +458,6 @@ select.shadow {
 
 .leaflet-popup-tip {
   background-color: #000000;
+  width: 12px;
+  height: 15px;
 }
