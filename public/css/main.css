@@ -448,3 +448,14 @@ select.shadow {
 
   
 }
+.leaflet-popup-content-wrapper {
+  background-color: #000000;
+  color: #fff;
+  border-radius: 4px;
+  font-family: 'Lato';
+  font-size: 12px;
+}
+
+.leaflet-popup-tip {
+  background-color: #000000;
+}
