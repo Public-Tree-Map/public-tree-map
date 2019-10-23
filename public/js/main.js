@@ -1,11 +1,15 @@
 var app = this.app || {};
 
+
+
 (function(module) {
   var _sidebar;
   var _map;
   var _colorFilter;
   var _legend;
   var _speciesFilter;
+
+
 
   function init() {
     _sidebar       = new module.Sidebar();
@@ -17,6 +21,8 @@ var app = this.app || {};
 
     _sidebar.showDefault();
 
+    checkFirstTime();
+    
     fetch('https://storage.googleapis.com/public-tree-map/data/map.json')
       .then(function(response) {
         return response.json().then(function(trees) {
@@ -38,4 +44,25 @@ var app = this.app || {};
   module.init = init;
   module.setData = setData;
 
+
+  function checkFirstTime(){
+    let isFirstTime = localStorage.getItem("isFirstTime");
+    if(isFirstTime==null){
+      showFirstTimeDialog();
+    }
+  }
+  
 })(app);
+
+
+function closeFirstTime(){
+  let firstTime = document.getElementById("firstTime")
+
+  firstTime.classList.add('hidden');
+  localStorage.setItem("isFirstTime", false)
+}
+function showFirstTimeDialog(){
+  let firstTime = document.getElementById("firstTime")
+
+  firstTime.classList.remove("hidden");
+}

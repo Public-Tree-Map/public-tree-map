@@ -43,7 +43,26 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-
+    <div id="firstTime" class="hidden">
+      <div>
+        <div class="introBanner">SANTA MONICA PUBLIC TREE MAP</div>
+        <div id="firstTimeContent">
+          <h1>Explore Santa Monica’s Urban Forest</h1>
+          <p>Nearly one third of all trees in Santa Monica are owned and maintained by the city. Learn about the trees that make up our urban forest.<br><br>
+          Using this map, you can:<br>
+            &nbsp;•   Find a tree in your neighborhood<br>
+            &nbsp;•   Browse trees by species or family<br>
+            &nbsp;•   Heatmap trees by water usage or shade<br>
+          </p>
+          <button onclick="closeFirstTime();">
+            Explore the Map
+          </button>
+          <h5>
+          About    |    Share Feedback    |    Report Missing Tree
+          </h5>
+        </div>
+      </div>
+    </div>
 
     <!-- Loading Popup -->
     <div id="loading">
@@ -51,7 +70,7 @@
         Loading...
       </div>
     </div>
-
+    
 
     <div id="container">
       <!-- Toolbar -->
