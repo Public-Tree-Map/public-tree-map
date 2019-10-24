@@ -453,4 +453,16 @@ select.shadow {
   outline: none;
 }
 
+.leaflet-popup-content-wrapper {
+  background-color: #000000;
+  color: #fff;
+  border-radius: 4px;
+  font-family: 'Lato';
+  font-size: 12px;
+}
 
+.leaflet-popup-tip {
+  background-color: #000000;
+  width: 12px;
+  height: 15px;
+}

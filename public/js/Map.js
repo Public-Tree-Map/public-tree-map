@@ -100,7 +100,7 @@ var app = this.app || {};
         fillColor: this.getFillColor(tree, palette)
       });
       marker.tree = tree;
-      marker.bindPopup(tree.name_common, {closeButton: false});
+      marker.bindPopup(tree.name_common, {closeButton: false, offset:[0,-2]}); //offset moves popup up
       marker.on('mouseover', function (e) {
           this.openPopup();
       });
