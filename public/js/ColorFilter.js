@@ -5,15 +5,15 @@ var app = this.app || {};
   function ColorFilter(map, legend) {
     this.map    = map;
     this.legend = legend;
+    this.filter = document.getElementsByClassName('species-button');
 
-    var filter = document.getElementsByClassName('species-button');
     $('.species-button').on('click', (function(e) {
       $('.species-button').removeClass('active');
       $(e.target).addClass('active');
       this.onChange(e.target.value);
     }).bind(this));
 
-    this.onChange(filter.value);
+    this.onChange(this.filter.value);
   }
 
   ColorFilter.prototype.onChange = function(key) {
@@ -23,5 +23,5 @@ var app = this.app || {};
 
   // Exports
   module.ColorFilter = ColorFilter;
-
+  
 })(app);

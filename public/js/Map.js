@@ -11,6 +11,7 @@ var app = this.app || {};
     this.highlightedMarker = null;
     this.trees   = [];
     this.zoom    = 14.2;
+    this.fillOpacity = 0.75;
     this.selected = new Set();
     this.urlParams = new URLSearchParams(window.location.search);
 
@@ -40,22 +41,26 @@ var app = this.app || {};
   Map.prototype.setFilter = function(selections) {
     var bounds = this.leafletMap.getBounds();
     var center = bounds.getCenter();
+    var palette = this.palette;
     var closestDistance;
     var closestPoint;
 
     this.selected = selections;
     this.redraw();
-    this.markers.eachLayer(function(layer) {
+    this.markers.eachLayer(function(marker) {
       if(selections.size > 0) {
-        var position = layer.getLatLng();
+        var position = marker.getLatLng();
         var distance = center.distanceTo(position);
-        if(distance < closestDistance || !closestDistance) {
-          closestDistance = distance;
-          closestPoint = L.latLng(position);
+        if (distance < closestDistance || !closestDistance) {
+          if ( !(palette.field === 'heritage' && !marker.tree.heritage)) {
+            closestDistance = distance;
+            closestPoint = L.latLng(position);
+          }
         }
       }
     });
     this.leafletMap.fitBounds(bounds.extend(closestPoint));
+    setMarkerSize.call(this, this.zoom);
   }
 
   Map.prototype.setTrees = function(trees, palette) {
@@ -91,8 +96,8 @@ var app = this.app || {};
         renderer: RENDERER,
         radius,
         stroke: false,
-        fillOpacity: 0.75,
-        fillColor: getFillColor(tree, palette)
+        fillOpacity: this.fillOpacity,
+        fillColor: this.getFillColor(tree, palette)
       });
       marker.tree = tree;
       marker.bindPopup(tree.name_common, {closeButton: false, offset:[0,-2]}); //offset moves popup up
@@ -104,6 +109,7 @@ var app = this.app || {};
       });
       marker.on('click', (function(leafletEvent) {
         var that = this;
+        this.sidebar.body.classList.remove('sidebar-mobile--closed');
         fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
           .then(function(response) {
             return response.json().then(function(jsonTree) {
@@ -134,13 +140,37 @@ var app = this.app || {};
 
   Map.prototype.setPalette = function(palette) {
     this.palette = palette;
+    var realThis = this;
+
+    setMarkerSize.call(this, this.zoom); 
     this.markers.eachLayer(function(marker) {
       marker.setStyle({
-        fillColor: getFillColor(marker.tree, palette)
+        fillColor: realThis.getFillColor(marker.tree, palette)
       });
     });
     if (this.highlightedMarker) {
+      changeCircleMarker(this.highlightedMarker, 'enlarge');
       changeCircleMarker(this.highlightedMarker, 'recolor');
+    }
+  }
+
+  function setMarkerSize(zoom) {
+    var radius = Math.max(1, zoom - 13);
+    var palette = this.palette;
+    
+    if (palette && palette.field === 'heritage') {
+      this.markers.eachLayer(function(marker) {
+        if (marker.tree.heritage) {
+          marker.bringToFront();
+          marker.setRadius(radius + palette.markerSize);
+        } else {
+          marker.setRadius(radius);
+        }
+      });
+    } else {
+      this.markers.eachLayer(function(marker) {
+        marker.setRadius(radius);
+      });
     }
   }
 
@@ -152,9 +182,7 @@ var app = this.app || {};
   }
 
   function onZoomChanged(zoom) {
-    this.markers.eachLayer(function(marker) {
-      marker.setRadius(Math.max(1, zoom - 13));
-    });
+    setMarkerSize.call(this, zoom); 
     if (this.highlightedMarker) {
       changeCircleMarker(this.highlightedMarker, 'enlarge');
     }
@@ -194,7 +222,7 @@ var app = this.app || {};
     }
   }
 
-  function getFillColor(tree, palette) {
+  Map.prototype.getFillColor = function(tree, palette) {
     if (palette.generated) {
       return generateColor(tree[palette.field]);
     }
