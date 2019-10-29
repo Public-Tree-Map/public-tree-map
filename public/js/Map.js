@@ -107,7 +107,11 @@ var app = this.app || {};
       marker.on('mouseout', function (e) {
         this.closePopup();
       });
-      marker.on("click touch", (function(leafletEvent) {
+      function isTouchDevice(){
+        return typeof window.ontouchstart !== 'undefined';
+      }
+      let isTouchDevice =  isTouchDevice()?"touchstart":"click";
+      marker.on(isTouchDevice, (function(leafletEvent) {
         var that = this;
         this.sidebar.body.classList.remove('sidebar-mobile--closed');
         fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
