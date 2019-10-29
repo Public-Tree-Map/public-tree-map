@@ -44,11 +44,25 @@ var app = this.app || {};
   module.init = init;
   module.setData = setData;
 
-
+  function checkTouchDevice(){
+    return Modernizr.touch || 
+      (deviceAgent.match(/(iphone|ipod|ipad)/) ||
+      deviceAgent.match(/(android)/)  || 
+      deviceAgent.match(/(iemobile)/) || 
+      deviceAgent.match(/iphone/i) || 
+      deviceAgent.match(/ipad/i) || 
+      deviceAgent.match(/ipod/i) || 
+      deviceAgent.match(/blackberry/i) || 
+      deviceAgent.match(/bada/i));
+  }
   function checkFirstTime(){
     let isFirstTime = localStorage.getItem("isFirstTime");
+    var isTouchDevice = checkTouchDevice();
     if(isFirstTime==null){
-      showFirstTimeDialog();
+      if (isTouchDevice) { 
+        showFirstTimeDialog();
+      } 
+     
     }
   }
   
