@@ -107,33 +107,7 @@ var app = this.app || {};
       marker.on('mouseout', function (e) {
         this.closePopup();
       });
-      marker.on("click touch", (function(leafletEvent) {
-        var that = this;
-        this.sidebar.body.classList.remove('sidebar-mobile--closed');
-        fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
-          .then(function(response) {
-            return response.json().then(function(jsonTree) {
-              that.sidebar.setTree(jsonTree);
-              updateUrl(that.urlParams, tree.tree_id);
-            });
-          });
-
-        var markerLocation = marker.getLatLng();
-        var newViewLocation = {lat: markerLocation['lat'], lng: markerLocation['lng']};
-        var currentZoom = this.leafletMap.getZoom();
-        var targetZoom = currentZoom > 16 ? currentZoom : 18;
-        this.leafletMap.setView(newViewLocation, targetZoom, {animate: true});
-
-        if (this.highlightedMarker) { // if one exists, undo its enlargement before enlarging another
-          changeCircleMarker(this.highlightedMarker, 'shrink');
-        }
-
-        this.highlightedMarker = leafletEvent.target;
-        changeCircleMarker(this.highlightedMarker, 'enlarge');
-        this.highlightedMarker.bringToFront();
-      }).bind(this));
-
-      marker.on('touchend', (function(leafletEvent) {
+      marker.on('click', (function(leafletEvent) {
         var that = this;
         this.sidebar.body.classList.remove('sidebar-mobile--closed');
         fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
