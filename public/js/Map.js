@@ -110,7 +110,7 @@ var app = this.app || {};
       function isTouchDevice(){
         return typeof window.ontouchstart !== 'undefined';
       }
-      let tapEvent = isTouchDevice()?"mouseover":"click";
+      let tapEvent = isTouchDevice()?"mouseover click":"click";
       marker.on(tapEvent, (function(leafletEvent) {
         var that = this;
         this.sidebar.body.classList.remove('sidebar-mobile--closed');
