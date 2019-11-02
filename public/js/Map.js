@@ -44,6 +44,8 @@ var app = this.app || {};
     var palette = this.palette;
     var closestDistance;
     var closestLatLng;
+    var yThreshold = 107;
+    var pad = 0;
 
     this.selected = selections;
     this.redraw();
@@ -57,9 +59,12 @@ var app = this.app || {};
             closestLatLng = position;
           }
         }
-      })
-    };
-    this.leafletMap.fitBounds(bounds.extend(closestLatLng));
+      });
+      if (this.leafletMap.latLngToContainerPoint(closestLatLng).y < yThreshold) {
+        pad = yThreshold;
+      }
+    }
+    this.leafletMap.fitBounds(bounds.extend(closestLatLng), {paddingTopLeft: [0, pad]});
     setMarkerSize.call(this, this.zoom);
   }
 
