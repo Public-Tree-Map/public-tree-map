@@ -92,6 +92,9 @@
 
   #sidebar-content .btn--mobile {
     display: block;
+    width: 60%;
+    height: 30%;
+    font-size: 100%;
   }
 
   .select2{
