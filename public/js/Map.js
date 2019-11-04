@@ -43,28 +43,23 @@ var app = this.app || {};
     var center = bounds.getCenter();
     var palette = this.palette;
     var closestDistance;
-    var closestLatLng;
-    var yThreshold = 107;
-    var pad = 0;
+    var closestPoint;
 
     this.selected = selections;
     this.redraw();
-    if(selections.size > 0) {
-      this.markers.eachLayer(function(marker) {
+    this.markers.eachLayer(function(marker) {
+      if(selections.size > 0) {
         var position = marker.getLatLng();
         var distance = center.distanceTo(position);
         if (distance < closestDistance || !closestDistance) {
           if ( !(palette.field === 'heritage' && !marker.tree.heritage)) {
             closestDistance = distance;
-            closestLatLng = position;
+            closestPoint = L.latLng(position);
           }
         }
-      });
-      if (this.leafletMap.latLngToContainerPoint(closestLatLng).y < yThreshold) {
-        pad = yThreshold;
       }
-    }
-    this.leafletMap.fitBounds(bounds.extend(closestLatLng), {paddingTopLeft: [0, pad]});
+    });
+    this.leafletMap.fitBounds(bounds.extend(closestPoint));
     setMarkerSize.call(this, this.zoom);
   }
 
