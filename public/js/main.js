@@ -17,6 +17,7 @@ var app = this.app || {};
 
     _sidebar.showDefault();
     firstTimeDialog();
+
     fetch('https://storage.googleapis.com/public-tree-map/data/map.json')
       .then(function(response) {
         return response.json().then(function(trees) {
@@ -34,9 +35,13 @@ var app = this.app || {};
     document.getElementById('loading').classList.add('hidden');
   }
 
+  function isTouchDevice(){
+    return typeof window.ontouchstart !== 'undefined';
+  }
+
   function firstTimeDialog(){
     let firstTime = localStorage.getItem("firstTime");
-    if(firstTime==null){
+    if(firstTime==null&&isTouchDevice()){
       showFirstTimeDialog();
     }
   }
