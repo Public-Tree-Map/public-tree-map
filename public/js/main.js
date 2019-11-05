@@ -16,7 +16,14 @@ var app = this.app || {};
     _geolocation = new module.Geolocation(_map);
 
     _sidebar.showDefault();
-
+    function isTouchDevice(){
+      return typeof window.ontouchstart !== 'undefined';
+    }
+    if(isTouchDevice()){
+      _sidebar.closeSidebar();
+    }
+    
+    
     fetch('https://storage.googleapis.com/public-tree-map/data/map.json')
       .then(function(response) {
         return response.json().then(function(trees) {
