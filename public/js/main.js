@@ -48,9 +48,9 @@ var app = this.app || {};
     return typeof window.ontouchstart !== 'undefined';
   }
 
-  function firstTimeDialog(){
+  function firstTimeDialog(){//firstTime==null&&isTouchDevice()
     let firstTime = localStorage.getItem("firstTime");
-    if(firstTime==null&&isTouchDevice()){
+    if(true){
       showFirstTimeDialog();
     }
   }
