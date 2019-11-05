@@ -35,7 +35,7 @@ var app = this.app || {};
   }
 
   function firstTimeDialog(){
-    let firstTime = localStorage.getItem("firstTimet");
+    let firstTime = localStorage.getItem("firstTime");
     if(firstTime==null){
       showFirstTimeDialog();
     }
