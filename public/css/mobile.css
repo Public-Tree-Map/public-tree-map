@@ -82,6 +82,10 @@
     display: block;
   }
 
+  #sidebar .sidebar-address-small{
+    font-size: 11px;
+  }
+
   #sidebar-content {
     padding: 16px;
   }
@@ -92,9 +96,6 @@
 
   #sidebar-content .btn--mobile {
     display: block;
-    width: 60%;
-    height: 30%;
-    font-size: 100%;
   }
 
   .select2{

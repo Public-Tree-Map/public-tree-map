@@ -107,6 +107,7 @@ var indexOfImages = 1;
     this.pruningYear.innerText            = tree.pruning_year;
     this.replacementSpecies.innerHTML     = `<em>${tree.replacement_species}</em>`;
     this.address.innerText                = tree.address;
+    this.address.classList.add("sidebar-address-small")
     this.streetSegment.innerText          = tree.segment;
 
     if (tree.images && tree.images.length > 0) {
@@ -158,12 +159,17 @@ var indexOfImages = 1;
       this.detailsButton.innerText = "View Details";
       this.vacantDetailsButton.innerText = "View Details";
       this.exploreMapButton.innerText = "What is Public Tree Map?";
+      this.address.classList.add("sidebar-address-small")
+      
+
     }
     else {
       this.body.classList.add(className);
       this.detailsButton.classList.add('hidden');
       this.vacantDetailsButton.classList.add('hidden');
       this.exploreMapButton.innerText = "Explore the Map";
+      this.address.classList.remove("sidebar-address-small")
+
     }
   }
 
