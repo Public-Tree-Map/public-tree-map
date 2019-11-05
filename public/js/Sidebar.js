@@ -158,7 +158,34 @@ var initialY = null;
         text: treeName+" on Santa Monica's ${title} ${link} @santamonicacity",
     };
   }
-  
+  Sidebar.prototype.closeSidebar = function(){
+    let fullScreen = 'sidebar-mobile--fullscreen';
+    let closed = 'sidebar-mobile--closed'
+    if(this.body.classList.contains(fullScreen)) {
+      (toggleFullMobileView.bind(this))();
+    }
+    else {
+      this.body.classList.add(closed);
+      this.showDefault();
+      
+    }
+  }
+
+  function buildNativityText(nativity) {
+    if ("native" === nativity.toLowerCase()) {
+      return "This tree is native to California";
+    } else if ("exotic" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("moderate" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("watch" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("limited" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else {
+      return "Unknown";
+    }
+  }
   function toggleFullMobileView() {
     let className = 'sidebar-mobile--fullscreen';
     if(this.body.classList.contains(className)) {
@@ -176,6 +203,8 @@ var initialY = null;
       this.exploreMapButton.innerText = "Explore the Map";
     }
   }
+
+  
 
   function startTouch(e){
       initialY = e.touches[0].clientX;
