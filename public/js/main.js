@@ -16,7 +16,7 @@ var app = this.app || {};
     _geolocation = new module.Geolocation(_map);
 
     _sidebar.showDefault();
-
+    firstTimeDialog();
     fetch('https://storage.googleapis.com/public-tree-map/data/map.json')
       .then(function(response) {
         return response.json().then(function(trees) {
@@ -34,8 +34,26 @@ var app = this.app || {};
     document.getElementById('loading').classList.add('hidden');
   }
 
+  function firstTimeDialog(){
+    let firstTime = localStorage.getItem("firstTimet");
+    if(firstTime==null){
+      showFirstTimeDialog();
+    }
+  }
+  function showFirstTimeDialog(){
+    let firstTimeDialog = document.getElementById("first-time-dialog");
+    firstTimeDialog.classList.remove("hidden");
+  }
+
+  
   // EXPORTS
   module.init = init;
   module.setData = setData;
 
 })(app);
+
+function closeFirstTimeDialog(){
+  let firstTimeDialog = document.getElementById("first-time-dialog");
+  firstTimeDialog.classList.add("hidden");
+  localStorage.setItem("firstTime", false);
+}

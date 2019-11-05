@@ -251,6 +251,59 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+#first-time-dialog{
+  background: white;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999999;
+}
+.first-time-header{
+  background: #43ae76;
+  padding: 14px;
+  color: white;
+  text-align: center;
+}
+.first-time-content{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  
+}
+.first-time-content h1{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  
+}
+.first-time-content p{
+  font-size: 16px;
+}
+.first-time-content button{
+  border-radius: 4px;
+  background-color: #43ae76;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  padding: 15px;
+  border: none;
+  outline: none;
+}
+.first-time-content h6{
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  text-align: center;
+  color: #444444;
+}
 .color-filter-container {
   width: 60%;
   padding: 0 1rem;
