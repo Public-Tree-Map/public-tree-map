@@ -18,10 +18,19 @@ var app = this.app || {};
     _sidebar.showDefault();
     firstTimeDialog();
 
+    function isTouchDevice(){
+      return typeof window.ontouchstart !== 'undefined';
+    }
+    if(isTouchDevice()){
+      _sidebar.closeSidebar();
+    }
+    
+    
     fetch('https://storage.googleapis.com/public-tree-map/data/map.json')
       .then(function(response) {
         return response.json().then(function(trees) {
           setData(trees);
+          detectMobileOrientation();
         });
       });
   }
@@ -51,6 +60,16 @@ var app = this.app || {};
   }
 
   
+
+  function detectMobileOrientation() {
+    window.addEventListener("orientationchange", function() {
+      screen.orientation.lock("portrait-primary"); //This is supposed to lock the screen in portrait mode.
+      if (window.orientation === 90) {
+        alert('Please switch to portrait mode.');
+      }
+    }, false);
+  }
+
   // EXPORTS
   module.init = init;
   module.setData = setData;
