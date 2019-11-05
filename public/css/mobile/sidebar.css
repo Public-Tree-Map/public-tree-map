@@ -25,9 +25,11 @@
 }
 
 #sidebar-content #sidebar-common-name,
-#sidebar-content .sidebar-address {
+#sidebar-content #sidebar-address {
   display: block;
 }
+
+
 
 #sidebar-content {
   padding: 16px;
@@ -41,6 +43,10 @@
 #sidebar-content .btn--mobile {
   display: block;
 }
+
+#sidebar .sidebar-address-small{
+    font-size: 11px;
+  }
 
 
 /* Fullscreen sidebar */
