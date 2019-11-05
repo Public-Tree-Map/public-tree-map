@@ -197,8 +197,6 @@ var initialY = null;
       this.vacantDetailsButton.innerText = "View Details";
       this.exploreMapButton.innerText = "What is Public Tree Map?";
       this.address.classList.add("sidebar-address-small")
-      
-
     }
     else {
       this.body.classList.add(className);
@@ -206,7 +204,6 @@ var initialY = null;
       this.vacantDetailsButton.classList.add('hidden');
       this.exploreMapButton.innerText = "Explore the Map";
       this.address.classList.remove("sidebar-address-small")
-
     }
   }
 

@@ -29,8 +29,6 @@
   display: block;
 }
 
-
-
 #sidebar-content {
   padding: 16px;
 }
@@ -47,7 +45,6 @@
 #sidebar .sidebar-address-small{
     font-size: 11px;
   }
-
 
 /* Fullscreen sidebar */
 .sidebar-mobile--fullscreen #container {
