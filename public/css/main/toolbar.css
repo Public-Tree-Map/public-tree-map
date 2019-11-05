@@ -22,31 +22,8 @@
   margin-bottom: 5px;
   color: #444444;
 }
-#search {
-  align-items: center;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  height: 36px;
-  padding: 8px;
-  width: 100%;
-  font-size: 14px;
-  font-color: #777777;
-}
 
-#search input {
-  border: none;
-  border-bottom: 1px solid #ccc;
-  flex-grow: 1;
-  margin-left: 8px;
-  outline: none;
-  text-decoration: none;
-}
-
-#search .material-icons {
-  color: #999;
-}
-
+/* Color filter*/
 .color-filter-container {
   width: 60%;
   padding: 0 1rem;
@@ -58,7 +35,7 @@
   display: flex;
 }
 
-
+/* Grouping buttons */
 .btn-group button {
   border: none;
   border-right: 1px solid #ccc; /* Prevent double borders */
@@ -93,6 +70,32 @@
   color: #fff;
 }
 
+/* Geolocation */
+#search {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 36px;
+  padding: 8px;
+  width: 100%;
+  font-size: 14px;
+  font-color: #777777;
+}
+
+#search input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  flex-grow: 1;
+  margin-left: 8px;
+  outline: none;
+  text-decoration: none;
+}
+
+#search .material-icons {
+  color: #999;
+}
+
 .ap-input {
   padding-right: 56px;
   height: 36px;
@@ -109,6 +112,8 @@
 .species-filter-container {
   width: 25%;
 }
+
+/* Find a species */
 .select2-container {
   width: 100% !important;
   height: 36px;
