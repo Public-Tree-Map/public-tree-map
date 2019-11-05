@@ -1,0 +1,93 @@
+#sidebar-image > *,
+#sidebar-content > * {
+  display: none;
+}
+
+#sidebar {
+  height: 25%;
+  width: 100%;
+  transition: .5s ease;
+}
+
+#sidebar > div {
+  background-color: white;
+}
+
+#sidebar-tree, #sidebar-vacant {
+  height: 100%;
+  flex-direction: row;
+}
+
+#sidebar-image {
+  width: 40%;
+  min-height: 50px;
+  height: 100%;
+}
+
+#sidebar-content #sidebar-common-name,
+#sidebar-content .sidebar-address {
+  display: block;
+}
+
+#sidebar-content {
+  padding: 16px;
+}
+
+/* Classes */
+.banner {
+  display: none;
+}
+
+#sidebar-content .btn--mobile {
+  display: block;
+}
+
+
+/* Fullscreen sidebar */
+.sidebar-mobile--fullscreen #container {
+  transition: 0.5s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.sidebar-mobile--fullscreen #sidebar {
+  height: 100vh;
+}
+
+.sidebar-mobile--fullscreen #sidebar-image > *,
+.sidebar-mobile--fullscreen #sidebar-content > * {
+  display: block;
+}
+
+.sidebar-mobile--fullscreen #sidebar-content .share-buttons {
+  display: flex;
+}
+
+.sidebar-mobile--fullscreen #sidebar-tree {
+  flex-direction: column;
+}
+
+.sidebar-mobile--fullscreen #sidebar-image {
+  width: 100%;
+  min-height: 40%;
+}
+
+.sidebar-mobile--fullscreen .btn-close {
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-mobile--fullscreen .btn-close span {
+  background-color: white;
+}
+
+/* Close the sidebar */
+.sidebar-mobile--closed #container{
+  height: 100%;
+}
+
+.sidebar-mobile--closed #sidebar{
+  height: 0;
+}

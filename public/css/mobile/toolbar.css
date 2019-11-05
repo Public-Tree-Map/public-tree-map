@@ -1,0 +1,42 @@
+#toolbar {
+  position: relative;
+
+  width: calc(100% - (2 * 16px));
+  height: calc(15% - (2 * 16px));
+
+  padding: 16px;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Geolocation */
+#address-input{
+  width: (100%-292); /*Total rest of padding together*/
+  height: 36px;
+}
+ .address-container {
+    width: 80%;
+  }
+
+/* Color Filter */
+.color-filter-container button {
+  display: none;
+}
+.color-filter-container {
+    padding-right: 0;
+  }
+
+#species-button-species, #species-button-family {
+  display: block;
+}
+
+/* Hide select2 */
+.select2{
+  visibility: hidden !important;
+  display: none !important;
+}
+
+.species-filter-container {
+  display: none;
+}
