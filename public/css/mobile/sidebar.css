@@ -3,6 +3,10 @@
   display: none;
 }
 
+.btn--mobile {
+  display: none;
+}
+
 .sidebar-mobile--fullscreen #container {
   transition: 0.5s ease;
   height: 0;

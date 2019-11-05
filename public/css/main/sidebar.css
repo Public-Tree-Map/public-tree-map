@@ -1,3 +1,4 @@
+/* General */
 #sidebar {
   box-sizing: border-box;
   display: flex;
@@ -9,52 +10,10 @@
   width: 30%;
 }
 
-#sidebar-default {
-  padding: 32px 48px 0px 48px;
-}
-
-#sidebar-default a {
-  text-decoration: none;
-}
-
 #sidebar-content, #sidebar-vacant-content {
   box-sizing: border-box;
   flex-grow: 1;
   padding: 32px 20px 0px 20px;
-}
-
-#sidebar-vacant {
-  overflow: auto;
-}
-
-.sidebar-image {
-  background-color: #fff;
-  background-position: center center;
-  background-repeat: no-repeat;
-  border-radius: 0px;
-  position: relative;
-  width: 100%;
-  min-height: 250px;
-  margin: auto;
-}
-
-#sidebar-image-credit {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  font-family: Lato;
-  font-size: 12px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px 12px;
-}
-#sidebar-image-credit a{
-  color: #fff;
 }
 
 #sidebar-content h1, #sidebar-vacant-content h1 {
@@ -67,9 +26,6 @@
   color: black;
   margin-top: 0px;
   margin-bottom: 6px;
-}
-#sidebar-default{
-  padding: 0px 20px 0px 20px;
 }
 
 #sidebar h2 {
@@ -126,13 +82,22 @@
 #sidebar button:hover {
   opacity: 0.8;
 }
-#sidebar-tree {
-  display: flex;
-  flex-direction: column;
-  min-height: 1px; /* CSS is beautiful */
-  position: relative;
-  overflow-y: auto;
+
+/* Classes */
+.leaflet-popup-content-wrapper {
+  background-color: #000000;
+  color: #fff;
+  border-radius: 4px;
+  font-family: 'Lato';
+  font-size: 12px;
 }
+
+.leaflet-popup-tip {
+  background-color: #000000;
+  width: 12px;
+  height: 15px;
+}
+
 .sidebar-divider{
   height: 1px;
   background-color: #d8d8d8;
@@ -142,6 +107,28 @@
 .sidebar-seperator{
   height: 20px;
 }
+
+.btn-close {
+  position: absolute;
+  right: 16px;
+
+  background-color: transparent;
+  border: none;
+  padding: 12px;
+  margin: 16px;
+}
+
+.btn-close span {
+  display: block;
+  position: absolute;
+  top: 4px;
+  height: 16px;
+  width: 3px;
+  background-color: #999;
+}
+
+.btn-close span:nth-child(1) { transform: rotate(45deg) }
+.btn-close span:nth-child(2) { transform: rotate(-45deg) }
 
 .share-buttons {
   display: flex;
@@ -170,30 +157,17 @@
   margin-left: 24px;
 }
 
-.btn-close {
-  position: absolute;
-  right: 16px;
-
-  background-color: transparent;
-  border: none;
-  padding: 12px;
-  margin: 16px;
+/* Sidebar default */
+#sidebar-default {
+  padding: 32px 48px 0px 48px;
 }
 
-.btn-close span {
-  display: block;
-  position: absolute;
-  top: 4px;
-  height: 16px;
-  width: 3px;
-  background-color: #999;
+#sidebar-default{
+  padding: 0px 20px 0px 20px;
 }
 
-.btn-close span:nth-child(1) { transform: rotate(45deg) }
-.btn-close span:nth-child(2) { transform: rotate(-45deg) }
-
-.btn--mobile {
-  display: none;
+#sidebar-default a {
+  text-decoration: none;
 }
 
 .banner {
@@ -208,27 +182,46 @@
   text-align: center;
 }
 
-#leftMobileButton{
-  display: none;
+/* Sidebar tree */
+#sidebar-tree {
+  display: flex;
+  flex-direction: column;
+  min-height: 1px; /* CSS is beautiful */
+  position: relative;
+  overflow-y: auto;
 }
 
-#rightMobileButton{
-  display: none;
+/* Image carousel */
+.sidebar-image {
+  background-color: #fff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 0px;
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  margin: auto;
 }
 
-#rightButton button{
-  transform: translateY(-50%); 
+#sidebar-image-credit {
   position: absolute;
-  transform: translateY(100%);
+  bottom: 0;
   right: 0;
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 12px;
+}
+#sidebar-image-credit a{
+  color: #fff;
 }
 
-
-#leftButton button{
-  float: left;
-  left: 0;
-  transform: translateY(100%);
-}
 .sliderButton button{
   font-size: 60px;
   font-weight: bolder;
@@ -241,16 +234,20 @@
   outline: none;
 }
 
-.leaflet-popup-content-wrapper {
-  background-color: #000000;
-  color: #fff;
-  border-radius: 4px;
-  font-family: 'Lato';
-  font-size: 12px;
+#rightButton button{
+  transform: translateY(-50%);
+  position: absolute;
+  transform: translateY(100%);
+  right: 0;
 }
 
-.leaflet-popup-tip {
-  background-color: #000000;
-  width: 12px;
-  height: 15px;
+#leftButton button{
+  float: left;
+  left: 0;
+  transform: translateY(100%);
+}
+
+/* Sidebar vacant */
+#sidebar-vacant {
+  overflow: auto;
 }
