@@ -16,11 +16,21 @@ var app = this.app || {};
     _geolocation = new module.Geolocation(_map);
 
     _sidebar.showDefault();
+    firstTimeDialog();
 
+    function isTouchDevice(){
+      return typeof window.ontouchstart !== 'undefined';
+    }
+    if(isTouchDevice()){
+      _sidebar.closeSidebar();
+    }
+    
+    
     fetch('https://storage.googleapis.com/public-tree-map/data/map.json')
       .then(function(response) {
         return response.json().then(function(trees) {
           setData(trees);
+          detectMobileOrientation();
         });
       });
   }
@@ -34,8 +44,41 @@ var app = this.app || {};
     document.getElementById('loading').classList.add('hidden');
   }
 
+  function isTouchDevice(){
+    return typeof window.ontouchstart !== 'undefined';
+  }
+
+  function firstTimeDialog(){
+    let firstTime = localStorage.getItem("firstTimeV2");
+    if(firstTime==null&&isTouchDevice()){
+      showFirstTimeDialog();
+    }
+  }
+  function showFirstTimeDialog(){
+    let firstTimeDialog = document.getElementById("first-time-dialog");
+    firstTimeDialog.classList.remove("hidden");
+  }
+
+  
+
+  function detectMobileOrientation() {
+    window.addEventListener("orientationchange", function() {
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        // you're in LANDSCAPE mode
+        alert('Please switch to portrait mode.');
+     }
+    }, false);
+    
+  }
+
   // EXPORTS
   module.init = init;
   module.setData = setData;
 
 })(app);
+
+function closeFirstTimeDialog(){
+  let firstTimeDialog = document.getElementById("first-time-dialog");
+  firstTimeDialog.classList.add("hidden");
+  localStorage.setItem("firstTimeV2", false);
+}

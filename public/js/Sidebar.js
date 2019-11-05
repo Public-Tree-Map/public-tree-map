@@ -3,6 +3,10 @@ var a2a_config = a2a_config || {};
 a2a_config.templates = a2a_config.templates || {};
 var images = [];
 var indexOfImages = 1;
+
+var initialY = null;
+
+
 (function(module) {
 
   function Sidebar() {
@@ -54,6 +58,12 @@ var indexOfImages = 1;
     this.detailsButton.onclick = toggleFullMobileView.bind(this);
     this.vacantDetailsButton.onclick = toggleFullMobileView.bind(this);
     this.exploreMapButton.onclick = toggleFullMobileView.bind(this);
+    
+    this.sidebar.addEventListener("touchstart", startTouch, false);
+    this.sidebar.addEventListener("touchmove", onSwipe, false)
+
+
+    onSwipe
   }
 
   Sidebar.prototype.setTree = function(tree) {
@@ -148,7 +158,34 @@ var indexOfImages = 1;
         text: treeName+" on Santa Monica's ${title} ${link} @santamonicacity",
     };
   }
+  Sidebar.prototype.closeSidebar = function(){
+    let fullScreen = 'sidebar-mobile--fullscreen';
+    let closed = 'sidebar-mobile--closed'
+    if(this.body.classList.contains(fullScreen)) {
+      (toggleFullMobileView.bind(this))();
+    }
+    else {
+      this.body.classList.add(closed);
+      this.showDefault();
+      
+    }
+  }
 
+  function buildNativityText(nativity) {
+    if ("native" === nativity.toLowerCase()) {
+      return "This tree is native to California";
+    } else if ("exotic" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("moderate" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("watch" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else if ("limited" === nativity.toLowerCase()) {
+      return "This tree isn't native to California";
+    } else {
+      return "Unknown";
+    }
+  }
   function toggleFullMobileView() {
     let className = 'sidebar-mobile--fullscreen';
     if(this.body.classList.contains(className)) {
@@ -166,6 +203,37 @@ var indexOfImages = 1;
       this.exploreMapButton.innerText = "Explore the Map";
     }
   }
+
+  
+
+  function startTouch(e){
+      initialY = e.touches[0].clientX;
+  }
+  function onSwipe(e) {
+    if (initialY === null) {
+      return;
+    }
+   
+    var currentY = e.touches[0].clientY;
+   
+    var diffY = initialY - currentY;
+   
+    
+    if (diffY > 0) {
+      // swiped up
+      console.log("swiped up");
+      toggleFullMobileView();
+
+    } else {
+      // swiped down
+      console.log("swiped down");
+      closePanel();
+    }  
+    
+   
+    initialY = null;
+  } 
+
 
   function closePanel() {
     let fullScreen = 'sidebar-mobile--fullscreen';

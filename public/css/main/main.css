@@ -1,0 +1,48 @@
+/* General styling / Misc */
+html, body {
+  font-family: 'Lato', Arial, Sans-Serif;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#container {
+  width: 70%;
+  position: relative;
+}
+
+.rounded-box {
+  background: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.btn {
+  background-color: #43ae76;
+  color: #fff;
+
+  padding: 8px 16px;
+  margin: 16px 4px;
+  border: none;
+  border-radius: 4px;
+}
+
+.shadow {
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+}
+
+select.shadow {
+  margin: 8px;
+}
+
+.hidden {
+  display: none !important;
+}
