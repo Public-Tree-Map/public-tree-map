@@ -108,8 +108,45 @@
   height: 20px;
 }
 
+#loading {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 60000;
+}
+
+#loading > div {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.color-filter-container {
+  width: 60%;
+  padding: 0 1rem;
+}
+#color-filter {
+  z-index: 5;
+  width: 100%;
+  border-radius: 4px;
+  display: flex;
+}
+.btn-group button {
+  border: none;
+  border-right: 1px solid #ccc; /* Prevent double borders */
+  background-color: #fff;
+  height: 36px;
+  padding: 10px;
+  cursor: pointer;
+  flex-grow: 1;
+  font-size: 14px;
+  padding: 5px;
+  font-size: 14px;
+}
 .btn--mobile {
-  display: none; // Hide mobile button in full view
+  display: none; 
 }
 
 .btn-close {

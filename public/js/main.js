@@ -16,6 +16,8 @@ var app = this.app || {};
     _geolocation = new module.Geolocation(_map);
 
     _sidebar.showDefault();
+    firstTimeDialog();
+
     function isTouchDevice(){
       return typeof window.ontouchstart !== 'undefined';
     }
@@ -42,6 +44,23 @@ var app = this.app || {};
     document.getElementById('loading').classList.add('hidden');
   }
 
+  function isTouchDevice(){
+    return typeof window.ontouchstart !== 'undefined';
+  }
+
+  function firstTimeDialog(){
+    let firstTime = localStorage.getItem("firstTime");
+    if(firstTime==null&&isTouchDevice()){
+      showFirstTimeDialog();
+    }
+  }
+  function showFirstTimeDialog(){
+    let firstTimeDialog = document.getElementById("first-time-dialog");
+    firstTimeDialog.classList.remove("hidden");
+  }
+
+  
+
   function detectMobileOrientation() {
     window.addEventListener("orientationchange", function() {
       screen.orientation.lock("portrait-primary"); //This is supposed to lock the screen in portrait mode.
@@ -56,3 +75,9 @@ var app = this.app || {};
   module.setData = setData;
 
 })(app);
+
+function closeFirstTimeDialog(){
+  let firstTimeDialog = document.getElementById("first-time-dialog");
+  firstTimeDialog.classList.add("hidden");
+  localStorage.setItem("firstTime", false);
+}
