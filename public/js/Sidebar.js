@@ -58,7 +58,7 @@ var initialY = null;
     this.detailsButton.onclick = toggleFullMobileView.bind(this);
     this.vacantDetailsButton.onclick = toggleFullMobileView.bind(this);
     this.exploreMapButton.onclick = toggleFullMobileView.bind(this);
-    
+
     this.sidebar.addEventListener("touchstart", startTouch, false);
     this.sidebar.addEventListener("touchmove", onSwipe, false)
 
@@ -167,7 +167,7 @@ var initialY = null;
     else {
       this.body.classList.add(closed);
       this.showDefault();
-      
+
     }
   }
 
@@ -204,7 +204,7 @@ var initialY = null;
     }
   }
 
-  
+
 
   function startTouch(e){
       initialY = e.touches[0].clientX;
@@ -213,12 +213,12 @@ var initialY = null;
     if (initialY === null) {
       return;
     }
-   
+
     var currentY = e.touches[0].clientY;
-   
+
     var diffY = initialY - currentY;
-   
-    
+
+
     if (diffY > 0) {
       // swiped up
       console.log("swiped up");
@@ -228,11 +228,11 @@ var initialY = null;
       // swiped down
       console.log("swiped down");
       closePanel();
-    }  
-    
-   
+    }
+
+
     initialY = null;
-  } 
+  }
 
 
   function closePanel() {
@@ -244,7 +244,7 @@ var initialY = null;
     else {
       this.body.classList.add(closed);
       this.showDefault();
-      
+
     }
   }
 
