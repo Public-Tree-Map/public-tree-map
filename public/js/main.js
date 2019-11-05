@@ -49,7 +49,7 @@ var app = this.app || {};
   }
 
   function firstTimeDialog(){
-    let firstTime = localStorage.getItem("firstTime");
+    let firstTime = localStorage.getItem("firstTimeV2");
     if(firstTime==null&&isTouchDevice()){
       showFirstTimeDialog();
     }
@@ -80,5 +80,5 @@ var app = this.app || {};
 function closeFirstTimeDialog(){
   let firstTimeDialog = document.getElementById("first-time-dialog");
   firstTimeDialog.classList.add("hidden");
-  localStorage.setItem("firstTime", false);
+  localStorage.setItem("firstTimeV2", false);
 }

@@ -1,6 +1,7 @@
 #first-time-dialog{
+    overflow-y:scroll;
     background: white;
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
     bottom: 20px;
