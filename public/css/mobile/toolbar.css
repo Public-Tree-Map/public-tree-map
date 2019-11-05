@@ -12,15 +12,20 @@
 
 /* Geolocation */
 #address-input{
-  margin-left: 10px;
   width: (100%-292); /*Total rest of padding together*/
   height: 36px;
 }
+ .address-container {
+    width: 80%;
+  }
 
 /* Color Filter */
 .color-filter-container button {
   display: none;
 }
+.color-filter-container {
+    padding-right: 0;
+  }
 
 #species-button-species, #species-button-family {
   display: block;
