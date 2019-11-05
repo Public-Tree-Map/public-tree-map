@@ -368,14 +368,13 @@ body {
   width: 100% !important;
   height: 36px;
   font-size: 14px;
-  font-color: #777777;
 }
 .select2-selection {
   padding: 3px;
   min-height: 36px !important; /* Overriding min-height set by select2 */
 }
 .select2-container--open {
-  z-index: 33333;
+  z-index: 333333;
 }
 .rounded-box {
   background: #fff;
