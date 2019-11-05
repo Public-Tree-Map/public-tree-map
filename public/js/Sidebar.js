@@ -175,6 +175,8 @@ var indexOfImages = 1;
     }
     else {
       this.body.classList.add(closed);
+      this.showDefault();
+      
     }
   }
 

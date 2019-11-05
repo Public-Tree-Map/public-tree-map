@@ -43,23 +43,28 @@ var app = this.app || {};
     var center = bounds.getCenter();
     var palette = this.palette;
     var closestDistance;
-    var closestPoint;
+    var closestLatLng;
+    var yThreshold = 107;
+    var pad = 0;
 
     this.selected = selections;
     this.redraw();
-    this.markers.eachLayer(function(marker) {
-      if(selections.size > 0) {
+    if(selections.size > 0) {
+      this.markers.eachLayer(function(marker) {
         var position = marker.getLatLng();
         var distance = center.distanceTo(position);
         if (distance < closestDistance || !closestDistance) {
           if ( !(palette.field === 'heritage' && !marker.tree.heritage)) {
             closestDistance = distance;
-            closestPoint = L.latLng(position);
+            closestLatLng = position;
           }
         }
+      });
+      if (this.leafletMap.latLngToContainerPoint(closestLatLng).y < yThreshold) {
+        pad = yThreshold;
       }
-    });
-    this.leafletMap.fitBounds(bounds.extend(closestPoint));
+    }
+    this.leafletMap.fitBounds(bounds.extend(closestLatLng), {paddingTopLeft: [0, pad]});
     setMarkerSize.call(this, this.zoom);
   }
 
@@ -100,14 +105,18 @@ var app = this.app || {};
         fillColor: this.getFillColor(tree, palette)
       });
       marker.tree = tree;
-      marker.bindPopup(tree.name_common, {closeButton: false});
+      marker.bindPopup(tree.name_common, {closeButton: false, offset:[0,-2]}); //offset moves popup up
       marker.on('mouseover', function (e) {
           this.openPopup();
       });
       marker.on('mouseout', function (e) {
         this.closePopup();
       });
-      marker.on('click', (function(leafletEvent) {
+      function isTouchDevice(){
+        return typeof window.ontouchstart !== 'undefined';
+      }
+      let tapEvent = isTouchDevice()?"mouseover click":"click";
+      marker.on(tapEvent, (function(leafletEvent) {
         var that = this;
         this.sidebar.body.classList.remove('sidebar-mobile--closed');
         fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
