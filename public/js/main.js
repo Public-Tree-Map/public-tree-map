@@ -63,11 +63,12 @@ var app = this.app || {};
 
   function detectMobileOrientation() {
     window.addEventListener("orientationchange", function() {
-      screen.orientation.lock("portrait-primary"); //This is supposed to lock the screen in portrait mode.
-      if (window.orientation === 90) {
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        // you're in LANDSCAPE mode
         alert('Please switch to portrait mode.');
-      }
+     }
     }, false);
+    
   }
 
   // EXPORTS
