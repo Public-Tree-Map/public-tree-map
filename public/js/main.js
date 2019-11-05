@@ -21,6 +21,7 @@ var app = this.app || {};
       .then(function(response) {
         return response.json().then(function(trees) {
           setData(trees);
+          detectMobileOrientation();
         });
       });
   }
@@ -32,6 +33,15 @@ var app = this.app || {};
     _map.setTrees(trees, module.palettes['name_common']);
     _speciesFilter.setSpecies(formattedSelect);
     document.getElementById('loading').classList.add('hidden');
+  }
+
+  function detectMobileOrientation() {
+    window.addEventListener("orientationchange", function() {
+      screen.orientation.lock("portrait-primary"); //This is supposed to lock the screen in portrait mode.
+      if (window.orientation === 90) {
+        alert('Please switch to portrait mode.');
+      }
+    }, false);
   }
 
   // EXPORTS
