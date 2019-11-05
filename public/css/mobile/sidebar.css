@@ -38,10 +38,6 @@
   display: none;
 }
 
-.btn--mobile {
-  display: none;
-}
-
 #sidebar-content .btn--mobile {
   display: block;
 }

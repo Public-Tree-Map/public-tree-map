@@ -108,6 +108,10 @@
   height: 20px;
 }
 
+.btn--mobile {
+  display: none; // Hide mobile button in full view
+}
+
 .btn-close {
   position: absolute;
   right: 16px;
