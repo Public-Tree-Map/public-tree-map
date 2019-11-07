@@ -16,16 +16,7 @@ var app = this.app || {};
     _geolocation = new module.Geolocation(_map);
 
     _sidebar.showDefault();
-    firstTimeDialog();
 
-    function isTouchDevice(){
-      return typeof window.ontouchstart !== 'undefined';
-    }
-    if(isTouchDevice()){
-      _sidebar.closeSidebar();
-    }
-    
-    
     fetch('https://storage.googleapis.com/public-tree-map/data/map.json')
       .then(function(response) {
         return response.json().then(function(trees) {
@@ -33,6 +24,15 @@ var app = this.app || {};
           detectMobileOrientation();
         });
       });
+  }
+
+  function setData(trees) {
+    var defaultPalette = module.palettes[_colorFilter.filter.item(0).value];
+    var formattedSelect = _legend.setSelectLegend(_speciesFilter.selectFormatter(trees), defaultPalette);
+
+    _map.setTrees(trees, module.palettes['name_common']);
+    _speciesFilter.setSpecies(formattedSelect);
+    document.getElementById('loading').classList.add('hidden');
   }
 
   function setData(trees) {
