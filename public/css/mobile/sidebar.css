@@ -25,7 +25,7 @@
 }
 
 #sidebar-content #sidebar-common-name,
-#sidebar-content .sidebar-address {
+#sidebar-content #sidebar-address {
   display: block;
 }
 
@@ -42,6 +42,9 @@
   display: block;
 }
 
+#sidebar .sidebar-address-small{
+    font-size: 11px;
+  }
 
 /* Fullscreen sidebar */
 .sidebar-mobile--fullscreen #container {
