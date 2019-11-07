@@ -32,7 +32,7 @@ var app = this.app || {};
 
     this.leafletMap.on('zoomend', (function() {
       this.zoom = this.leafletMap.getZoom();
-      onZoomChanged.call(this, this.zoom);
+      setMarkerSize.call(this, this.zoom);
     }).bind(this));
 
     this.markers = L.layerGroup().addTo(this.leafletMap);
@@ -104,6 +104,11 @@ var app = this.app || {};
         fillOpacity: this.fillOpacity,
         fillColor: this.getFillColor(tree, palette)
       });
+
+      if (this.highlightedMarker && tree["tree_id"] === this.highlightedMarker.tree["tree_id"]) {
+        this.highlightedMarker = marker;
+      }
+
       marker.tree = tree;
       marker.bindPopup(tree.name_common, {closeButton: false, offset:[0,-2]}); //offset moves popup up
       marker.on('mouseover', function (e) {
@@ -181,6 +186,10 @@ var app = this.app || {};
         marker.setRadius(radius);
       });
     }
+    
+    if (this.highlightedMarker) {
+      changeCircleMarker(this.highlightedMarker, 'enlarge');
+    }
   }
 
   function updateUrl(params, id) {
@@ -188,13 +197,6 @@ var app = this.app || {};
     var url = location.origin + location.pathname + "?";
     //updates the url in the address bar
     history.pushState("id param", "Public Tree Map", url + params);
-  }
-
-  function onZoomChanged(zoom) {
-    setMarkerSize.call(this, zoom); 
-    if (this.highlightedMarker) {
-      changeCircleMarker(this.highlightedMarker, 'enlarge');
-    }
   }
 
   function getDarkerColor (hexColor) {
