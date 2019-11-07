@@ -35,13 +35,40 @@ var app = this.app || {};
     document.getElementById('loading').classList.add('hidden');
   }
 
+  function setData(trees) {
+    var defaultPalette = module.palettes[_colorFilter.filter.item(0).value];
+    var formattedSelect = _legend.setSelectLegend(_speciesFilter.selectFormatter(trees), defaultPalette);
+
+    _map.setTrees(trees, module.palettes['name_common']);
+    _speciesFilter.setSpecies(formattedSelect);
+    document.getElementById('loading').classList.add('hidden');
+  }
+
+  function isTouchDevice(){
+    return typeof window.ontouchstart !== 'undefined';
+  }
+
+  function firstTimeDialog(){
+    let firstTime = localStorage.getItem("firstTimeV2");
+    if(firstTime==null&&isTouchDevice()){
+      showFirstTimeDialog();
+    }
+  }
+  function showFirstTimeDialog(){
+    let firstTimeDialog = document.getElementById("first-time-dialog");
+    firstTimeDialog.classList.remove("hidden");
+  }
+
+  
+
   function detectMobileOrientation() {
     window.addEventListener("orientationchange", function() {
-      screen.orientation.lock("portrait-primary"); //This is supposed to lock the screen in portrait mode.
-      if (window.orientation === 90) {
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        // you're in LANDSCAPE mode
         alert('Please switch to portrait mode.');
-      }
+     }
     }, false);
+    
   }
 
   // EXPORTS
@@ -49,3 +76,9 @@ var app = this.app || {};
   module.setData = setData;
 
 })(app);
+
+function closeFirstTimeDialog(){
+  let firstTimeDialog = document.getElementById("first-time-dialog");
+  firstTimeDialog.classList.add("hidden");
+  localStorage.setItem("firstTimeV2", false);
+}
