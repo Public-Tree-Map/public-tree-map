@@ -120,7 +120,7 @@ var initialY = null;
     this.address.classList.add("sidebar-address-small")
     this.streetSegment.innerText          = tree.segment;
 
-    if (tree.images && tree.images.length > 0) {
+    if (tree.images && tree.images.length > 1) {
       this.image.style.backgroundImage = 'url(' + tree.images[1].url + ')';
       this.image.style.backgroundSize = 'cover';
       this.image.classList.remove('hidden');
