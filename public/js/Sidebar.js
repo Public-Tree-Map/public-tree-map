@@ -10,46 +10,52 @@ var initialY = null;
 (function(module) {
 
   function Sidebar() {
-    this.body                   = document.getElementsByTagName('body')[0];
-    this.sidebar                = document.getElementById('sidebar');
-    this.defaultScreen          = document.getElementById('sidebar-default');
-    this.exploreMapButton       = document.getElementById('sidebar-default-explore')
-    this.treeContainer          = document.getElementById('sidebar-tree');
-    this.errorScreen            = document.getElementById('sidebar-error');
-    this.image                  = document.getElementById('sidebar-image');
-    this.imageCreditLink        = document.getElementById('sidebar-image-credit-link');
-    this.commonName             = document.getElementById('sidebar-common-name');
-    this.botanicalName          = document.getElementById('sidebar-botanical-name');
-    this.treeId                 = document.getElementById('sidebar-tree-id');
-    this.nativity               = document.getElementById('sidebar-nativity');
-    this.height                 = document.getElementById('sidebar-height');
-    this.diameter               = document.getElementById('sidebar-diameter');
-    this.shadeProduction        = document.getElementById('sidebar-shade-production');
-    this.irrigationRequirements = document.getElementById('sidebar-irrigation-requirements');
-    this.type                   = document.getElementById('sidebar-type');
-    this.iucnStatus             = document.getElementById('sidebar-iucn-status');
-    this.ipcRating              = document.getElementById('sidebar-ipc-rating');
-    this.treeFamily             = document.getElementById('sidebar-tree-family');
-    this.treeFamilyCommon       = document.getElementById('sidebar-tree-family-common');
-    this.pruningYear            = document.getElementById('sidebar-pruning-year');
-    this.pruningZone            = document.getElementById('sidebar-pruning-zone');
-    this.replacementSpecies     = document.getElementById('sidebar-replacement-species');
-    this.address                = document.getElementById('sidebar-address');
-    this.streetSegment          = document.getElementById('sidebar-street-segment');
-    this.treeDetails            = document.getElementById('sidebar-tree-details');
-    this.closeButton            = document.getElementById('sidebar-close-button');
-    this.detailsButton          = document.getElementById('sidebar-details-button');
-
+    this.body                          = document.getElementsByTagName('body')[0];
+    this.sidebar                       = document.getElementById('sidebar');
+    this.defaultScreen                 = document.getElementById('sidebar-default');
+    this.exploreMapButton              = document.getElementById('sidebar-default-explore')
+    this.treeContainer                 = document.getElementById('sidebar-tree');
+    this.errorScreen                   = document.getElementById('sidebar-error');
+    this.image                         = document.getElementById('sidebar-image');
+    this.imageCreditLink               = document.getElementById('sidebar-image-credit-link');
+    this.commonName                    = document.getElementById('sidebar-common-name');
+    this.botanicalName                 = document.getElementById('sidebar-botanical-name');
+    this.treeId                        = document.getElementById('sidebar-tree-id');
+    this.nativity                      = document.getElementById('sidebar-nativity');
+    this.height                        = document.getElementById('sidebar-height');
+    this.diameter                      = document.getElementById('sidebar-diameter');
+    this.shadeProduction               = document.getElementById('sidebar-shade-production');
+    this.irrigationRequirements        = document.getElementById('sidebar-irrigation-requirements');
+    this.type                          = document.getElementById('sidebar-type');
+    this.iucnStatus                    = document.getElementById('sidebar-iucn-status');
+    this.ipcRating                     = document.getElementById('sidebar-ipc-rating');
+    this.treeFamily                    = document.getElementById('sidebar-tree-family');
+    this.treeFamilyCommon              = document.getElementById('sidebar-tree-family-common');
+    this.pruningYear                   = document.getElementById('sidebar-pruning-year');
+    this.pruningZone                   = document.getElementById('sidebar-pruning-zone');
+    this.replacementSpecies            = document.getElementById('sidebar-replacement-species');
+    this.address                       = document.getElementById('sidebar-address');
+    this.streetSegment                 = document.getElementById('sidebar-street-segment');
+    this.treeDetails                   = document.getElementById('sidebar-tree-details');
+    this.closeButton                   = document.getElementById('sidebar-close-button');
+    this.detailsButton                 = document.getElementById('sidebar-details-button');
+    //Heritage Trees
+    this.heritageContainer             = document.getElementById('sidebar-heritage-container');
+    this.heritageTreeNumber            = document.getElementById('sidebar-heritage-number'); 
+    this.heritageTreeNumber            = document.getElementById('sidebar-heritage-number'); 
+    this.heritageYearInscribed         = document.getElementById('sidebar-heritage-year-inscribed');
+    this.heritageDescriptionContainer  = document.getElementById('sidebar-heritage-description-container');
+    this.heritageDescription           = document.getElementById('sidebar-heritage-description');
     // Vacant panel elements
-    this.vacantContainer          = document.getElementById('sidebar-vacant');
-    this.vacantCommonName         = document.getElementById('sidebar-vacant-common-name');
-    this.vacantTreeId             = document.getElementById('sidebar-vacant-tree-id');
-    this.vacantAddress            = document.getElementById('sidebar-vacant-address');
-    this.vacantPruningYear        = document.getElementById('sidebar-vacant-pruning-year');
-    this.vacantReplacementSpecies = document.getElementById('sidebar-vacant-replacement-species');
-    this.vacantStreetSegment      = document.getElementById('sidebar-vacant-street-segment');
-    this.vacantCloseButton        = document.getElementById('sidebar-vacant-close-button');
-    this.vacantDetailsButton      = document.getElementById('sidebar-vacant-details-button')
+    this.vacantContainer               = document.getElementById('sidebar-vacant');
+    this.vacantCommonName              = document.getElementById('sidebar-vacant-common-name');
+    this.vacantTreeId                  = document.getElementById('sidebar-vacant-tree-id');
+    this.vacantAddress                 = document.getElementById('sidebar-vacant-address');
+    this.vacantPruningYear             = document.getElementById('sidebar-vacant-pruning-year');
+    this.vacantReplacementSpecies      = document.getElementById('sidebar-vacant-replacement-species');
+    this.vacantStreetSegment           = document.getElementById('sidebar-vacant-street-segment');
+    this.vacantCloseButton             = document.getElementById('sidebar-vacant-close-button');
+    this.vacantDetailsButton           = document.getElementById('sidebar-vacant-details-button')
 
     this.closeButton.onclick = closePanel.bind(this);
     this.vacantCloseButton.onclick = closePanel.bind(this);
@@ -130,6 +136,19 @@ var initialY = null;
     } else {
       this.image.style.backgroundImage = '';
       this.image.classList.add('hidden');
+    }
+    if (tree.heritage === true) {
+      this.heritageContainer.classList.add('active');
+      this.heritageTreeNumber.innerText = '#'+tree['heritageNumber'];
+      this.heritageYearInscribed.innerText = tree['heritageYear'];
+      if (tree['heritageText'] !== null) {
+        this.heritageDescriptionContainer.classList.add('active');
+        this.heritageDescription.innerText = tree['heritageText'];
+      } else {
+        this.heritageDescriptionContainer.classList.remove('active');
+      }
+    } else {
+      this.heritageContainer.classList.remove('active');
     }
   }
 
