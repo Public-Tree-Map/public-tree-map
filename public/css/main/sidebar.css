@@ -255,3 +255,21 @@
 #sidebar-vacant {
   overflow: auto;
 }
+
+#sidebar-heritage-container {
+  display: none;
+  width: 100%;
+}
+#sidebar-heritage-container.active {
+  display: inline-block;
+}
+span#sidebar-heritage-number {
+  color: #198b27;
+}
+#sidebar-heritage-description-container {
+  display: none;
+  width: 100%;
+}
+#sidebar-heritage-description-container.active {
+  display: inline-block;
+}
