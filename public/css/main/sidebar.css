@@ -17,7 +17,7 @@
 }
 
 #sidebar-content h1, #sidebar-vacant-content h1 {
-  font-size: 24px;
+  font-size: calc(2vw + 1vh + .5vmin);
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
