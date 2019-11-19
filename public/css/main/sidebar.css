@@ -116,10 +116,14 @@
   position: absolute;
   right: 16px;
 
-  background-color: transparent;
   border: none;
   padding: 12px;
   margin: 16px;
+
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .btn-close span {
@@ -128,7 +132,7 @@
   top: 4px;
   height: 16px;
   width: 3px;
-  background-color: #999;
+  background-color: #fff;
 }
 
 .btn-close span:nth-child(1) { transform: rotate(45deg) }
