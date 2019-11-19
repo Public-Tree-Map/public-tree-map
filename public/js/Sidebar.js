@@ -142,7 +142,6 @@ var initialY = null;
       this.heritageTreeNumber.innerText = '#'+tree['heritageNumber'];
       this.heritageYearInscribed.innerText = tree['heritageYear'];
       if (tree['heritageText'] !== null) {
-        console.log('heritage text: '+tree['heritageText'] );
         this.heritageDescriptionContainer.classList.add('active');
         this.heritageDescription.innerText = tree['heritageText'];
       } else {

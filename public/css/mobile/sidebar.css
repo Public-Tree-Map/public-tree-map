@@ -94,3 +94,15 @@
 .sidebar-mobile--closed #sidebar{
   height: 0;
 }
+#sidebar-heritage-container.active {
+  display: none;
+  width: 100%;
+}
+.sidebar-mobile--fullscreen #sidebar-content #sidebar-heritage-container {
+  display: none;
+  width: 100%;
+}
+.sidebar-mobile--fullscreen #sidebar-content #sidebar-heritage-container.active {
+  display: inline-block;
+  width: 100%;
+}
