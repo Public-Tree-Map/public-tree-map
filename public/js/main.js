@@ -55,8 +55,12 @@ var app = this.app || {};
     }
   }
   function showFirstTimeDialog(){
-    let firstTimeDialog = document.getElementById("first-time-dialog");
-    firstTimeDialog.classList.remove("hidden");
+    try { 
+      let firstTimeDialog = document.getElementById("first-time-dialog");
+      firstTimeDialog.classList.remove("hidden");
+    } catch (error) {
+        
+    }
   }
 
   
