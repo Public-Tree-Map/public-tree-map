@@ -26,6 +26,7 @@
   color: black;
   margin-top: 0px;
   margin-bottom: 6px;
+  max-width: 85%;
 }
 
 #sidebar h2 {
@@ -114,25 +115,21 @@
 
 .btn-close {
   position: absolute;
-  right: 16px;
-
+  right: 8px;
   background-color: transparent;
+  margin: 20px 8px;
   border: none;
-  padding: 12px;
-  margin: 16px;
 }
 
-.btn-close span {
+.btn-close .btn-close--dark {
+  height: 1.75em;
   display: block;
-  position: absolute;
-  top: 4px;
-  height: 16px;
-  width: 3px;
-  background-color: #999;
 }
 
-.btn-close span:nth-child(1) { transform: rotate(45deg) }
-.btn-close span:nth-child(2) { transform: rotate(-45deg) }
+.btn-close .btn-close--light {
+  height: 1em;
+  display: none;
+}
 
 .share-buttons {
   display: flex;
