@@ -21,7 +21,6 @@ var app = this.app || {};
       .then(function(response) {
         return response.json().then(function(trees) {
           setData(trees);
-          detectMobileOrientation();
         });
       });
   }
