@@ -75,20 +75,13 @@
   min-height: 40%;
 }
 
-.btn-close span {
-  background-color: #999;
+.btn-close .btn-close--light { display: block; }
+.btn-close .btn-close--dark { display: none; }
+.sidebar-mobile--fullscreen .btn-close .btn-close--light {
+  display: none;
 }
-
-.btn-close {
-  background-color: transparent;
-}
-
-.sidebar-mobile--fullscreen .btn-close {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.sidebar-mobile--fullscreen .btn-close span {
-  background-color: #fff;
+.sidebar-mobile--fullscreen .btn-close .btn-close--dark {
+  display: block;
 }
 
 /* Close the sidebar */

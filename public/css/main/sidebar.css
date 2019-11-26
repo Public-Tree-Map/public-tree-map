@@ -115,28 +115,20 @@
 .btn-close {
   position: absolute;
   right: 16px;
-
-  border: none;
-  padding: 12px;
+  background-color: transparent;
   margin: 16px;
-
-  display: flex;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
-.btn-close span {
+.btn-close .btn-close--dark {
+  height: 1.75em;
   display: block;
-  position: absolute;
-  top: 4px;
-  height: 16px;
-  width: 3px;
-  background-color: #fff;
 }
 
-.btn-close span:nth-child(1) { transform: rotate(45deg) }
-.btn-close span:nth-child(2) { transform: rotate(-45deg) }
+.btn-close .btn-close--light {
+  height: 1em;
+  display: none;
+}
 
 .share-buttons {
   display: flex;
