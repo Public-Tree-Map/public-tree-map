@@ -57,6 +57,14 @@
   height: 100vh;
 }
 
+#sidebar-content h1, #sidebar-vacant-content h1 {
+  font-size: calc(2vw + 1vh + .5vmin);
+}
+
+.sidebar-mobile--fullscreen #sidebar-content h1,
+.sidebar-mobile--fullscreen #sidebar-vacant-content h1 {
+  font-size: 24px;
+}
 .sidebar-mobile--fullscreen #sidebar-image > *,
 .sidebar-mobile--fullscreen #sidebar-content > * {
   display: block;
