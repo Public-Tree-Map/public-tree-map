@@ -26,6 +26,7 @@
   color: black;
   margin-top: 0px;
   margin-bottom: 6px;
+  max-width: 85%;
 }
 
 #sidebar h2 {
@@ -114,9 +115,9 @@
 
 .btn-close {
   position: absolute;
-  right: 16px;
+  right: 8px;
   background-color: transparent;
-  margin: 16px;
+  margin: 20px 8px;
   border: none;
 }
 
