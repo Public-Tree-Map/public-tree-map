@@ -21,7 +21,6 @@ var app = this.app || {};
       .then(function(response) {
         return response.json().then(function(trees) {
           setData(trees);
-          detectMobileOrientation();
         });
       });
   }
@@ -59,17 +58,6 @@ var app = this.app || {};
     firstTimeDialog.classList.remove("hidden");
   }
 
-  
-
-  function detectMobileOrientation() {
-    window.addEventListener("orientationchange", function() {
-      if (window.matchMedia("(orientation: portrait)").matches) {
-        // you're in LANDSCAPE mode
-        alert('Please switch to portrait mode.');
-     }
-    }, false);
-    
-  }
 
   // EXPORTS
   module.init = init;
