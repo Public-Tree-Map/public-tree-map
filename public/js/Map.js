@@ -123,6 +123,8 @@ var app = this.app || {};
       let tapEvent = isTouchDevice()?"mouseover click":"click";
       marker.on(tapEvent, (function(leafletEvent) {
         var that = this;
+        console.log("LOOking at the bodyyy");
+        console.log(typeof this.sidebar.body);
         this.sidebar.body.classList.remove('sidebar-mobile--closed');
         fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
           .then(function(response) {
