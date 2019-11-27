@@ -10,7 +10,7 @@ var initialY = null;
 (function(module) {
 
   function Sidebar() {
-    this.body                          = document.getElementsByTagName('body')[0];
+    this.body                          = $('body')[0];
     this.sidebar                       = $('#sidebar');
     this.defaultScreen                 = $('#sidebar-default');
     this.exploreMapButton              = $('#sidebar-default-explore')
@@ -57,13 +57,13 @@ var initialY = null;
     this.vacantCloseButton             = $('#sidebar-vacant-close-button');
     this.vacantDetailsButton           = $('#sidebar-vacant-details-button')
 
-    this.closeButton.onclick = closePanel.bind(this);
-    this.vacantCloseButton.onclick = closePanel.bind(this);
+    this.closeButton.click(closePanel.bind(this));
+    this.vacantCloseButton.click(closePanel.bind(this));
 
     // Buttons for mobile view
-    this.detailsButton.onclick = toggleFullMobileView.bind(this);
-    this.vacantDetailsButton.onclick = toggleFullMobileView.bind(this);
-    this.exploreMapButton.onclick = toggleFullMobileView.bind(this);
+    this.detailsButton.click(toggleFullMobileView.bind(this));
+    this.vacantDetailsButton.click(toggleFullMobileView.bind(this));
+    this.exploreMapButton.click(toggleFullMobileView.bind(this));
 
     this.sidebar.on("touchstart", startTouch, false);
     this.sidebar.on("touchmove", onSwipe, false);
@@ -127,14 +127,12 @@ var initialY = null;
     this.streetSegment.text(tree.segment);
 
     if (tree.images && tree.images.length > 1) {
-      this.image.style.backgroundImage = 'url(' + tree.images[1].url + ')';
-      this.image.style.backgroundSize = 'cover';
+      this.image.css("background-image", "url(" + tree.images[1].url + ")");
+      this.image.css("background-size", "cover");
       this.image.show();
-
-      this.imageCreditLink.href = tree.images[1].author.url;
+      this.imageCreditLink.attr("href", tree.images[1].author.url);
       images = tree.images;
     } else {
-      this.image.style.backgroundImage = '';
       this.image.hide();
     }
     if (tree.heritage === true) {
@@ -181,7 +179,7 @@ var initialY = null;
 
   function toggleFullMobileView() {
     let className = 'sidebar-mobile--fullscreen';
-    if(this.body.classList.contains(className)) {
+    if(this.body.hasClass(className)) {
       this.body.removeClass(className);
       this.detailsButton.show();
       this.vacantDetailsButton.show();
@@ -231,7 +229,7 @@ var initialY = null;
   function closePanel() {
     let fullScreen = 'sidebar-mobile--fullscreen';
     let closed = 'sidebar-mobile--closed'
-    if(this.body.classList.contains(fullScreen)) {
+    if(this.body.hasClass(fullScreen)) {
       (toggleFullMobileView.bind(this))();
     }
     else {
@@ -311,8 +309,8 @@ var initialY = null;
 function currentSlide(index){
   this.image = $('#sidebar-image');
   this.imageCreditLink = $('#sidebar-image-credit-link');
-  this.image.style.backgroundImage = 'url(' + images[index].url + ')';
-  this.imageCreditLink.href = images[index].author.url;
+  this.image.css("background-image" ,"url(" + images[index].url + ")");
+  this.imageCreditLink.attr("href", images[index].author.url);
 }
 
 function lastSlideImage(){
@@ -320,7 +318,7 @@ function lastSlideImage(){
     indexOfImages=2;
     currentSlide(indexOfImages);
   }else{
-    indexOfImages-=1;
+    indexOfImages--;
     currentSlide(indexOfImages);
   }
 }
@@ -329,7 +327,7 @@ function nextSlideImage(){
     indexOfImages=0;
     currentSlide(indexOfImages);
   }else{
-    indexOfImages+=1;
+    indexOfImages++;
     currentSlide(indexOfImages);
   }
 }
