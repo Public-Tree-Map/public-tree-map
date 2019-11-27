@@ -32,7 +32,7 @@ var app = this.app || {};
 
     _map.setTrees(trees, module.palettes['name_common']);
     _speciesFilter.setSpecies(formattedSelect);
-    document.getElementById('loading').classList.add('hidden');
+    $('#loading').hide();
   }
 
   function setData(trees) {
@@ -41,7 +41,7 @@ var app = this.app || {};
 
     _map.setTrees(trees, module.palettes['name_common']);
     _speciesFilter.setSpecies(formattedSelect);
-    document.getElementById('loading').classList.add('hidden');
+    $('#loading').hide();
   }
 
   function isTouchDevice(){
@@ -55,8 +55,7 @@ var app = this.app || {};
     }
   }
   function showFirstTimeDialog(){
-    let firstTimeDialog = document.getElementById("first-time-dialog");
-    firstTimeDialog.classList.remove("hidden");
+    $("#first-time-dialog").show();
   }
 
   
@@ -78,7 +77,6 @@ var app = this.app || {};
 })(app);
 
 function closeFirstTimeDialog(){
-  let firstTimeDialog = document.getElementById("first-time-dialog");
-  firstTimeDialog.classList.add("hidden");
+  $("#first-time-dialog").hide();
   localStorage.setItem("firstTimeV2", false);
 }

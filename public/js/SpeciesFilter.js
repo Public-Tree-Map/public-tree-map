@@ -105,9 +105,10 @@ var app = this.app || {};
         var colorKey = formatted.find(".color-key");
         
         if (this.palette.field === 'heritage') {
-            colorKey.addClass("hidden");
+            colorKey.hide();
         } else {
-            colorKey.removeClass("hidden");
+            colorKey.show();
+
         }
         colorKey.css("background-color", selection.legend + alpha);
         formatted.find(".select2-selection-text").text(selection.text);
