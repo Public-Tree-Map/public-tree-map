@@ -15,20 +15,26 @@
   width: (100%-292); /*Total rest of padding together*/
   height: 36px;
 }
- .address-container {
+
+.address-container {
     width: 80%;
-  }
+}
 
 /* Color Filter */
 .color-filter-container button {
   display: none;
 }
+
 .color-filter-container {
     padding-right: 0;
-  }
+}
 
 #species-button-species, #species-button-family {
   display: block;
+}
+
+.species-button:nth-child(2) {
+  border-radius: 0 4px 4px 0;
 }
 
 /* Hide select2 */
