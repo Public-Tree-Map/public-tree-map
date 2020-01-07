@@ -2,6 +2,7 @@
   z-index: 100000;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   flex-direction: row;
 
   border-radius: 4px;
@@ -25,9 +26,10 @@
 
 /* Color filter*/
 .color-filter-container {
-  width: 60%;
+  width: 40%;
   padding: 0 1rem;
 }
+
 #color-filter {
   z-index: 5;
   width: 100%;
@@ -101,7 +103,7 @@
   height: 36px;
 }
 .address-container {
-  width: 35%;
+  width: 40%;
 }
 .ap-input-icon {
   right: 10px;
@@ -110,15 +112,14 @@
   right: 40px;
 }
 .species-filter-container {
-  width: 25%;
+  width: 10%;
 }
 
 /* Find a species */
 .select2-container {
-  width: 100% !important;
   height: 36px;
   font-size: 14px;
-  font-color: #777777;
+  width: 100% !important;
 }
 .select2-selection {
   padding: 3px;
