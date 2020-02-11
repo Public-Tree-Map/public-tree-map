@@ -5,7 +5,6 @@
   justify-content: space-evenly;
   flex-direction: row;
 
-  border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   background-color: #fff;
 
@@ -33,13 +32,12 @@
 #color-filter {
   z-index: 5;
   width: 100%;
-  border-radius: 4px;
   display: flex;
 }
 
 /* Grouping buttons */
 .btn-group button {
-  border: none;
+  border: 1px solid #ccc !important;
   border-right: 1px solid #ccc; /* Prevent double borders */
   background-color: #fff;
   height: 36px;
@@ -61,10 +59,12 @@
   display: table;
 }
 
-.btn-group {
-  border: 1px solid #ccc;
-  border-right: 0; /* Prevent double borders */
-  border-radius: 4px;
+.species-button:first-child {
+  border-radius: 4px 0 0 4px; 
+}
+
+.species-button:last-child {
+  border-radius: 0 4px 4px 0;
 }
 
 .species-button.active {
