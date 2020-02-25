@@ -29,7 +29,10 @@ var app = this.app || {};
     });
 
     L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
-    L.control.locate().addTo(this.leafletMap);
+    L.control.locate({
+      returnToPrevBounds: false,
+      drawCircle: false,
+    }).addTo(this.leafletMap);
 
     this.leafletMap.on('zoomend', (function() {
       this.zoom = this.leafletMap.getZoom();
