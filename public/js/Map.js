@@ -29,6 +29,7 @@ var app = this.app || {};
     });
 
     L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
+    L.control.locate().addTo(this.leafletMap);
 
     this.leafletMap.on('zoomend', (function() {
       this.zoom = this.leafletMap.getZoom();
