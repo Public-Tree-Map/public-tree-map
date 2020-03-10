@@ -32,6 +32,7 @@ var app = this.app || {};
       position: 'bottomright',
       returnToPrevBounds: false,
       drawCircle: false,
+      keepCurrentZoomLevel: true,
     }).addTo(this.leafletMap);
 
     L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
