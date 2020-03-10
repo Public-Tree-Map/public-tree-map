@@ -27,13 +27,15 @@ var app = this.app || {};
         })
       ]
     });
-
-    L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
+      
     L.control.locate({
+      position: 'bottomright',
       returnToPrevBounds: false,
       drawCircle: false,
     }).addTo(this.leafletMap);
 
+    L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
+    
     this.leafletMap.on('zoomend', (function() {
       this.zoom = this.leafletMap.getZoom();
       setMarkerSize.call(this, this.zoom);
