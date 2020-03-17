@@ -36,6 +36,21 @@ var app = this.app || {};
     }).bind(this));
 
     this.markers = L.layerGroup().addTo(this.leafletMap);
+
+    const locationIndicator = L.circleMarker([0, 0], {
+      radius: 5,
+      weight: 1
+    }).addTo(this.leafletMap);
+
+    function getUserLocation() {
+      window.navigator.geolocation.getCurrentPosition(pos => {
+        const {latitude, longitude} = pos.coords;
+        locationIndicator.setLatLng([latitude, longitude]);
+      });
+    }
+    
+    getUserLocation();
+    setInterval(getUserLocation(), 1000);
   }
 
   Map.prototype.setFilter = function(selections) {
