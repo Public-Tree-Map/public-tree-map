@@ -33,6 +33,11 @@ var app = this.app || {};
       returnToPrevBounds: false,
       drawCircle: false,
       keepCurrentZoomLevel: true,
+      clickBehavior: {
+        outOfView: 'setView',
+        inView: 'stop'
+      },
+      flyTo: false
     }).addTo(this.leafletMap);
 
     L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
