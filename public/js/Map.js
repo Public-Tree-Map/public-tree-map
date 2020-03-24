@@ -37,7 +37,8 @@ var app = this.app || {};
         outOfView: 'setView',
         inView: 'stop'
       },
-      flyTo: false
+      flyTo: false,
+      onLocationError: (err, control) => console.log(err),
     }).addTo(this.leafletMap);
 
     L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
