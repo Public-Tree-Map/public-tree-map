@@ -2,6 +2,7 @@
   z-index: 100000;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   flex-direction: row;
 
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
@@ -116,10 +117,9 @@
 
 /* Find a species */
 .select2-container {
-  width: 100% !important;
   height: 36px;
   font-size: 14px;
-  font-color: #777777;
+  width: 100% !important;
 }
 .select2-selection {
   padding: 3px;

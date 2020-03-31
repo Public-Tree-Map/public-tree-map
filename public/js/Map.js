@@ -28,8 +28,37 @@ var app = this.app || {};
       ]
     });
 
-    L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
+    this.leafletMap.setMaxBounds(this.leafletMap.getBounds().pad(0.2));
 
+    this.locateButton = L.control.locate({
+      position: 'bottomright',
+      returnToPrevBounds: false,
+      drawCircle: false,
+      keepCurrentZoomLevel: true,
+      clickBehavior: {
+        outOfView: 'setView',
+        inView: 'stop'
+      },
+      flyTo: true,
+      onLocationError: (err, control) => {
+        if(err.code === 1 && err.type === "locationerror") {
+          control.stop();
+          alert(control.options.strings.needsPermissionMsg);
+        }
+      },
+      onLocationOutsideMapBounds: control => {
+          control.stop();
+          alert(control.options.strings.outsideMapBoundsMsg);
+      },
+      strings: {
+        outsideMapBoundsMsg: `Sorry, we only document tree data in Santa Monica.`,
+        needsPermissionMsg: `You need to grant your browser access 
+        to your location in order to use this feature.`
+      }
+    }).addTo(this.leafletMap);
+
+    L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
+    
     this.leafletMap.on('zoomend', (function() {
       this.zoom = this.leafletMap.getZoom();
       setMarkerSize.call(this, this.zoom);
