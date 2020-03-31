@@ -28,6 +28,8 @@ var app = this.app || {};
       ]
     });
 
+    this.leafletMap.setMaxBounds(this.leafletMap.getBounds().pad(0.2));
+
     this.locateButton = L.control.locate({
       position: 'bottomright',
       returnToPrevBounds: false,
@@ -54,16 +56,6 @@ var app = this.app || {};
         to your location in order to use this feature.`
       }
     }).addTo(this.leafletMap);
-
-    // Check for Geolocation API Permissions
-    navigator.permissions.query({name: 'geolocation'})
-      .then(permission => {
-        if(permission !== "granted") {
-          // TODO: Disable button and bring up tooltip if clicked on
-          // with needsPermission message and 'Learn more' link.
-
-        }
-      })
 
     L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
     
