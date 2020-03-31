@@ -39,7 +39,7 @@ var app = this.app || {};
         outOfView: 'setView',
         inView: 'stop'
       },
-      flyTo: false,
+      flyTo: true,
       onLocationError: (err, control) => {
         if(err.code === 1 && err.type === "locationerror") {
           control.stop();
