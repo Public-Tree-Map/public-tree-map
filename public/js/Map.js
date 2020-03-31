@@ -27,8 +27,8 @@ var app = this.app || {};
         })
       ]
     });
-      
-    L.control.locate({
+
+    this.locateButton = L.control.locate({
       position: 'bottomright',
       returnToPrevBounds: false,
       drawCircle: false,
@@ -38,8 +38,32 @@ var app = this.app || {};
         inView: 'stop'
       },
       flyTo: false,
-      onLocationError: (err, control) => console.log(err),
+      onLocationError: (err, control) => {
+        if(err.code === 1 && err.type === "locationerror") {
+          control.stop();
+          alert(control.options.strings.needsPermissionMsg);
+        }
+      },
+      onLocationOutsideMapBounds: control => {
+          control.stop();
+          alert(control.options.strings.outsideMapBoundsMsg);
+      },
+      strings: {
+        outsideMapBoundsMsg: `Sorry, we only document tree data in Santa Monica.`,
+        needsPermissionMsg: `You need to grant your browser access 
+        to your location in order to use this feature.`
+      }
     }).addTo(this.leafletMap);
+
+    // Check for Geolocation API Permissions
+    navigator.permissions.query({name: 'geolocation'})
+      .then(permission => {
+        if(permission !== "granted") {
+          // TODO: Disable button and bring up tooltip if clicked on
+          // with needsPermission message and 'Learn more' link.
+
+        }
+      })
 
     L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
     
