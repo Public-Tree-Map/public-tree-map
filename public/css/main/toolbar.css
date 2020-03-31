@@ -25,7 +25,7 @@
 
 /* Color filter*/
 .color-filter-container {
-  width: 40%;
+  width: 60%;
   padding: 0 1rem;
 }
 
@@ -103,7 +103,7 @@
   height: 36px;
 }
 .address-container {
-  width: 40%;
+  width: 35%;
 }
 .ap-input-icon {
   right: 10px;
@@ -112,7 +112,7 @@
   right: 40px;
 }
 .species-filter-container {
-  width: 10%;
+  width: 25%;
 }
 
 /* Find a species */
