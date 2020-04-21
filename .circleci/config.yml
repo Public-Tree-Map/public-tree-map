@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: sudo npm install -g surge
-      - run: surge --project ./public --domain public-tree-map.surge.sh
+      - run: surge --project ./public --domain https://public-tree-map.surge.sh
 
 workflows:
   version: 2
