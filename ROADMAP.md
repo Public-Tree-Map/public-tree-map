@@ -1,3 +1,9 @@
 # Santa Monica Public Tree Map Road Map
-## Design
-The website should closely resemble the [design on Zeplin](https://app.zeplin.io/project/5d5b5e8c754cd99aefd2287d/dashboard). 
+
+## Current State of the Project
+
+## Short Term Goals
+Have the website resemble the design on Zeplin.
+
+## Long Term Goals
+Have the website hosted by the city for the general public.
