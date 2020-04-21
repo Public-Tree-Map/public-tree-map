@@ -5,6 +5,15 @@ Public Tree Map uses open datasets to document publicly owned park + street + la
 We primarily use javascript.
 Our test site is available at public-tree-map.surge.sh.
 
+## Contributing
+```bash
+git clone https://github.com/Public-Tree-Map/public-tree-map.git
+```
+No other setup is required. Access the index.html file in your browser to see the application. 
+See [ROADMAP.md](ROADMAP.md) for details on the goals of this project. 
+### Design
+The website should closely resemble this [design on Zeplin](https://app.zeplin.io/project/5d5b5e8c754cd99aefd2287d/dashboard#).
+
 ## Protocol for pull requests + code review
 
 - Please review open issues and link your pull request to the relevant issue.
@@ -14,15 +23,6 @@ Our test site is available at public-tree-map.surge.sh.
 - Please request a review (either from a specific person or from the slack channel).
 - Reviewers: please review all proposed changes, write comments and questions in line notes. Please review all updates made at your request.
 - Reviewer and requester: please confirm with each other that the PR is ready to merge. Please make sure that the PR branch name documents the new changes.
-
-## Contributing
-```bash
-git clone https://github.com/Public-Tree-Map/public-tree-map.git
-```
-No other setup is required. Access the index.html file in your browser to see the application. 
-See [ROADMAP.md](ROADMAP.md) for details on the goals of this project. 
-### Design
-The website should closely resemble this [design on Zeplin](https://app.zeplin.io/project/5d5b5e8c754cd99aefd2287d/dashboard#).
 
 ## Related projects/inspiration
 - [A Very Detailed, Interactive Map of Chicago’s Tree Canopy (Atlas Obscura)](https://www.atlasobscura.com/articles/chicago-tree-canopy-map-2017)
