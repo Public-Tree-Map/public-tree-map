@@ -14,6 +14,13 @@ We primarily use javascript.
 - Reviewers: please review all proposed changes, write comments and questions in line notes. Please review all updates made at your request.
 - Reviewer and requester: please confirm with each other that the PR is ready to merge. Please make sure that the PR branch name documents the new changes.
 
+## Contributing
+```bash
+git clone https://github.com/Public-Tree-Map/public-tree-map.git
+```
+No other setup is required. Access the index.html file in your browser to see the application.
+See [ROADMAP.md](ROADMAP.md) for more details.
+
 ## Related projects/inspiration
 - [A Very Detailed, Interactive Map of Chicago’s Tree Canopy (Atlas Obscura)](https://www.atlasobscura.com/articles/chicago-tree-canopy-map-2017)
 - [Arnold Arboretum map explorer](https://arboretum.harvard.edu/explorer/?utm_source=topnav&utm_medium=nav&utm_campaign=top-menu-map)
