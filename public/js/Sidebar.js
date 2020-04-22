@@ -159,6 +159,7 @@ var initialY = null;
     this.vacantContainer.classList.add('hidden');
     this.defaultScreen.classList.remove('hidden');
     removeQueryStringFromUrlBar();
+    fillLastUpdate();
   }
 
   Sidebar.prototype.showError = function() {
@@ -306,6 +307,41 @@ var initialY = null;
     window.history.pushState('object', document.title, newURL);
   }
 
+ const fillLastUpdate = () => {
+    
+    //fetch metadata from google storage api 
+    const url = 'https://storage.googleapis.com/public-tree-map/'
+    
+    fetch(url).then(
+      response => response.text()
+    ).then(
+      data => {
+        let parser = new DOMParser
+        let xml = parser.parseFromString(data, "application/xml")
+        update(xml)
+      }
+    )
+    //fill in last update time
+    const update = (xml) => {
+      let items = xml.getElementsByTagName('Contents')
+      
+
+      for (item of items) {
+        if (item.children[0].innerHTML === 'data/map.json') {
+          //convert format
+          const time = new Date(item.children[3].innerHTML)
+          const options = {year: 'numeric', month: 'short', day: 'numeric' }
+          let element = document.getElementById('sidebar-last-updated')
+          //update DOM
+          element.innerHTML = 'Last Updated: ' + time.toLocaleDateString(undefined, options)
+
+          break
+        }
+      }
+    }
+
+
+  }
   // Exports
   module.Sidebar = Sidebar;
 

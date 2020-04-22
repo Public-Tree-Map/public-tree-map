@@ -84,6 +84,17 @@
   opacity: 0.8;
 }
 
+#sidebar-last-updated {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-right: 1em;
+  font-size: 0.9em;
+  color: grey
+}
+
 /* Classes */
 .leaflet-popup-content-wrapper {
   background-color: #000000;
