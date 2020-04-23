@@ -10,9 +10,7 @@ Our test site is available at public-tree-map.surge.sh.
 git clone https://github.com/Public-Tree-Map/public-tree-map.git
 ```
 No other setup is required. Access the index.html file in your browser to see the application. 
-See [ROADMAP.md](ROADMAP.md) for details on the goals of this project. 
-### Design
-The website should closely resemble this [design on Zeplin](https://app.zeplin.io/project/5d5b5e8c754cd99aefd2287d/dashboard#).
+See [project page](https://public-tree-map.github.io/) for information on the goals of this project. 
 
 ## Protocol for pull requests + code review
 
