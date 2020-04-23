@@ -1,16 +1,15 @@
 # public-tree-map
 
-Public Tree Map uses open datasets to document publicly owned park + street + landmark trees in Santa Monica, California. Please see below for more information about the data sources and project. Please see the companion [data pipeline repository](https://github.com/Public-Tree-Map/public-tree-map-data-pipeline) for details about how we process data.
+Public Tree Map uses open datasets to document publicly owned park + street + landmark trees in Santa Monica, California. For details about how we process data, please see [data pipeline repository](https://github.com/Public-Tree-Map/public-tree-map-data-pipeline). For more information about the project, please see our [project page](https://public-tree-map.github.io/) and join our [slack channel](https://hackforla.slack.com/messages/C9UU5KKAA/). 
 
 We primarily use javascript.
-Our test site is available at public-tree-map.surge.sh.
+Our test site is public-tree-map.surge.sh.
 
 ## Contributing
 ```bash
 git clone https://github.com/Public-Tree-Map/public-tree-map.git
 ```
 No other setup is required. Access the index.html file in your browser to see the application. 
-See [project page](https://public-tree-map.github.io/) for information on the goals of this project. 
 
 ## Protocol for pull requests + code review
 
@@ -18,7 +17,7 @@ See [project page](https://public-tree-map.github.io/) for information on the go
 - Please create new branch!
 - In your pull request, please list and explain all proposed changes to the code base (additions, deletions). If you reuse code from elsewhere, please make sure you've attributed it.
 - Please apply all relevant labels to your pull request.
-- Please request a review (either from a specific person or from the slack channel).
+- Please request a review (either from a specific person or from the [slack channel](https://hackforla.slack.com/messages/C9UU5KKAA/)).
 - Reviewers: please review all proposed changes, write comments and questions in line notes. Please review all updates made at your request.
 - Reviewer and requester: please confirm with each other that the PR is ready to merge. Please make sure that the PR branch name documents the new changes.
 
