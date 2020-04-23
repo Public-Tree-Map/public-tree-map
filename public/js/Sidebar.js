@@ -57,6 +57,8 @@ var initialY = null;
     this.vacantCloseButton             = document.getElementById('sidebar-vacant-close-button');
     this.vacantDetailsButton           = document.getElementById('sidebar-vacant-details-button')
 
+    this.lastUpdate = {}
+
     this.closeButton.onclick = closePanel.bind(this);
     this.vacantCloseButton.onclick = closePanel.bind(this);
 
@@ -308,7 +310,9 @@ var initialY = null;
   }
 
  const fillLastUpdate = () => {
-    
+    //only preform fetch & update when this.lastUpdate is uninitialized
+    if(this.lastUpdate) { return }
+
     //fetch metadata from google storage api 
     const url = 'https://storage.googleapis.com/public-tree-map/'
     
@@ -329,16 +333,21 @@ var initialY = null;
       for (item of items) {
         if (item.children[0].innerHTML === 'data/map.json') {
           //convert format
-          const time = new Date(item.children[3].innerHTML)
+          this.lastUpdate = new Date(item.children[3].innerHTML)
           const options = {year: 'numeric', month: 'short', day: 'numeric' }
-          let element = document.getElementById('sidebar-last-updated')
+          let elements = document.getElementsByClassName('sidebar-last-updated')
           //update DOM
-          element.innerHTML = 'Last Updated: ' + time.toLocaleDateString(undefined, options)
+          for (i of elements) {
+            //date format: dd MON, YYYY
+            i.innerHTML = 'Data last Updated: ' + this.lastUpdate.toLocaleDateString('en-GB', options)
+          }
 
           break
         }
       }
+    
     }
+    
 
 
   }
