@@ -339,7 +339,7 @@ var initialY = null;
           //update DOM
           for (i of elements) {
             //date format: dd MON, YYYY
-            i.innerHTML = 'Data last Updated: ' + this.lastUpdate.toLocaleDateString('en-GB', options)
+            i.innerHTML = 'Data last checked: ' + this.lastUpdate.toLocaleDateString('en-GB', options)
           }
 
           break
