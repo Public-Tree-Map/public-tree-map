@@ -86,9 +86,15 @@
 
 .sidebar-last-updated {
   bottom: 0;
-  margin-top: 2.5em;
-  margin-bottom: 0.5em;
-  font-size: 0.9em;
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #777777;
 }
 
 /* Classes */
