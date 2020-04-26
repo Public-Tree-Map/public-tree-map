@@ -139,7 +139,7 @@ var app = this.app || {};
       }
 
       marker.tree = tree;
-      marker.bindPopup(tree.name_common, {closeButton: false, offset:[0,-2]}); //offset moves popup up
+      marker.bindPopup(tree.name_common, {closeButton: false, minWidth:0, offset:[0,-2]}); 
       marker.on('mouseover', function (e) {
           this.openPopup();
       });
