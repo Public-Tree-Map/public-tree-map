@@ -1,6 +1,6 @@
 # public-tree-map
 
-Public Tree Map uses open datasets to document publicly owned park + street + landmark trees in Santa Monica, California. For details about how we process data, please see [data pipeline repository](https://github.com/Public-Tree-Map/public-tree-map-data-pipeline). For more information about the project, please see our [project page](https://public-tree-map.github.io/) and join our [slack channel](https://hackforla.slack.com/messages/C9UU5KKAA/). 
+Public Tree Map uses open datasets to document publicly owned park + street + landmark trees in Santa Monica, California. For details about how we process data, please see [data pipeline repository](https://github.com/Public-Tree-Map/public-tree-map-data-pipeline). For more information about the project, please see our [project page](https://public-tree-map.github.io/) and join our [slack workspace](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw). 
 
 We primarily use javascript.
 Our test site is https://public-tree-map.surge.sh.
@@ -17,7 +17,7 @@ No other setup is required. Access the index.html file in your browser to see th
 - Please create new branch!
 - In your pull request, please list and explain all proposed changes to the code base (additions, deletions). If you reuse code from elsewhere, please make sure you've attributed it.
 - Please apply all relevant labels to your pull request.
-- Please request a review (either from a specific person or from the [slack channel](https://hackforla.slack.com/messages/C9UU5KKAA/)).
+- Please request a review (either from a specific person or from the appropriate [slack channel](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw).
 - Reviewers: please review all proposed changes, write comments and questions in line notes. Please review all updates made at your request.
 - Reviewer and requester: please confirm with each other that the PR is ready to merge. Please make sure that the PR branch name documents the new changes.
 
