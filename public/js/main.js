@@ -18,9 +18,9 @@ var app = this.app || {};
     _sidebar.showDefault();
 
 
-    fetch('https://storage.googleapis.com/public-tree-map/data/map.json')
-      .then(res => res.json())
-      .then(trees => setData(trees))
+    fetch("https://storage.googleapis.com/public-tree-map/data/map.json")
+      .then((res) => res.json())
+      .then((trees) => setData(trees));
   }
 
   function setData(trees) {
