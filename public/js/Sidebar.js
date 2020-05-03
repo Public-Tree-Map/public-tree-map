@@ -105,6 +105,7 @@ var initialY = null;
   }
 
   Sidebar.prototype.populateVacanciesPanel = function(tree) {
+ 
     this.vacantCommonName.innerText         = tree.name_common;
     this.vacantTreeId.innerText             = tree.tree_id;
     this.vacantAddress.innerText            = tree.address;
@@ -155,6 +156,32 @@ var initialY = null;
       }
     } else {
       this.heritageContainer.classList.remove('active');
+    }
+
+    //report link
+    const report_link = document.getElementById('report-link-tree')
+
+    report_link.onclick = () => {
+      //create dummy input element for clipboard operations
+      const dummy = document.createElement('input')
+      dummy.setAttribute('readonly', 'readonly')
+      //set content to be copied
+      dummy.setAttribute('value', `${tree.address} Tree ID ${tree.tree_id} `)
+      document.body.appendChild(dummy)
+      //select & copy
+      dummy.focus()
+      dummy.setSelectionRange(0, dummy.value.length)
+      try {
+        document.execCommand('copy')
+      } catch (error) {
+        console.log(error)
+      }
+      //remove dummy element
+      document.body.removeChild(dummy)
+
+      //open city website
+      report_url = "https://user.govoutreach.com/santamonica/support.php?classificationId=30642&cmd=shell"
+      window.open(report_url)
     }
   }
 
