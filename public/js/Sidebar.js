@@ -112,6 +112,16 @@ var initialY = null;
     this.vacantPruningYear.innerText        = tree.pruning_year;
     this.vacantReplacementSpecies.innerHTML = `<em>${tree.replacement_species}</em>`;
     this.vacantStreetSegment.innerText      = tree.segment;
+
+    //report link for vacant sites
+    const report_url = "https://user.govoutreach.com/santamonica/support.php?classificationId=30642&cmd=shell"
+    const report_link_vacant = document.getElementById('report-link-vacant')
+    report_link_vacant.onclick = () => {
+
+      to_clipboard(`${tree.address}, Vacant site, Tree ID ${tree.tree_id} `)
+      //open city website
+      window.open(report_url)
+    }
   }
 
   Sidebar.prototype.populateTreePanel = function(tree) {
@@ -158,29 +168,14 @@ var initialY = null;
       this.heritageContainer.classList.remove('active');
     }
 
-    //report link
-    const report_link = document.getElementById('report-link-tree')
 
-    report_link.onclick = () => {
-      //create dummy input element for clipboard operations
-      const dummy = document.createElement('input')
-      dummy.setAttribute('readonly', 'readonly')
-      //set content to be copied
-      dummy.setAttribute('value', `${tree.address} Tree ID ${tree.tree_id} `)
-      document.body.appendChild(dummy)
-      //select & copy
-      dummy.focus()
-      dummy.setSelectionRange(0, dummy.value.length)
-      try {
-        document.execCommand('copy')
-      } catch (error) {
-        console.log(error)
-      }
-      //remove dummy element
-      document.body.removeChild(dummy)
-
+    //report link for trees
+    const report_url = "https://user.govoutreach.com/santamonica/support.php?classificationId=30642&cmd=shell"
+    const report_link_tree = document.getElementById('report-link-tree')
+    report_link_tree.onclick = () => {
+      to_clipboard(`${tree.address} Tree ID ${tree.tree_id} `)
       //open city website
-      report_url = "https://user.govoutreach.com/santamonica/support.php?classificationId=30642&cmd=shell"
+      
       window.open(report_url)
     }
   }
@@ -339,7 +334,7 @@ var initialY = null;
     window.history.pushState('object', document.title, newURL);
   }
 
- const fillLastUpdate = () => {
+  const fillLastUpdate = () => {
     //only preform fetch & update when this.lastUpdate is uninitialized
     if(this.lastUpdate) { return }
 
@@ -381,6 +376,27 @@ var initialY = null;
 
 
   }
+
+  //helper function for clipboard copy
+  const to_clipboard = (str) => {
+    //create dummy input element for clipboard operations
+    const dummy = document.createElement('input')
+    dummy.setAttribute('readonly', 'readonly')
+    //set content to be copied
+    dummy.setAttribute('value',str)
+    document.body.appendChild(dummy)
+    //select & copy
+    dummy.focus()
+    dummy.setSelectionRange(0, dummy.value.length)
+    try {
+      document.execCommand('copy')
+    } catch (error) {
+      console.log(error)
+    }
+    //remove dummy element
+    document.body.removeChild(dummy)
+  }
+
   // Exports
   module.Sidebar = Sidebar;
 
