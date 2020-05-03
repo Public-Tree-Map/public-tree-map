@@ -192,7 +192,6 @@ var app = this.app || {};
       });
     });
     if (this.highlightedMarker) {
-      changeCircleMarker(this.highlightedMarker, 'enlarge');
       changeCircleMarker(this.highlightedMarker, 'recolor');
     }
   }
