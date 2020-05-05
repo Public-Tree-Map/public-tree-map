@@ -17,7 +17,7 @@ No other setup is required. Access the index.html file in your browser to see th
 - Please create new branch!
 - In your pull request, please list and explain all proposed changes to the code base (additions, deletions). If you reuse code from elsewhere, please make sure you've attributed it.
 - Please apply all relevant labels to your pull request.
-- Please request a review (either from a specific person or from the appropriate [slack channel](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw).
+- Please request a review (either from a specific person or from the appropriate [slack channel](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw)).
 - Reviewers: please review all proposed changes, write comments and questions in line notes. Please review all updates made at your request.
 - Reviewer and requester: please confirm with each other that the PR is ready to merge. Please make sure that the PR branch name documents the new changes.
 
