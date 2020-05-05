@@ -151,15 +151,17 @@ var app = this.app || {};
       }
       let tapEvent = isTouchDevice()?"mouseover click":"click";
       marker.on(tapEvent, (function(leafletEvent) {
-        var that = this;
+
         this.sidebar.body.classList.remove('sidebar-mobile--closed');
-        fetch('https://storage.googleapis.com/public-tree-map/data/trees/' + tree.tree_id + '.json')
-          .then(function(response) {
-            return response.json().then(function(jsonTree) {
-              that.sidebar.setTree(jsonTree);
-              updateUrl(that.urlParams, tree.tree_id);
-            });
+        fetch(
+          `https://storage.googleapis.com/public-tree-map/data/trees/${tree.tree_id}.json`
+        )
+          .then((res) => res.json())
+          .then((tree) => {
+            this.sidebar.setTree(tree);
+            updateUrl(this.urlParams, tree.tree_id);
           });
+
 
         var markerLocation = marker.getLatLng();
         var newViewLocation = {lat: markerLocation['lat'], lng: markerLocation['lng']};
