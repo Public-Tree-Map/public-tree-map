@@ -17,6 +17,7 @@ var initialY = null;
     this.treeContainer                 = document.getElementById('sidebar-tree');
     this.errorScreen                   = document.getElementById('sidebar-error');
     this.image                         = document.getElementById('sidebar-image');
+    this.no_image                      = document.getElementById('no_image');
     this.imageCreditLink               = document.getElementById('sidebar-image-credit-link');
     this.commonName                    = document.getElementById('sidebar-common-name');
     this.botanicalName                 = document.getElementById('sidebar-botanical-name');
@@ -41,8 +42,8 @@ var initialY = null;
     this.detailsButton                 = document.getElementById('sidebar-details-button');
     //Heritage Trees
     this.heritageContainer             = document.getElementById('sidebar-heritage-container');
-    this.heritageTreeNumber            = document.getElementById('sidebar-heritage-number'); 
-    this.heritageTreeNumber            = document.getElementById('sidebar-heritage-number'); 
+    this.heritageTreeNumber            = document.getElementById('sidebar-heritage-number');
+    this.heritageTreeNumber            = document.getElementById('sidebar-heritage-number');
     this.heritageYearInscribed         = document.getElementById('sidebar-heritage-year-inscribed');
     this.heritageDescriptionContainer  = document.getElementById('sidebar-heritage-description-container');
     this.heritageDescription           = document.getElementById('sidebar-heritage-description');
@@ -133,12 +134,14 @@ var initialY = null;
       this.image.style.backgroundImage = 'url(' + tree.images[1].url + ')';
       this.image.style.backgroundSize = 'cover';
       this.image.classList.remove('hidden');
+      this.no_image.classList.add('hidden');
 
       this.imageCreditLink.href = tree.images[1].author.url;
       images = tree.images;
     } else {
       this.image.style.backgroundImage = '';
       this.image.classList.add('hidden');
+      this.no_image.classList.remove('hidden');
     }
     if (tree.heritage === true) {
       this.heritageContainer.classList.add('active');
