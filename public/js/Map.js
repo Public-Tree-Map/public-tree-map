@@ -29,7 +29,7 @@ var app = this.app || {};
     });
 
     // Rectangular bounds for locate button, hard code to fix mobile bug
-    const bounds = [[34.049242,-118.417049],[34.006524,-118.530877]]
+    const bounds = [[34.059242,-118.417049],[33.995524,-118.530877]]
     this.leafletMap.setMaxBounds(bounds);
 
     this.locateButton = L.control.locate({
