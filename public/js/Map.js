@@ -28,7 +28,9 @@ var app = this.app || {};
       ]
     });
 
-    this.leafletMap.setMaxBounds(this.leafletMap.getBounds().pad(0.2));
+    // Rectangular bounds for locate button, hard code to fix mobile bug
+    const bounds = [[34.049242,-118.417049],[34.006524,-118.530877]]
+    this.leafletMap.setMaxBounds(bounds);
 
     this.locateButton = L.control.locate({
       position: 'bottomright',
