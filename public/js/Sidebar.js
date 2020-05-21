@@ -129,12 +129,12 @@ var initialY = null;
     this.vacantAddress.classList.add("sidebar-address-small");
     this.streetSegment.innerText          = tree.segment;
 
-    if (tree.images && tree.images.length > 1) {
-      this.image.style.backgroundImage = 'url(' + tree.images[1].url + ')';
+    if (tree.images && tree.images.length > 0) {
+      this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
       this.image.style.backgroundSize = 'cover';
       this.image.classList.remove('hidden');
 
-      this.imageCreditLink.href = tree.images[1].author.url;
+      this.imageCreditLink.href = tree.images[0].author.url;
       images = tree.images;
     } else {
       this.image.style.backgroundImage = '';
