@@ -2,7 +2,7 @@ var app = this.app || {};
 var a2a_config = a2a_config || {};
 a2a_config.templates = a2a_config.templates || {};
 var images = [];
-var indexOfImages = 1;
+var indexOfImages = 0;
 
 var initialY = null;
 
@@ -130,11 +130,11 @@ var initialY = null;
     this.streetSegment.innerText          = tree.segment;
 
     if (tree.images && tree.images.length > 0) {
-      this.image.style.backgroundImage = 'url(' + tree.images[0].url + ')';
+      this.image.style.backgroundImage = 'url(' + tree.images[indexOfImages].url + ')';
       this.image.style.backgroundSize = 'cover';
       this.image.classList.remove('hidden');
 
-      this.imageCreditLink.href = tree.images[0].author.url;
+      this.imageCreditLink.href = tree.images[indexOfImages].author.url;
       images = tree.images;
     } else {
       this.image.style.backgroundImage = '';
