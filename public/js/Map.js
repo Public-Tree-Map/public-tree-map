@@ -44,36 +44,36 @@ var app = this.app || {};
       })
     }
 
-    // Rectangular bounds for locate button, hard code to fix mobile bug
-    const bounds = [[34.059242,-118.417049],[33.995524,-118.530877]]
-    this.leafletMap.setMaxBounds(bounds);
+    // // Rectangular bounds for locate button, hard code to fix mobile bug
+    // const bounds = [[34.059242,-118.417049],[33.995524,-118.530877]]
+    // this.leafletMap.setMaxBounds(bounds);
 
-    this.locateButton = L.control.locate({
-      position: 'bottomright',
-      returnToPrevBounds: false,
-      drawCircle: false,
-      keepCurrentZoomLevel: true,
-      clickBehavior: {
-        outOfView: 'setView',
-        inView: 'stop'
-      },
-      flyTo: true,
-      onLocationError: (err, control) => {
-        if(err.code === 1 && err.type === "locationerror") {
-          control.stop();
-          alert(control.options.strings.needsPermissionMsg);
-        }
-      },
-      onLocationOutsideMapBounds: control => {
-          control.stop();
-          alert(control.options.strings.outsideMapBoundsMsg);
-      },
-      strings: {
-        outsideMapBoundsMsg: `Sorry, we only document tree data in Santa Monica.`,
-        needsPermissionMsg: `You need to grant your browser access 
-        to your location in order to use this feature.`
-      }
-    }).addTo(this.leafletMap);
+    // this.locateButton = L.control.locate({
+    //   position: 'bottomright',
+    //   returnToPrevBounds: false,
+    //   drawCircle: false,
+    //   keepCurrentZoomLevel: true,
+    //   clickBehavior: {
+    //     outOfView: 'setView',
+    //     inView: 'stop'
+    //   },
+    //   flyTo: true,
+    //   onLocationError: (err, control) => {
+    //     if(err.code === 1 && err.type === "locationerror") {
+    //       control.stop();
+    //       alert(control.options.strings.needsPermissionMsg);
+    //     }
+    //   },
+    //   onLocationOutsideMapBounds: control => {
+    //       control.stop();
+    //       alert(control.options.strings.outsideMapBoundsMsg);
+    //   },
+    //   strings: {
+    //     outsideMapBoundsMsg: `Sorry, we only document tree data in Santa Monica.`,
+    //     needsPermissionMsg: `You need to grant your browser access 
+    //     to your location in order to use this feature.`
+    //   }
+    // }).addTo(this.leafletMap);
 
     L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
     
