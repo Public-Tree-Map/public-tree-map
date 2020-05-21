@@ -2,7 +2,10 @@ var app = this.app || {};
 var a2a_config = a2a_config || {};
 a2a_config.templates = a2a_config.templates || {};
 var images = [];
-var indexOfImages = 0;
+//default image index in array
+const defaultImg = 0
+//initilize for scrolling
+var indexOfImages = defaultImg;
 
 var initialY = null;
 
@@ -130,11 +133,11 @@ var initialY = null;
     this.streetSegment.innerText          = tree.segment;
 
     if (tree.images && tree.images.length > 0) {
-      this.image.style.backgroundImage = 'url(' + tree.images[indexOfImages].url + ')';
+      this.image.style.backgroundImage = 'url(' + tree.images[defaultImg].url + ')';
       this.image.style.backgroundSize = 'cover';
       this.image.classList.remove('hidden');
 
-      this.imageCreditLink.href = tree.images[indexOfImages].author.url;
+      this.imageCreditLink.href = tree.images[defaultImg].author.url;
       images = tree.images;
     } else {
       this.image.style.backgroundImage = '';
