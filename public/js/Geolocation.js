@@ -26,8 +26,15 @@ var app = this.app || {};
         var clonedPlacesPinWithoutEventListenters = placesPinElement.cloneNode(true);
         placesPinElement.parentNode.replaceChild(clonedPlacesPinWithoutEventListenters, placesPinElement);
         $('.ap-icon-pin').on('click', function() {
+
+            //zoom and set pin for current location
+            const success = (curr_position) =>{
+                zoomFromPosition(curr_position)
+                map.setPin(curr_position.coords.latitude,curr_position.coords.longitude, "Current Location")
+            }
+
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(zoomFromPosition);
+                navigator.geolocation.getCurrentPosition(success);
             }
             else {
                 alert('To use this feature, please enable location services.')
@@ -35,6 +42,8 @@ var app = this.app || {};
         });
         this.placesAutocomplete.on('change', function(event){
             zoomToLatLng(event.suggestion.latlng);
+            const {lat, lng} = {...event.suggestion.latlng}
+            map.setPin(lat,lng, event.suggestion.name)
         })
     }
 

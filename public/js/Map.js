@@ -14,6 +14,7 @@ var app = this.app || {};
     this.fillOpacity = 0.75;
     this.selected = new Set();
     this.urlParams = new URLSearchParams(window.location.search);
+    this.locationPin = null
 
     this.leafletMap = L.map('map', {
       center: [34.0215, -118.481],
@@ -27,6 +28,21 @@ var app = this.app || {};
         })
       ]
     });
+
+    this.setPin = (lat, lng, str) =>{
+      //remove previous pin
+      if (this.locationPin) {
+        this.leafletMap.removeLayer(this.locationPin)
+      }
+      //drop new pin
+      this.locationPin = L.marker([lat,lng]).addTo(this.leafletMap) 
+      //setup popUp for location pin
+      this.locationPin.bindPopup(str, {closeButton: false, minWidth:0, offset:[0,-2], closeOnClick:true })
+      .openPopup()
+      this.locationPin.on('click', (e) => {
+        this.locationPin.openPopup()
+      })
+    }
 
     // Rectangular bounds for locate button, hard code to fix mobile bug
     const bounds = [[34.059242,-118.417049],[33.995524,-118.530877]]
