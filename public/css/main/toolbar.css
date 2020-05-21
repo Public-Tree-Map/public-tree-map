@@ -114,6 +114,9 @@
 .species-filter-container {
   width: 25%;
 }
+.ap-icon-pin {
+  display: none
+}
 
 /* Find a species */
 .select2-container {
