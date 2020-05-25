@@ -11,6 +11,30 @@ git clone https://github.com/Public-Tree-Map/public-tree-map.git
 ```
 No other setup is required. Access the index.html file in your browser to see the application. 
 
+**iOS Debug Notes:**
+
+To debug Geolocation related functionalities on iOS, use Safari Web Inspector following [these instructions](https://medium.com/better-programming/debugging-your-iphone-mobile-web-app-using-safari-development-tools-71240657c487).
+
+Additionally, Safari does not allow location service over HTTP. In order to debug and test on iOS, the website must be served over HTTPS. Follow steps and terminal commands are provided for using [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in [VS Code](https://code.visualstudio.com/):
+
+- create private key and certificate
+
+        openssl genrsa -aes256 -out localhost.key 2048   
+        openssl req -days 3650 -new -newkey rsa:2048 -key localhost.key -x509 -out localhost.pem
+        
+
+- create `.vscode/settings.json` in project folder, add following:
+
+            {
+            "liveServer.settings.https": {
+            "enable": true,
+            "cert": "{some path}/localhost.pem", //certificate, absolute path
+            "key": "{some path}/localhost.key", //private key file, absolute path
+            "passphrase": "12345" //passphrase used in private key creation
+            }
+    (see [here](https://github.com/ritwickdey/vscode-live-server/blob/master/docs/settings.md) )
+
+
 ## Protocol for pull requests + code review
 
 - Please review open issues and link your pull request to the relevant issue.
