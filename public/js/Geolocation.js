@@ -25,21 +25,12 @@ var app = this.app || {};
         var placesPinElement = document.getElementsByClassName('ap-icon-pin')[0];
         var clonedPlacesPinWithoutEventListenters = placesPinElement.cloneNode(true);
         placesPinElement.parentNode.replaceChild(clonedPlacesPinWithoutEventListenters, placesPinElement);
-        $('.ap-icon-pin').on('click', function() {
 
-            //zoom and set pin for current location
-            const success = (curr_position) =>{
-                zoomFromPosition(curr_position)
-                map.setPin(curr_position.coords.latitude,curr_position.coords.longitude, "Current Location")
-            }
+        //trigger leaflet.locate
+        document.getElementsByClassName('ap-icon-pin')[0].addEventListener(
+        'click', () => map.triggerLocate() )
 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(success);
-            }
-            else {
-                alert('To use this feature, please enable location services.')
-            }
-        });
+
         this.placesAutocomplete.on('change', function(event){
             zoomToLatLng(event.suggestion.latlng);
             const {lat, lng} = {...event.suggestion.latlng}

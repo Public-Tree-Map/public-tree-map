@@ -29,20 +29,16 @@ var app = this.app || {};
       ]
     });
 
+    //trigger leaflet.locate
+    this.triggerLocate = () => {
+      const btn = document.getElementsByClassName('leaflet-control-locate')[0].children[0]
+      btn.click()
+    }
+
     this.setPin = (lat, lng, str) =>{
       //remove previous pin
       if (this.locationPin) {
         this.leafletMap.removeLayer(this.locationPin)
-      }
-
-      //current location: use leaflet.locate for realtime following
-      if (str === "Current Location"){
-        let btn = document.getElementsByClassName('leaflet-control-locate')[0].children[0]
-        btn.click()
-        //prevent repeated clicking
-        btn.disabled = true
-        setTimeout(()=>{btn.disabled = false, 1500})
-        return
       }
       //drop new pin
       this.locationPin = L.marker([lat,lng]).addTo(this.leafletMap) 
@@ -62,7 +58,8 @@ var app = this.app || {};
       keepCurrentZoomLevel: true,
       clickBehavior: {
         outOfView: 'setView',
-        inView: 'setView'
+        inView: 'stop',
+        inViewNotFollowing: 'stop'
       },
       flyTo: true,
       onLocationError: (err, control) => {
