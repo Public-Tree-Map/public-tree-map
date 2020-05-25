@@ -54,6 +54,9 @@ var app = this.app || {};
       })
     }
 
+    //use for current location only
+    //triggerd by this.setPin()
+    //default UI hidden in map.css
     this.locateButton = L.control.locate({
       drawCircle: false,
       keepCurrentZoomLevel: true,
