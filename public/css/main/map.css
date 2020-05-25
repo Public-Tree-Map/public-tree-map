@@ -21,3 +21,6 @@
 .leaflet-control-locate {
   display : none;
 }
+.leaflet-popup-close-button{
+  display: none;
+}
