@@ -34,6 +34,16 @@ var app = this.app || {};
       if (this.locationPin) {
         this.leafletMap.removeLayer(this.locationPin)
       }
+
+      //current location: use leaflet.locate for realtime following
+      if (str === "Current Location"){
+        let btn = document.getElementsByClassName('leaflet-control-locate')[0].children[0]
+        btn.click()
+        //prevent repeated clicking
+        btn.disabled = true
+        setTimeout(()=>{btn.disabled = false, 1500})
+        return
+      }
       //drop new pin
       this.locationPin = L.marker([lat,lng]).addTo(this.leafletMap) 
       //setup popUp for location pin
@@ -44,36 +54,26 @@ var app = this.app || {};
       })
     }
 
-    // // Rectangular bounds for locate button, hard code to fix mobile bug
-    // const bounds = [[34.059242,-118.417049],[33.995524,-118.530877]]
-    // this.leafletMap.setMaxBounds(bounds);
-
-    // this.locateButton = L.control.locate({
-    //   position: 'bottomright',
-    //   returnToPrevBounds: false,
-    //   drawCircle: false,
-    //   keepCurrentZoomLevel: true,
-    //   clickBehavior: {
-    //     outOfView: 'setView',
-    //     inView: 'stop'
-    //   },
-    //   flyTo: true,
-    //   onLocationError: (err, control) => {
-    //     if(err.code === 1 && err.type === "locationerror") {
-    //       control.stop();
-    //       alert(control.options.strings.needsPermissionMsg);
-    //     }
-    //   },
-    //   onLocationOutsideMapBounds: control => {
-    //       control.stop();
-    //       alert(control.options.strings.outsideMapBoundsMsg);
-    //   },
-    //   strings: {
-    //     outsideMapBoundsMsg: `Sorry, we only document tree data in Santa Monica.`,
-    //     needsPermissionMsg: `You need to grant your browser access 
-    //     to your location in order to use this feature.`
-    //   }
-    // }).addTo(this.leafletMap);
+    this.locateButton = L.control.locate({
+      drawCircle: false,
+      keepCurrentZoomLevel: true,
+      clickBehavior: {
+        outOfView: 'setView',
+        inView: 'setView'
+      },
+      flyTo: true,
+      onLocationError: (err, control) => {
+        if(err.code === 1 && err.type === "locationerror") {
+          control.stop();
+          alert(control.options.strings.needsPermissionMsg);
+        }
+      },
+      strings: {
+        popup:'Current Location',
+        needsPermissionMsg: `You need to grant your browser access 
+        to your location in order to use this feature.`
+      }
+    }).addTo(this.leafletMap);
 
     L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
     
