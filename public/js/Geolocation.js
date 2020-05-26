@@ -22,9 +22,6 @@ var app = this.app || {};
                 {animate: true}
             );
         };
-        var placesPinElement = document.getElementsByClassName('ap-icon-pin')[0];
-        var clonedPlacesPinWithoutEventListenters = placesPinElement.cloneNode(true);
-        placesPinElement.parentNode.replaceChild(clonedPlacesPinWithoutEventListenters, placesPinElement);
 
         //trigger leaflet.locate
         document.getElementsByClassName('ap-icon-pin')[0].addEventListener(

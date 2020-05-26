@@ -15,6 +15,7 @@ var app = this.app || {};
     this.selected = new Set();
     this.urlParams = new URLSearchParams(window.location.search);
     this.locationPin = null
+    this.zoomOnClick = 18
 
     this.leafletMap = L.map('map', {
       center: [34.0215, -118.481],
@@ -55,7 +56,8 @@ var app = this.app || {};
     //default UI hidden in map.css
     this.locateButton = L.control.locate({
       drawCircle: false,
-      initialZoomLevel: this.zoom,
+      initialZoomLevel: 18,
+      keepCurrentZoomLevel: false,
       clickBehavior: {
         outOfView: 'setView',
         inView: 'stop',
