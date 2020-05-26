@@ -72,8 +72,7 @@ var app = this.app || {};
       },
       strings: {
         popup:'Current Location',
-        needsPermissionMsg: `You need to grant your browser access 
-        to your location in order to use this feature.`
+        needsPermissionMsg: `You need to grant your browser access to your location in order to use this feature.`
       }
     }).addTo(this.leafletMap);
 
