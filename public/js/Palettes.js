@@ -70,7 +70,7 @@ var app = this.app || {};
     'heritage': {
       'generated' : false,
       'field'     : 'heritage',
-      'true'      : { 'color': '#1b499d', 'title': 'true' },
+      'true'      : { 'color': '#679BBE', 'title': 'true' },
       'false'     : { 'color': '#FFFFFF', 'title': 'false' },
       'markerSize': 4,
     },
