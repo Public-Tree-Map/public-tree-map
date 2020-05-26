@@ -22,19 +22,16 @@ var app = this.app || {};
                 {animate: true}
             );
         };
-        var placesPinElement = document.getElementsByClassName('ap-icon-pin')[0];
-        var clonedPlacesPinWithoutEventListenters = placesPinElement.cloneNode(true);
-        placesPinElement.parentNode.replaceChild(clonedPlacesPinWithoutEventListenters, placesPinElement);
-        $('.ap-icon-pin').on('click', function() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(zoomFromPosition);
-            }
-            else {
-                alert('To use this feature, please enable location services.')
-            }
-        });
+
+        //trigger leaflet.locate
+        document.getElementsByClassName('ap-icon-pin')[0].addEventListener(
+        'click', () => map.triggerLocate() )
+
+
         this.placesAutocomplete.on('change', function(event){
             zoomToLatLng(event.suggestion.latlng);
+            const {lat, lng} = {...event.suggestion.latlng}
+            map.setPin(lat,lng, event.suggestion.name)
         })
     }
 

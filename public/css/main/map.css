@@ -17,3 +17,13 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* hide defalut UI of leaflet.control.locate */
+.leaflet-control-locate {
+  display : none;
+}
+
+
+.leaflet-popup-close-button{
+  display: none;
+}

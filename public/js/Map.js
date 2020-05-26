@@ -14,6 +14,8 @@ var app = this.app || {};
     this.fillOpacity = 0.75;
     this.selected = new Set();
     this.urlParams = new URLSearchParams(window.location.search);
+    this.locationPin = null
+    this.zoomOnClick = 18
 
     this.leafletMap = L.map('map', {
       center: [34.0215, -118.481],
@@ -28,18 +30,38 @@ var app = this.app || {};
       ]
     });
 
-    // Rectangular bounds for locate button, hard code to fix mobile bug
-    const bounds = [[34.059242,-118.417049],[33.995524,-118.530877]]
-    this.leafletMap.setMaxBounds(bounds);
+    //trigger leaflet.locate
+    this.triggerLocate = () => {
+      const btn = document.getElementsByClassName('leaflet-control-locate')[0].children[0]
+      btn.click()
+    }
 
+    this.setPin = (lat, lng, str) =>{
+      //remove previous pin
+      if (this.locationPin) {
+        this.leafletMap.removeLayer(this.locationPin)
+      }
+      //drop new pin
+      this.locationPin = L.marker([lat,lng]).addTo(this.leafletMap) 
+      //setup popUp for location pin
+      this.locationPin.bindPopup(str, {closeButton: false, minWidth:0, offset:[0,-2], closeOnClick:true })
+      .openPopup()
+      this.locationPin.on('click', (e) => {
+        this.locationPin.openPopup()
+      })
+    }
+
+    //use for current location only
+    //triggerd by this.setPin()
+    //default UI hidden in map.css
     this.locateButton = L.control.locate({
-      position: 'bottomright',
-      returnToPrevBounds: false,
       drawCircle: false,
-      keepCurrentZoomLevel: true,
+      initialZoomLevel: 18,
+      keepCurrentZoomLevel: false,
       clickBehavior: {
         outOfView: 'setView',
-        inView: 'stop'
+        inView: 'stop',
+        inViewNotFollowing: 'stop'
       },
       flyTo: true,
       onLocationError: (err, control) => {
@@ -48,14 +70,9 @@ var app = this.app || {};
           alert(control.options.strings.needsPermissionMsg);
         }
       },
-      onLocationOutsideMapBounds: control => {
-          control.stop();
-          alert(control.options.strings.outsideMapBoundsMsg);
-      },
       strings: {
-        outsideMapBoundsMsg: `Sorry, we only document tree data in Santa Monica.`,
-        needsPermissionMsg: `You need to grant your browser access 
-        to your location in order to use this feature.`
+        popup:'Current Location',
+        needsPermissionMsg: `You need to grant your browser access to your location in order to use this feature.`
       }
     }).addTo(this.leafletMap);
 
