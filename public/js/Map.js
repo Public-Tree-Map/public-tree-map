@@ -72,7 +72,7 @@ var app = this.app || {};
       },
       strings: {
         popup:'Current Location',
-        needsPermissionMsg: `In order to use this feature, please grant your browser location access. Public Tree Map won't store your location information.`
+        needsPermissionMsg: `In order to use this feature, please grant your browser location access. Public Tree Map does not access or record to your location information.`
       }
     }).addTo(this.leafletMap);
 
