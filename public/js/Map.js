@@ -55,7 +55,7 @@ var app = this.app || {};
     //default UI hidden in map.css
     this.locateButton = L.control.locate({
       drawCircle: false,
-      keepCurrentZoomLevel: true,
+      initialZoomLevel: this.zoom,
       clickBehavior: {
         outOfView: 'setView',
         inView: 'stop',
