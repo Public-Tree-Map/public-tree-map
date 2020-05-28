@@ -73,6 +73,9 @@
 .sidebar-mobile--fullscreen #sidebar-vacant-content > * {
   display: block;
 }
+.sliderButton {
+  display: none !important;
+}
 
 .sidebar-mobile--fullscreen #sidebar-content .share-buttons {
   display: flex;

@@ -71,10 +71,6 @@ var initialY = null;
     this.exploreMapButton.onclick = toggleFullMobileView.bind(this);
 
     this.sidebar.addEventListener("touchstart", startTouch, false);
-    this.sidebar.addEventListener("touchmove", onSwipe, false)
-
-
-    onSwipe
   }
 
   Sidebar.prototype.setTree = function(tree) {
@@ -139,6 +135,16 @@ var initialY = null;
 
       this.imageCreditLink.href = tree.images[defaultImg].author.url;
       images = tree.images;
+
+      //bind touch handlers
+      const touch_handle = new Hammer(this.image)
+      touch_handle.on('swipeleft tap', (e)=>{
+      nextSlideImage()
+       })
+      touch_handle.on('swiperight', (e)=>{
+      lastSlideImage()
+      })
+
     } else {
       this.image.style.backgroundImage = '';
       this.image.classList.add('hidden');
@@ -211,31 +217,7 @@ var initialY = null;
   function startTouch(e){
       initialY = e.touches[0].clientX;
   }
-  function onSwipe(e) {
-    if (initialY === null) {
-      return;
-    }
-
-    var currentY = e.touches[0].clientY;
-
-    var diffY = initialY - currentY;
-
-
-    if (diffY > 0) {
-      // swiped up
-      console.log("swiped up");
-      toggleFullMobileView();
-
-    } else {
-      // swiped down
-      console.log("swiped down");
-      closePanel();
-    }
-
-
-    initialY = null;
-  }
-
+  
 
   function closePanel() {
     let fullScreen = 'sidebar-mobile--fullscreen';
