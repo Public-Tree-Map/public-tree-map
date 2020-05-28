@@ -243,12 +243,14 @@
             </a>
           </span>
           <div class="sidebar-seperator"></div>
-          <h6><a target="_blank" rel="noopener noreferrer" href = "https://public-tree-map.github.io/">About</a>  |  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Public-Tree-Map/public-tree-map/issues/new/choose">Feedback</a>  |  <a target="_blank" rel="noopener noreferrer" href = "https://github.com/Public-Tree-Map/public-tree-map-data-pipeline#data-sources">Data Sources</a> |  <a target="_blank" rel="noopener noreferrer" href = "https://www.instagram.com/publictreemap/">Instagram</a></h6>
+          <h6><a target="_blank" rel="noopener noreferrer" href = "https://public-tree-map.github.io/">About</a>  |  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Public-Tree-Map/public-tree-map/issues/new/choose">Feedback</a>  |  <a target="_blank" rel="noopener noreferrer" href = "https://github.com/Public-Tree-Map/public-tree-map-data-pipeline#data-sources">Data Sources</a> |  <a target="_blank" rel="noopener noreferrer" href = "https://www.instagram.com/publictreemap/">Instagram</a> | <a href="#heritage-tree-nomination" id="sidebar-nominate-tree-btn">Nominate this tree as a heritage tree</a></h6>
           <div class="sidebar-seperator"></div>
+          
           <div class="sidebar-last-updated">Last updated : 
           </div>
         </div>
       </div>
+      
       <div id="sidebar-default">
         <h1>Explore Our Urban Forest</h1>
         <div class = 'sidebar-details'>Every public tree is a civic resource. Public Tree Map uses open datasets to documents information about each of Santa Monica's nearly 35,000 public park and street trees. 
@@ -262,7 +264,145 @@
         <div>The tree you requested was not found.</div>
       </div>
     </div>
+    <div class="hidden" id="heritage-tree-nomination" class="shadow">
+      <button id="heritage-tree-close-button" class="btn-close">
+        <img src="./icons/close-btn-light.svg" alt="close" class="btn-close--light"/>
+      </button>
+      <form>
+        <h1>Nominate this tree</h1>
+        <p>
+          Santa Monica’s Heritage Tree Program recognizes outstanding trees throughout the city. The
+          goal of the program is to educate citizens and raise community awareness about tree diversity
+          and the city’s rich history by focusing on a limited number of designated Heritage Trees.
+        </p>
+        <p>
+          Heritage Trees are healthy, exceptional representatives of tree species located on public
+          property throughout Santa Monica. The Heritage Tree Program is implemented and overseen by
+          the urban forestry section of the Public Landscape Division with input from the Heritage Tree
+          Subcommittee of the Urban Forest Task Force. The City’s urban forestry staff will inspect and
+          approve nominated trees prior to further review by the Heritage Tree Subcommittee. Selected
+          park tree nominations will also be presented to the Recreation & Parks Commission. Final
+          approval will be granted by the Urban Forest Task Force.
+        </p>
+        <p>
+          Heritage Trees are not subject to additional regulatory or legal restrictions and are not governed
+          by the Landmarks Ordinance. Heritage Trees will be maintained by the urban forestry section of
+          the city’s Public Landscape Division at the standards and specifications outlined in the Urban
+          Forest Master Plan. Trees that are removed because they have reached the end of their life
+          expectancy will be archived.
+        </p>
+        <p>
+          The Heritage Tree Program is an annual program based upon the calendar year. Nomination
+          forms will be accepted year round. The review period will take place from September 1st to
+          December 31st. Nominations received after August 31st will not be considered until the following
+          year’s review period. No more than five trees will be designated as a Heritage Tree in a calendar
+          year.
+        </p>
 
+        <label for="heritage-criteria" class="heritage-form-question">
+          Heritage Tree Criteria: Applications will be reviewed for Heritage Tree Program consideration if
+          the tree exhibits the following (check all that apply).
+        </label><br>
+        <label for="heritage-criteria-1">
+          <input id="heritage-criteria-1" name="heritage-criteria" value="rare" type="checkbox">
+          Tree represents a specimen particularly rare in the locality.
+        </label> 
+        <br>
+        <label for="heritage-criteria-2">
+          <input id="heritage-criteria-2" name="heritage-criteria" value="unique" type="checkbox">
+          Tree is unique, i.e. exceptional aesthetic characteristics 
+          such as flowers or branching patterns
+        </label>
+        <br>
+        <label for="heritage-criteria-3">
+          <input id="heritage-criteria-3" name="heritage-criteria" value="size-or-age" type="checkbox">
+          Tree is of considerable size and/or age
+        </label>
+        <br>
+        <label for="heritage-criteria-4">
+          <input id="heritage-criteria-4" name="heritage-criteria" value="historic" type="checkbox">
+          Tree is connected to a historic event, building or individual.
+        </label><br>
+
+        <label for="heritage-explanation" class="heritage-form-question">
+          Please write why the tree is exceptional including 
+          arboricultural or historical significance. You may attach 
+          photos, historical documentation and additional text to the 
+          nomination form.
+        </label>
+        <textarea id="heritage-explanation" type="text"></textarea>
+
+        <label for="heritage-species" class="heritage-form-question">
+          Tree species: 
+          <input type="text" id="heritage-species" name="species" disabled>
+        </label><br>
+
+        <label for="heritage-address" class="heritage-form-question">
+          Tree address: 
+          <input type="text" id="heritage-address" name="address" disabled>
+        </label><br>
+
+        <label for="heritage-location" class="heritage-form-question">
+          Tree Location: 
+        </label><br>
+        <label for="heritage-location-1">
+          <input id="heritage-location-1" name="heritage-location" value="park" type="radio">
+          Park
+        </label><br>
+        <label for="heritage-location-2">
+          <input id="heritage-location-2" name="heritage-location" value="median" type="radio">
+          Median
+        </label><br>
+        <label for="heritage-location-3">
+          <input id="heritage-location-3" name="heritage-location" value="parkway" type="radio">
+          Parkway
+        </label><br>
+        <label for="heritage-location-4">
+          <input id="heritage-location-4" name="heritage-location" value="park" type="radio">
+          Other: <input id="heritage-location-4-text" type="text">
+        </label><br>
+        
+        <fieldset>
+          <legend class="heritage-form-question">Measurements (provide if possible): </legend>
+          <label for="heritage-circumference" class="heritage-form-question">
+            Trunk circumference at 4.5' ft/1.4m from the ground: 
+            <input type="text" id="heritage-circumference" name="circumference">
+          </label><br>
+          <label for="heritage-height" class="heritage-form-question">
+            Tree height: 
+            <input type="text" id="heritage-height" name="height" disabled>
+          </label><br>
+          <label for="heritage-circumference" class="heritage-form-question">
+            Crown spread: 
+            <input type="text" id="heritage-crown-spread" name="crown">
+          </label><br>
+          <label for="heritage-circumference" class="heritage-form-question">
+            Approximate age: 
+            <input type="text" id="heritage-age" name="age">
+          </label><br>
+        </fieldset>
+
+        <label for="heritage-condition" class="heritage-form-question">
+          Condition (good/fair): 
+          <input type="text" id="heritage-condition" name="condition">
+        </label>
+
+        <fieldset>
+          <legend class="heritage-form-question">Applicant information: </legend>
+          <label for="heritage-applicant-name">Name: </label>
+          <input type="text" id="heritage-applicant-name" name="name"><br>
+          <label for="heritage-applicant-name">Email: </label>
+          <input type="text" id="heritage-applicant-email" name="email"><br>
+          <label for="heritage-applicant-telephone">Telephone: </label>
+          <input type="text" id="heritage-applicant-telephone" name="telephone"><br>
+          <label for="heritage-applicant-address">Address: </label>
+          <input type="text" id="heritage-applicant-address" name="address"><br>
+        </fieldset>
+
+        <p>This information will be sent in an email to public.landscape@smgov.net</p>
+        <input type="submit" value="Submit Application" class="btn">
+      </form>
+     </div>
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
       integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="

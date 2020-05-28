@@ -39,9 +39,12 @@ var initialY = null;
     this.replacementSpecies            = document.getElementById('sidebar-replacement-species');
     this.address                       = document.getElementById('sidebar-address');
     this.streetSegment                 = document.getElementById('sidebar-street-segment');
+    this.nominationForm                = document.getElementById('heritage-tree-nomination');
     this.treeDetails                   = document.getElementById('sidebar-tree-details');
     this.closeButton                   = document.getElementById('sidebar-close-button');
     this.detailsButton                 = document.getElementById('sidebar-details-button');
+    this.nominateButton                = document.getElementById('sidebar-nominate-tree-btn');
+    this.nominateCloseButton           = document.getElementById('heritage-tree-close-button');
     //Heritage Trees
     this.heritageContainer             = document.getElementById('sidebar-heritage-container');
     this.heritageTreeNumber            = document.getElementById('sidebar-heritage-number'); 
@@ -64,7 +67,8 @@ var initialY = null;
 
     this.closeButton.onclick = closePanel.bind(this);
     this.vacantCloseButton.onclick = closePanel.bind(this);
-
+    this.nominateButton.onclick = openNominationForm.bind(this);
+    this.nominateCloseButton.onclick = closeNominationForm.bind(this);
     // Buttons for mobile view
     this.detailsButton.onclick = toggleFullMobileView.bind(this);
     this.vacantDetailsButton.onclick = toggleFullMobileView.bind(this);
@@ -248,6 +252,14 @@ var initialY = null;
       this.showDefault();
 
     }
+  }
+
+  function openNominationForm() {
+    this.nominationForm.classList.remove('hidden');
+  }
+
+  function closeNominationForm() {
+    this.nominationForm.classList.add('hidden');
   }
 
   function buildNativityText(nativity) {

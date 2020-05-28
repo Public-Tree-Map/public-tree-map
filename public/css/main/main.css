@@ -46,3 +46,55 @@ select.shadow {
 .hidden {
   display: none !important;
 }
+
+#heritage-tree-nomination {
+  z-index: 1000000;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: white;
+  overflow-y: scroll;
+}
+
+#heritage-tree-nomination .btn-close--light {
+  display: block;
+}
+
+#heritage-tree-nomination form {
+  margin: auto;
+  padding: 1em;
+  max-width: 600px;
+
+  line-height: 150%;
+}
+
+
+.heritage-form-question {
+  font-weight: bold;
+}
+
+.heritage-form-question > * {
+  font-weight: normal;
+}
+
+#heritage-tree-nomination textarea {
+  resize: none;
+
+  padding: 0.5em;
+  height: 7em;
+  width: 100%;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  border-radius: .1em;
+}
+
+/* For 'other' fields, ensure you can only type in text field when the 
+checkbox is checked */
+#heritage-location-4-text { display: none }
+#heritage-location-4:checked ~ #heritage-location-4-text { display: inline }
