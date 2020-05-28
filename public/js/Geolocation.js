@@ -10,13 +10,10 @@ var app = this.app || {};
           insidePolygon: "34.026488, -118.516895, 34.048822, -118.491788, 34.041779, -118.483893, 34.046615, -118.477840, 34.024744, -118.446215, 34.017025, -118.441751, 33.993856, -118.481530"
         });
 
-        var zoomFromPosition = function(position){
-            zoomToLatLng({lat: position.coords.latitude, lng: position.coords.longitude})
-        };
         var zoomToLatLng = function(latlng){
             var currentZoom = map.leafletMap.getZoom();
             var targetZoom = currentZoom > 16 ? currentZoom : 18;
-            map.leafletMap.setView(
+            map.leafletMap.flyTo(
                 latlng,
                 targetZoom,
                 {animate: true}
