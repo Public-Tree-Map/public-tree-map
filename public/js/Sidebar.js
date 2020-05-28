@@ -39,12 +39,18 @@ var initialY = null;
     this.replacementSpecies            = document.getElementById('sidebar-replacement-species');
     this.address                       = document.getElementById('sidebar-address');
     this.streetSegment                 = document.getElementById('sidebar-street-segment');
-    this.nominationForm                = document.getElementById('heritage-tree-nomination');
     this.treeDetails                   = document.getElementById('sidebar-tree-details');
     this.closeButton                   = document.getElementById('sidebar-close-button');
     this.detailsButton                 = document.getElementById('sidebar-details-button');
-    this.nominateButton                = document.getElementById('sidebar-nominate-tree-btn');
-    this.nominateCloseButton           = document.getElementById('heritage-tree-close-button');
+    //Heritage nomination form elements
+    this.heritageNominationForm        = document.getElementById('heritage-tree-nomination');
+    this.heritageNominationButton      = document.getElementById('sidebar-nominate-tree-btn');
+    this.heritageNominationCloseButton = document.getElementById('heritage-tree-close-button');
+    this.heritageNominationSpecies     = document.getElementById('heritage-species');
+    this.heritageNominationAddress     = document.getElementById('heritage-address');
+    this.heritageNominationHeight      = document.getElementById('heritage-height');
+    this.heritageNominationButton.onclick = openNominationForm.bind(this);
+    this.heritageNominationCloseButton.onclick = closeNominationForm.bind(this);
     //Heritage Trees
     this.heritageContainer             = document.getElementById('sidebar-heritage-container');
     this.heritageTreeNumber            = document.getElementById('sidebar-heritage-number'); 
@@ -67,8 +73,6 @@ var initialY = null;
 
     this.closeButton.onclick = closePanel.bind(this);
     this.vacantCloseButton.onclick = closePanel.bind(this);
-    this.nominateButton.onclick = openNominationForm.bind(this);
-    this.nominateCloseButton.onclick = closeNominationForm.bind(this);
     // Buttons for mobile view
     this.detailsButton.onclick = toggleFullMobileView.bind(this);
     this.vacantDetailsButton.onclick = toggleFullMobileView.bind(this);
@@ -255,7 +259,10 @@ var initialY = null;
   }
 
   function openNominationForm() {
-    this.nominationForm.classList.remove('hidden');
+    this.heritageNominationForm.classList.remove('hidden');
+    this.heritageNominationSpecies.value = this.commonName.innerText;
+    this.heritageNominationAddress.value = this.address.innerText;
+    this.heritageNominationHeight.value = this.height.innerText;
   }
 
   function closeNominationForm() {
