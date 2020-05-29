@@ -74,7 +74,9 @@
   display: block;
 }
 .sliderButton {
-  display: none !important;
+  font-size: 50px;
+  text-align: center;
+ 
 }
 
 .sidebar-mobile--fullscreen #sidebar-content .share-buttons {

@@ -219,7 +219,7 @@
 
 
 
-#sidebar-image-credit, #sidebar-image-counter {
+#sidebar-image-credit {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -237,9 +237,7 @@
 #sidebar-image-credit a{
   color: #fff;
 }
-#sidebar-image-counter{
-  right: 45%;
-}
+
 
 .sliderButton button{
   font-size: 60px;

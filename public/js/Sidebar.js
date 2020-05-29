@@ -341,7 +341,6 @@ var initialY = null;
 function currentSlide(index){
   this.image = document.getElementById('sidebar-image');
   this.imageCounter = document.getElementById('sidebar-image-counter');
-  this.imageCounter.innerHTML = `< ${index +1} / ${totalImages} >`;
   this.imageCreditLink = document.getElementById('sidebar-image-credit-link');
   this.image.style.backgroundImage = 'url(' + images[index].url + ')';
   this.imageCreditLink.href = images[index].author.url;
