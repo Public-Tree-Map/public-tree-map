@@ -217,7 +217,9 @@
   margin: auto;
 }
 
-#sidebar-image-credit {
+
+
+#sidebar-image-credit, #sidebar-image-counter {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -234,6 +236,9 @@
 }
 #sidebar-image-credit a{
   color: #fff;
+}
+#sidebar-image-counter{
+  right: 45%;
 }
 
 .sliderButton button{
