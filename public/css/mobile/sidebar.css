@@ -73,6 +73,11 @@
 .sidebar-mobile--fullscreen #sidebar-vacant-content > * {
   display: block;
 }
+.sliderButton {
+  font-size: 50px;
+  text-align: center;
+ 
+}
 
 .sidebar-mobile--fullscreen #sidebar-content .share-buttons {
   display: flex;

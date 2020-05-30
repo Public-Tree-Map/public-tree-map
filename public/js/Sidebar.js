@@ -5,7 +5,8 @@ var images = [];
 //default image index in array
 const defaultImg = 0
 //initilize for scrolling
-var indexOfImages = defaultImg;
+var indexOfImages = defaultImg
+var totalImages = 0
 
 var initialY = null;
 
@@ -69,12 +70,6 @@ var initialY = null;
     this.detailsButton.onclick = toggleFullMobileView.bind(this);
     this.vacantDetailsButton.onclick = toggleFullMobileView.bind(this);
     this.exploreMapButton.onclick = toggleFullMobileView.bind(this);
-
-    this.sidebar.addEventListener("touchstart", startTouch, false);
-    this.sidebar.addEventListener("touchmove", onSwipe, false)
-
-
-    onSwipe
   }
 
   Sidebar.prototype.setTree = function(tree) {
@@ -133,12 +128,24 @@ var initialY = null;
     this.streetSegment.innerText          = tree.segment;
 
     if (tree.images && tree.images.length > 0) {
-      this.image.style.backgroundImage = 'url(' + tree.images[defaultImg].url + ')';
       this.image.style.backgroundSize = 'cover';
       this.image.classList.remove('hidden');
-
-      this.imageCreditLink.href = tree.images[defaultImg].author.url;
       images = tree.images;
+      totalImages = images.length;
+
+      //build image
+      indexOfImages = defaultImg
+      currentSlide(indexOfImages)
+
+      //bind touch handlers
+      const touch_handle = new Hammer(this.image)
+      touch_handle.on('swipeleft', (e)=>{
+      nextSlideImage(e)
+       })
+      touch_handle.on('swiperight', (e)=>{
+      lastSlideImage(e)
+      })
+
     } else {
       this.image.style.backgroundImage = '';
       this.image.classList.add('hidden');
@@ -206,34 +213,6 @@ var initialY = null;
       this.address.classList.remove("sidebar-address-small");
       this.vacantAddress.classList.remove("sidebar-address-small");
     }
-  }
-
-  function startTouch(e){
-      initialY = e.touches[0].clientX;
-  }
-  function onSwipe(e) {
-    if (initialY === null) {
-      return;
-    }
-
-    var currentY = e.touches[0].clientY;
-
-    var diffY = initialY - currentY;
-
-
-    if (diffY > 0) {
-      // swiped up
-      console.log("swiped up");
-      toggleFullMobileView();
-
-    } else {
-      // swiped down
-      console.log("swiped down");
-      closePanel();
-    }
-
-
-    initialY = null;
   }
 
 
@@ -361,26 +340,30 @@ var initialY = null;
 
 function currentSlide(index){
   this.image = document.getElementById('sidebar-image');
+  this.imageCounter = document.getElementById('sidebar-image-counter');
   this.imageCreditLink = document.getElementById('sidebar-image-credit-link');
   this.image.style.backgroundImage = 'url(' + images[index].url + ')';
   this.imageCreditLink.href = images[index].author.url;
 }
 
-function lastSlideImage(){
+function lastSlideImage(e){
+  
   if(indexOfImages==0){
-    indexOfImages=2;
+    indexOfImages= totalImages - 1;
     currentSlide(indexOfImages);
   }else{
     indexOfImages-=1;
     currentSlide(indexOfImages);
   }
+  
 }
 function nextSlideImage(){
-  if(indexOfImages==2){
+  if(indexOfImages== totalImages - 1){
     indexOfImages=0;
     currentSlide(indexOfImages);
   }else{
     indexOfImages+=1;
     currentSlide(indexOfImages);
   }
+  
 }

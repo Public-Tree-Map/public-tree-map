@@ -217,6 +217,8 @@
   margin: auto;
 }
 
+
+
 #sidebar-image-credit {
   position: absolute;
   bottom: 0;
@@ -235,6 +237,7 @@
 #sidebar-image-credit a{
   color: #fff;
 }
+
 
 .sliderButton button{
   font-size: 60px;
