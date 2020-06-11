@@ -10,17 +10,17 @@
   box-shadow: none;
 }
 
-/* Geolocation */
-#address-input{
-  width: (100%-292); /*Total rest of padding together*/
-  height: 36px;
-}
 
-.address-container {
-    width: 80%;
+/* Species filter */
+.species-filter-container {
+  width: 70%;
+  margin-left: 1em;
 }
 
 /* Color Filter */
+.color-filter-container {
+  width: 20%;
+}
 .color-filter-container button {
   display: none;
 }
@@ -37,12 +37,15 @@
   border-radius: 0 4px 4px 0;
 }
 
-/* Hide select2 */
-.select2{
+
+
+/* Hide Geolocation */
+#address-input{
   visibility: hidden !important;
   display: none !important;
 }
 
-.species-filter-container {
-  display: none;
+.address-container {
+  visibility: hidden !important;
+  display: none !important;
 }
