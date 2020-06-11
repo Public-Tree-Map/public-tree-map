@@ -63,6 +63,7 @@ var app = this.app || {};
         inView: 'stop',
         inViewNotFollowing: 'stop'
       },
+      position:'bottomright',
       flyTo: true,
       onLocationError: (err, control) => {
         if(err.code === 1 && err.type === "locationerror") {
