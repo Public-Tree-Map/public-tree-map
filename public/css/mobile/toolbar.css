@@ -10,23 +10,43 @@
   box-shadow: none;
 }
 
-/* Geolocation */
-#address-input{
-  width: (100%-292); /*Total rest of padding together*/
-  height: 36px;
-}
 
-.address-container {
-    width: 80%;
+/* Species filter */
+.species-filter-container {
+  width: 60%;
+  margin-left: 5%;
+  position: absolute;
+  right:0;
+}
+.select2-selection {
+  max-height: 2em !important;
+}
+@media screen and (max-width: 350px){
+  .species-filter-container {
+    width: 53%;
+  };
+}
+@media screen and (min-width: 750px){
+  .species-filter-container {
+    width: 70%;
+    right: 2em;
+  };
 }
 
 /* Color Filter */
+.color-filter-container {
+  width: 20%;
+  position: absolute;
+  left: 0;
+
+}
 .color-filter-container button {
   display: none;
 }
 
 .color-filter-container {
     padding-right: 0;
+    display: inline-block;
 }
 
 #species-button-species, #species-button-heritage {
@@ -37,12 +57,15 @@
   border-radius: 0 4px 4px 0;
 }
 
-/* Hide select2 */
-.select2{
+
+
+/* Hide Geolocation */
+#address-input{
   visibility: hidden !important;
   display: none !important;
 }
 
-.species-filter-container {
-  display: none;
+.address-container {
+  visibility: hidden !important;
+  display: none !important;
 }

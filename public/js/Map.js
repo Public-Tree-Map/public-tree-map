@@ -63,6 +63,7 @@ var app = this.app || {};
         inView: 'stop',
         inViewNotFollowing: 'stop'
       },
+      position:'bottomright',
       flyTo: true,
       onLocationError: (err, control) => {
         if(err.code === 1 && err.type === "locationerror") {
@@ -76,7 +77,7 @@ var app = this.app || {};
       }
     }).addTo(this.leafletMap);
 
-    L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
+    L.control.zoom({position: 'bottomright'}).addTo(this.leafletMap);
     
     this.leafletMap.on('zoomend', (function() {
       this.zoom = this.leafletMap.getZoom();
