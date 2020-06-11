@@ -20,7 +20,6 @@ var app = this.app || {};
 
     fetch("https://storage.googleapis.com/public-tree-map/data/map.json")
       .then((res) => {
-        //console.log(res.headers.get('Last-Modified'))
         _sidebar.fillLastUpdate(res.headers.get('Last-Modified'))
         return res.json()})
       .then((trees) => setData(trees));
