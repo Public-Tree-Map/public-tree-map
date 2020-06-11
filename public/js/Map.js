@@ -77,7 +77,7 @@ var app = this.app || {};
       }
     }).addTo(this.leafletMap);
 
-    L.control.zoom({position: 'bottomleft'}).addTo(this.leafletMap);
+    L.control.zoom({position: 'bottomright'}).addTo(this.leafletMap);
     
     this.leafletMap.on('zoomend', (function() {
       this.zoom = this.leafletMap.getZoom();
