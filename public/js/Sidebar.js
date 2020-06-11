@@ -109,6 +109,7 @@ var initialY = null;
     this.vacantPruningYear.innerText        = tree.pruning_year;
     this.vacantReplacementSpecies.innerHTML = `<em>${tree.replacement_species}</em>`;
     this.vacantStreetSegment.innerText      = tree.segment;
+    this.vacant_gsv_link.href = `https://www.google.com/maps?layer=c&cbll=${tree.latitude},${tree.longitude}`
   }
 
   Sidebar.prototype.populateTreePanel = function(tree) {
@@ -130,7 +131,6 @@ var initialY = null;
     this.vacantAddress.classList.add("sidebar-address-small");
     this.streetSegment.innerText          = tree.segment;
     this.gsv_link.href = `https://www.google.com/maps?layer=c&cbll=${tree.latitude},${tree.longitude}`
-    this.vacant_gsv_link.href = `https://www.google.com/maps?layer=c&cbll=${tree.latitude},${tree.longitude}`
 
     if (tree.images && tree.images.length > 0) {
       this.image.style.backgroundSize = 'cover';
