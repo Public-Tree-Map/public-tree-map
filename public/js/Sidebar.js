@@ -61,7 +61,6 @@ var initialY = null;
     this.vacantCloseButton             = document.getElementById('sidebar-vacant-close-button');
     this.vacantDetailsButton           = document.getElementById('sidebar-vacant-details-button');
 
-    this.lastUpdate = {}
     this.gsv_link   = document.getElementById('gsv-link')
     this.vacant_gsv_link   = document.getElementById('vacant-gsv-link')
 
@@ -176,7 +175,6 @@ var initialY = null;
     this.vacantContainer.classList.add('hidden');
     this.defaultScreen.classList.remove('hidden');
     removeQueryStringFromUrlBar();
-    fillLastUpdate();
   }
 
   Sidebar.prototype.showError = function() {
@@ -197,6 +195,17 @@ var initialY = null;
         text: treeName+" on Santa Monica's ${title} ${link} @santamonicacity",
     };
   }
+
+  Sidebar.prototype.fillLastUpdate =  (str) =>{
+    const lastUpdate = new Date(str)
+    //date format: dd MON, YYYY
+    const options = {year: 'numeric', month: 'short', day: 'numeric' }
+    let elements = document.getElementsByClassName('sidebar-last-updated')
+    //update DOM
+    for (i of elements) {
+      i.innerHTML = 'Data last checked: ' + lastUpdate.toLocaleDateString('en-GB', options)
+    }
+  } 
 
   function toggleFullMobileView() {
     let className = 'sidebar-mobile--fullscreen';
@@ -296,48 +305,6 @@ var initialY = null;
     window.history.pushState('object', document.title, newURL);
   }
 
- const fillLastUpdate = () => {
-    //only preform fetch & update when this.lastUpdate is uninitialized
-    if(this.lastUpdate) { return }
-
-    //fetch metadata from google storage api 
-    const url = 'https://storage.googleapis.com/public-tree-map/'
-    
-    fetch(url).then(
-      response => response.text()
-    ).then(
-      data => {
-        let parser = new DOMParser
-        let xml = parser.parseFromString(data, "application/xml")
-        update(xml)
-      }
-    )
-    //fill in last update time
-    const update = (xml) => {
-      let items = xml.getElementsByTagName('Contents')
-      
-
-      for (item of items) {
-        if (item.children[0].innerHTML === 'data/map.json') {
-          //convert format
-          this.lastUpdate = new Date(item.children[3].innerHTML)
-          const options = {year: 'numeric', month: 'short', day: 'numeric' }
-          let elements = document.getElementsByClassName('sidebar-last-updated')
-          //update DOM
-          for (i of elements) {
-            //date format: dd MON, YYYY
-            i.innerHTML = 'Data last checked: ' + this.lastUpdate.toLocaleDateString('en-GB', options)
-          }
-
-          break
-        }
-      }
-    
-    }
-    
-
-
-  }
   // Exports
   module.Sidebar = Sidebar;
 
