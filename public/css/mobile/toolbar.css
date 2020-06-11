@@ -13,14 +13,26 @@
 
 /* Species filter */
 .species-filter-container {
-  width: 57%;
+  width: 60%;
   margin-left: 5%;
   position: absolute;
-  right:0
+  right:0;
 }
 .select2-selection {
   max-height: 2em !important;
 }
+@media screen and (max-width: 350px){
+  .species-filter-container {
+    width: 53%;
+  };
+}
+@media screen and (min-width: 750px){
+  .species-filter-container {
+    width: 70%;
+    right: 2em;
+  };
+}
+
 /* Color Filter */
 .color-filter-container {
   width: 20%;
