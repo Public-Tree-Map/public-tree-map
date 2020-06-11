@@ -59,9 +59,12 @@ var initialY = null;
     this.vacantReplacementSpecies      = document.getElementById('sidebar-vacant-replacement-species');
     this.vacantStreetSegment           = document.getElementById('sidebar-vacant-street-segment');
     this.vacantCloseButton             = document.getElementById('sidebar-vacant-close-button');
-    this.vacantDetailsButton           = document.getElementById('sidebar-vacant-details-button')
+    this.vacantDetailsButton           = document.getElementById('sidebar-vacant-details-button');
 
     this.lastUpdate = {}
+    this.gsv_link   = document.getElementById('gsv-link')
+    this.vacant_gsv_link   = document.getElementById('vacant-gsv-link')
+
 
     this.closeButton.onclick = closePanel.bind(this);
     this.vacantCloseButton.onclick = closePanel.bind(this);
@@ -106,6 +109,7 @@ var initialY = null;
     this.vacantPruningYear.innerText        = tree.pruning_year;
     this.vacantReplacementSpecies.innerHTML = `<em>${tree.replacement_species}</em>`;
     this.vacantStreetSegment.innerText      = tree.segment;
+    this.vacant_gsv_link.href = `https://www.google.com/maps?layer=c&cbll=${tree.latitude},${tree.longitude}`
   }
 
   Sidebar.prototype.populateTreePanel = function(tree) {
@@ -126,6 +130,7 @@ var initialY = null;
     this.address.classList.add("sidebar-address-small");
     this.vacantAddress.classList.add("sidebar-address-small");
     this.streetSegment.innerText          = tree.segment;
+    this.gsv_link.href = `https://www.google.com/maps?layer=c&cbll=${tree.latitude},${tree.longitude}`
 
     if (tree.images && tree.images.length > 0) {
       this.image.style.backgroundSize = 'cover';
