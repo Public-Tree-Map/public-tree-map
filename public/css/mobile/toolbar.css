@@ -1,71 +1,51 @@
 #toolbar {
   position: relative;
+  width: 100vw;
+  height: 10vh;
+  min-height: 60px;
 
-  width: calc(100% - (2 * 16px));
-  height: calc(15% - (2 * 16px));
-
-  padding: 16px;
+  padding: 0;
   margin: 0;
   border-radius: 0;
   box-shadow: none;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
 }
 
 
 /* Species filter */
 .species-filter-container {
-  width: 57%;
-  margin-left: 10%;
-  position: absolute;
-  right:0.5em;
+  width: 60vw;
+  
 }
 .select2-selection {
   max-height: 2em !important;
 }
-@media screen and (max-width: 350px){
-  .species-filter-container {
-    width: 53%;
-  };
-}
-@media screen and (min-width: 750px){
-  .species-filter-container {
-    width: 70%;
-    right: 2em;
-  };
-}
+
 
 /* Color Filter */
 .color-filter-container {
   width: 20%;
-  position: absolute;
-  left: -0.5em;
-
 }
 .color-filter-container button {
   display: none;
 }
 
 .color-filter-container {
-    padding-right: 0;
-    display: inline-block;
+    padding: 0;
+    min-width: 125px;
 }
 
 #species-button-species, #species-button-heritage {
-  display: block;
+  display: inline-block;
 }
-
-.species-button:nth-child(2) {
+#species-button-heritage {
   border-radius: 0 4px 4px 0;
 }
 
 
-
 /* Hide Geolocation */
-#address-input{
-  visibility: hidden !important;
-  display: none !important;
-}
-
 .address-container {
-  visibility: hidden !important;
   display: none !important;
 }
