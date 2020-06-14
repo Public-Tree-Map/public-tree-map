@@ -19,6 +19,9 @@
   width: 60vw;
   
 }
+.select2-container input{
+  font-size: 16px !important;
+}
 .select2-selection {
   max-height: 2em !important;
 }
