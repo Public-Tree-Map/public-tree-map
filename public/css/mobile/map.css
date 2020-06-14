@@ -1,3 +1,9 @@
 .leaflet-control-locate {
     display : flex;
-  }
+}
+
+
+#map {
+    height: 90%;
+}
+  
