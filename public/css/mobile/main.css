@@ -5,4 +5,5 @@ body {
 #container {
   height: 75%;
   width: 100%;
+  flex-grow: 10;
 }
