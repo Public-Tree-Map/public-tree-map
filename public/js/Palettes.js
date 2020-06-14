@@ -6,11 +6,11 @@ var app = this.app || {};
     'nativity': {
       'generated': false,
       'field'    : 'nativity',
-      'native'   : { 'color': '#40AD75', 'title': 'Native to California' },
-      'exotic'   : { 'color': '#fc9272', 'title': 'Not Native to California' },
-      'moderate' : { 'color': '#BC0000', 'title': 'Moderate' },
-      'watch'    : { 'color': '#FF8202', 'title': 'Watch' },
-      'limited'  : { 'color': '#FE0000', 'title': 'Limited' },
+      'native'   : { 'color': '#55A860', 'title': 'Native to California' },
+      'exotic'   : { 'color': '#fdbaa3', 'title': 'Not Native to California' },
+      'moderate' : { 'color': '#fdbaa3', 'title': 'Moderate' },
+      'watch'    : { 'color': '#fdbaa3', 'title': 'Watch' },
+      'limited'  : { 'color': '#fdbaa3', 'title': 'Limited' },
       'default'  : '#bdbdbd'
     },
     'name_common': {
