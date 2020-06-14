@@ -40,10 +40,10 @@
     min-width: 125px;
 }
 
-#species-button-species, #species-button-heritage {
+#species-button-species, #species-button-native {
   display: inline-block;
 }
-#species-button-heritage {
+#species-button {
   border-radius: 0 4px 4px 0;
 }
 
