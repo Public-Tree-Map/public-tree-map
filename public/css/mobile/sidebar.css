@@ -9,6 +9,9 @@
   width: 100%;
   transition: .5s ease;
 }
+.sidebar-mobile--preview{
+  max-height: 150px;
+}
 
 #sidebar > div, #sidebar-vacant > div {
   background-color: white;

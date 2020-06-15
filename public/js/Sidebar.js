@@ -208,8 +208,9 @@ var initialY = null;
   } 
 
   function toggleFullMobileView() {
-    let className = 'sidebar-mobile--fullscreen';
+    let className = 'sidebar-mobile--fullscreen';    
     if(this.body.classList.contains(className)) {
+      //close side bar
       this.body.classList.remove(className);
       this.detailsButton.classList.remove('hidden');
       this.vacantDetailsButton.classList.remove('hidden');
@@ -218,14 +219,17 @@ var initialY = null;
       this.exploreMapButton.innerText = "What is Public Tree Map?";
       this.address.classList.add("sidebar-address-small");
       this.vacantAddress.classList.add("sidebar-address-small");
+      this.sidebar.classList.add('sidebar-mobile--preview')
     }
     else {
+      //full screen mode
       this.body.classList.add(className);
       this.detailsButton.classList.add('hidden');
       this.vacantDetailsButton.classList.add('hidden');
       this.exploreMapButton.innerText = "Explore the Map";
       this.address.classList.remove("sidebar-address-small");
       this.vacantAddress.classList.remove("sidebar-address-small");
+      this.sidebar.classList.remove('sidebar-mobile--preview')
     }
   }
 

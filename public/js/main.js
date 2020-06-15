@@ -25,9 +25,6 @@ var app = this.app || {};
       .then((trees) => setData(trees));
   }
 
-  function handleResponse(res){
-    return res.json()
-  }
 
   function setData(trees) {
     var defaultPalette = module.palettes[_colorFilter.filter.item(0).value];
