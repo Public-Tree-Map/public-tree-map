@@ -1,9 +1,9 @@
 # public-tree-map
 
-Public Tree Map uses open datasets to document publicly owned park + street + landmark trees in Santa Monica, California. For details about how we process data, please see [data pipeline repository](https://github.com/Public-Tree-Map/public-tree-map-data-pipeline). For more information about the project, please see our [project page](https://public-tree-map.github.io/) and join our [slack workspace](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw). 
+Public Tree Map uses open datasets to document publicly owned park + street trees in Santa Monica, California. We're also working to add coverge in other parts of LA County (based on [data](https://github.com/stiles/data/tree/master/los-angeles-street-trees) collected by Matt Stiles). For details about how we process data, please see [data pipeline repository](https://github.com/Public-Tree-Map/public-tree-map-data-pipeline). For more information about the project, please see our [project page](https://public-tree-map.github.io/) and join our [slack workspace](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw). 
 
 We primarily use javascript.
-Our test site is https://public-tree-map.surge.sh.
+Our test site is https://www.publictreemap.org/public/index.html.
 
 ## Contributing
 ```bash
@@ -15,7 +15,7 @@ No other setup is required. Access the index.html file in your browser to see th
 
 To debug Geolocation related functionalities on iOS, use Safari Web Inspector following [these instructions](https://medium.com/better-programming/debugging-your-iphone-mobile-web-app-using-safari-development-tools-71240657c487).
 
-Additionally, Safari does not allow location service over HTTP. In order to debug and test on iOS, the website must be served over HTTPS. Follow steps and terminal commands are provided for using [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in [VS Code](https://code.visualstudio.com/):
+Additionally, Safari does not allow location service over HTTP. In order to debug and test on iOS, the website must be served over HTTPS. The following steps and terminal commands are provided for using [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in [VS Code](https://code.visualstudio.com/):
 
 - create private key and certificate
 
@@ -37,8 +37,8 @@ Additionally, Safari does not allow location service over HTTP. In order to debu
 
 ## Protocol for pull requests + code review
 
-- Please review open issues and link your pull request to the relevant issue.
-- Please create new branch!
+- Please review open issues and link your pull request to the relevant issue. 
+- Please create a new branch!
 - In your pull request, please list and explain all proposed changes to the code base (additions, deletions). If you reuse code from elsewhere, please make sure you've attributed it.
 - Please apply all relevant labels to your pull request.
 - Please request a review (either from a specific person or from the appropriate [slack channel](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw)).
