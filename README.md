@@ -1,6 +1,6 @@
 # public-tree-map
 
-Public Tree Map uses open datasets to document publicly owned park + street trees in Santa Monica, California. We're also working to add coverge in other parts of LA County (based on [data](https://github.com/stiles/data/tree/master/los-angeles-street-trees) collected by Matt Stiles). For details about how we process data, please see [data pipeline repository](https://github.com/Public-Tree-Map/public-tree-map-data-pipeline). For more information about the project, please see our [project page](https://public-tree-map.github.io/) and join our [slack workspace](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw). 
+Public Tree Map uses open datasets to document publicly owned park + street trees in Santa Monica, California. We're also working to add coverge in other parts of LA County (based on [data](https://github.com/stiles/data/tree/master/los-angeles-street-trees) collected by Matt Stiles). For details about how we process data, please see the [data pipeline repository](https://github.com/Public-Tree-Map/public-tree-map-data-pipeline). For more information about the project, please see our [project page](https://public-tree-map.github.io/) and join our [slack workspace](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw). 
 
 We primarily use javascript.
 Our test site is https://www.publictreemap.org/public/index.html.
