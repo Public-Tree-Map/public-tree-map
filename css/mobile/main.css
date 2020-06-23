@@ -1,0 +1,16 @@
+body {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#container {
+  height: 75%;
+  width: 100%;
+  flex-grow: 9;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+

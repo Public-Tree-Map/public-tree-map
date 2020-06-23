@@ -1,0 +1,29 @@
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+#loading {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 60000;
+}
+
+#loading > div {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* hide defalut UI of leaflet.control.locate */
+.leaflet-control-locate {
+  display : none;
+}
+
+
+.leaflet-popup-close-button{
+  display: none;
+}

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145130466-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-145130466-1');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400" rel="stylesheet">
+
+    <!-- Filter/Select2 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
+    <!-- Self -->
+    <link rel="stylesheet" href="css/master.css" />
+    <!-- Colors -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Colors.js/1.2.3/colors.min.js"></script>
+
+    <!-- Leaflet Locate Control -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+    <!-- <link rel="stylesheet" href="../dist/L.Control.Locate.min.css" /> -->
+
+    <title>Public Tree Map</title>
+  </head>
+  <body class="sidebar-mobile--closed">
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+
+
+    <!-- Loading Popup -->
+    <div id="loading">
+      <div class="rounded-box shadow">
+        Loading...
+      </div>
+    </div>
+
+    <div id="container">
+      <!-- Toolbar -->
+      <div id="toolbar">
+        <div class="address-container">
+          <label class="toolbar-label">ZOOM TO LOCATION</label>
+          <input "search" id="address-input" placeholder="Enter address" />
+        </div>
+        <!-- Color Filter -->
+        <div class="color-filter-container">
+          <label class="toolbar-label">GROUP BY</label>
+          <div id="color-filter" class="btn-group">
+            <button id="species-button-species" class="species-button active" value="name_common">Species</button>
+            <button id="species-button-family" class="species-button" value="family_name_botanical">Families</button>
+            <button id="species-button-native" class="species-button" value="nativity">Native</button>
+            <button id="species-button-heritage" class="species-button" value="heritage">SM Heritage</button>
+            <button id="species-button-IUCN" class="species-button" value="iucn_status">Endangered</button>
+          </div>
+        </div>
+        <div class="species-filter-container">
+          <label class="toolbar-label">FIND A SPECIES</label>
+          <div id="select2-container">
+            <select id="species-filter" name="state" multiple="multiple">
+            </select>
+          </div> 
+        </div>
+      </div>
+      <!-- Map -->
+      <div id="map"></div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="banner">PUBLIC TREE MAP - SANTA MONICA</div>
+      <div id="sidebar-vacant">
+        <button id="sidebar-vacant-close-button" class = "btn-close">
+          <img src="./icons/close-btn-dark.svg" alt="close" class="btn-close--dark"/>
+          <img src="./icons/close-btn-light.svg" alt="close" class="btn-close--light"/>
+        </button>
+        <div id="sidebar-vacant-content">
+          <h1 id="sidebar-vacant-common-name"></h1>
+          <h2>No tree at this site! Want to request a tree?</h2>
+          <div class="sidebar-divider"></div>
+          <div class="share-buttons">
+            <h5>Share this site</h5>
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+
+                <a class="a2a_button_facebook">
+                    <img src="icons/facebook-icon-white-copy@3x.png" border="0" alt="Facebook" width="20" height="20">
+                </a>
+                <a class="a2a_button_twitter">
+                    <img src="icons/twitter-icon-white-copy@3x.png" border="0" alt="Facebook" width="20" height="20">
+                </a>
+                <a class="a2a_button_email">
+                  <img src="icons/email-icon@3x.png" border="0" alt="Email" width="20" height="20"></img>
+                </a>
+                <!--<a class="a2a_button_copy_link"></a> NO SVG PROVIDED-->
+            </div>
+          </div>
+          <div class="sidebar-divider"></div>
+          <h5>Location</h5>
+          <h4>NEAREST ADDRESS:</h4>
+          <span id="sidebar-vacant-address"></span>
+          <button id="sidebar-vacant-details-button" class="btn btn--mobile">View Details</button>
+          <div> 
+            <h4>
+            <a href="#" id = "vacant-gsv-link" target="_blank" rel="noopener noreferrer">Google Street View</a> </h4> 
+          </div>
+          <div class="sidebar-seperator"></div>
+          <h4>TREE ID:</h4>
+          <span id="sidebar-vacant-tree-id"></span>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-divider"></div>
+          <h5>Conservation & Care</h5>
+          <h4>PLANTING YEAR:</h4>
+          <span id="sidebar-vacant-pruning-year"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>PROPOSED SPECIES:</h4>
+          <span id="sidebar-vacant-replacement-species"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>STREET SEGMENT:</h4>
+          <span id="sidebar-vacant-street-segment"></span>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-divider"></div>
+          <h5>Report an Issue</h5>
+          <span>Notice an issue with this site? Want to request a new tree? 
+            Contact Santa Monica's Public Landscape Manager via 
+            <a href="https://user.govoutreach.com/santamonica/support.php?classificationId=30642&cmd=shell" 
+            target="_blank" rel="noopener">
+              Santa Monica Works
+            </a>
+          </span>
+          <div class="sidebar-seperator"></div>
+          <h6><a target="_blank" rel="noopener noreferrer" href = "https://public-tree-map.github.io/">About</a>  |  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Public-Tree-Map/public-tree-map/issues/new/choose">Feedback</a>  |  <a target="_blank" rel="noopener noreferrer" href = "https://github.com/Public-Tree-Map/public-tree-map-data-pipeline#data-sources">Data Sources</a> |  <a target="_blank" rel="noopener noreferrer" href = "https://www.instagram.com/publictreemap/">Instagram</a></h6>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-last-updated">Last updated : 
+          </div>
+        </div>
+      </div>
+      <div id="sidebar-tree">
+        <div id="sidebar-image" class="shadow hidden sidebar-image">
+          <div id="leftButton" class="sliderButton"><button onclick="lastSlideImage()"><</button></div>
+          <div id="rightButton" class="sliderButton"><button onclick="nextSlideImage()">></button></div>
+          <div id="sidebar-image-credit">image via <a id="sidebar-image-credit-link" target="__blank">eol.org</a></div>
+        </div>
+        <button id="sidebar-close-button" class = "btn-close">
+          <img src="./icons/close-btn-dark.svg" alt="close" class="btn-close--dark"/>
+          <img src="./icons/close-btn-light.svg" alt="close" class="btn-close--light"/>
+        </button>
+        <div id="sidebar-content">
+          <h1 id="sidebar-common-name"></h1>
+          <h2 id="sidebar-botanical-name"></h2>
+          <div class="sidebar-divider"></div>
+          <!-- <div class="sidebar-seperator"></div> -->
+          <div class="share-buttons">
+            <h5>Share this tree</h5>
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+
+                <a class="a2a_button_facebook">
+                    <img src="icons/facebook-icon-white-copy@3x.png" border="0" alt="Facebook" width="20" height="20">
+                </a>
+                <a class="a2a_button_twitter">
+                    <img src="icons/twitter-icon-white-copy@3x.png" border="0" alt="Facebook" width="20" height="20">
+                </a>
+                <a class="a2a_button_email">
+                  <img src="icons/email-icon@3x.png" border="0" alt="Email" width="20" height="20"></img>
+                </a>
+                <!--<a class="a2a_button_copy_link"></a> NO SVG PROVIDED-->
+            </div>
+          </div>
+          <div id="sidebar-heritage-container">
+            <div class="sidebar-divider"></div>
+            <h5>Heritage Tree <span id="sidebar-heritage-number">#1</span></h5>
+            <h4>YEAR INSCRIBED:</h4>
+            <span id="sidebar-heritage-year-inscribed"></span>
+            <div class="sidebar-seperator"></div>
+            <div id="sidebar-heritage-description-container">
+              <h4>DESCRIPTION:</h4>
+              <span id="sidebar-heritage-description"></span>
+              <div class="sidebar-seperator"></div>
+            </div>
+          </div>
+          <div class="sidebar-divider"></div>
+          <h5>Location</h5>
+          <h4>NEAREST ADDRESS:</h4>
+          <span id="sidebar-address"></span>
+          <button id="sidebar-details-button" class = "btn btn--mobile">View Details</button>
+          <div id="google-streetview"> 
+            <h4>
+            <a href="#" id = "gsv-link" target="_blank" rel="noopener noreferrer">Google Street View</a> </h4> 
+          </div>
+          <div class="sidebar-seperator"></div>
+          <h4>TREE ID:</h4>
+          <span id="sidebar-tree-id"></span>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-divider"></div>
+          <h5>Details</h5>
+          <h4>FAMILY:</h4>
+          <span id="sidebar-tree-family"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>HEIGHT:</h4>
+          <span id="sidebar-height"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>TRUNK DIAMETER:</h4>
+          <span id="sidebar-diameter"></span>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-divider"></div>
+          <h5>Conservation & Care</h5>
+          <h4>CA NATIVE:</h4>
+          <span id="sidebar-nativity"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>CONSERVATION STATUS:</h4>
+          <span id="sidebar-iucn-status"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>CAL-IPC RATING:</h4>
+          <span id="sidebar-ipc-rating"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>PRUNING YEAR:</h4>
+          <span id="sidebar-pruning-year"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>IRRIGATION REQUIREMENTS:</h4>
+          <span id="sidebar-irrigation-requirements"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>SHADE PRODUCTION:</h4>
+          <span id="sidebar-shade-production"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>REPLACEMENT SPECIES:</h4>
+          <span id="sidebar-replacement-species"></span>
+          <div class="sidebar-seperator"></div>
+          <h4>STREET SEGMENT:</h4>
+          <span id="sidebar-street-segment"></span>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-divider"></div>
+          <h5>Nominate Tree</h5>
+          <span>
+            Impressed by this tree? Please nominate it for city recognition as a Santa Monica Heritage
+            Tree via <a href="https://forms.gle/UDjd8CS4w2jMu8As8">this form</a>.
+          </span>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-divider"></div>
+          <h5>Report an Issue</h5>
+          <span>Notice an issue with this tree? Contact Santa Monica's Public Landscape Manager via 
+            <a href="https://user.govoutreach.com/santamonica/support.php?classificationId=30642&cmd=shell" 
+            target="_blank" rel="noopener">
+              Santa Monica Works
+            </a>
+          </span>
+          <div class="sidebar-seperator"></div>
+          <h6><a target="_blank" rel="noopener noreferrer" href = "https://public-tree-map.github.io/">About</a>  |  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Public-Tree-Map/public-tree-map/issues/new/choose">Feedback</a>  |  <a target="_blank" rel="noopener noreferrer" href = "https://github.com/Public-Tree-Map/public-tree-map-data-pipeline#data-sources">Data Sources</a> |  <a target="_blank" rel="noopener noreferrer" href = "https://www.instagram.com/publictreemap/">Instagram</a></h6>
+          <div class="sidebar-seperator"></div>
+          <div class="sidebar-last-updated">Last updated : 
+          </div>
+        </div>
+      </div>
+      <div id="sidebar-default">
+        <h1>Explore Our Urban Forest</h1>
+        <div class = 'sidebar-details'>Every public tree is a civic resource. Public Tree Map uses open datasets to documents information about each of Santa Monica's nearly 35,000 public park and street trees. 
+        </div>
+        <div class="sidebar-seperator"></div>
+        <h5><a target="_blank" rel="noopener noreferrer" href = "https://public-tree-map.github.io/">About</a>  |  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Public-Tree-Map/public-tree-map/issues/new/choose">Feedback</a>  |  <a target="_blank" rel="noopener noreferrer" href = "https://github.com/Public-Tree-Map/public-tree-map-data-pipeline#data-sources">Data Sources</a> |  <a target="_blank" rel="noopener noreferrer" href = "https://www.instagram.com/publictreemap/">Instagram</a></h5>
+        <button id="sidebar-default-explore" class = "btn btn--mobile">Explore the Map</button>
+      </div>
+      <div id="sidebar-error">
+        <h1>Error</h1>
+        <div>The tree you requested was not found.</div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin="">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <!--Algolia Places-->
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
+
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+
+    <!-- Hammer.js for touch handle -->
+    <script src="https://hammerjs.github.io/dist/hammer.min.js" type="text/javascript"></script>
+
+    <!-- Self -->
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/Map.js" type="text/javascript"></script>
+    <script src="js/Geolocation.js" type="text/javascript"></script>
+    <script src="js/Sidebar.js" type="text/javascript"></script>
+    <script src="js/ColorFilter.js" type="text/javascript"></script>
+    <script src="js/SpeciesFilter.js" type="text/javascript"></script>
+    <script src="js/Legend.js" type="text/javascript"></script>
+    <script src="js/Palettes.js" type="text/javascript"></script>
+
+    <script type="text/javascript">app.init()</script>
+  </body>
+</html>

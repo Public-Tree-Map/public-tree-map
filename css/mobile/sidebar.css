@@ -1,0 +1,127 @@
+#sidebar-image > *,
+#sidebar-content > *,
+#sidebar-vacant-content > * {
+  display: none;
+}
+
+#sidebar, #sidebar-vacant {
+  height: 25%;
+  width: 100%;
+  transition: .5s ease;
+}
+.sidebar-mobile--preview{
+  max-height: 150px;
+}
+
+#sidebar > div, #sidebar-vacant > div {
+  background-color: white;
+}
+
+#sidebar-tree, #sidebar-vacant {
+  height: 100%;
+  flex-direction: row;
+}
+
+#sidebar-image {
+  width: 40%;
+  min-height: 50px;
+  height: 100%;
+}
+
+#sidebar-content #sidebar-common-name,
+#sidebar-content #sidebar-address,
+#sidebar-vacant-content #sidebar-vacant-common-name,
+#sidebar-vacant-content #sidebar-vacant-address {
+  display: block;
+}
+
+#sidebar-content, #sidebar-vacant-content {
+  padding: 16px;
+}
+
+/* Classes */
+.banner {
+  display: none;
+}
+
+#sidebar-content .btn--mobile, #sidebar-vacant-content .btn--mobile {
+  display: block;
+}
+
+#sidebar .sidebar-address-small{
+    font-size: 11px;
+  }
+
+/* Fullscreen sidebar */
+.sidebar-mobile--fullscreen #container {
+  transition: 0.5s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.sidebar-mobile--fullscreen #sidebar, #sidebar-vacant {
+  height: 100vh;
+}
+
+#sidebar-content h1, #sidebar-vacant-content h1 {
+  font-size: calc(2vw + 1vh + .5vmin);
+}
+
+.sidebar-mobile--fullscreen #sidebar-content h1,
+.sidebar-mobile--fullscreen #sidebar-vacant-content h1 {
+  font-size: 24px;
+}
+.sidebar-mobile--fullscreen #sidebar-image > *,
+.sidebar-mobile--fullscreen #sidebar-content > *,
+.sidebar-mobile--fullscreen #sidebar-vacant-content > * {
+  display: block;
+}
+.sliderButton {
+  font-size: 50px;
+  text-align: center;
+ 
+}
+
+.sidebar-mobile--fullscreen #sidebar-content .share-buttons {
+  display: flex;
+}
+
+.sidebar-mobile--fullscreen #sidebar-tree,
+.sidebar-mobile--fullscreen #sidebar {
+  flex-direction: column;
+}
+
+.sidebar-mobile--fullscreen #sidebar-image {
+  width: 100%;
+  min-height: 40%;
+}
+
+.btn-close .btn-close--light { display: block; }
+.btn-close .btn-close--dark { display: none; }
+.sidebar-mobile--fullscreen .btn-close .btn-close--light {
+  display: none;
+}
+.sidebar-mobile--fullscreen .btn-close .btn-close--dark {
+  display: block;
+}
+
+/* Close the sidebar */
+.sidebar-mobile--closed #container{
+  height: 100%;
+}
+
+.sidebar-mobile--closed #sidebar{
+  height: 0;
+}
+#sidebar-heritage-container.active {
+  display: none;
+  width: 100%;
+}
+.sidebar-mobile--fullscreen #sidebar-content #sidebar-heritage-container {
+  display: none;
+  width: 100%;
+}
+.sidebar-mobile--fullscreen #sidebar-content #sidebar-heritage-container.active {
+  display: inline-block;
+  width: 100%;
+}

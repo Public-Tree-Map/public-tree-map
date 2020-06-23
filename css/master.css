@@ -1,0 +1,11 @@
+/* Main styling */
+@import "./main/main.css";
+@import "./main/map.css";
+@import "./main/sidebar.css";
+@import "./main/toolbar.css";
+
+/* Mobile styling */
+@import "./mobile/main.css" screen and (max-width: 890px);
+@import "./mobile/sidebar.css" screen and (max-width: 890px);
+@import "./mobile//toolbar.css" screen and (max-width: 890px);
+@import "./mobile/map.css" screen and (max-width: 890px);

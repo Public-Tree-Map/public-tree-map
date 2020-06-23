@@ -1,0 +1,54 @@
+#toolbar {
+  position: relative;
+  width: 100vw;
+  height: 10%;
+  min-height: 60px;
+
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+
+/* Species filter */
+.species-filter-container {
+  width: 60vw;
+  
+}
+.select2-container input{
+  font-size: 16px !important;
+}
+.select2-selection {
+  max-height: 2em !important;
+}
+
+
+/* Color Filter */
+.color-filter-container {
+  width: 20%;
+}
+.color-filter-container button {
+  display: none;
+}
+
+.color-filter-container {
+    padding: 0;
+    min-width: 125px;
+}
+
+#species-button-species, #species-button-native {
+  display: inline-block;
+}
+#species-button {
+  border-radius: 0 4px 4px 0;
+}
+
+
+/* Hide Geolocation */
+.address-container {
+  display: none !important;
+}

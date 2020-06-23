@@ -1,0 +1,131 @@
+#toolbar {
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+
+  position: absolute;
+  width: calc(100% - 2 * (16px + 10px));
+  margin: 16px;
+  padding: 10px;
+
+  pointer-events: initial;
+}
+
+.toolbar-label {
+  font-size: 10px;
+  display: block;
+  margin-bottom: 5px;
+  color: #444444;
+}
+
+/* Color filter*/
+.color-filter-container {
+  width: 60%;
+  padding: 0 1rem;
+}
+
+#color-filter {
+  z-index: 5;
+  width: 100%;
+  display: flex;
+}
+
+/* Grouping buttons */
+.btn-group button {
+  border: 1px solid #ccc !important;
+  border-right: 1px solid #ccc; /* Prevent double borders */
+  background-color: #fff;
+  height: 36px;
+  padding: 10px;
+  cursor: pointer;
+  flex-grow: 1;
+  font-size: 14px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.btn-group button:focus {
+  outline: 0;
+}
+
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.species-button:first-child {
+  border-radius: 4px 0 0 4px; 
+}
+
+.species-button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.species-button.active {
+  background-color: #43ae76;
+  color: #fff;
+}
+
+/* Geolocation */
+#search {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 36px;
+  padding: 8px;
+  width: 100%;
+  font-size: 14px;
+  font-color: #777777;
+}
+
+#search input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  flex-grow: 1;
+  margin-left: 8px;
+  outline: none;
+  text-decoration: none;
+}
+
+#search .material-icons {
+  color: #999;
+}
+
+.ap-input {
+  padding-right: 56px;
+  height: 36px;
+}
+.address-container {
+  width: 35%;
+}
+.ap-input-icon {
+  right: 10px;
+}
+.ap-icon-clear {
+  right: 40px;
+}
+.species-filter-container {
+  width: 25%;
+}
+
+
+/* Find a species */
+.select2-container {
+  height: 36px;
+  font-size: 14px;
+  width: 100% !important;
+}
+.select2-selection {
+  padding: 3px;
+  min-height: 36px !important; /* Overriding min-height set by select2 */
+}
+.select2-container--open {
+  z-index: 333333;
+}

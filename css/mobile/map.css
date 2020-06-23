@@ -1,0 +1,8 @@
+.leaflet-control-locate {
+    display : flex;
+}
+#map {
+    flex-grow: 9;
+  }
+
+  
