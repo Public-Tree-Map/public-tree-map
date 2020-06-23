@@ -51,6 +51,7 @@ Additionally, Safari does not allow location service over HTTP. In order to debu
 - [Canopy](https://github.com/seeread/canopy) and descriptive [blog post](http://www.datakind.org/projects/out-on-a-limb-for-data) from DataKind
 - [Canopy Tree Plotter](https://pg-cloud.com/Canopy)
 - [The effects of urban trees on air quality - USDA 2002 PDF](https://www.nrs.fs.fed.us/units/urban/local-resources/downloads/Tree_Air_Qual.pdf)
+- [Friends of the Urban Forest - SF (FUF)](https://www.fuf.net/)
 - [i-Tree](https://www.itreetools.org/)
 - [Increased home size and hardscape decreases urban forest cover in Los Angeles County’s single-family residential neighborhoods PDF](http://johnwilson.usc.edu/wp-content/uploads/2018/03/Increased-home-size-and-hardscape-decreases-urban-forest-cover-in-Los-Angeles-Countys-single-family-residential-neighborhoods.pdf)
 - [Jill Hubley's NYC street tree map](https://github.com/jhubley/street-trees)
