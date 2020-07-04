@@ -165,6 +165,7 @@ var initialY = null;
         this.heritageDescription.innerText = tree['heritageText'];
       } else {
         this.heritageDescriptionContainer.classList.remove('active');
+        this.nominateHeritageTree.classList.remove('hidden');
       }
     } else {
       this.nominateHeritageTree.classList.remove('hidden');
