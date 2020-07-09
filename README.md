@@ -39,7 +39,7 @@ Additionally, Safari does not allow location service over HTTP. In order to debu
 
 - Please review open issues and link your pull request to the relevant issue. 
 - Please create a new branch!
-- Please determine if your contribution is part of the la county expansion milestone. If your work is part of this milestone, please make your PR to the "la-county-expansion" branch.
+- Please determine if your contribution is part of the la county expansion milestone. If your work is part of this milestone, please make your PR to the ["la-expansion"](https://github.com/Public-Tree-Map/public-tree-map/tree/la-expansion) branch.
 - In your pull request, please list and explain all proposed changes to the code base (additions, deletions). If you reuse code from elsewhere, please make sure you've attributed it.
 - Please apply all relevant labels to your pull request.
 - Please request a review (either from a specific person or from the appropriate [slack channel](https://join.slack.com/t/publictreemap/shared_invite/zt-dzhrivk4-m8gaZ3wrZBE_leo_oeepPw)).
