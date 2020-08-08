@@ -41,6 +41,7 @@ var initialY = null;
     this.address                       = document.getElementById('sidebar-address');
     this.streetSegment                 = document.getElementById('sidebar-street-segment');
     this.treeDetails                   = document.getElementById('sidebar-tree-details');
+    this.nominateHeritageTree          = document.getElementById('sidebar-nominate-heritage-tree');
     this.closeButton                   = document.getElementById('sidebar-close-button');
     this.detailsButton                 = document.getElementById('sidebar-details-button');
     //Heritage Trees
@@ -155,6 +156,7 @@ var initialY = null;
       this.image.classList.add('hidden');
     }
     if (tree.heritage === true) {
+      this.nominateHeritageTree.classList.add('hidden');
       this.heritageContainer.classList.add('active');
       this.heritageTreeNumber.innerText = '#'+tree['heritageNumber'];
       this.heritageYearInscribed.innerText = tree['heritageYear'];
@@ -163,8 +165,10 @@ var initialY = null;
         this.heritageDescription.innerText = tree['heritageText'];
       } else {
         this.heritageDescriptionContainer.classList.remove('active');
+        this.nominateHeritageTree.classList.remove('hidden');
       }
     } else {
+      this.nominateHeritageTree.classList.remove('hidden');
       this.heritageContainer.classList.remove('active');
     }
   }
