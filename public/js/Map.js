@@ -10,7 +10,7 @@ var app = this.app || {};
     this.markerMap = Object.create(null);
     this.highlightedMarker = null;
     this.trees   = [];
-    this.zoom    = 14.2;
+    this.zoom    = 8.6;
     this.fillOpacity = 0.75;
     this.selected = new Set();
     this.urlParams = new URLSearchParams(window.location.search);
@@ -18,7 +18,7 @@ var app = this.app || {};
     this.zoomOnClick = 18
 
     this.leafletMap = L.map('map', {
-      center: [34.0215, -118.481],
+      center: [34.144,-118.441],
       zoom: this.zoom,
       zoomControl: false,
       layers: [

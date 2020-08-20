@@ -7,7 +7,7 @@ var app = this.app || {};
           appId: 'plVZ8ETLEQ8S',
           apiKey: '593b988f69febc8841d79bcdc768d5c8',
           container: document.querySelector('#address-input'),
-          insidePolygon: "34.026488, -118.516895, 34.048822, -118.491788, 34.041779, -118.483893, 34.046615, -118.477840, 34.024744, -118.446215, 34.017025, -118.441751, 33.993856, -118.481530"
+          insidePolygon: "34.045660, -118.914285, 34.800174, -118.487658, 34.075525, -117.715745, 33.678182, -118.008943,"
         });
 
         var zoomToLatLng = function(latlng){
