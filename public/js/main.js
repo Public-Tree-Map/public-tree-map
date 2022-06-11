@@ -17,14 +17,16 @@ var app = this.app || {};
 
     _sidebar.showDefault();
 
+    fetch("http://127.0.0.1:8000/random/")
+        .then((res) => {return res.json()})
+        .then((trees) => _map.setHeatMap(trees))
 
-    fetch("https://storage.googleapis.com/public-tree-map/data/map.json")
-      .then((res) => {
-        _sidebar.fillLastUpdate(res.headers.get('Last-Modified'))
-        return res.json()})
-      .then((trees) => setData(trees));
+    // fetch("https://storage.googleapis.com/public-tree-map/data/map.json")
+    //   .then((res) => {
+    //     _sidebar.fillLastUpdate(res.headers.get('Last-Modified'))
+    //     return res.json()})
+    //   .then((trees) => setData(trees));
   }
-
 
   function setData(trees) {
     var defaultPalette = module.palettes[_colorFilter.filter.item(0).value];
@@ -34,6 +36,7 @@ var app = this.app || {};
     _speciesFilter.setSpecies(formattedSelect);
     document.getElementById('loading').classList.add('hidden');
   }
+
 
 
 

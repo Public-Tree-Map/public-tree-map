@@ -10,7 +10,9 @@ var app = this.app || {};
     this.markerMap = Object.create(null);
     this.highlightedMarker = null;
     this.trees   = [];
-    this.zoom    = 14.2;
+    this.heatMapLayer = null;
+    this.heatMapTrees = [];
+    this.zoom    = 11;
     this.fillOpacity = 0.75;
     this.selected = new Set();
     this.urlParams = new URLSearchParams(window.location.search);
@@ -18,7 +20,7 @@ var app = this.app || {};
     this.zoomOnClick = 18
 
     this.leafletMap = L.map('map', {
-      center: [34.0215, -118.481],
+      center: [34.072451, -118.247173],
       zoom: this.zoom,
       zoomControl: false,
       layers: [
@@ -115,6 +117,28 @@ var app = this.app || {};
     }
     this.leafletMap.fitBounds(bounds.extend(closestLatLng), {paddingTopLeft: [0, pad]});
     setMarkerSize.call(this, this.zoom);
+  }
+
+  Map.prototype.setHeatMap = function(trees){
+    let heatMapTrees = trees.map((tree) => {
+      return [tree.lat, tree.lng, 1]
+    });
+    this.heatMapLayer = L.heatLayer(
+        heatMapTrees, {
+          radius: 13,
+          gradient: {0.14: '#edf8fb', 0.28: '#ccece6', 0.42: '#99d8c9', 0.56: '#66c2a4', 0.7: '#41ae76', 0.84: '#238b45', 1:'#005824'},
+          blur: 13
+        }
+    );
+    this.showHeatMap();
+  }
+
+  Map.prototype.hideHeatMap = function (){
+    this.leafletMap.removeLayer(this.heatMapLayer);
+  }
+
+  Map.prototype.showHeatMap = function (){
+    this.heatMapLayer.addTo(this.leafletMap);
   }
 
   Map.prototype.setTrees = function(trees, palette) {
