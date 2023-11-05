@@ -1,6 +1,8 @@
 var app = this.app || {};
 
 (function(module) {
+  API_URL = "http://127.0.0.1:8000/"
+
   var _sidebar;
   var _map;
   var _colorFilter;
@@ -9,7 +11,7 @@ var app = this.app || {};
 
   function init() {
     _sidebar       = new module.Sidebar();
-    _map           = new module.Map(_sidebar);
+    _map           = new module.Map(_sidebar, API_URL);
     _speciesFilter = new module.SpeciesFilter(_map);
     _legend        = new module.Legend(_map, _speciesFilter);
     _colorFilter   = new module.ColorFilter(_map, _legend);
@@ -17,15 +19,10 @@ var app = this.app || {};
 
     _sidebar.showDefault();
 
-    fetch("http://127.0.0.1:8000/random/")
+    fetch(API_URL.concat("random/"))
         .then((res) => {return res.json()})
         .then((trees) => _map.setHeatMap(trees))
 
-    // fetch("https://storage.googleapis.com/public-tree-map/data/map.json")
-    //   .then((res) => {
-    //     _sidebar.fillLastUpdate(res.headers.get('Last-Modified'))
-    //     return res.json()})
-    //   .then((trees) => setData(trees));
   }
 
   function setData(trees) {

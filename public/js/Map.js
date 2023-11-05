@@ -1,18 +1,23 @@
 var app = this.app || {};
 
+ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more zoomed in
+
 (function(module) {
 
   var RENDERER = L.canvas({ padding: 0.5 });
 
-  function Map(sidebar) {
+  function Map(sidebar, api_url) {
+    this.api_url = api_url;;
     this.sidebar = sidebar;
     this.markers = [];
+    this.selectedTree = null;
     this.markerMap = Object.create(null);
     this.highlightedMarker = null;
     this.trees   = [];
     this.heatMapLayer = null;
     this.heatMapTrees = [];
     this.zoom    = 11;
+    this.prevZoom = 11;
     this.fillOpacity = 0.75;
     this.selected = new Set();
     this.urlParams = new URLSearchParams(window.location.search);
@@ -31,6 +36,7 @@ var app = this.app || {};
         })
       ]
     });
+    this.prevBounds = this.leafletMap.getBounds();
 
     //trigger leaflet.locate
     this.triggerLocate = () => {
@@ -79,14 +85,52 @@ var app = this.app || {};
       }
     }).addTo(this.leafletMap);
 
-    L.control.zoom({position: 'bottomright'}).addTo(this.leafletMap);
-    
-    this.leafletMap.on('zoomend', (function() {
+    this.leafletMap.on('moveend', (() => {
       this.zoom = this.leafletMap.getZoom();
-      setMarkerSize.call(this, this.zoom);
+      console.log(this.zoom);
+      var newBounds = this.leafletMap.getBounds();
+      var distance = this.prevBounds.getNorthEast().distanceTo(newBounds.getNorthEast());
+      if (distance > 0.1 && this.zoom >= ZOOM_LEVEL_PINS) {
+        // this.hideHeatMap();
+        // setMarkerSize.call(this, this.zoom);
+        this.fetchTrees(newBounds, (trees) => {
+          this.setTrees(trees, module.palettes['name_common']);
+        });
+      }
+      else if (this.zoom < ZOOM_LEVEL_PINS) {
+        console.log('not drawing markers')
+        if (this.markers && this.leafletMap){
+          this.markers.clearLayers();
+        }
+        this.redrawHeatMap();
+      }
+      this.prevBounds = newBounds;
     }).bind(this));
 
+    L.control.zoom({position: 'bottomright'}).addTo(this.leafletMap);
+
     this.markers = L.layerGroup().addTo(this.leafletMap);
+  }
+  Map.prototype.redrawHeatMap = function() {
+    var zoom = this.leafletMap.getZoom();
+    var newRadius = zoom * 2; // Adjust this calculation as needed
+
+    // Remove the old heatmap layer
+    if (this.heatMapLayer) {
+      this.leafletMap.removeLayer(this.heatMapLayer);
+    }
+
+    this.heatMapLayer = L.heatLayer(
+        this.heatMapTrees, {
+          max: 1.0,
+          radius: newRadius,
+          gradient: {0.14: '#edf8fb', 0.28: '#ccece6', 0.42: '#99d8c9', 0.56: '#66c2a4', 0.7: '#41ae76', 0.84: '#238b45', 1:'#005824'},
+          blur: 13
+        }
+    );
+
+    // Add the new heatmap layer to the map
+    this.heatMapLayer.addTo(this.leafletMap);
   }
 
   Map.prototype.setFilter = function(selections) {
@@ -120,11 +164,12 @@ var app = this.app || {};
   }
 
   Map.prototype.setHeatMap = function(trees){
-    let heatMapTrees = trees.map((tree) => {
+    this.heatMapTrees = trees.map((tree) => { // Set the heatMapTrees property here
       return [tree.lat, tree.lng, 1]
     });
     this.heatMapLayer = L.heatLayer(
-        heatMapTrees, {
+        this.heatMapTrees, {
+          max: 1.0,
           radius: 13,
           gradient: {0.14: '#edf8fb', 0.28: '#ccece6', 0.42: '#99d8c9', 0.56: '#66c2a4', 0.7: '#41ae76', 0.84: '#238b45', 1:'#005824'},
           blur: 13
@@ -141,22 +186,37 @@ var app = this.app || {};
     this.heatMapLayer.addTo(this.leafletMap);
   }
 
+  Map.prototype.fetchTrees = function(bounds, callback){
+    var sw = bounds.getSouthWest();
+    var ne = bounds.getNorthEast();
+
+    fetch(this.api_url.concat(`trees/?lat1=${sw.lat}&lng1=${sw.lng}&lat2=${ne.lat}&lng2=${sw.lng}&lat3=${ne.lat}&lng3=${ne.lng}&lat4=${sw.lat}&lng4=${ne.lng}`))
+        .then((res) => {return res.json()})
+        .then((trees) => {
+          if (callback) {
+            callback(trees);
+          }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+  }
+
   Map.prototype.setTrees = function(trees, palette) {
-    this.trees   = trees;
+    this.trees.push(...trees);
     this.palette = palette;
     this.redraw();
-    if(this.urlParams.has("id")) {
-      var id = this.urlParams.get("id");
-      if(id in this.markerMap) {
-        this.markerMap[id].fire('click');
-      } else {
-        this.sidebar.showError();
-      }
-    }
+    // if(this.urlParams.has("id")) {
+    //   var id = this.urlParams.get("id");
+    //   if(id in this.markerMap) {
+    //     this.markerMap[id].fire('click');
+    //   } else {
+    //     this.sidebar.showError();
+    //   }
+    // }
   }
 
   Map.prototype.redraw = function() {
-    var trees   = this.trees;
     var palette = this.palette;
     var selectedCommonNames = this.selected;
     var radius  = Math.max(1, this.zoom - 13);
@@ -197,8 +257,9 @@ var app = this.app || {};
       marker.on(tapEvent, (function(leafletEvent) {
 
         this.sidebar.body.classList.remove('sidebar-mobile--closed');
+        console.log('You clicked!')
         fetch(
-          `https://storage.googleapis.com/public-tree-map/data/trees/${tree.tree_id}.json`
+          this.api_url.concat(`tree/${tree.tree_id}`)
         )
           .then((res) => res.json())
           .then((tree) => {
@@ -210,8 +271,8 @@ var app = this.app || {};
         var markerLocation = marker.getLatLng();
         var newViewLocation = {lat: markerLocation['lat'], lng: markerLocation['lng']};
         var currentZoom = this.leafletMap.getZoom();
-        var targetZoom = currentZoom > 16 ? currentZoom : 18;
-        this.leafletMap.setView(newViewLocation, targetZoom, {animate: true});
+        // var targetZoom = currentZoom > 16 ? currentZoom : 18;
+        this.leafletMap.setView(newViewLocation, currentZoom, {animate: true});
 
         if (this.highlightedMarker) { // if one exists, undo its enlargement before enlarging another
           changeCircleMarker(this.highlightedMarker, 'shrink');
