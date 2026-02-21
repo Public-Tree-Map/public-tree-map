@@ -1,7 +1,7 @@
 var app = this.app || {};
 
 (function(module) {
-  API_URL = "http://127.0.0.1:8000/"
+  API_URL = "http://127.0.0.1:8080/"
 
   var _sidebar;
   var _map;
@@ -10,28 +10,39 @@ var app = this.app || {};
   var _speciesFilter;
 
   function init() {
-    _sidebar       = new module.Sidebar();
-    _map           = new module.Map(_sidebar, API_URL);
+    var urlParams = new URLSearchParams(window.location.search);
+    var tree_id = urlParams.get('treeId');
+
+    _sidebar = new module.Sidebar();
+    _map = new module.Map(_sidebar, API_URL, tree_id);
     _speciesFilter = new module.SpeciesFilter(_map);
-    _legend        = new module.Legend(_map, _speciesFilter);
-    _colorFilter   = new module.ColorFilter(_map, _legend);
+    _legend = new module.Legend(_map, _speciesFilter);
+    _colorFilter = new module.ColorFilter(_map, _legend);
     _geolocation = new module.Geolocation(_map);
 
-    _sidebar.showDefault();
+    if (!tree_id) {
+      _sidebar.showDefault();
+    }
+    else {
+      _map.setTreeViewFromUrl(tree_id);
+    }
+    _map.setHeatMapData();
 
-    fetch(API_URL.concat("random/"))
+
+    fetch(API_URL.concat("species/all"))
         .then((res) => {return res.json()})
-        .then((trees) => _map.setHeatMap(trees))
-
+        .then((species) => {
+          setSpecies(species, _map);
+        });
   }
 
-  function setData(trees) {
+  function setSpecies(species, map) {
+    console.log(species);
     var defaultPalette = module.palettes[_colorFilter.filter.item(0).value];
-    var formattedSelect = _legend.setSelectLegend(_speciesFilter.selectFormatter(trees), defaultPalette);
+    _map.setPalette(defaultPalette);
+    var formattedSelect = _legend.setSelectLegend(_speciesFilter.selectFormatter(species), defaultPalette);
 
-    _map.setTrees(trees, module.palettes['name_common']);
     _speciesFilter.setSpecies(formattedSelect);
-    document.getElementById('loading').classList.add('hidden');
   }
 
 
@@ -55,7 +66,6 @@ var app = this.app || {};
 
   // EXPORTS
   module.init = init;
-  module.setData = setData;
 
 })(app);
 
