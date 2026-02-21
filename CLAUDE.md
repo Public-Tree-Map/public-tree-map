@@ -16,6 +16,7 @@
 | GET | `/tree/{tree_id}` | Single tree details | `{name_common, name_botanical, latitude, longitude, address, heritage, images, ...}` |
 | GET | `/trees/?lat1=...&lng1=...&lat2=...&lng2=...&lat3=...&lng3=...&lat4=...&lng4=...` | Trees in a bounding polygon (4 corners) | `[{tree_id, name_common, name_botanical, family_name_botanical, nativity, latitude, longitude, heritage, ...}]` |
 | GET | `/random/` | Heatmap data (optional `?species_id=N` repeated for filtering) | `[{lat, lng, intensity}]` |
+| GET | `/cities/` | Tree counts per city with centroid lat/lng | `[{city, count, lat, lng}]` |
 
 ## Project Structure
 

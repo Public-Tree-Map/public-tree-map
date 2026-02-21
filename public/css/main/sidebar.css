@@ -7,23 +7,38 @@
   overflow: hidden;
   padding: 0px;
   pointer-events: initial;
-  width: 30%;
+
+  /* Overlay panel */
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 380px;
+  max-width: 90vw;
+  z-index: 50000;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+body.sidebar--open #sidebar {
+  transform: translateX(0);
 }
 
 #sidebar-content, #sidebar-vacant-content {
   box-sizing: border-box;
   flex-grow: 1;
-  padding: 32px 20px 0px 20px;
+  padding: 24px 20px 0;
 }
 
 #sidebar-content h1, #sidebar-vacant-content h1 {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 700;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: black;
+  color: #1a1a1a;
   margin-top: 0px;
   margin-bottom: 6px;
   max-width: 85%;
@@ -36,7 +51,7 @@
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #777777;
+  color: #666;
   margin: 0px;
   margin-bottom: 20px;
 }
@@ -50,34 +65,35 @@
 }
 
 #sidebar h4 {
-  font-size: 13px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   line-height: 1.08;
-  letter-spacing: normal;
-  color: #444444;
+  color: #999;
   margin: 0px;
   margin-top: 5px;
 }
 #sidebar h5 {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
-  color: #198b27;
+  color: #2d8659;
   margin: 0px;
   margin-bottom: 24px;
 }
 #sidebar span {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #000000;
+  color: #333;
 }
 
 #sidebar button:hover {
@@ -115,23 +131,30 @@
 .sidebar-divider{
   height: 1px;
   background-color: #d8d8d8;
-  margin-top: 12px;
-  margin-bottom: 24px;
+  margin-top: 16px;
+  margin-bottom: 20px;
 }
 .sidebar-seperator{
-  height: 20px;
+  height: 10px;
 }
 
 .btn--mobile {
-  display: none; // Hide mobile button in full view
+  display: none; /* Hide mobile button in full view */
 }
 
 .btn-close {
   position: absolute;
   right: 8px;
   background-color: transparent;
-  margin: 20px 8px;
+  margin: 16px 8px;
+  padding: 8px;
   border: none;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-close .btn-close--dark {
@@ -148,8 +171,9 @@
   display: flex;
   flex-direction: row;
   pointer-events: initial;
-  align-content: center;
+  align-items: center;
   top: 0;
+  gap: 8px;
 }
 
 .share-buttons button {
@@ -161,23 +185,18 @@
 }
 
 .share-buttons div {
-  margin-top: 0px ;
-
+  margin-top: 0px;
 }
 .share-buttons h5{
   margin-bottom: 12px !important;
 }
-.share-buttons  a{
-  margin-left: 24px;
+.share-buttons a{
+  margin-left: 16px;
 }
 
-/* Sidebar default */
+/* Sidebar default — hidden, map is the landing experience */
 #sidebar-default {
-  padding: 32px 48px 0px 48px;
-}
-
-#sidebar-default{
-  padding: 0px 20px 0px 20px;
+  display: none;
 }
 
 #sidebar-default a {
@@ -185,22 +204,14 @@
 }
 
 .banner {
-  background-color: #41ae76;
-  color: #fff;
-  line-height: 1;
-  font-size: 14px;
-  padding: 17px 17px 17px 17px;
-  font-weight: bold;
-  font-style: normal;
-  letter-spacing: 1px;
-  text-align: center;
+  display: none;
 }
 
 /* Sidebar tree */
 #sidebar-tree {
   display: flex;
   flex-direction: column;
-  min-height: 1px; /* CSS is beautiful */
+  min-height: 1px;
   position: relative;
   overflow-y: auto;
 }
@@ -277,7 +288,7 @@
   display: inline-block;
 }
 span#sidebar-heritage-number {
-  color: #198b27;
+  color: #2d8659;
 }
 #sidebar-heritage-description-container {
   display: none;

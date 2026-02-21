@@ -17,7 +17,6 @@
 /* Species filter */
 .species-filter-container {
   width: 60vw;
-  
 }
 .select2-container input{
   font-size: 16px !important;
@@ -30,21 +29,20 @@
 /* Color Filter */
 .color-filter-container {
   width: 20%;
+  padding: 0;
+  min-width: 125px;
 }
 .color-filter-container button {
   display: none;
-}
-
-.color-filter-container {
-    padding: 0;
-    min-width: 125px;
+  min-height: 44px;
 }
 
 #species-button-species, #species-button-native {
   display: inline-block;
+  min-height: 44px;
 }
 #species-button {
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 6px 6px 0;
 }
 
 

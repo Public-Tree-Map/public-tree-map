@@ -1,21 +1,20 @@
 var app = this.app || {};
 
-ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more zoomed in
+ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more zoomed in
 
 (function(module) {
 
   var RENDERER = L.canvas({ padding: 0.5 });
 
-  function Map(sidebar, api_url) {
-    this.api_url = api_url;;
+  function Map(sidebar, api_url, tree_id) {
+    this.api_url = api_url;
     this.sidebar = sidebar;
+    this.tree_id = tree_id
     this.markers = [];
     this.selectedTree = null;
     this.markerMap = Object.create(null);
     this.highlightedMarker = null;
     this.trees   = [];
-    this.heatMapLayer = null;
-    this.heatMapTrees = [];
     this.zoom    = 11;
     this.prevZoom = 11;
     this.fillOpacity = 0.75;
@@ -29,14 +28,21 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
       zoom: this.zoom,
       zoomControl: false,
       layers: [
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
           subdomains: 'abcd',
           maxZoom: 19
+        }),
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+          subdomains: 'abcd',
+          maxZoom: 19,
+          opacity: 0.4,
+          pane: 'shadowPane'
         })
       ]
     });
     this.prevBounds = this.leafletMap.getBounds();
+    this.cityLabels = L.layerGroup().addTo(this.leafletMap);
 
     //trigger leaflet.locate
     this.triggerLocate = () => {
@@ -58,7 +64,6 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
         this.locationPin.openPopup()
       })
     }
-
     //use for current location only
     //triggerd by this.setPin()
     //default UI hidden in map.css
@@ -87,22 +92,21 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
 
     this.leafletMap.on('moveend', (() => {
       this.zoom = this.leafletMap.getZoom();
-      console.log(this.zoom);
       var newBounds = this.leafletMap.getBounds();
       var distance = this.prevBounds.getNorthEast().distanceTo(newBounds.getNorthEast());
       if (distance > 0.1 && this.zoom >= ZOOM_LEVEL_PINS) {
-        // this.hideHeatMap();
-        // setMarkerSize.call(this, this.zoom);
+        this.cityLabels.clearLayers();
         this.fetchTrees(newBounds, (trees) => {
-          this.setTrees(trees, module.palettes['name_common']);
+          this.setTrees(trees, module.palettes['name_common'], false);
+          setMarkerSize.call(this, this.zoom);
         });
-      }
-      else if (this.zoom < ZOOM_LEVEL_PINS) {
-        console.log('not drawing markers')
-        if (this.markers && this.leafletMap){
+      } else if (this.zoom < ZOOM_LEVEL_PINS) {
+        if (this.markers && this.leafletMap) {
           this.markers.clearLayers();
         }
-        this.redrawHeatMap();
+        if (this.cityLabels.getLayers().length === 0) {
+          this.fetchCityLabels();
+        }
       }
       this.prevBounds = newBounds;
     }).bind(this));
@@ -111,29 +115,31 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
 
     this.markers = L.layerGroup().addTo(this.leafletMap);
   }
-  Map.prototype.redrawHeatMap = function() {
-    var zoom = this.leafletMap.getZoom();
-    var newRadius = zoom * 2; // Adjust this calculation as needed
-
-    // Remove the old heatmap layer
-    if (this.heatMapLayer) {
-      this.leafletMap.removeLayer(this.heatMapLayer);
-    }
-
-    this.heatMapLayer = L.heatLayer(
-        this.heatMapTrees, {
-          max: 1.0,
-          radius: newRadius,
-          gradient: {0.14: '#edf8fb', 0.28: '#ccece6', 0.42: '#99d8c9', 0.56: '#66c2a4', 0.7: '#41ae76', 0.84: '#238b45', 1:'#005824'},
-          blur: 13
-        }
-    );
-
-    // Add the new heatmap layer to the map
-    this.heatMapLayer.addTo(this.leafletMap);
-  }
+  Map.prototype.fetchCityLabels = function() {
+    fetch(this.api_url.concat('cities/'))
+      .then(res => res.json())
+      .then(cities => {
+        this.cityLabels.clearLayers();
+        cities.filter(city => city.city !== 'los-angeles-city').forEach(city => {
+          var name = city.city.replace(/-/g, ' ');
+          name = name.replace(/\b\w/g, c => c.toUpperCase());
+          var count = city.tree_count.toLocaleString();
+          var label = L.marker([city.lat, city.lng], {
+            icon: L.divIcon({
+              className: 'city-label',
+              html: '<div class="city-name">' + name + '</div>' +
+                    '<div class="city-count">' + count + ' trees</div>',
+              iconSize: null
+            }),
+            interactive: false
+          });
+          label.addTo(this.cityLabels);
+        });
+      });
+  };
 
   Map.prototype.setFilter = function(selections) {
+    console.log(selections);
     var bounds = this.leafletMap.getBounds();
     var center = bounds.getCenter();
     var palette = this.palette;
@@ -142,48 +148,27 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
     var yThreshold = 107;
     var pad = 0;
 
-    this.selected = selections;
+    this.selected = new Set(selections.map(s => s.value));
     this.redraw();
-    if(selections.size > 0) {
-      this.markers.eachLayer(function(marker) {
-        var position = marker.getLatLng();
-        var distance = center.distanceTo(position);
-        if (distance < closestDistance || !closestDistance) {
-          if ( !(palette.field === 'heritage' && !marker.tree.heritage)) {
-            closestDistance = distance;
-            closestLatLng = position;
+    if(selections.length > 0) {
+      if (this.markers.length > 0) {
+        this.markers.eachLayer(function (marker) {
+          var position = marker.getLatLng();
+          var distance = center.distanceTo(position);
+          if (distance < closestDistance || !closestDistance) {
+            if (!(palette.field === 'heritage' && !marker.tree.heritage)) {
+              closestDistance = distance;
+              closestLatLng = position;
+            }
           }
+        });
+        if (this.leafletMap.latLngToContainerPoint(closestLatLng).y < yThreshold) {
+          pad = yThreshold;
         }
-      });
-      if (this.leafletMap.latLngToContainerPoint(closestLatLng).y < yThreshold) {
-        pad = yThreshold;
       }
     }
     this.leafletMap.fitBounds(bounds.extend(closestLatLng), {paddingTopLeft: [0, pad]});
     setMarkerSize.call(this, this.zoom);
-  }
-
-  Map.prototype.setHeatMap = function(trees){
-    this.heatMapTrees = trees.map((tree) => { // Set the heatMapTrees property here
-      return [tree.lat, tree.lng, 1]
-    });
-    this.heatMapLayer = L.heatLayer(
-        this.heatMapTrees, {
-          max: 1.0,
-          radius: 13,
-          gradient: {0.14: '#edf8fb', 0.28: '#ccece6', 0.42: '#99d8c9', 0.56: '#66c2a4', 0.7: '#41ae76', 0.84: '#238b45', 1:'#005824'},
-          blur: 13
-        }
-    );
-    this.showHeatMap();
-  }
-
-  Map.prototype.hideHeatMap = function (){
-    this.leafletMap.removeLayer(this.heatMapLayer);
-  }
-
-  Map.prototype.showHeatMap = function (){
-    this.heatMapLayer.addTo(this.leafletMap);
   }
 
   Map.prototype.fetchTrees = function(bounds, callback){
@@ -202,18 +187,35 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
         });
   }
 
-  Map.prototype.setTrees = function(trees, palette) {
+  Map.prototype.setTreeViewFromUrl = function(treeId){
+    fetch(
+      this.api_url.concat(`tree/${treeId}`)
+    )
+      .then((res) => res.json())
+      .then((tree) => {
+        this.sidebar.setTree(tree);
+        var treeLocation = [tree.latitude, tree.longitude];  // Replace 'lat' and 'lng' with the actual keys in the tree data
+        this.leafletMap.setView(treeLocation, ZOOM_LEVEL_PINS + 2);
+        var newBounds = this.leafletMap.getBounds();
+        this.fetchTrees(newBounds, (trees) => {
+          this.setTrees(trees, module.palettes['name_common'], true);
+        });
+      });
+
+  }
+
+  Map.prototype.setTrees = function(trees, palette, zoomToTree) {
     this.trees.push(...trees);
     this.palette = palette;
+    console.log('setting trees')
     this.redraw();
-    // if(this.urlParams.has("id")) {
-    //   var id = this.urlParams.get("id");
-    //   if(id in this.markerMap) {
-    //     this.markerMap[id].fire('click');
-    //   } else {
-    //     this.sidebar.showError();
-    //   }
-    // }
+    if(this.tree_id && zoomToTree) {
+      if(this.tree_id in this.markerMap) {
+        this.markerMap[this.tree_id].fire('click');
+      } else {
+        this.sidebar.showError();
+      }
+    }
   }
 
   Map.prototype.redraw = function() {
@@ -229,6 +231,7 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
     else {
       filter = tree => tree;
     }
+    console.log(this.trees);
     this.trees.filter(filter).forEach((function(tree) {
       var marker = L.circleMarker([tree.latitude, tree.longitude], {
         renderer: RENDERER,
@@ -257,14 +260,13 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
       marker.on(tapEvent, (function(leafletEvent) {
 
         this.sidebar.body.classList.remove('sidebar-mobile--closed');
-        console.log('You clicked!')
         fetch(
           this.api_url.concat(`tree/${tree.tree_id}`)
         )
           .then((res) => res.json())
           .then((tree) => {
             this.sidebar.setTree(tree);
-            updateUrl(this.urlParams, tree.tree_id);
+            // updateUrl(this.urlParams, tree.tree_id);
           });
 
 
@@ -292,14 +294,16 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
     this.palette = palette;
     var realThis = this;
 
-    setMarkerSize.call(this, this.zoom); 
-    this.markers.eachLayer(function(marker) {
-      marker.setStyle({
-        fillColor: realThis.getFillColor(marker.tree, palette)
+    if (this.markers.length > 0) {
+      setMarkerSize.call(this, this.zoom);
+      this.markers.eachLayer(function (marker) {
+        marker.setStyle({
+          fillColor: realThis.getFillColor(marker.tree, palette)
+        });
       });
-    });
-    if (this.highlightedMarker) {
-      changeCircleMarker(this.highlightedMarker, 'recolor');
+      if (this.highlightedMarker) {
+        changeCircleMarker(this.highlightedMarker, 'recolor');
+      }
     }
   }
 
@@ -380,19 +384,35 @@ ZOOM_LEVEL_PINS = 17; // zoom at which markers replace clusters, higher is more 
     }
   }
 
+  var GENERATED_PALETTE = [
+    '#5b9bd5', // steel blue
+    '#e07b54', // warm coral
+    '#8cc063', // soft green
+    '#c27db5', // muted orchid
+    '#f2c45a', // golden yellow
+    '#6dc8bf', // teal
+    '#d4687a', // dusty rose
+    '#7b8fc9', // periwinkle
+    '#a8b94a', // olive lime
+    '#e8956a', // peach
+    '#55b88a', // jade
+    '#b5855e', // tan
+    '#9a8dc8', // lavender
+    '#d69b4e', // amber
+    '#6aa6d4', // sky blue
+    '#c9625a', // brick red
+    '#85c6a0', // mint
+    '#cf8ebc', // mauve
+    '#a4a4a4', // neutral gray
+    '#79b5d2', // powder blue
+  ];
+
   function generateColor(s) {
     var hash = 0;
     for (var i = 0; i < s.length; i++) {
       hash = s.charCodeAt(i) + ((hash << 5) - hash);
     }
-
-    var color = '#';
-    for (var i = 0; i < 3; i++) {
-      var value = (hash >> (i * 8)) & 255;
-      color += value.toString(16).padStart(2, 0);
-    }
-
-    return color;
+    return GENERATED_PALETTE[Math.abs(hash) % GENERATED_PALETTE.length];
   }
 
   // EXPORTS

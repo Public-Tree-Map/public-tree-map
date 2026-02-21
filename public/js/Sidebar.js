@@ -99,6 +99,8 @@ var initialY = null;
       this.populateTreePanel(tree);
       this.populateTreeSharePanel(tree);
     }
+    // Slide the sidebar open
+    this.body.classList.add('sidebar--open');
   }
 
   Sidebar.prototype.populateVacanciesPanel = function(tree) {
@@ -173,7 +175,9 @@ var initialY = null;
     this.errorScreen.classList.add('hidden');
     this.treeContainer.classList.add('hidden');
     this.vacantContainer.classList.add('hidden');
-    this.defaultScreen.classList.remove('hidden');
+    this.defaultScreen.classList.add('hidden');
+    // Collapse the sidebar — map is the default view
+    this.body.classList.remove('sidebar--open');
     removeQueryStringFromUrlBar();
   }
 
@@ -182,6 +186,7 @@ var initialY = null;
     this.treeContainer.classList.add('hidden');
     this.vacantContainer.classList.add('hidden');
     this.errorScreen.classList.remove('hidden');
+    this.body.classList.add('sidebar--open');
   }
 
   Sidebar.prototype.populateTreeSharePanel = function(tree) {
@@ -242,9 +247,8 @@ var initialY = null;
     }
     else {
       this.body.classList.add(closed);
-      this.showDefault();
-
     }
+    this.showDefault();
   }
 
   function buildNativityText(nativity) {

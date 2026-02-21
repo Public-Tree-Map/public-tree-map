@@ -7,45 +7,21 @@ var app = this.app || {};
         this.formatOptions = formatOptions.bind(map);
         this.selected = new Set();
         var realThis = this;
-        selectFilter.on(
-            "select2:select",
-            function (event) {
-                realThis.selected.add(event.params.data["name_common"]);
-                map.setFilter(realThis.selected);
-            }
-        );
-        selectFilter.on(
-            "select2:unselect",
-            function (e) {
-                realThis.selected.delete(e.params.data["name_common"]);
-                map.setFilter(realThis.selected);
-            }
-        );
+        selectFilter.on("select2:select select2:unselect", function (event) {
+            // Retrieve all selected items from Select2
+            const selectedItems = $(this).select2('data');
 
-    }
+            // Always filter by species name regardless of grouping mode
+            const speciesIds = selectedItems.map(item => ({
+                field: 'name_common',
+                value: item.name_common,
+                speciesId: Number(item.id)
+            }));
 
-    function counter(hashmap, tree) {
-        var tree_key = tree['name_common'].concat([' (', tree['name_botanical'], ')'].join(''));
-        if (hashmap.has(tree_key)) {
-            var currentCount = hashmap.get(tree_key);
-            currentCount['count'] += 1;
-            hashmap.set(tree_key,  currentCount);
-        }
-        else {
-            hashmap.set(
-                tree_key,
-                {
-                    count: 1,
-                    botanicalName: tree['name_botanical'],
-                    commonName: tree['name_common'],
-                    familyBotanicalName: tree["family_name_botanical"],
-                    nativity: tree.nativity,
-                    iucnStatus: tree["iucn_status"],
-                    heritage: tree.heritage,
-                }
-            );
-        }
-        return hashmap;
+            // Call map.setFilter with the current state of selected options
+            map.setFilter(speciesIds);
+        });
+
     }
 
     function numberWithCommas(x) {
@@ -53,19 +29,17 @@ var app = this.app || {};
     }
 
     function treeToStr(tree){
-        return tree.commonName.concat([' (', tree.botanicalName, ')', ' - ', numberWithCommas(tree.count)].join(''))
+        return tree.common_name.concat([' (', tree.botanical_name, ')', ' - ', numberWithCommas(tree.cnt)].join(''))
     }
 
     SpeciesFilter.prototype.selectFormatter = function(trees){
-        countedTrees = trees.reduce(counter, new Map());
-        var countedTreesArray = Array.from(countedTrees).map(x => x[1]);
-        var selectArray = countedTreesArray.map(
-            (tree, index) => ({
-                id: index, 
-                text: treeToStr(tree), 
-                count: tree.count, 
+        var selectArray = trees.map(
+            (tree) => ({
+                id: tree.id,
+                text: treeToStr(tree),
+                count: tree.cnt,
                 family_name_botanical: tree.familyBotanicalName, 
-                name_common: tree.commonName, 
+                name_common: tree.common_name,
                 nativity: tree.nativity, 
                 iucn_status: tree.iucnStatus,
                 heritage: tree.heritage,
@@ -103,7 +77,6 @@ var app = this.app || {};
         );
         var alpha = Math.round(255 * this.fillOpacity).toString(16);
         var colorKey = formatted.find(".color-key");
-        
         if (this.palette.field === 'heritage') {
             colorKey.addClass("hidden");
         } else {

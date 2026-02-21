@@ -26,7 +26,7 @@ var app = this.app || {};
     else {
       _map.setTreeViewFromUrl(tree_id);
     }
-    _map.setHeatMapData();
+    _map.fetchCityLabels();
 
 
     fetch(API_URL.concat("species/all"))

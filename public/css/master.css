@@ -7,5 +7,5 @@
 /* Mobile styling */
 @import "./mobile/main.css" screen and (max-width: 890px);
 @import "./mobile/sidebar.css" screen and (max-width: 890px);
-@import "./mobile//toolbar.css" screen and (max-width: 890px);
+@import "./mobile/toolbar.css" screen and (max-width: 890px);
 @import "./mobile/map.css" screen and (max-width: 890px);

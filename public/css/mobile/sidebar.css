@@ -5,12 +5,25 @@
 }
 
 #sidebar, #sidebar-vacant {
+  /* Reset desktop overlay to bottom sheet */
+  position: relative;
+  right: auto;
+  top: auto;
+  transform: none;
+  box-shadow: none;
+  max-width: none;
+  z-index: auto;
+
   height: 25%;
   width: 100%;
   transition: .5s ease;
 }
+
+body.sidebar--open #sidebar {
+  transform: none;
+}
 .sidebar-mobile--preview{
-  max-height: 150px;
+  max-height: 160px;
 }
 
 #sidebar > div, #sidebar-vacant > div {
@@ -64,7 +77,7 @@
 }
 
 #sidebar-content h1, #sidebar-vacant-content h1 {
-  font-size: calc(2vw + 1vh + .5vmin);
+  font-size: 18px;
 }
 
 .sidebar-mobile--fullscreen #sidebar-content h1,

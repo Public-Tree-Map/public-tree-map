@@ -27,3 +27,24 @@
 .leaflet-popup-close-button{
   display: none;
 }
+
+.city-label {
+  background: none;
+  border: none;
+  text-align: center;
+  white-space: nowrap;
+}
+.city-name {
+  font-family: 'Lato', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #005824;
+  text-shadow: 1px 1px 3px white, -1px -1px 3px white, 1px -1px 3px white, -1px 1px 3px white, 0 0 6px white;
+}
+.city-count {
+  font-family: 'Lato', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #238b45;
+  text-shadow: 1px 1px 3px white, -1px -1px 3px white, 1px -1px 3px white, -1px 1px 3px white, 0 0 6px white;
+}
