@@ -33,6 +33,7 @@
   border: none;
   text-align: center;
   white-space: nowrap;
+  cursor: pointer;
 }
 .city-name {
   font-family: 'Lato', Arial, sans-serif;
@@ -41,6 +42,52 @@
   color: #005824;
   text-shadow: 1px 1px 3px white, -1px -1px 3px white, 1px -1px 3px white, -1px 1px 3px white, 0 0 6px white;
 }
+.map-legend {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  padding: 8px 10px;
+  max-height: 280px;
+  overflow-y: auto;
+  font-family: 'Lato', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.map-legend-hidden {
+  display: none;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+
+.map-legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.map-legend-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+  color: #333;
+}
+
+.map-legend-count {
+  color: #888;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
 .city-count {
   font-family: 'Lato', Arial, sans-serif;
   font-size: 14px;

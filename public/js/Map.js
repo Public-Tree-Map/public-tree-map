@@ -15,6 +15,7 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
     this.markerMap = Object.create(null);
     this.highlightedMarker = null;
     this.trees   = [];
+    this.loadedTreeIds = new Set();
     this.zoom    = 11;
     this.prevZoom = 11;
     this.fillOpacity = 0.75;
@@ -99,13 +100,19 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
         this.fetchTrees(newBounds, (trees) => {
           this.setTrees(trees, module.palettes['name_common'], false);
           setMarkerSize.call(this, this.zoom);
+          this.prefetchNearby(newBounds);
         });
       } else if (this.zoom < ZOOM_LEVEL_PINS) {
         if (this.markers && this.leafletMap) {
           this.markers.clearLayers();
         }
+        this.trees = [];
+        this.loadedTreeIds.clear();
         if (this.cityLabels.getLayers().length === 0) {
           this.fetchCityLabels();
+        }
+        if (this.legend) {
+          this.legend.update();
         }
       }
       this.prevBounds = newBounds;
@@ -130,44 +137,19 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
               html: '<div class="city-name">' + name + '</div>' +
                     '<div class="city-count">' + count + ' trees</div>',
               iconSize: null
-            }),
-            interactive: false
+            })
           });
+          label.on('click', function() {
+            this.leafletMap.flyTo([city.lat, city.lng], ZOOM_LEVEL_PINS);
+          }.bind(this));
           label.addTo(this.cityLabels);
         });
       });
   };
 
   Map.prototype.setFilter = function(selections) {
-    console.log(selections);
-    var bounds = this.leafletMap.getBounds();
-    var center = bounds.getCenter();
-    var palette = this.palette;
-    var closestDistance;
-    var closestLatLng;
-    var yThreshold = 107;
-    var pad = 0;
-
-    this.selected = new Set(selections.map(s => s.value));
+    this.selected = new Set(selections.map(function(s) { return s.toLowerCase(); }));
     this.redraw();
-    if(selections.length > 0) {
-      if (this.markers.length > 0) {
-        this.markers.eachLayer(function (marker) {
-          var position = marker.getLatLng();
-          var distance = center.distanceTo(position);
-          if (distance < closestDistance || !closestDistance) {
-            if (!(palette.field === 'heritage' && !marker.tree.heritage)) {
-              closestDistance = distance;
-              closestLatLng = position;
-            }
-          }
-        });
-        if (this.leafletMap.latLngToContainerPoint(closestLatLng).y < yThreshold) {
-          pad = yThreshold;
-        }
-      }
-    }
-    this.leafletMap.fitBounds(bounds.extend(closestLatLng), {paddingTopLeft: [0, pad]});
     setMarkerSize.call(this, this.zoom);
   }
 
@@ -187,6 +169,28 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
         });
   }
 
+  Map.prototype.prefetchNearby = function(bounds) {
+    var sw = bounds.getSouthWest();
+    var ne = bounds.getNorthEast();
+    var latSpan = ne.lat - sw.lat;
+    var lngSpan = ne.lng - sw.lng;
+
+    var neighbors = [
+      L.latLngBounds([ne.lat, sw.lng], [ne.lat + latSpan, ne.lng]),
+      L.latLngBounds([sw.lat - latSpan, sw.lng], [sw.lat, ne.lng]),
+      L.latLngBounds([sw.lat, ne.lng], [ne.lat, ne.lng + lngSpan]),
+      L.latLngBounds([sw.lat, sw.lng - lngSpan], [ne.lat, sw.lng])
+    ];
+
+    neighbors.forEach(function(nb) {
+      this.fetchTrees(nb, function(trees) {
+        var newTrees = trees.filter(function(t) { return !this.loadedTreeIds.has(t.tree_id); }.bind(this));
+        newTrees.forEach(function(t) { this.loadedTreeIds.add(t.tree_id); }.bind(this));
+        this.trees.push.apply(this.trees, newTrees);
+      }.bind(this));
+    }.bind(this));
+  };
+
   Map.prototype.setTreeViewFromUrl = function(treeId){
     fetch(
       this.api_url.concat(`tree/${treeId}`)
@@ -205,9 +209,10 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
   }
 
   Map.prototype.setTrees = function(trees, palette, zoomToTree) {
-    this.trees.push(...trees);
+    var newTrees = trees.filter(t => !this.loadedTreeIds.has(t.tree_id));
+    newTrees.forEach(t => this.loadedTreeIds.add(t.tree_id));
+    this.trees.push(...newTrees);
     this.palette = palette;
-    console.log('setting trees')
     this.redraw();
     if(this.tree_id && zoomToTree) {
       if(this.tree_id in this.markerMap) {
@@ -226,12 +231,11 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
 
     this.markers.clearLayers();
     if (selectedCommonNames.size > 0){
-      filter = tree => selectedCommonNames.has(tree['name_common']);
+      filter = tree => selectedCommonNames.has(tree['name_common'].toLowerCase());
     }
     else {
       filter = tree => tree;
     }
-    console.log(this.trees);
     this.trees.filter(filter).forEach((function(tree) {
       var marker = L.circleMarker([tree.latitude, tree.longitude], {
         renderer: RENDERER,
@@ -288,13 +292,17 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
       marker.addTo(this.markers)
       this.markerMap[tree.tree_id] = marker;
     }).bind(this));
+
+    if (this.legend) {
+      this.legend.update();
+    }
   }
 
   Map.prototype.setPalette = function(palette) {
     this.palette = palette;
     var realThis = this;
 
-    if (this.markers.length > 0) {
+    if (this.markers.getLayers().length > 0) {
       setMarkerSize.call(this, this.zoom);
       this.markers.eachLayer(function (marker) {
         marker.setStyle({
@@ -304,6 +312,10 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
       if (this.highlightedMarker) {
         changeCircleMarker(this.highlightedMarker, 'recolor');
       }
+    }
+
+    if (this.legend) {
+      this.legend.update();
     }
   }
 

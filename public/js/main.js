@@ -17,6 +17,7 @@ var app = this.app || {};
     _map = new module.Map(_sidebar, API_URL, tree_id);
     _speciesFilter = new module.SpeciesFilter(_map);
     _legend = new module.Legend(_map, _speciesFilter);
+    _map.legend = _legend;
     _colorFilter = new module.ColorFilter(_map, _legend);
     _geolocation = new module.Geolocation(_map);
 
@@ -37,9 +38,9 @@ var app = this.app || {};
   }
 
   function setSpecies(species, map) {
-    console.log(species);
     var defaultPalette = module.palettes[_colorFilter.filter.item(0).value];
     _map.setPalette(defaultPalette);
+    _legend.palette = defaultPalette;
     var formattedSelect = _legend.setSelectLegend(_speciesFilter.selectFormatter(species), defaultPalette);
 
     _speciesFilter.setSpecies(formattedSelect);
