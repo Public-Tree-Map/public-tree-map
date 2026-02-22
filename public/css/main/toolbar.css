@@ -103,18 +103,84 @@
   color: #999;
 }
 
-.ap-input {
-  padding-right: 56px;
-  height: 36px;
-}
 .address-container {
   width: 35%;
+  position: relative;
 }
-.ap-input-icon {
-  right: 10px;
+
+.address-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-.ap-icon-clear {
-  right: 40px;
+
+#address-input {
+  flex: 1;
+  height: 36px;
+  padding: 5px 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#address-input:focus {
+  border-color: #2d8659;
+}
+
+#locate-button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+#locate-button:hover {
+  color: #2d8659;
+  border-color: #2d8659;
+}
+
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 100001;
+  margin-top: 2px;
+  list-style: none;
+  padding: 0;
+}
+
+.autocomplete-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.active {
+  background-color: #e8f5e9;
 }
 .species-filter-container {
   width: 25%;
