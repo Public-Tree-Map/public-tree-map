@@ -59,7 +59,12 @@
       <div id="toolbar">
         <div class="address-container">
           <label class="toolbar-label">ZOOM TO LOCATION</label>
-          <input "search" id="address-input" placeholder="Enter address" />
+          <div class="address-input-wrapper">
+            <input type="search" id="address-input" placeholder="Enter address" />
+            <button id="locate-button" title="Zoom to my location" aria-label="Zoom to my location">
+              <i class="fa fa-location-arrow"></i>
+            </button>
+          </div>
         </div>
         <!-- Color Filter -->
         <div class="color-filter-container">
@@ -197,73 +202,47 @@
           </div>
           <div class="sidebar-divider"></div>
           <h5>Location</h5>
-          <h4>NEAREST ADDRESS:</h4>
-          <span id="sidebar-address"></span>
-          <button id="sidebar-details-button" class = "btn btn--mobile">View Details</button>
-          <div id="google-streetview"> 
-            <h4>
-            <a href="#" id = "gsv-link" target="_blank" rel="noopener noreferrer">Google Street View</a> </h4> 
+          <div class="sidebar-field">
+            <h4>ADDRESS</h4>
+            <span id="sidebar-address"></span>
           </div>
-          <div class="sidebar-seperator"></div>
-          <h4>TREE ID:</h4>
-          <span id="sidebar-tree-id"></span>
-          <div class="sidebar-seperator"></div>
+          <button id="sidebar-details-button" class="btn btn--mobile">View Details</button>
+          <div class="sidebar-field">
+            <a href="#" id="gsv-link" target="_blank" rel="noopener noreferrer">Google Street View</a>
+          </div>
           <div class="sidebar-divider"></div>
           <h5>Details</h5>
-          <h4>FAMILY:</h4>
-          <span id="sidebar-tree-family"></span>
-          <div class="sidebar-seperator"></div>
-          <h4>HEIGHT:</h4>
-          <span id="sidebar-height"></span>
-          <div class="sidebar-seperator"></div>
-          <h4>TRUNK DIAMETER:</h4>
-          <span id="sidebar-diameter"></span>
-          <div class="sidebar-seperator"></div>
-          <div class="sidebar-divider"></div>
-          <h5>Conservation & Care</h5>
-          <h4>CA NATIVE:</h4>
-          <span id="sidebar-nativity"></span>
-          <div class="sidebar-seperator"></div>
-          <h4>CONSERVATION STATUS:</h4>
-          <span id="sidebar-iucn-status"></span>
-          <div class="sidebar-seperator"></div>
-          <h4>CAL-IPC RATING:</h4>
-          <span id="sidebar-ipc-rating"></span>
-          <div class="sidebar-seperator"></div>
-          <!-- <h4>PRUNING YEAR:</h4> -->
-          <!-- <span id="sidebar-pruning-year"></span> -->
-          <!-- <div class="sidebar-seperator"></div> -->
-          <h4>IRRIGATION REQUIREMENTS:</h4>
-          <span id="sidebar-irrigation-requirements"></span>
-          <div class="sidebar-seperator"></div>
-          <h4>SHADE PRODUCTION:</h4>
-          <span id="sidebar-shade-production"></span>
-          <div class="sidebar-seperator"></div>
-          <h4>REPLACEMENT SPECIES:</h4>
-          <span id="sidebar-replacement-species"></span>
-          <div class="sidebar-seperator"></div>
-          <h4>STREET SEGMENT:</h4>
-          <span id="sidebar-street-segment"></span>
-          <div class="sidebar-seperator"></div>
-          <div class="sidebar-divider"></div>
-          <h5>Nominate Tree</h5>
-          <span>
-            Impressed by this tree? Please nominate it for city recognition as a Santa Monica Heritage
-            Tree via <a href="https://forms.gle/UDjd8CS4w2jMu8As8">this form</a>.
-          </span>
-          <div class="sidebar-seperator"></div>
-          <div class="sidebar-divider"></div>
-          <h5>Report an Issue</h5>
-          <span>Notice an issue with this tree? Contact Santa Monica's Public Landscape Manager via 
-            <a href="https://user.govoutreach.com/santamonica/support.php?classificationId=30642&cmd=shell" 
-            target="_blank" rel="noopener">
-              Santa Monica Works
-            </a>
-          </span>
-          <div class="sidebar-seperator"></div>
-          <h6><a target="_blank" rel="noopener noreferrer" href = "https://public-tree-map.github.io/">About</a>  |  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Public-Tree-Map/public-tree-map/issues/new/choose">Feedback</a>  |  <a target="_blank" rel="noopener noreferrer" href = "https://github.com/Public-Tree-Map/public-tree-map-data-pipeline#data-sources">Data Sources</a> |  <a target="_blank" rel="noopener noreferrer" href = "https://www.instagram.com/publictreemap/">Instagram</a></h6>
-          <div class="sidebar-seperator"></div>
-          <div class="sidebar-last-updated">Last updated : 
+          <div class="sidebar-field" id="field-family">
+            <h4>FAMILY</h4>
+            <span id="sidebar-tree-family"></span>
+          </div>
+          <div class="sidebar-field" id="field-height">
+            <h4>HEIGHT</h4>
+            <span id="sidebar-height"></span>
+          </div>
+          <div class="sidebar-field" id="field-diameter">
+            <h4>TRUNK DIAMETER</h4>
+            <span id="sidebar-diameter"></span>
+          </div>
+          <div class="sidebar-field" id="field-nativity">
+            <h4>CA NATIVE</h4>
+            <span id="sidebar-nativity"></span>
+          </div>
+          <div class="sidebar-field" id="field-shade">
+            <h4>SHADE</h4>
+            <span id="sidebar-shade-production"></span>
+          </div>
+          <div class="sidebar-field" id="field-irrigation">
+            <h4>IRRIGATION</h4>
+            <span id="sidebar-irrigation-requirements"></span>
+          </div>
+          <div class="sidebar-field" id="field-iucn">
+            <h4>CONSERVATION</h4>
+            <span id="sidebar-iucn-status"></span>
+          </div>
+          <div class="sidebar-field" id="field-ipc">
+            <h4>CAL-IPC</h4>
+            <span id="sidebar-ipc-rating"></span>
           </div>
         </div>
       </div>
@@ -287,8 +266,7 @@
       crossorigin="">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
-    <!--Algolia Places-->
-    <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
+
 
     <script async src="https://static.addtoany.com/menu/page.js"></script>
 

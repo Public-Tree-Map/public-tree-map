@@ -14,7 +14,7 @@
   max-width: none;
   z-index: auto;
 
-  height: 25%;
+  height: auto;
   width: 100%;
   transition: .5s ease;
 }

@@ -24,7 +24,6 @@ var initialY = null;
     this.imageCreditLink               = document.getElementById('sidebar-image-credit-link');
     this.commonName                    = document.getElementById('sidebar-common-name');
     this.botanicalName                 = document.getElementById('sidebar-botanical-name');
-    this.treeId                        = document.getElementById('sidebar-tree-id');
     this.nativity                      = document.getElementById('sidebar-nativity');
     this.height                        = document.getElementById('sidebar-height');
     this.diameter                      = document.getElementById('sidebar-diameter');
@@ -37,9 +36,7 @@ var initialY = null;
     this.treeFamilyCommon              = document.getElementById('sidebar-tree-family-common');
     //this.pruningYear                   = document.getElementById('sidebar-pruning-year');
     //this.pruningZone                   = document.getElementById('sidebar-pruning-zone');
-    this.replacementSpecies            = document.getElementById('sidebar-replacement-species');
     this.address                       = document.getElementById('sidebar-address');
-    this.streetSegment                 = document.getElementById('sidebar-street-segment');
     this.treeDetails                   = document.getElementById('sidebar-tree-details');
     this.closeButton                   = document.getElementById('sidebar-close-button');
     this.detailsButton                 = document.getElementById('sidebar-details-button');
@@ -114,24 +111,23 @@ var initialY = null;
   }
 
   Sidebar.prototype.populateTreePanel = function(tree) {
-    this.commonName.innerText             = tree.name_common;
-    this.botanicalName.innerText          = tree.name_botanical;
-    this.treeId.innerText                 = tree.tree_id;
-    this.nativity.innerText               = buildNativityText(tree.nativity);
-    this.height.innerText                 = buildHeightText(tree.height_min_ft, tree.height_max_ft);
-    this.diameter.innerText               = buildDiameterText(tree.diameter_min_in, tree.diameter_max_in);
-    this.shadeProduction.innerText        = tree.shade_production;
-    this.irrigationRequirements.innerText = tree.irrigation_requirements;
-    this.iucnStatus.innerText             = tree.iucn_status;
-    this.ipcRating.innerText              = buildIpcText(tree.ipc_rating);
-    this.treeFamily.innerHTML             = `${tree.family_name_common} (<em>${tree.family_name_botanical}</em>)`;
-    //this.pruningYear.innerText            = tree.pruning_year;
-    this.replacementSpecies.innerHTML     = `<em>${tree.replacement_species}</em>`;
-    this.address.innerText                = tree.address;
+    this.commonName.innerText    = tree.name_common;
+    this.botanicalName.innerText = tree.name_botanical;
+    this.address.innerText       = tree.address;
     this.address.classList.add("sidebar-address-small");
     this.vacantAddress.classList.add("sidebar-address-small");
-    this.streetSegment.innerText          = tree.segment;
-    this.gsv_link.href = `https://www.google.com/maps?layer=c&cbll=${tree.latitude},${tree.longitude}`
+    this.gsv_link.href = `https://www.google.com/maps?layer=c&cbll=${tree.latitude},${tree.longitude}`;
+
+    setField(this.treeFamily, tree.family_name_common
+      ? `${tree.family_name_common} (<em>${tree.family_name_botanical}</em>)`
+      : null, true);
+    setField(this.height, buildHeightText(tree.height_min_ft, tree.height_max_ft));
+    setField(this.diameter, buildDiameterText(tree.diameter_min_in, tree.diameter_max_in));
+    setField(this.nativity, buildNativityText(tree.nativity));
+    setField(this.shadeProduction, tree.shade_production);
+    setField(this.irrigationRequirements, tree.irrigation_requirements);
+    setField(this.iucnStatus, tree.iucn_status);
+    setField(this.ipcRating, buildIpcText(tree.ipc_rating));
 
     if (tree.images && tree.images.length > 0) {
       this.image.style.backgroundSize = 'cover';
@@ -251,46 +247,56 @@ var initialY = null;
     this.showDefault();
   }
 
-  function buildNativityText(nativity) {
-    if ("native" === nativity.toLowerCase()) {
-      return "This tree is native to California";
-    } else if ("exotic" === nativity.toLowerCase()) {
-      return "This tree isn't native to California";
-    } else if ("moderate" === nativity.toLowerCase()) {
-      return "This tree isn't native to California";
-    } else if ("watch" === nativity.toLowerCase()) {
-      return "This tree isn't native to California";
-    } else if ("limited" === nativity.toLowerCase()) {
-      return "This tree isn't native to California";
-    } else {
-      return "Unknown";
+  function setField(element, value, isHtml) {
+    var field = element.closest('.sidebar-field');
+    if (!value || value === 'not listed') {
+      if (field) field.classList.add('hidden');
+      return;
     }
+    if (field) field.classList.remove('hidden');
+    if (isHtml) {
+      element.innerHTML = value;
+    } else {
+      element.innerText = value;
+    }
+  }
+
+  function buildNativityText(nativity) {
+    if (!nativity) return null;
+    if ("native" === nativity.toLowerCase()) {
+      return "Native to California";
+    } else if ("exotic" === nativity.toLowerCase()) {
+      return "Not native to California";
+    } else if (["moderate", "watch", "limited"].indexOf(nativity.toLowerCase()) !== -1) {
+      return "Not native to California";
+    }
+    return null;
   }
 
   function buildHeightText(min, max) {
-    if (min === -1 && max === -1) {
-      return "Unknown";
+    if ((min == null || min === -1) && (max == null || max === -1)) {
+      return null;
     }
-    if (min === -1) {
-      return "Up to " + max + ' feet'
+    if (min == null || min === -1) {
+      return "Up to " + max + ' ft';
     }
-    if (max === -1) {
-      return min + '+ feet';
+    if (max == null || max === -1) {
+      return min + '+ ft';
     }
-    return min + "-" + max + " feet";
+    return min + "-" + max + " ft";
   }
 
   function buildDiameterText(min, max) {
-    if (min === -1) {
-      return "Unknown";
+    if ((min == null || min === -1) && (max == null || max === -1)) {
+      return null;
     }
-    if (min === -1) {
-      return "Up to " + max + ' inches'
+    if (min == null || min === -1) {
+      return "Up to " + max + ' in';
     }
-    if (max === -1) {
-      return min + '+ inches';
+    if (max == null || max === -1) {
+      return min + '+ in';
     }
-    return min + "-" + max + " inches";
+    return min + "-" + max + " in";
   }
 
   function buildIpcText(ipcRating){

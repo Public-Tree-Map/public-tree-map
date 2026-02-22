@@ -8,16 +8,17 @@
   padding: 0px;
   pointer-events: initial;
 
-  /* Overlay panel */
+  /* Floating card panel */
   position: fixed;
-  right: 0;
-  top: 0;
-  height: 100%;
+  right: 16px;
+  top: 106px;
+  max-height: calc(100vh - 106px - 16px);
   width: 380px;
   max-width: 90vw;
   z-index: 50000;
-  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
-  transform: translateX(100%);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  transform: translateX(calc(100% + 16px));
   transition: transform 0.3s ease;
 }
 
@@ -28,7 +29,7 @@ body.sidebar--open #sidebar {
 #sidebar-content, #sidebar-vacant-content {
   box-sizing: border-box;
   flex-grow: 1;
-  padding: 24px 20px 0;
+  padding: 24px 20px;
 }
 
 #sidebar-content h1, #sidebar-vacant-content h1 {
@@ -53,7 +54,7 @@ body.sidebar--open #sidebar {
   letter-spacing: normal;
   color: #666;
   margin: 0px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #sidebar h3 {
@@ -84,7 +85,7 @@ body.sidebar--open #sidebar {
   line-height: normal;
   color: #2d8659;
   margin: 0px;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 #sidebar span {
   font-size: 15px;
@@ -131,11 +132,33 @@ body.sidebar--open #sidebar {
 .sidebar-divider{
   height: 1px;
   background-color: #d8d8d8;
-  margin-top: 16px;
-  margin-bottom: 20px;
+  margin-top: 14px;
+  margin-bottom: 14px;
 }
 .sidebar-seperator{
-  height: 10px;
+  height: 8px;
+}
+
+.sidebar-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 0;
+}
+.sidebar-field + .sidebar-field {
+  border-top: 1px solid #f0f0f0;
+}
+.sidebar-field h4 {
+  margin: 0;
+  flex-shrink: 0;
+}
+.sidebar-field span {
+  text-align: right;
+  margin: 0;
+}
+.sidebar-field a {
+  font-size: 13px;
 }
 
 .btn--mobile {
@@ -211,9 +234,10 @@ body.sidebar--open #sidebar {
 #sidebar-tree {
   display: flex;
   flex-direction: column;
-  min-height: 1px;
+  min-height: 0;
   position: relative;
   overflow-y: auto;
+  flex: 1 1 auto;
 }
 
 /* Image carousel */
@@ -221,7 +245,7 @@ body.sidebar--open #sidebar {
   background-color: #fff;
   background-position: center center;
   background-repeat: no-repeat;
-  border-radius: 0px;
+  border-radius: 12px 12px 0 0;
   position: relative;
   width: 100%;
   min-height: 250px;

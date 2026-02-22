@@ -6,20 +6,15 @@ var app = this.app || {};
     function SpeciesFilter(map) {
         this.formatOptions = formatOptions.bind(map);
         this.selected = new Set();
+        this.speciesById = {};
         var realThis = this;
-        selectFilter.on("select2:select select2:unselect", function (event) {
-            // Retrieve all selected items from Select2
-            const selectedItems = $(this).select2('data');
-
-            // Always filter by species name regardless of grouping mode
-            const speciesIds = selectedItems.map(item => ({
-                field: 'name_common',
-                value: item.name_common,
-                speciesId: Number(item.id)
-            }));
-
-            // Call map.setFilter with the current state of selected options
-            map.setFilter(speciesIds);
+        selectFilter.on("select2:select select2:unselect", function () {
+            var selectedIds = $(this).val() || [];
+            var selections = selectedIds.map(function(id) {
+                var species = realThis.speciesById[id];
+                return species ? species.name_common : null;
+            }).filter(Boolean);
+            map.setFilter(selections);
         });
 
     }
@@ -60,6 +55,8 @@ var app = this.app || {};
 
     SpeciesFilter.prototype.setSpecies = function(species) {
         this.species = species;
+        this.speciesById = {};
+        species.forEach(function(s) { this.speciesById[s.id] = s; }.bind(this));
         selectFilter.select2({
             placeholder: 'Start typing a species name',
             data: this.species,
