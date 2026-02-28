@@ -321,3 +321,8 @@ span#sidebar-heritage-number {
 #sidebar-heritage-description-container.active {
   display: inline-block;
 }
+
+/* Hide mobile drag handle on desktop */
+.sidebar-drag-handle {
+  display: none;
+}

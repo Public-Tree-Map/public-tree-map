@@ -1,44 +1,106 @@
+/* Bottom sheet sidebar */
+#sidebar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 85vh;
+  width: 100%;
+  max-width: none;
+
+  /* Reset desktop floating card styles */
+  top: auto;
+  margin: 0;
+
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 150000;
+
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Override desktop sidebar--open transform */
+body.sidebar--open #sidebar {
+  /* Let the mobile snap states control transform */
+  transform: translateY(100%);
+}
+
+/* Snap states */
+.sidebar-mobile--closed #sidebar,
+.sidebar-mobile--closed.sidebar--open #sidebar {
+  transform: translateY(100%) !important;
+}
+
+.sidebar-mobile--peek #sidebar,
+.sidebar-mobile--peek.sidebar--open #sidebar {
+  transform: translateY(calc(85vh - 80px)) !important;
+}
+
+.sidebar-mobile--half #sidebar,
+.sidebar-mobile--half.sidebar--open #sidebar {
+  transform: translateY(calc(85vh - 40vh)) !important;
+}
+
+.sidebar-mobile--full #sidebar,
+.sidebar-mobile--full.sidebar--open #sidebar {
+  transform: translateY(env(safe-area-inset-top, 20px)) !important;
+}
+
+/* Drag handle */
+.sidebar-drag-handle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 6px;
+  cursor: grab;
+  touch-action: none;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 16px 16px 0 0;
+}
+
+.sidebar-drag-pill {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #ccc;
+}
+
+/* Banner hidden on mobile */
+.banner {
+  display: none;
+}
+
+/* Content scrolling */
+#sidebar-tree, #sidebar-vacant {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  flex-direction: column;
+  height: auto;
+}
+
+#sidebar > div {
+  background-color: white;
+}
+
+/* Content areas */
+#sidebar-content, #sidebar-vacant-content {
+  padding: 16px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Progressive content visibility — peek: name + address only */
 #sidebar-image > *,
 #sidebar-content > *,
 #sidebar-vacant-content > * {
   display: none;
-}
-
-#sidebar, #sidebar-vacant {
-  /* Reset desktop overlay to bottom sheet */
-  position: relative;
-  right: auto;
-  top: auto;
-  transform: none;
-  box-shadow: none;
-  max-width: none;
-  z-index: auto;
-
-  height: auto;
-  width: 100%;
-  transition: .5s ease;
-}
-
-body.sidebar--open #sidebar {
-  transform: none;
-}
-.sidebar-mobile--preview{
-  max-height: 160px;
-}
-
-#sidebar > div, #sidebar-vacant > div {
-  background-color: white;
-}
-
-#sidebar-tree, #sidebar-vacant {
-  height: 100%;
-  flex-direction: row;
-}
-
-#sidebar-image {
-  width: 40%;
-  min-height: 50px;
-  height: 100%;
 }
 
 #sidebar-content #sidebar-common-name,
@@ -48,93 +110,103 @@ body.sidebar--open #sidebar {
   display: block;
 }
 
-#sidebar-content, #sidebar-vacant-content {
-  padding: 16px;
-}
-
-/* Classes */
-.banner {
-  display: none;
-}
-
-#sidebar-content .btn--mobile, #sidebar-vacant-content .btn--mobile {
-  display: block;
-}
-
-#sidebar .sidebar-address-small{
-    font-size: 11px;
-  }
-
-/* Fullscreen sidebar */
-.sidebar-mobile--fullscreen #container {
-  transition: 0.5s ease;
-  height: 0;
-  overflow: hidden;
-}
-
-.sidebar-mobile--fullscreen #sidebar, #sidebar-vacant {
-  height: 100vh;
-}
-
 #sidebar-content h1, #sidebar-vacant-content h1 {
   font-size: 18px;
 }
 
-.sidebar-mobile--fullscreen #sidebar-content h1,
-.sidebar-mobile--fullscreen #sidebar-vacant-content h1 {
-  font-size: 24px;
-}
-.sidebar-mobile--fullscreen #sidebar-image > *,
-.sidebar-mobile--fullscreen #sidebar-content > *,
-.sidebar-mobile--fullscreen #sidebar-vacant-content > * {
+/* Half state: show all details */
+.sidebar-mobile--half #sidebar-content > *,
+.sidebar-mobile--half #sidebar-vacant-content > *,
+.sidebar-mobile--full #sidebar-content > *,
+.sidebar-mobile--full #sidebar-vacant-content > * {
   display: block;
 }
-.sliderButton {
-  font-size: 50px;
-  text-align: center;
- 
-}
 
-.sidebar-mobile--fullscreen #sidebar-content .share-buttons {
+.sidebar-mobile--half #sidebar-content .share-buttons,
+.sidebar-mobile--full #sidebar-content .share-buttons {
   display: flex;
 }
 
-.sidebar-mobile--fullscreen #sidebar-tree,
-.sidebar-mobile--fullscreen #sidebar {
-  flex-direction: column;
+.sidebar-mobile--half #sidebar-content h1,
+.sidebar-mobile--half #sidebar-vacant-content h1 {
+  font-size: 20px;
 }
 
-.sidebar-mobile--fullscreen #sidebar-image {
-  width: 100%;
-  min-height: 40%;
-}
-
-.btn-close .btn-close--light { display: block; }
-.btn-close .btn-close--dark { display: none; }
-.sidebar-mobile--fullscreen .btn-close .btn-close--light {
-  display: none;
-}
-.sidebar-mobile--fullscreen .btn-close .btn-close--dark {
+/* Full state: show images too */
+.sidebar-mobile--full #sidebar-image > * {
   display: block;
 }
 
-/* Close the sidebar */
-.sidebar-mobile--closed #container{
-  height: 100%;
+.sidebar-mobile--full #sidebar-content h1,
+.sidebar-mobile--full #sidebar-vacant-content h1 {
+  font-size: 24px;
 }
 
-.sidebar-mobile--closed #sidebar{
-  height: 0;
+.sidebar-mobile--full #sidebar-tree,
+.sidebar-mobile--full #sidebar {
+  flex-direction: column;
 }
+
+.sidebar-mobile--full #sidebar-image {
+  width: 100%;
+  min-height: 200px;
+}
+
+/* Image sizing */
+#sidebar-image {
+  width: 100%;
+  min-height: 50px;
+}
+
+.sliderButton {
+  font-size: 50px;
+  text-align: center;
+}
+
+/* Close button styles */
+.btn-close .btn-close--light { display: block; }
+.btn-close .btn-close--dark { display: none; }
+.sidebar-mobile--full .btn-close .btn-close--light {
+  display: none;
+}
+.sidebar-mobile--full .btn-close .btn-close--dark {
+  display: block;
+}
+
+/* Hide "View Details" button — drag replaces it */
+#sidebar-content .btn--mobile,
+#sidebar-vacant-content .btn--mobile {
+  display: none;
+}
+
+/* Address small */
+#sidebar .sidebar-address-small {
+  font-size: 11px;
+}
+
+/* Heritage */
 #sidebar-heritage-container.active {
   display: none;
   width: 100%;
 }
-.sidebar-mobile--fullscreen #sidebar-content #sidebar-heritage-container {
+.sidebar-mobile--half #sidebar-content #sidebar-heritage-container.active,
+.sidebar-mobile--full #sidebar-content #sidebar-heritage-container.active {
+  display: inline-block;
+  width: 100%;
+}
+.sidebar-mobile--half #sidebar-content #sidebar-heritage-container,
+.sidebar-mobile--full #sidebar-content #sidebar-heritage-container {
   display: none;
   width: 100%;
 }
-.sidebar-mobile--fullscreen #sidebar-content #sidebar-heritage-container.active {
-  display: inline-block;
-  width: 100%;
+
+/* Map stays visible in ALL states */
+#container {
+  height: 100% !important;
+  overflow: visible;
+}
+
+/* Default screen hidden */
+#sidebar-default {
+  display: none;
 }

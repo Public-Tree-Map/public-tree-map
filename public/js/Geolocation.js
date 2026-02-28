@@ -152,6 +152,79 @@ var app = this.app || {};
         document.getElementById('locate-button').addEventListener('click', function() {
             map.triggerLocate();
         });
+
+        // Mobile search FAB + overlay
+        if (window.innerWidth <= 890) {
+            var fab = document.createElement('button');
+            fab.className = 'mobile-search-fab';
+            fab.innerHTML = '<i class="fa fa-search"></i>';
+            fab.setAttribute('aria-label', 'Search address');
+            document.body.appendChild(fab);
+
+            var overlay = document.getElementById('mobile-search-overlay');
+            var mobileInput = document.getElementById('mobile-address-input');
+            var mobileResults = document.getElementById('mobile-search-results');
+            var mobileClose = document.getElementById('mobile-search-close');
+            var mobileDebounce = null;
+
+            fab.addEventListener('click', function() {
+                overlay.classList.remove('hidden');
+                mobileInput.value = '';
+                mobileResults.innerHTML = '';
+                setTimeout(function() { mobileInput.focus(); }, 100);
+            });
+
+            mobileClose.addEventListener('click', function() {
+                overlay.classList.add('hidden');
+                mobileInput.blur();
+            });
+
+            mobileInput.addEventListener('input', function() {
+                clearTimeout(mobileDebounce);
+                var query = mobileInput.value.trim();
+                if (query.length < 3) {
+                    mobileResults.innerHTML = '';
+                    return;
+                }
+                mobileDebounce = setTimeout(function() {
+                    var url = 'https://nominatim.openstreetmap.org/search?format=json&q=' +
+                        encodeURIComponent(query) + '&limit=5' +
+                        '&viewbox=-118.8,34.4,-117.6,33.6&bounded=1';
+
+                    fetch(url, {
+                        headers: { 'User-Agent': 'PublicTreeMap (https://github.com/Public-Tree-Map)' }
+                    })
+                    .then(function(res) { return res.json(); })
+                    .then(function(results) {
+                        mobileResults.innerHTML = '';
+                        if (results.length === 0) {
+                            var li = document.createElement('li');
+                            li.textContent = 'No results found';
+                            li.style.color = '#999';
+                            mobileResults.appendChild(li);
+                            return;
+                        }
+                        results.forEach(function(result) {
+                            var li = document.createElement('li');
+                            var name = shortenName(result.display_name);
+                            li.textContent = name;
+                            li.addEventListener('click', function() {
+                                var lat = parseFloat(result.lat);
+                                var lng = parseFloat(result.lon);
+                                zoomToLatLng([lat, lng]);
+                                map.setPin(lat, lng, name);
+                                overlay.classList.add('hidden');
+                                mobileInput.blur();
+                            });
+                            mobileResults.appendChild(li);
+                        });
+                    })
+                    .catch(function() {
+                        mobileResults.innerHTML = '';
+                    });
+                }, 300);
+            });
+        }
     }
 
     // Exports

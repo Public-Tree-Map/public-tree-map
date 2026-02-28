@@ -11,7 +11,7 @@
       gtag('config', 'UA-145130466-1');
     </script>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
@@ -46,13 +46,6 @@
       You need to enable JavaScript to run this app.
     </noscript>
 
-
-    <!-- Loading Popup -->
-<!--    <div id="loading">-->
-<!--      <div class="rounded-box shadow">-->
-<!--        Loading...-->
-<!--      </div>-->
-<!--    </div>-->
 
     <div id="container">
       <!-- Toolbar -->
@@ -91,6 +84,9 @@
 
     <!-- Sidebar -->
     <div id="sidebar">
+      <div id="sidebar-drag-handle" class="sidebar-drag-handle">
+        <div class="sidebar-drag-pill"></div>
+      </div>
       <div class="banner">PUBLIC TREE MAP - SANTA MONICA</div>
       <div id="sidebar-vacant">
         <button id="sidebar-vacant-close-button" class = "btn-close">
@@ -258,6 +254,15 @@
         <h1>Error</h1>
         <div>The tree you requested was not found.</div>
       </div>
+    </div>
+
+    <!-- Mobile Search Overlay -->
+    <div id="mobile-search-overlay" class="mobile-search-overlay hidden">
+      <div class="mobile-search-bar">
+        <input type="search" id="mobile-address-input" placeholder="Search address..." />
+        <button id="mobile-search-close">&times;</button>
+      </div>
+      <ul id="mobile-search-results" class="mobile-search-results"></ul>
     </div>
 
     <!-- Scripts -->

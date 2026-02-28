@@ -3,19 +3,37 @@
   width: 100%;
 }
 
-#loading {
-  background: rgba(0, 0, 0, 0.5);
-  height: 100%;
-  position: fixed;
-  width: 100%;
-  z-index: 60000;
+.map-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  padding: 6px 16px;
+  font-family: 'Lato', Arial, sans-serif;
+  font-size: 13px;
+  color: #444;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
 }
 
-#loading > div {
-  left: 50%;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.map-loading-hidden {
+  opacity: 0;
+}
+
+.map-loading-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ddd;
+  border-top-color: #005824;
+  border-radius: 50%;
+  animation: map-loading-spin 0.6s linear infinite;
+}
+
+@keyframes map-loading-spin {
+  to { transform: rotate(360deg); }
 }
 
 /* hide defalut UI of leaflet.control.locate */

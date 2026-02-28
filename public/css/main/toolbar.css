@@ -200,3 +200,9 @@
 .select2-container--open {
   z-index: 333333;
 }
+
+/* Hide mobile-only elements on desktop */
+.mobile-search-fab,
+.mobile-search-overlay {
+  display: none !important;
+}

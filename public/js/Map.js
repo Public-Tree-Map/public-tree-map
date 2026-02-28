@@ -91,6 +91,28 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
       }
     }).addTo(this.leafletMap);
 
+    // Auto-hide toolbar on mobile during pan
+    this._toolbarHideTimer = null;
+    this.leafletMap.on('movestart', (() => {
+      if (window.innerWidth <= 890) {
+        var toolbar = document.getElementById('toolbar');
+        if (toolbar) toolbar.classList.add('toolbar--hidden');
+        clearTimeout(this._toolbarHideTimer);
+      }
+    }).bind(this));
+
+    this.leafletMap.on('moveend', (() => {
+      if (window.innerWidth <= 890) {
+        var toolbar = document.getElementById('toolbar');
+        if (toolbar) {
+          clearTimeout(this._toolbarHideTimer);
+          this._toolbarHideTimer = setTimeout(function() {
+            toolbar.classList.remove('toolbar--hidden');
+          }, 600);
+        }
+      }
+    }).bind(this));
+
     this.leafletMap.on('moveend', (() => {
       this.zoom = this.leafletMap.getZoom();
       var newBounds = this.leafletMap.getBounds();
@@ -121,7 +143,26 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
     L.control.zoom({position: 'bottomright'}).addTo(this.leafletMap);
 
     this.markers = L.layerGroup().addTo(this.leafletMap);
+
+    // Loading pill control
+    var loadingControl = L.control({ position: 'topleft' });
+    var self = this;
+    loadingControl.onAdd = function() {
+      var el = L.DomUtil.create('div', 'map-loading map-loading-hidden');
+      el.innerHTML = '<div class="map-loading-spinner"></div>Loading trees\u2026';
+      self._loadingEl = el;
+      return el;
+    };
+    loadingControl.addTo(this.leafletMap);
   }
+  Map.prototype.showLoading = function() {
+    if (this._loadingEl) this._loadingEl.classList.remove('map-loading-hidden');
+  };
+
+  Map.prototype.hideLoading = function() {
+    if (this._loadingEl) this._loadingEl.classList.add('map-loading-hidden');
+  };
+
   Map.prototype.fetchCityLabels = function() {
     fetch(this.api_url.concat('cities/'))
       .then(res => res.json())
@@ -153,18 +194,21 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
     setMarkerSize.call(this, this.zoom);
   }
 
-  Map.prototype.fetchTrees = function(bounds, callback){
+  Map.prototype.fetchTrees = function(bounds, callback, silent){
+    if (!silent) this.showLoading();
     var sw = bounds.getSouthWest();
     var ne = bounds.getNorthEast();
 
     fetch(this.api_url.concat(`trees/?lat1=${sw.lat}&lng1=${sw.lng}&lat2=${ne.lat}&lng2=${sw.lng}&lat3=${ne.lat}&lng3=${ne.lng}&lat4=${sw.lat}&lng4=${ne.lng}`))
         .then((res) => {return res.json()})
         .then((trees) => {
+          if (!silent) this.hideLoading();
           if (callback) {
             callback(trees);
           }
         })
         .catch((error) => {
+            if (!silent) this.hideLoading();
             console.error('Error:', error);
         });
   }
@@ -187,25 +231,29 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
         var newTrees = trees.filter(function(t) { return !this.loadedTreeIds.has(t.tree_id); }.bind(this));
         newTrees.forEach(function(t) { this.loadedTreeIds.add(t.tree_id); }.bind(this));
         this.trees.push.apply(this.trees, newTrees);
-      }.bind(this));
+      }.bind(this), true);
     }.bind(this));
   };
 
   Map.prototype.setTreeViewFromUrl = function(treeId){
+    this.showLoading();
     fetch(
       this.api_url.concat(`tree/${treeId}`)
     )
       .then((res) => res.json())
       .then((tree) => {
         this.sidebar.setTree(tree);
-        var treeLocation = [tree.latitude, tree.longitude];  // Replace 'lat' and 'lng' with the actual keys in the tree data
+        var treeLocation = [tree.latitude, tree.longitude];
         this.leafletMap.setView(treeLocation, ZOOM_LEVEL_PINS + 2);
         var newBounds = this.leafletMap.getBounds();
         this.fetchTrees(newBounds, (trees) => {
           this.setTrees(trees, module.palettes['name_common'], true);
         });
+      })
+      .catch((error) => {
+        this.hideLoading();
+        console.error('Error:', error);
       });
-
   }
 
   Map.prototype.setTrees = function(trees, palette, zoomToTree) {

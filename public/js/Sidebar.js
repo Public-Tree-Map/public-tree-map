@@ -61,6 +61,8 @@ var initialY = null;
     this.gsv_link   = document.getElementById('gsv-link')
     this.vacant_gsv_link   = document.getElementById('vacant-gsv-link')
 
+    this.dragHandle = document.getElementById('sidebar-drag-handle');
+    this._sheetState = 'closed';
 
     this.closeButton.onclick = closePanel.bind(this);
     this.vacantCloseButton.onclick = closePanel.bind(this);
@@ -69,7 +71,120 @@ var initialY = null;
     this.detailsButton.onclick = toggleFullMobileView.bind(this);
     this.vacantDetailsButton.onclick = toggleFullMobileView.bind(this);
     this.exploreMapButton.onclick = toggleFullMobileView.bind(this);
+
+    this._initBottomSheet();
   }
+
+  Sidebar.prototype._initBottomSheet = function() {
+    if (!this.dragHandle || typeof Hammer === 'undefined') return;
+    var self = this;
+    var sidebar = this.sidebar;
+    var startY = 0;
+    var startTranslateY = 0;
+
+    // Snap positions as fraction of 85vh from top of sheet
+    var SNAP_POSITIONS = {
+      closed: 1.0,       // translateY(100%) — fully hidden
+      peek:   (85 - (80 / window.innerHeight * 100)) / 85, // ~80px visible
+      half:   (85 - 40) / 85,  // 40vh visible
+      full:   0           // nearly full
+    };
+
+    function getSheetHeight() {
+      return sidebar.offsetHeight || (window.innerHeight * 0.85);
+    }
+
+    function getCurrentTranslateY() {
+      var st = window.getComputedStyle(sidebar);
+      var matrix = st.transform || st.webkitTransform;
+      if (!matrix || matrix === 'none') return getSheetHeight();
+      var values = matrix.match(/matrix.*\((.+)\)/);
+      if (values && values[1]) {
+        var parts = values[1].split(', ');
+        return parseFloat(parts[5]) || 0;
+      }
+      return 0;
+    }
+
+    var mc = new Hammer.Manager(this.dragHandle, {
+      recognizers: [
+        [Hammer.Pan, { direction: Hammer.DIRECTION_VERTICAL }]
+      ]
+    });
+
+    mc.on('panstart', function() {
+      startTranslateY = getCurrentTranslateY();
+      sidebar.style.transition = 'none';
+    });
+
+    mc.on('panmove', function(e) {
+      var newY = startTranslateY + e.deltaY;
+      // Clamp: don't go above env(safe-area-inset-top) equivalent (~20px) or below full height
+      var minY = 0;
+      var maxY = getSheetHeight();
+      newY = Math.max(minY, Math.min(maxY, newY));
+      sidebar.style.transform = 'translateY(' + newY + 'px)';
+    });
+
+    mc.on('panend', function(e) {
+      sidebar.style.transition = '';
+      sidebar.style.transform = '';
+
+      var sheetH = getSheetHeight();
+      var currentY = startTranslateY + e.deltaY;
+      var fraction = currentY / sheetH;
+      var velocity = e.velocityY;
+
+      var target;
+      // Fast swipe detection
+      if (velocity > 0.5) {
+        // Swiping down
+        if (self._sheetState === 'full') target = 'half';
+        else if (self._sheetState === 'half') target = 'peek';
+        else target = 'closed';
+      } else if (velocity < -0.5) {
+        // Swiping up
+        if (self._sheetState === 'peek') target = 'half';
+        else if (self._sheetState === 'half') target = 'full';
+        else target = 'full';
+      } else {
+        // Snap to nearest position based on where user released
+        if (fraction > 0.85) target = 'closed';
+        else if (fraction > 0.6) target = 'peek';
+        else if (fraction > 0.3) target = 'half';
+        else target = 'full';
+      }
+
+      self._snapTo(target);
+    });
+
+    // Also allow tapping the drag handle to cycle states
+    this.dragHandle.addEventListener('click', function() {
+      if (window.innerWidth > 890) return;
+      if (self._sheetState === 'peek') self._snapTo('half');
+      else if (self._sheetState === 'half') self._snapTo('full');
+      else if (self._sheetState === 'full') self._snapTo('half');
+    });
+  };
+
+  Sidebar.prototype._snapTo = function(state) {
+    if (window.innerWidth > 890) return;
+    var states = ['closed', 'peek', 'half', 'full'];
+    // Remove all mobile state classes
+    for (var i = 0; i < states.length; i++) {
+      this.body.classList.remove('sidebar-mobile--' + states[i]);
+    }
+    // Remove legacy classes
+    this.body.classList.remove('sidebar-mobile--fullscreen');
+    this.sidebar.classList.remove('sidebar-mobile--preview');
+
+    this.body.classList.add('sidebar-mobile--' + state);
+    this._sheetState = state;
+
+    // Clear any inline styles from drag
+    this.sidebar.style.transition = '';
+    this.sidebar.style.transform = '';
+  };
 
   Sidebar.prototype.setTree = function(tree) {
     if (!tree) {
@@ -98,6 +213,11 @@ var initialY = null;
     }
     // Slide the sidebar open
     this.body.classList.add('sidebar--open');
+
+    // On mobile, snap to peek state
+    if (window.innerWidth <= 890) {
+      this._snapTo('peek');
+    }
   }
 
   Sidebar.prototype.populateVacanciesPanel = function(tree) {
@@ -209,9 +329,22 @@ var initialY = null;
   } 
 
   function toggleFullMobileView() {
-    let className = 'sidebar-mobile--fullscreen';    
+    if (window.innerWidth <= 890 && this._snapTo) {
+      // Cycle through bottom sheet states
+      if (this._sheetState === 'peek') {
+        this._snapTo('half');
+      } else if (this._sheetState === 'half') {
+        this._snapTo('full');
+      } else if (this._sheetState === 'full') {
+        this._snapTo('half');
+      } else {
+        this._snapTo('half');
+      }
+      return;
+    }
+    // Desktop fallback (legacy)
+    let className = 'sidebar-mobile--fullscreen';
     if(this.body.classList.contains(className)) {
-      //close side bar
       this.body.classList.remove(className);
       this.detailsButton.classList.remove('hidden');
       this.vacantDetailsButton.classList.remove('hidden');
@@ -223,7 +356,6 @@ var initialY = null;
       this.sidebar.classList.add('sidebar-mobile--preview')
     }
     else {
-      //full screen mode
       this.body.classList.add(className);
       this.detailsButton.classList.add('hidden');
       this.vacantDetailsButton.classList.add('hidden');
@@ -236,6 +368,12 @@ var initialY = null;
 
 
   function closePanel() {
+    if (window.innerWidth <= 890 && this._snapTo) {
+      this._snapTo('closed');
+      this.showDefault();
+      return;
+    }
+    // Desktop fallback
     let fullScreen = 'sidebar-mobile--fullscreen';
     let closed = 'sidebar-mobile--closed'
     if(this.body.classList.contains(fullScreen)) {
