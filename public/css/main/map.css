@@ -76,6 +76,15 @@
   display: none;
 }
 
+.map-legend-title {
+  font-weight: bold;
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+
 .map-legend-item {
   display: flex;
   align-items: center;

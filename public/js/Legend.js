@@ -36,9 +36,23 @@ var app = this.app || {};
     var container = this.control.getContainer();
     if (!container) return;
 
-    // Hide when zoomed out (no tree markers visible)
+    // Show density legend when zoomed out
     if (this.map.leafletMap.getZoom() < ZOOM_LEVEL_PINS) {
-      L.DomUtil.addClass(container, 'map-legend-hidden');
+      if (this.map._choroplethVisible && this.map._densityRange) {
+        var densityColors = ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c'];
+        var labels = ['< 200', '200–800', '800–2,000', '2,000–3,500', '> 3,500'];
+        var dhtml = '<div class="map-legend-title">Tree Density</div>';
+        for (var i = 0; i < densityColors.length; i++) {
+          dhtml += '<div class="map-legend-item">' +
+            '<span class="map-legend-swatch" style="background:' + densityColors[i] + '"></span>' +
+            '<span class="map-legend-label">' + labels[i] + ' /sq mi</span>' +
+            '</div>';
+        }
+        container.innerHTML = dhtml;
+        L.DomUtil.removeClass(container, 'map-legend-hidden');
+      } else {
+        L.DomUtil.addClass(container, 'map-legend-hidden');
+      }
       return;
     }
 

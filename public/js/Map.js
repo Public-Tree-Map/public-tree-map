@@ -24,6 +24,13 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
     this.locationPin = null
     this.zoomOnClick = 18
 
+    this._osmLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 19,
+      opacity: 0.4,
+      pane: 'shadowPane'
+    });
+
     this.leafletMap = L.map('map', {
       center: [34.072451, -118.247173],
       zoom: this.zoom,
@@ -34,16 +41,15 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
           subdomains: 'abcd',
           maxZoom: 19
         }),
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-          subdomains: 'abcd',
-          maxZoom: 19,
-          opacity: 0.4,
-          pane: 'shadowPane'
-        })
+        this._osmLabels
       ]
     });
     this.prevBounds = this.leafletMap.getBounds();
+    this.cityPolygons = L.geoJSON(null).addTo(this.leafletMap);
     this.cityLabels = L.layerGroup().addTo(this.leafletMap);
+    this._cityBoundariesCache = null;
+    this._cityTreeCounts = null;
+    this._choroplethVisible = false;
 
     //trigger leaflet.locate
     this.triggerLocate = () => {
@@ -119,6 +125,9 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
       var distance = this.prevBounds.getNorthEast().distanceTo(newBounds.getNorthEast());
       if (distance > 0.1 && this.zoom >= ZOOM_LEVEL_PINS) {
         this.cityLabels.clearLayers();
+        this.cityPolygons.clearLayers();
+        this._choroplethVisible = false;
+        this._osmLabels.setOpacity(0.4);
         this.fetchTrees(newBounds, (trees) => {
           this.setTrees(trees, module.palettes['name_common'], false);
           setMarkerSize.call(this, this.zoom);
@@ -132,6 +141,8 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
         this.loadedTreeIds.clear();
         if (this.cityLabels.getLayers().length === 0) {
           this.fetchCityLabels();
+        } else if (!this._choroplethVisible && this._cityBoundariesCache) {
+          this.renderChoropleth();
         }
         if (this.legend) {
           this.legend.update();
@@ -167,25 +178,177 @@ ZOOM_LEVEL_PINS = 15; // zoom at which markers replace clusters, higher is more 
     fetch(this.api_url.concat('cities/'))
       .then(res => res.json())
       .then(cities => {
-        this.cityLabels.clearLayers();
-        cities.filter(city => city.city !== 'los-angeles-city').forEach(city => {
-          var name = city.city.replace(/-/g, ' ');
-          name = name.replace(/\b\w/g, c => c.toUpperCase());
-          var count = city.tree_count.toLocaleString();
-          var label = L.marker([city.lat, city.lng], {
-            icon: L.divIcon({
-              className: 'city-label',
-              html: '<div class="city-name">' + name + '</div>' +
-                    '<div class="city-count">' + count + ' trees</div>',
-              iconSize: null
-            })
-          });
-          label.on('click', function() {
-            this.leafletMap.flyTo([city.lat, city.lng], ZOOM_LEVEL_PINS);
-          }.bind(this));
-          label.addTo(this.cityLabels);
-        });
+        // Merge santa-clarita-parks into santa-clarita
+        var scParks = cities.find(c => c.city === 'santa-clarita-parks');
+        if (scParks) {
+          var sc = cities.find(c => c.city === 'santa-clarita');
+          if (sc) sc.tree_count += scParks.tree_count;
+        }
+
+        this._cityTreeCounts = cities.filter(c => c.city !== 'santa-clarita-parks');
+
+        this.renderCityLabels();
+
+        if (!this._cityBoundariesCache) {
+          this.fetchCityBoundaries();
+        } else {
+          this.renderChoropleth();
+        }
       });
+  };
+
+  Map.prototype.renderCityLabels = function() {
+    if (!this._cityTreeCounts) return;
+
+    this.cityLabels.clearLayers();
+    this._cityTreeCounts.filter(city => city.city !== 'los-angeles-city').forEach(city => {
+      var name = slugToName(city.city);
+      var count = city.tree_count.toLocaleString();
+
+      // Use polygon center if available, otherwise fall back to API centroid
+      var lat = city.lat;
+      var lng = city.lng;
+      if (this._polygonCenters) {
+        var key = name.toLowerCase();
+        if (this._polygonCenters[key]) {
+          lat = this._polygonCenters[key].lat;
+          lng = this._polygonCenters[key].lng;
+        }
+      }
+
+      var label = L.marker([lat, lng], {
+        icon: L.divIcon({
+          className: 'city-label',
+          html: '<div class="city-name">' + name + '</div>' +
+                '<div class="city-count">' + count + ' trees</div>',
+          iconSize: null
+        })
+      });
+      label.on('click', function() {
+        this.leafletMap.flyTo([lat, lng], ZOOM_LEVEL_PINS);
+      }.bind(this));
+      label.addTo(this.cityLabels);
+    });
+  };
+
+  function slugToName(slug) {
+    if (slug === 'los-angeles-city') return 'Los Angeles';
+    return slug.replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+  }
+
+  var DENSITY_COLORS = ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c'];
+
+  function densityColor(density, minDensity, maxDensity) {
+    if (density <= 0 || minDensity <= 0) return DENSITY_COLORS[0];
+    var t = (Math.log(density) - Math.log(minDensity)) / (Math.log(maxDensity) - Math.log(minDensity));
+    t = Math.max(0, Math.min(1, t));
+    var idx = Math.min(Math.floor(t * DENSITY_COLORS.length), DENSITY_COLORS.length - 1);
+    return DENSITY_COLORS[idx];
+  }
+
+  Map.prototype.fetchCityBoundaries = function() {
+    var url = 'https://services3.arcgis.com/uknczv4rpevve42E/arcgis/rest/services/California_Cities_and_Identifiers_Blue_Version_view/FeatureServer/2/query' +
+      '?where=' + encodeURIComponent("CDTFA_COUNTY='Los Angeles County'") +
+      '&outFields=CDTFA_CITY,AREA_SQMI&f=geojson';
+    fetch(url)
+      .then(function(res) { return res.json(); })
+      .then(function(geojson) {
+        this._cityBoundariesCache = geojson;
+        this.renderChoropleth();
+      }.bind(this))
+      .catch(function(err) { console.error('City boundaries fetch error:', err); });
+  };
+
+  Map.prototype.renderChoropleth = function() {
+    if (!this._cityBoundariesCache || !this._cityTreeCounts) return;
+
+    // Build lookup from normalized name → { count, area }
+    var cityLookup = {};
+    this._cityTreeCounts.forEach(function(c) {
+      var name = slugToName(c.city).toLowerCase();
+      cityLookup[name] = { count: c.tree_count };
+    });
+
+    // Sum areas across duplicate polygons (e.g. Los Angeles has 473.25 + 0.01)
+    this._cityBoundariesCache.features.forEach(function(f) {
+      var cdtfaName = (f.properties.CDTFA_CITY || '').toLowerCase();
+      var match = cityLookup[cdtfaName];
+      if (match && f.properties.AREA_SQMI > 0) {
+        match.area = (match.area || 0) + f.properties.AREA_SQMI;
+      }
+    });
+
+    // Compute densities
+    var densities = [];
+    Object.keys(cityLookup).forEach(function(name) {
+      var match = cityLookup[name];
+      if (match.area > 0) {
+        match.density = match.count / match.area;
+        densities.push(match.density);
+      }
+    });
+
+    if (densities.length === 0) return;
+
+    var minDensity = Math.min.apply(null, densities);
+    var maxDensity = Math.max.apply(null, densities);
+
+    this.cityPolygons.clearLayers();
+
+    var self = this;
+    L.geoJSON(this._cityBoundariesCache, {
+      style: function(feature) {
+        var cdtfaName = (feature.properties.CDTFA_CITY || '').toLowerCase();
+        var match = cityLookup[cdtfaName];
+        if (match && match.density) {
+          return {
+            fillColor: densityColor(match.density, minDensity, maxDensity),
+            fillOpacity: 0.45,
+            weight: 1.5,
+            color: '#fff',
+            opacity: 0.8
+          };
+        }
+        return {
+          fillColor: '#e0e0e0',
+          fillOpacity: 0.3,
+          weight: 1,
+          color: '#fff',
+          opacity: 0.6
+        };
+      },
+      onEachFeature: function(feature, layer) {
+        var cdtfaName = (feature.properties.CDTFA_CITY || '').toLowerCase();
+        var match = cityLookup[cdtfaName];
+        if (match && match.density) {
+          var displayName = feature.properties.CDTFA_CITY;
+          var tooltip = displayName + ': ' + match.count.toLocaleString() + ' trees (' +
+            Math.round(match.density).toLocaleString() + '/sq mi)';
+          layer.bindTooltip(tooltip, { sticky: true });
+        }
+      }
+    }).eachLayer(function(layer) {
+      self.cityPolygons.addLayer(layer);
+    });
+
+    this._choroplethVisible = true;
+    this._densityRange = { min: minDensity, max: maxDensity };
+    this._osmLabels.setOpacity(0.15);
+
+    // Compute polygon centers for label positioning
+    this._polygonCenters = {};
+    this.cityPolygons.eachLayer(function(layer) {
+      var name = (layer.feature.properties.CDTFA_CITY || '').toLowerCase();
+      if (name) {
+        var center = layer.getBounds().getCenter();
+        this._polygonCenters[name] = { lat: center.lat, lng: center.lng };
+      }
+    }.bind(this));
+
+    // Re-render labels at polygon centers
+    this.renderCityLabels();
+
+    if (this.legend) this.legend.update();
   };
 
   Map.prototype.setFilter = function(selections) {

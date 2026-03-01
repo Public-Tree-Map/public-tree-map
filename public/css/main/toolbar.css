@@ -17,6 +17,17 @@
   pointer-events: initial;
 }
 
+.toolbar-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.toolbar-logo img {
+  display: block;
+}
+
 .toolbar-label {
   font-size: 11px;
   text-transform: uppercase;
